@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -21,12 +21,14 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_melee.png" type="Texture" id=19]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_move.png" type="Texture" id=20]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
+[ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=23]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 64.3173
+radius = 61.606
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 100.432, 116.948 )
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 99.3254, 116.344 )
 
 [sub_resource type="Animation" id=3]
 length = 2.0
@@ -129,31 +131,31 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 61.3556, 37.1487 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Position2D/Knife/Area2D/CollisionShape2D:disabled")
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.6, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/5/type = "method"
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 1.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "resetVariables"
 } ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Position2D/Knife/Hitbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -807,7 +809,7 @@ tracks/4/keys = {
 radius = 60.4062
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 0
+collision_mask = 4
 script = ExtResource( 1 )
 idle_time = 0.101
 
@@ -819,10 +821,9 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 61.3556, 37.1487 )
-texture = ExtResource( 19 )
-hframes = 15
-frame = 14
+position = Vector2( 62, -16 )
+texture = ExtResource( 23 )
+hframes = 20
 
 [node name="Rifle" type="Position2D" parent="Position2D"]
 visible = false
@@ -845,19 +846,19 @@ position = Vector2( 176.749, 40.2214 )
 script = ExtResource( 9 )
 
 [node name="Knife" type="Position2D" parent="Position2D"]
-visible = false
 position = Vector2( 176.749, 40.2214 )
 script = ExtResource( 9 )
 capacity = 0
 bulletsShot = 0
 
-[node name="Area2D" type="Area2D" parent="Position2D/Knife"]
-collision_layer = 0
-collision_mask = 26
+[node name="Hitbox" parent="Position2D/Knife" instance=ExtResource( 22 )]
+visible = false
+collision_layer = 16
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Knife/Area2D"]
-position = Vector2( -79.29, -29.3997 )
-shape = SubResource( 2 )
+[node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
+position = Vector2( -78.489, -28.9914 )
+shape = SubResource( 17 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
@@ -880,6 +881,14 @@ anims/ShotgunIdle = SubResource( 12 )
 anims/ShotgunMove = SubResource( 13 )
 anims/ShotgunReload = SubResource( 14 )
 anims/ShotgunShoot = SubResource( 15 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 21 )]
+visible = false
+collision_layer = 2147483648
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 16 )
 
 [node name="IdleTimer" type="Timer" parent="."]
 
@@ -963,16 +972,11 @@ margin_bottom = 1156.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 10 )
-
-[node name="HurtBox" parent="." instance=ExtResource( 21 )]
-collision_layer = 2147483648
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 16 )
-[connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]
 [connection signal="invincibility_started" from="HurtBox" to="." method="_on_HurtBox_invincibility_started"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
+
+[editable path="Position2D/Knife/Hitbox"]
 
 [editable path="HurtBox"]

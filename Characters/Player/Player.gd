@@ -20,7 +20,7 @@ onready var rifle = $Position2D/Rifle
 onready var pistol = $Position2D/Pistol
 onready var shotgun = $Position2D/Shotgun
 onready var knife = $Position2D/Knife
-onready var knifeCollision = $Position2D/Knife/Area2D/CollisionShape2D
+onready var knifeCollision = $Position2D/Knife/Hitbox/CollisionShape2D
 
 
 onready var weaponSelected = rifle
@@ -55,6 +55,7 @@ var state = RIFLE
 
 func _ready():
 	get_tree().call_group("zombies", "set_player", self)
+	knifeCollision.disabled = true
 var dir = 14
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -126,7 +127,6 @@ func melee():
 	canShoot = false
 	shooting = true
 	startedShooting = true
-	knifeCollision.disabled = false
 	animationPlayer.play("KnifeMelee")
 	timer.start(idle_time)
 

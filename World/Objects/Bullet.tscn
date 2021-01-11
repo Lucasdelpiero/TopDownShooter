@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/bullet.png" type="Texture" id=1]
 [ext_resource path="res://World/Objects/Bullet.gd" type="Script" id=2]
+[ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.5372, 4.00136 )
+extents = Vector2( 32.6415, 3.99916 )
 
 [node name="Bullet" type="KinematicBody2D"]
 collision_layer = 8
@@ -19,6 +20,12 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 1 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Hitbox"]

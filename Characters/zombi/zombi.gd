@@ -101,7 +101,10 @@ func _on_Area_body_entered(body):
 func _on_ZombiSound_timeout():
 	audioStreamPlayer.playing = true
 
-func _on_Area_area_entered(area):
+#func _on_Area_area_entered(area):
+#	death()
+
+func _on_HurtBox_area_entered(area):
 	death()
 
 func death():
@@ -109,4 +112,3 @@ func death():
 	var blood = Blood.instance()
 	get_parent().add_child(blood)
 	blood.global_position = global_position 
-
