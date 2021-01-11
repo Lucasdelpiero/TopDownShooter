@@ -22,6 +22,8 @@ func move(delta):
 	motion.y = speed * sin(direction)
 	move_and_collide(motion)
 
-
 func _on_Timer_timeout():
+	queue_free()
+
+func _on_Hitbox_area_entered(area):
 	queue_free()

@@ -105,7 +105,9 @@ func _on_ZombiSound_timeout():
 #	death()
 
 func _on_HurtBox_area_entered(area):
-	death()
+	health -= area.damage
+	if health < 1:
+		death()
 
 func death():
 	queue_free()

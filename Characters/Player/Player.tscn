@@ -826,7 +826,6 @@ texture = ExtResource( 23 )
 hframes = 20
 
 [node name="Rifle" type="Position2D" parent="Position2D"]
-visible = false
 position = Vector2( 222.719, 31.4274 )
 script = ExtResource( 8 )
 automatic = true
@@ -846,6 +845,7 @@ position = Vector2( 176.749, 40.2214 )
 script = ExtResource( 9 )
 
 [node name="Knife" type="Position2D" parent="Position2D"]
+visible = false
 position = Vector2( 176.749, 40.2214 )
 script = ExtResource( 9 )
 capacity = 0
@@ -855,6 +855,7 @@ bulletsShot = 0
 visible = false
 collision_layer = 16
 collision_mask = 2
+damage = 3
 
 [node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
 position = Vector2( -78.489, -28.9914 )
