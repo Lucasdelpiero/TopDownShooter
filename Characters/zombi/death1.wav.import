@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/death1.wav-82bdf18b1f906f8f73bec9302dbb7615.sample"
+
+[deps]
+
+source_file="res://Characters/zombi/death1.wav"
+dest_files=[ "res://.import/death1.wav-82bdf18b1f906f8f73bec9302dbb7615.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
