@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_idle.png" type="Texture" id=6]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_move.png" type="Texture" id=7]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=8]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/Pistol.gd" type="Script" id=9]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/gunreload1.wav" type="AudioStream" id=9]
 [ext_resource path="res://HUD/Font.tres" type="DynamicFont" id=10]
 [ext_resource path="res://HUD/Debug.gd" type="Script" id=11]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_reload.png" type="Texture" id=12]
@@ -22,12 +22,27 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_move.png" type="Texture" id=20]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=23]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/minigun.wav" type="AudioStream" id=24]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/assaultriflereload1.wav" type="AudioStream" id=25]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotguncock.wav" type="AudioStream" id=26]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun.wav" type="AudioStream" id=27]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol.wav" type="AudioStream" id=28]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 61.606
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="GDScript" id=17]
+script/source = "extends Position2D
+
+export var automatic = false
+export var capacity = 12
+onready var ammo = capacity
+export var idleTime = 1.0
+export var missDegree = 3
+export var bulletsShot = 1
+"
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 99.3254, 116.344 )
 
 [sub_resource type="Animation" id=3]
@@ -358,9 +373,12 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1.4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.1, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "reloadSound"
+}, {
 "args": [  ],
 "method": "reload"
 } ]
@@ -377,9 +395,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 28.8409, -4.48306 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Position2D/AnimationPlayer:playback_speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 2.0 ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 0.3
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
 tracks/0/interp = 1
@@ -488,9 +519,12 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "reloadSound"
+}, {
 "args": [  ],
 "method": "reload"
 } ]
@@ -507,9 +541,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 59.6875, -12.8466 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Position2D/AnimationPlayer:playback_speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 2.0 ]
+}
 
 [sub_resource type="Animation" id=11]
 length = 0.3
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
 tracks/0/interp = 1
@@ -732,16 +779,32 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.2, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "reloadSound"
+}, {
 "args": [  ],
 "method": "reload"
 } ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Position2D/AnimationPlayer:playback_speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 2.0 ]
+}
 
 [sub_resource type="Animation" id=15]
-length = 0.3
+length = 0.5
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
 tracks/0/interp = 1
@@ -809,7 +872,7 @@ tracks/4/keys = {
 radius = 60.4062
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 4
+collision_mask = 0
 script = ExtResource( 1 )
 idle_time = 0.101
 
@@ -821,9 +884,10 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 62, -16 )
-texture = ExtResource( 23 )
-hframes = 20
+position = Vector2( 28.8409, -4.48306 )
+texture = ExtResource( 12 )
+hframes = 15
+frame = 13
 
 [node name="Rifle" type="Position2D" parent="Position2D"]
 position = Vector2( 222.719, 31.4274 )
@@ -832,34 +896,41 @@ automatic = true
 capacity = 30
 missDegree = 5
 bulletsShot = 1
+shotSound = ExtResource( 24 )
+reloadSound = ExtResource( 25 )
 
 [node name="Shotgun" type="Position2D" parent="Position2D"]
 visible = false
 position = Vector2( 207.583, 31.007 )
 script = ExtResource( 8 )
 bulletsShot = 6
+shotSound = ExtResource( 27 )
+reloadSound = ExtResource( 26 )
 
 [node name="Pistol" type="Position2D" parent="Position2D"]
 visible = false
 position = Vector2( 176.749, 40.2214 )
-script = ExtResource( 9 )
+script = ExtResource( 8 )
+missDegree = 3
+bulletsShot = 1
+shotSound = ExtResource( 28 )
+reloadSound = ExtResource( 9 )
 
 [node name="Knife" type="Position2D" parent="Position2D"]
 visible = false
 position = Vector2( 176.749, 40.2214 )
-script = ExtResource( 9 )
+script = SubResource( 17 )
 capacity = 0
 bulletsShot = 0
 
 [node name="Hitbox" parent="Position2D/Knife" instance=ExtResource( 22 )]
 visible = false
-collision_layer = 16
 collision_mask = 2
 damage = 3
 
 [node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
 position = Vector2( -78.489, -28.9914 )
-shape = SubResource( 17 )
+shape = SubResource( 2 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
@@ -885,8 +956,7 @@ anims/ShotgunShoot = SubResource( 15 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 21 )]
 visible = false
-collision_layer = 2147483648
-collision_mask = 2
+collision_layer = 2147483649
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 16 )
@@ -973,6 +1043,9 @@ margin_bottom = 1156.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 10 )
+
+[node name="AudioGuns" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]
 [connection signal="invincibility_started" from="HurtBox" to="." method="_on_HurtBox_invincibility_started"]

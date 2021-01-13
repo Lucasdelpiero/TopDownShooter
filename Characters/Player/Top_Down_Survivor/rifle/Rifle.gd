@@ -6,4 +6,7 @@ onready var ammo = capacity
 export var idleTime = 1.0
 export var missDegree = 20
 export var bulletsShot = 12
+export(Resource) var shotSound 
+export(Resource) var reloadSound
+
 

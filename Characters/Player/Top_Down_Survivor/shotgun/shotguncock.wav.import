@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shotguncock.wav-ddcb5e94b01d5c5b1883e1fc4d1d26b2.sample"
+
+[deps]
+
+source_file="res://Characters/Player/Top_Down_Survivor/shotgun/shotguncock.wav"
+dest_files=[ "res://.import/shotguncock.wav-ddcb5e94b01d5c5b1883e1fc4d1d26b2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

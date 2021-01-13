@@ -15,6 +15,7 @@ onready var animationPlayer = $Position2D/AnimationPlayer
 onready var position2D = $Position2D
 onready var hurtbox = $HurtBox
 onready var timer = $IdleTimer
+onready var audioGuns = $AudioGuns
 
 onready var rifle = $Position2D/Rifle
 onready var pistol = $Position2D/Pistol
@@ -116,7 +117,8 @@ func shoot():
 		var shotDirection = position2D.rotation + rand_range(- miss, miss)
 		bullet.direction = shotDirection
 		bullet.get_node("Sprite").rotation_degrees = rad2deg(shotDirection)
-
+	audioGuns.stream = weaponSelected.shotSound
+	audioGuns.play()
 	canShoot = false
 	shooting = true
 	startedShooting = false
@@ -138,10 +140,15 @@ func startReloading():
 	reloading = true
 	animationPlayer.play(animReload)
 
+
 func reload():
 	weaponSelected.ammo = weaponSelected.capacity
 	reloading = false
 	animationPlayer.play(animMove)
+
+func reloadSound():
+	audioGuns.stream = weaponSelected.reloadSound
+	audioGuns.play()
 
 func choose_weapon():
 	if not reloading:
@@ -158,6 +165,7 @@ func choose_weapon():
 func updateState():
 	automatic = weaponSelected.automatic
 	ammoSelected = weaponSelected.ammo
+#	audioGuns.stream = weaponSelected.shotSound
 	updateAnimations()
 
 func updateAnimations():
@@ -178,3 +186,5 @@ func _on_HurtBox_area_entered(area):
 #	hurtbox.create_hit_effect()
 #	var playerHurtSound = PlayerHurtSound.instance()
 #	get_tree().current_scene.add_child(playerHurtSound)
+
+
