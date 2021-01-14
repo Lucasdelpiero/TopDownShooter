@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var Bullet = preload("res://World/Objects/Bullet.tscn")
+var Muzzle = preload("res://World/Objects/Muzzle.tscn")
 
 export var speed = 1200
 export var acceleration = 2500
@@ -9,13 +10,17 @@ var shooting = false
 var canShoot = true
 var automatic = false
 var velocity = Vector2.ZERO
+export var health = 50
 
+signal updateHUD(health, ammo, capacity)
 
 onready var animationPlayer = $Position2D/AnimationPlayer
 onready var position2D = $Position2D
 onready var hurtbox = $HurtBox
 onready var timer = $IdleTimer
 onready var audioGuns = $AudioGuns
+
+onready var canvasLayer = get_node("../CanvasLayer")
 
 onready var rifle = $Position2D/Rifle
 onready var pistol = $Position2D/Pistol
@@ -34,7 +39,6 @@ export var shotgunCapacity = 8
 onready var shotgunAmmo = shotgunCapacity
 var reloading = false
 
-
 onready var ammoSelected = rifleAmmo
 
 var animMove = "RifleMove"
@@ -43,7 +47,6 @@ var animShoot = "RifleShoot"
 var animReload = "RifleReload"
 var animMelee = "KnifeMelee"
 var startedShooting = false
-
 
 enum {
 	PISTOL,
@@ -107,7 +110,6 @@ func trigger():
 			animationPlayer.play(animShoot)
 			startedShooting = true
 
-
 func shoot():
 	for _i in range(weaponSelected.bulletsShot):
 		var bullet = Bullet.instance()
@@ -117,6 +119,7 @@ func shoot():
 		var shotDirection = position2D.rotation + rand_range(- miss, miss)
 		bullet.direction = shotDirection
 		bullet.get_node("Sprite").rotation_degrees = rad2deg(shotDirection)
+	muzzle()
 	audioGuns.stream = weaponSelected.shotSound
 	audioGuns.play()
 	canShoot = false
@@ -124,6 +127,7 @@ func shoot():
 	startedShooting = false
 	timer.start(idle_time)
 	weaponSelected.ammo -= 1
+	updateHUD()
 
 func melee():
 	canShoot = false
@@ -133,18 +137,18 @@ func melee():
 	timer.start(idle_time)
 
 func _on_IdleTimer_timeout():
-	canShoot = true
-	
+	if not startedShooting:
+		canShoot = true
 
 func startReloading():
 	reloading = true
 	animationPlayer.play(animReload)
 
-
 func reload():
 	weaponSelected.ammo = weaponSelected.capacity
 	reloading = false
 	animationPlayer.play(animMove)
+	updateHUD()
 
 func reloadSound():
 	audioGuns.stream = weaponSelected.reloadSound
@@ -167,6 +171,7 @@ func updateState():
 	ammoSelected = weaponSelected.ammo
 #	audioGuns.stream = weaponSelected.shotSound
 	updateAnimations()
+	updateHUD()
 
 func updateAnimations():
 	animMove = weaponSelected.name + "Move"
@@ -175,10 +180,19 @@ func updateAnimations():
 	animReload = weaponSelected.name + "Reload"
 	animMelee = weaponSelected.name + "Melee"
 
+func muzzle():
+	var muzzle = Muzzle.instance()
+	add_child(muzzle)
+	muzzle.global_position = weaponSelected.global_position
+	muzzle.rotation_degrees = position2D.rotation_degrees
+
 func resetVariables():
 	canShoot = true
 	shooting = false
 	startedShooting = false
+
+func updateHUD():
+	emit_signal("updateHUD", health, weaponSelected.ammo, weaponSelected.capacity)
 
 func _on_HurtBox_area_entered(area):
 #	health -= area.damage

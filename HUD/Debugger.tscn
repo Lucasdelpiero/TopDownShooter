@@ -1,86 +1,76 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://HUD/Roboto-Thin.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://HUD/Debug.gd" type="Script" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-resource_local_to_scene = true
-size = 256
-extra_spacing_char = 1
-font_data = ExtResource( 1 )
+[ext_resource path="res://HUD/Debug.gd" type="Script" id=1]
+[ext_resource path="res://HUD/debugger_theme.tres" type="Theme" id=2]
 
 [node name="Debugger" type="Node"]
 
 [node name="Control" type="Control" parent="."]
-margin_top = -204.0
-margin_right = 582.0
-margin_bottom = 112.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 2 )
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-margin_top = -320.0
-margin_right = 636.0
-margin_bottom = -26.0
+anchor_top = -1.933
+anchor_right = 2.262
+margin_left = 9.92053
+margin_top = -246.962
+margin_right = 4.63232
+margin_bottom = -250.762
 grow_vertical = 0
+rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 2
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label5" type="Label" parent="Control/VBoxContainer"]
-margin_right = 636.0
-margin_bottom = 301.0
+margin_right = 2311.0
+margin_bottom = 189.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
 
 [node name="Label4" type="Label" parent="Control/VBoxContainer"]
-margin_top = 305.0
-margin_right = 636.0
-margin_bottom = 606.0
+margin_top = 193.0
+margin_right = 2311.0
+margin_bottom = 382.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer"]
-margin_top = 610.0
-margin_right = 636.0
-margin_bottom = 911.0
+margin_top = 386.0
+margin_right = 2311.0
+margin_bottom = 575.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer"]
-margin_top = 915.0
-margin_right = 636.0
-margin_bottom = 1216.0
+margin_top = 579.0
+margin_right = 2311.0
+margin_bottom = 769.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
 
 [node name="Label1" type="Label" parent="Control/VBoxContainer"]
-margin_top = 1220.0
-margin_right = 636.0
-margin_bottom = 1825.0
+margin_top = 773.0
+margin_right = 2311.0
+margin_bottom = 962.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "
-"
 
 [node name="Label0" type="Label" parent="Control/VBoxContainer"]
-margin_top = 1829.0
-margin_right = 636.0
-margin_bottom = 2434.0
+margin_top = 966.0
+margin_right = 2311.0
+margin_bottom = 1156.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "
-"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -9,8 +9,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_move.png" type="Texture" id=7]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/gunreload1.wav" type="AudioStream" id=9]
-[ext_resource path="res://HUD/Font.tres" type="DynamicFont" id=10]
-[ext_resource path="res://HUD/Debug.gd" type="Script" id=11]
+[ext_resource path="res://HUD/Debugger.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_reload.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_reload.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_idle.png" type="Texture" id=14]
@@ -31,7 +30,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 61.606
 
-[sub_resource type="GDScript" id=17]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Position2D
 
 export var automatic = false
@@ -42,10 +41,10 @@ export var missDegree = 3
 export var bulletsShot = 1
 "
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 99.3254, 116.344 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -96,7 +95,7 @@ tracks/3/keys = {
 "values": [ Vector2( 37.7466, -0.737379 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -173,7 +172,7 @@ tracks/5/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -224,7 +223,7 @@ tracks/3/keys = {
 "values": [ 20 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -276,7 +275,7 @@ tracks/3/keys = {
 "values": [ Vector2( 29.2613, -12.0511 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -328,7 +327,7 @@ tracks/3/keys = {
 "values": [ Vector2( 26.9489, -9.10798 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -408,7 +407,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -474,7 +473,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -554,7 +553,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -620,7 +619,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -671,7 +670,7 @@ tracks/3/keys = {
 "values": [ Vector2( 61.7883, -16.5911 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -722,7 +721,7 @@ tracks/3/keys = {
 "values": [ Vector2( 61.7883, -16.5911 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -802,7 +801,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -868,7 +867,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=17]
 radius = 60.4062
 
 [node name="Player" type="KinematicBody2D"]
@@ -884,13 +883,12 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 28.8409, -4.48306 )
-texture = ExtResource( 12 )
-hframes = 15
-frame = 13
+position = Vector2( 61.7883, -16.5911 )
+texture = ExtResource( 16 )
+hframes = 3
 
 [node name="Rifle" type="Position2D" parent="Position2D"]
-position = Vector2( 222.719, 31.4274 )
+position = Vector2( 200.799, 31.4274 )
 script = ExtResource( 8 )
 automatic = true
 capacity = 30
@@ -901,15 +899,16 @@ reloadSound = ExtResource( 25 )
 
 [node name="Shotgun" type="Position2D" parent="Position2D"]
 visible = false
-position = Vector2( 207.583, 31.007 )
+position = Vector2( 197.683, 31.7141 )
 script = ExtResource( 8 )
+capacity = 8
 bulletsShot = 6
 shotSound = ExtResource( 27 )
 reloadSound = ExtResource( 26 )
 
 [node name="Pistol" type="Position2D" parent="Position2D"]
 visible = false
-position = Vector2( 176.749, 40.2214 )
+position = Vector2( 143.515, 43.0498 )
 script = ExtResource( 8 )
 missDegree = 3
 bulletsShot = 1
@@ -919,7 +918,7 @@ reloadSound = ExtResource( 9 )
 [node name="Knife" type="Position2D" parent="Position2D"]
 visible = false
 position = Vector2( 176.749, 40.2214 )
-script = SubResource( 17 )
+script = SubResource( 2 )
 capacity = 0
 bulletsShot = 0
 
@@ -930,7 +929,7 @@ damage = 3
 
 [node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
 position = Vector2( -78.489, -28.9914 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
@@ -938,111 +937,32 @@ root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
 playback_speed = 2.0
-anims/KnifeIdle = SubResource( 3 )
-anims/KnifeMelee = SubResource( 4 )
-anims/KnifeMove = SubResource( 5 )
-anims/PistolIdle = SubResource( 6 )
-anims/PistolMove = SubResource( 7 )
-anims/PistolReload = SubResource( 8 )
-anims/PistolShoot = SubResource( 9 )
+anims/KnifeIdle = SubResource( 4 )
+anims/KnifeMelee = SubResource( 5 )
+anims/KnifeMove = SubResource( 6 )
+anims/PistolIdle = SubResource( 7 )
+anims/PistolMove = SubResource( 8 )
+anims/PistolReload = SubResource( 9 )
+anims/PistolShoot = SubResource( 10 )
 anims/RifleIdle = ExtResource( 4 )
 anims/RifleMove = ExtResource( 2 )
-anims/RifleReload = SubResource( 10 )
-anims/RifleShoot = SubResource( 11 )
-anims/ShotgunIdle = SubResource( 12 )
-anims/ShotgunMove = SubResource( 13 )
-anims/ShotgunReload = SubResource( 14 )
-anims/ShotgunShoot = SubResource( 15 )
+anims/RifleReload = SubResource( 11 )
+anims/RifleShoot = SubResource( 12 )
+anims/ShotgunIdle = SubResource( 13 )
+anims/ShotgunMove = SubResource( 14 )
+anims/ShotgunReload = SubResource( 15 )
+anims/ShotgunShoot = SubResource( 16 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 21 )]
 visible = false
 collision_layer = 2147483649
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 
 [node name="IdleTimer" type="Timer" parent="."]
 
-[node name="Debugger" type="Node" parent="."]
-
-[node name="Control" type="Control" parent="Debugger"]
-anchor_left = 0.00292638
-anchor_top = -0.998871
-anchor_right = 1.00293
-anchor_bottom = 0.00112854
-margin_left = -2.99661
-margin_top = 599.323
-margin_right = -2.99658
-margin_bottom = 599.323
-grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Debugger/Control"]
-anchor_right = 1.0
-margin_left = 20.0
-margin_top = -1437.0
-margin_right = 1307.0
-margin_bottom = -281.0
-grow_vertical = 0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 3
-size_flags_vertical = 2
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label5" type="Label" parent="Debugger/Control/VBoxContainer"]
-margin_right = 2311.0
-margin_bottom = 189.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
-
-[node name="Label4" type="Label" parent="Debugger/Control/VBoxContainer"]
-margin_top = 193.0
-margin_right = 2311.0
-margin_bottom = 382.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
-
-[node name="Label3" type="Label" parent="Debugger/Control/VBoxContainer"]
-margin_top = 386.0
-margin_right = 2311.0
-margin_bottom = 575.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
-
-[node name="Label2" type="Label" parent="Debugger/Control/VBoxContainer"]
-margin_top = 579.0
-margin_right = 2311.0
-margin_bottom = 769.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
-
-[node name="Label1" type="Label" parent="Debugger/Control/VBoxContainer"]
-margin_top = 773.0
-margin_right = 2311.0
-margin_bottom = 962.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
-
-[node name="Label0" type="Label" parent="Debugger/Control/VBoxContainer"]
-margin_top = 966.0
-margin_right = 2311.0
-margin_bottom = 1156.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+[node name="Debugger" parent="." instance=ExtResource( 10 )]
 
 [node name="AudioGuns" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
@@ -1054,3 +974,5 @@ stream = ExtResource( 24 )
 [editable path="Position2D/Knife/Hitbox"]
 
 [editable path="HurtBox"]
+
+[editable path="Debugger"]

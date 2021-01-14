@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Characters/zombi/idle/skeleton-idle_9.png" type="Texture" id=1]
 [ext_resource path="res://Characters/zombi/idle/skeleton-idle_12.png" type="Texture" id=2]
@@ -19,9 +19,7 @@
 [ext_resource path="res://Characters/zombi/idle/skeleton-idle_16.png" type="Texture" id=17]
 [ext_resource path="res://Characters/zombi/zombi.gd" type="Script" id=18]
 [ext_resource path="res://Characters/zombi/WanderController.tscn" type="PackedScene" id=19]
-[ext_resource path="res://HUD/Debugger.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Characters/zombi/Zombie Sound.wav" type="AudioStream" id=21]
-[ext_resource path="res://HUD/Roboto-Thin.ttf" type="DynamicFontData" id=22]
 [ext_resource path="res://Characters/zombi/PlayerDetectionZone.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/zombi/SoftCollision.tscn" type="PackedScene" id=24]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=25]
@@ -39,29 +37,17 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=3]
 
-[sub_resource type="DynamicFont" id=4]
-resource_local_to_scene = true
-size = 256
-extra_spacing_char = 1
-font_data = ExtResource( 22 )
-
-[sub_resource type="OccluderPolygon2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=4]
 cull_mode = 1
 polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.06127, 1.23976, 4.439, 2.97215, 0.816723, 0.452305, -2.80555, -4.11491, -5.56163 )
 
-[sub_resource type="DynamicFont" id=6]
-resource_local_to_scene = true
-size = 256
-extra_spacing_char = 1
-font_data = ExtResource( 22 )
-
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=5]
 radius = 248.278
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=6]
 radius = 9.28936
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=7]
 
 [node name="zombi" type="KinematicBody2D"]
 scale = Vector2( 10, 10 )
@@ -96,35 +82,6 @@ shape = SubResource( 3 )
 
 [node name="WanderController" parent="." instance=ExtResource( 19 )]
 
-[node name="Debugger" parent="WanderController" instance=ExtResource( 20 )]
-
-[node name="Control" parent="WanderController/Debugger" index="0"]
-margin_top = 0.0
-margin_bottom = 316.0
-
-[node name="Label5" parent="WanderController/Debugger/Control/VBoxContainer" index="0"]
-custom_fonts/font = SubResource( 4 )
-
-[node name="Label4" parent="WanderController/Debugger/Control/VBoxContainer" index="1"]
-custom_fonts/font = SubResource( 4 )
-
-[node name="Label3" parent="WanderController/Debugger/Control/VBoxContainer" index="2"]
-custom_fonts/font = SubResource( 4 )
-
-[node name="Label2" parent="WanderController/Debugger/Control/VBoxContainer" index="3"]
-custom_fonts/font = SubResource( 4 )
-
-[node name="Label1" parent="WanderController/Debugger/Control/VBoxContainer" index="4"]
-margin_bottom = 1521.0
-custom_fonts/font = SubResource( 4 )
-text = ""
-
-[node name="Label0" parent="WanderController/Debugger/Control/VBoxContainer" index="5"]
-margin_top = 1525.0
-margin_bottom = 1826.0
-custom_fonts/font = SubResource( 4 )
-text = ""
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
 
@@ -136,36 +93,7 @@ autostart = true
 visible = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Position2D"]
-occluder = SubResource( 5 )
-
-[node name="Debugger" parent="." instance=ExtResource( 20 )]
-
-[node name="Control" parent="Debugger" index="0"]
-margin_top = 0.0
-margin_bottom = 316.0
-
-[node name="Label5" parent="Debugger/Control/VBoxContainer" index="0"]
-custom_fonts/font = SubResource( 6 )
-
-[node name="Label4" parent="Debugger/Control/VBoxContainer" index="1"]
-custom_fonts/font = SubResource( 6 )
-
-[node name="Label3" parent="Debugger/Control/VBoxContainer" index="2"]
-custom_fonts/font = SubResource( 6 )
-
-[node name="Label2" parent="Debugger/Control/VBoxContainer" index="3"]
-custom_fonts/font = SubResource( 6 )
-
-[node name="Label1" parent="Debugger/Control/VBoxContainer" index="4"]
-margin_bottom = 1521.0
-custom_fonts/font = SubResource( 6 )
-text = ""
-
-[node name="Label0" parent="Debugger/Control/VBoxContainer" index="5"]
-margin_top = 1525.0
-margin_bottom = 1826.0
-custom_fonts/font = SubResource( 6 )
-text = ""
+occluder = SubResource( 4 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 23 )]
 visible = false
@@ -174,27 +102,23 @@ collision_mask = 1
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.415686 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 24 )]
 visible = false
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="timeout" from="ZombiSoundTimer" to="." method="_on_ZombiSound_timeout"]
 
 [editable path="HurtBox"]
-
-[editable path="WanderController/Debugger"]
-
-[editable path="Debugger"]
 
 [editable path="PlayerDetectionZone"]
 
