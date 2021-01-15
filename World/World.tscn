@@ -68,5 +68,6 @@ position = Vector2( -803.093, -455.485 )
 position = Vector2( -2848.03, 1219.41 )
 texture = ExtResource( 5 )
 [connection signal="updateHUD" from="Player" to="CanvasLayer" method="_on_Player_updateHUD"]
+[connection signal="updateHUDWeapon" from="Player" to="CanvasLayer" method="_on_Player_updateHUDWeapon"]
 
 [editable path="Camera"]

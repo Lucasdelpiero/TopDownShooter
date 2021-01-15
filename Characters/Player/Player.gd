@@ -13,6 +13,7 @@ var velocity = Vector2.ZERO
 export var health = 50
 
 signal updateHUD(health, ammo, capacity)
+signal updateHUDWeapon(name)
 
 onready var animationPlayer = $Position2D/AnimationPlayer
 onready var position2D = $Position2D
@@ -165,6 +166,7 @@ func choose_weapon():
 		if Input.is_action_just_pressed("shotgun"):
 			weaponSelected = shotgun
 		updateState()
+		emit_signal("updateHUDWeapon", str(weaponSelected.name) )
 
 func updateState():
 	automatic = weaponSelected.automatic

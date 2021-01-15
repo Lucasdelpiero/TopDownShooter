@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/512knife.png-f99a3890caf2bf3f81b91e4f88880686.stex"
+path="res://.import/128shotgun.png-fd206cd0a8060541da7d3df8025e4fcd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Objects/Weapons/512knife.png"
-dest_files=[ "res://.import/512knife.png-f99a3890caf2bf3f81b91e4f88880686.stex" ]
+source_file="res://World/Objects/Weapons/128shotgun.png"
+dest_files=[ "res://.import/128shotgun.png-fd206cd0a8060541da7d3df8025e4fcd.stex" ]
 
 [params]
 

@@ -888,6 +888,7 @@ texture = ExtResource( 16 )
 hframes = 3
 
 [node name="Rifle" type="Position2D" parent="Position2D"]
+visible = false
 position = Vector2( 200.799, 31.4274 )
 script = ExtResource( 8 )
 automatic = true
@@ -902,7 +903,6 @@ visible = false
 position = Vector2( 197.683, 31.7141 )
 script = ExtResource( 8 )
 capacity = 8
-bulletsShot = 6
 shotSound = ExtResource( 27 )
 reloadSound = ExtResource( 26 )
 
@@ -962,10 +962,28 @@ shape = SubResource( 17 )
 
 [node name="IdleTimer" type="Timer" parent="."]
 
-[node name="Debugger" parent="." instance=ExtResource( 10 )]
-
 [node name="AudioGuns" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
+
+[node name="Debugger" parent="." instance=ExtResource( 10 )]
+
+[node name="Control" parent="Debugger" index="0"]
+debug0 = "asd"
+debug1 = "asd"
+debug2 = "asd"
+debug3 = "ddd"
+
+[node name="Label3" parent="Debugger/Control/VBoxContainer" index="2"]
+text = "\"ddd\": Variable not exists"
+
+[node name="Label2" parent="Debugger/Control/VBoxContainer" index="3"]
+text = "\"asd\": Variable not exists"
+
+[node name="Label1" parent="Debugger/Control/VBoxContainer" index="4"]
+text = "\"asd\": Variable not exists"
+
+[node name="Label0" parent="Debugger/Control/VBoxContainer" index="5"]
+text = "\"asd\": Variable not exists"
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]
 [connection signal="invincibility_started" from="HurtBox" to="." method="_on_HurtBox_invincibility_started"]
