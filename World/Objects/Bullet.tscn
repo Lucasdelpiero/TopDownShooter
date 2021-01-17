@@ -11,6 +11,7 @@ extents = Vector2( 32.6415, 3.99916 )
 collision_layer = 8
 collision_mask = 2
 script = ExtResource( 2 )
+speed = 50.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

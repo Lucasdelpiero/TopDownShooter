@@ -10,7 +10,7 @@ var shooting = false
 var canShoot = true
 var automatic = false
 var velocity = Vector2.ZERO
-export var health = 50
+export var health = 100
 
 signal updateHUD(health, ammo, capacity)
 signal updateHUDWeapon(name)
@@ -136,6 +136,7 @@ func melee():
 	startedShooting = true
 	animationPlayer.play("KnifeMelee")
 	timer.start(idle_time)
+	# reload after hitting an enemy
 
 func _on_IdleTimer_timeout():
 	if not startedShooting:
@@ -197,8 +198,12 @@ func updateHUD():
 	emit_signal("updateHUD", health, weaponSelected.ammo, weaponSelected.capacity)
 
 func _on_HurtBox_area_entered(area):
-#	health -= area.damage
-	hurtbox.start_invincibility(0.6)
+	health -= area.damage
+	hurtbox.start_invincibility(0.3)
+	updateHUD()
+	modulate = Color(1.0, 0.0, 0.0, 1.0)
+	if health <= 0:
+		queue_free()
 #	hurtbox.create_hit_effect()
 #	var playerHurtSound = PlayerHurtSound.instance()
 #	get_tree().current_scene.add_child(playerHurtSound)

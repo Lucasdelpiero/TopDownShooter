@@ -21,6 +21,7 @@ func start_invincibility(duration):
 
 func _on_Timer_timeout():
 	self.invincible = false
+	get_parent().modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _on_HurtBox_invincibility_started():
 	collisionShape.set_deferred("disabled", true)
