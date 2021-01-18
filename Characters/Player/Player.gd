@@ -80,8 +80,11 @@ func _process(delta):
 		shooting = false
 		
 	if Input.is_action_just_pressed("knife"):
-		melee()
-	
+		if not reloading:
+			melee()
+		else:
+			reloading = false
+			melee()
 	if Input.is_action_just_pressed("reload"):
 		startReloading()
 #		reload()
@@ -110,6 +113,8 @@ func trigger():
 		if (not shooting) or (shooting and automatic):
 			animationPlayer.play(animShoot)
 			startedShooting = true
+	if ammoSelected == 0 and not shooting:
+		startReloading()
 
 func shoot():
 	for _i in range(weaponSelected.bulletsShot):
@@ -208,4 +213,8 @@ func _on_HurtBox_area_entered(area):
 #	var playerHurtSound = PlayerHurtSound.instance()
 #	get_tree().current_scene.add_child(playerHurtSound)
 
-
+#reload when melee
+func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):
+	weaponSelected.ammo = weaponSelected.capacity
+	health += 5
+	updateHUD()

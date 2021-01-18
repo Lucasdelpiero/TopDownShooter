@@ -5,6 +5,7 @@ onready var sprite = $Sprite
 onready var direction = 1 # rotation_degrees
 var velocity = Vector2.ZERO
 var motion = Vector2.ZERO
+onready var rayCast = $Sprite/RayCast2D
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -18,12 +19,17 @@ func _process(delta):
 	
 
 func move(delta):
+	
 	motion.x = speed * cos(direction)
 	motion.y = speed * sin(direction)
 	move_and_collide(motion)
+	if rayCast.is_colliding():
+		queue_free()
 
 func _on_Timer_timeout():
 	queue_free()
 
 func _on_Hitbox_area_entered(area):
 	queue_free()
+
+
