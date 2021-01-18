@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Camera.tscn" type="PackedScene" id=2]
@@ -23,11 +23,6 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
-
-[sub_resource type="NavigationPolygon" id=2]
-vertices = PoolVector2Array( -18536, -9952, 19400, -10272, 19672, 14912, -19024, 14264 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( -18536, -9952, 19400, -10272, 19672, 14912, -19024, 14264 ) ]
 
 [node name="World" type="Node2D"]
 
@@ -103,6 +98,15 @@ position = Vector2( 24099.1, 16454.7 )
 
 [node name="zombi" parent="Zombies/Zombies" instance=ExtResource( 4 )]
 position = Vector2( -176, -1536 )
+
+[node name="zombi5" parent="Zombies/Zombies" instance=ExtResource( 4 )]
+position = Vector2( -272, -2079 )
+
+[node name="zombi6" parent="Zombies/Zombies" instance=ExtResource( 4 )]
+position = Vector2( -1072, -1640 )
+
+[node name="zombi7" parent="Zombies/Zombies" instance=ExtResource( 4 )]
+position = Vector2( -984, -2096 )
 
 [node name="zombi2" parent="Zombies/Zombies" instance=ExtResource( 4 )]
 position = Vector2( -2312, -504 )
@@ -271,12 +275,7 @@ position = Vector2( -1360, 2528 )
 [node name="zombi4" parent="Zombies/Zombies10" instance=ExtResource( 4 )]
 position = Vector2( -1256, -880 )
 
-[node name="Navigation2D" type="Navigation2D" parent="."]
-
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
-navpoly = SubResource( 2 )
-
-[node name="TileMap2" type="TileMap" parent="Navigation2D"]
+[node name="TileMap2" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 7 )
 cell_size = Vector2( 128, 128 )
