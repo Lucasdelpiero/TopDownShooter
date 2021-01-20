@@ -5,6 +5,7 @@
 [ext_resource path="res://World/Objects/light.png" type="Texture" id=3]
 
 [node name="Muzzle" type="Position2D"]
+z_index = -1
 script = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]

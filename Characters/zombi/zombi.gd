@@ -10,7 +10,6 @@ onready var zombiSoundTimer = $ZombiSoundTimer
 onready var position2d = $Position2D
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
-onready var arrow = $Direction
 
 enum{
 	IDLE,
@@ -45,10 +44,10 @@ func _physics_process(delta):
 		
 		WANDER:
 			seek_player()
-			wander_state(delta)
+			wander_state()
 		CHASE:
 #			chase_state(delta)
-			var player = playerDetectionZone.player
+			var _player = playerDetectionZone.player
 			if player != null:
 				direction = get_angle_to(player.get_global_position())
 				velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
@@ -65,7 +64,7 @@ func idle_state(delta):
 	if wanderController.get_time_left() == 0:
 		update_wander()
 
-func wander_state(delta):
+func wander_state():
 	if wanderController.get_time_left() == 0:
 		update_wander()
 	direction = get_angle_to(wanderController.target_position)

@@ -21,8 +21,6 @@ onready var hurtbox = $HurtBox
 onready var timer = $IdleTimer
 onready var audioGuns = $AudioGuns
 
-onready var canvasLayer = get_node("../CanvasLayer")
-
 onready var rifle = $Position2D/Rifle
 onready var pistol = $Position2D/Pistol
 onready var shotgun = $Position2D/Shotgun
@@ -206,7 +204,7 @@ func _on_HurtBox_area_entered(area):
 	health -= area.damage
 	hurtbox.start_invincibility(0.3)
 	updateHUD()
-	modulate = Color(1.0, 0.0, 0.0, 1.0)
+#	modulate = Color(1.0, 0.0, 0.0, 1.0)
 	if health <= 0:
 		queue_free()
 #	hurtbox.create_hit_effect()
@@ -214,7 +212,9 @@ func _on_HurtBox_area_entered(area):
 #	get_tree().current_scene.add_child(playerHurtSound)
 
 #reload when melee
-func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):
+func _on_Hitbox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	weaponSelected.ammo = weaponSelected.capacity
 	health += 5
 	updateHUD()
+
+

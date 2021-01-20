@@ -2,20 +2,20 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/metal_sheet_5 128x128.png-dcf4f2b461e878f9b7a39fce605f0ba9.stex"
+path="res://.import/metal_sheet_5 128x128 seamless.png-c85939cf882b2d2f3ca9ec4071f0cc70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Tiles/Floor/metal_sheet_5 128x128.png"
-dest_files=[ "res://.import/metal_sheet_5 128x128.png-dcf4f2b461e878f9b7a39fce605f0ba9.stex" ]
+source_file="res://World/Tiles/Floor/metal_sheet_5 128x128 seamless.png"
+dest_files=[ "res://.import/metal_sheet_5 128x128 seamless.png-c85939cf882b2d2f3ca9ec4071f0cc70.stex" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.1
+compress/mode=0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

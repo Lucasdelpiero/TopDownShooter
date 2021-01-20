@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/metal_sheet_5 128x128 2.png-51d219b587c05650753f85a27bb0e2df.stex"
+path="res://.import/path841.png-58b6ae4eb487156f2e1de4aa22bd343e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Tiles/Walls/metal_sheet_5 128x128 2.png"
-dest_files=[ "res://.import/metal_sheet_5 128x128 2.png-51d219b587c05650753f85a27bb0e2df.stex" ]
+source_file="res://World/Objects/path841.png"
+dest_files=[ "res://.import/path841.png-58b6ae4eb487156f2e1de4aa22bd343e.stex" ]
 
 [params]
 

@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
@@ -129,6 +129,8 @@ paused={
 2d_physics/layer_5="Melee"
 2d_render/layer_6="SoftCollision"
 2d_physics/layer_6="SoftCollision"
+2d_render/layer_7="Object"
+2d_physics/layer_7="Object"
 
 [rendering]
 

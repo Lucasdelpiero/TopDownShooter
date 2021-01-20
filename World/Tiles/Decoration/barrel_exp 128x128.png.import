@@ -2,20 +2,20 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/metal_door 128x128.png-ca00225ca5cf1cca607c26ace047a558.stex"
+path="res://.import/barrel_exp 128x128.png-b3683b16664b32bd1b2bd1f423f87f32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Tiles/Floor/metal_door 128x128.png"
-dest_files=[ "res://.import/metal_door 128x128.png-ca00225ca5cf1cca607c26ace047a558.stex" ]
+source_file="res://World/Tiles/Decoration/barrel_exp 128x128.png"
+dest_files=[ "res://.import/barrel_exp 128x128.png-b3683b16664b32bd1b2bd1f423f87f32.stex" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.1
+compress/mode=0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

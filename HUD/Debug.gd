@@ -29,7 +29,7 @@ export var debug5 = ""
 #	for i in range(5):
 #		updateDebugger(i)
 
-func _process(delta):
+func _process(_delta):
 	for i in range(6):
 		updateDebugger(i)
 

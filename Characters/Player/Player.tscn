@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/gunreload1.wav" type="AudioStream" id=9]
 [ext_resource path="res://HUD/Debugger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=11]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_reload.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_reload.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_idle.png" type="Texture" id=14]
@@ -46,6 +47,7 @@ extents = Vector2( 99.3254, 116.344 )
 
 [sub_resource type="Animation" id=4]
 length = 2.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
 tracks/0/interp = 1
@@ -1003,9 +1005,9 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 61.7883, -16.5911 )
-texture = ExtResource( 16 )
-hframes = 3
+position = Vector2( 62, -16 )
+texture = ExtResource( 11 )
+hframes = 20
 
 [node name="Rifle" type="Position2D" parent="Position2D"]
 visible = false
@@ -1021,10 +1023,9 @@ reloadSound = ExtResource( 25 )
 [node name="Shotgun" type="Position2D" parent="Position2D"]
 visible = false
 position = Vector2( 197.683, 31.7141 )
+z_as_relative = false
 script = ExtResource( 8 )
-automatic = true
-capacity = 20
-bulletsShot = 8
+capacity = 8
 shotSound = ExtResource( 27 )
 reloadSound = ExtResource( 26 )
 
@@ -1057,6 +1058,7 @@ disabled = true
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
+playback_speed = 2.0
 anims/KnifeIdle = SubResource( 4 )
 anims/KnifeMelee = SubResource( 5 )
 anims/KnifeMove = SubResource( 6 )
@@ -1074,7 +1076,6 @@ anims/ShotgunReload = SubResource( 15 )
 anims/ShotgunShoot = SubResource( 16 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 21 )]
-visible = false
 collision_layer = 2147483649
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
@@ -1088,8 +1089,6 @@ stream = ExtResource( 24 )
 [node name="Debugger" parent="." instance=ExtResource( 10 )]
 [connection signal="area_shape_entered" from="Position2D/Knife/Hitbox" to="." method="_on_Hitbox_area_shape_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
-[connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]
-[connection signal="invincibility_started" from="HurtBox" to="." method="_on_HurtBox_invincibility_started"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 
 [editable path="Position2D/Knife/Hitbox"]

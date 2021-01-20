@@ -2,20 +2,20 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/castle_walls_short 128x128.png-4f2ae2a9364c06fbb57207695cc5b1db.stex"
+path="res://.import/seamless_brick-008-128x128.png-f8db03ef2f60d44d95085d9e7d57ba75.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Tiles/Floor/castle_walls_short 128x128.png"
-dest_files=[ "res://.import/castle_walls_short 128x128.png-4f2ae2a9364c06fbb57207695cc5b1db.stex" ]
+source_file="res://World/Tiles/Walls/seamless_brick-008-128x128.png"
+dest_files=[ "res://.import/seamless_brick-008-128x128.png-f8db03ef2f60d44d95085d9e7d57ba75.stex" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.02
+compress/mode=0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
