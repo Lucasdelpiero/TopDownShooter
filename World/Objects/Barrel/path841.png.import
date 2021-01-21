@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/path841.png-58b6ae4eb487156f2e1de4aa22bd343e.stex"
+path="res://.import/path841.png-43e30a4a84991cdf76833e2133111f64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Objects/path841.png"
-dest_files=[ "res://.import/path841.png-58b6ae4eb487156f2e1de4aa22bd343e.stex" ]
+source_file="res://World/Objects/Barrel/path841.png"
+dest_files=[ "res://.import/path841.png-43e30a4a84991cdf76833e2133111f64.stex" ]
 
 [params]
 

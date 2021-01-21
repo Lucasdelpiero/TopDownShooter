@@ -1,8 +1,9 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://World/Objects/Explosion.gd" type="Script" id=1]
-[ext_resource path="res://World/Objects/path841.png" type="Texture" id=2]
+[ext_resource path="res://World/Objects/Barrel/Explosion.gd" type="Script" id=1]
+[ext_resource path="res://World/Objects/Barrel/path841.png" type="Texture" id=2]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0, 0.591954, 1 )

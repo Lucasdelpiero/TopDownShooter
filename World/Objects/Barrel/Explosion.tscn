@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://World/Objects/Explosion.gd" type="Script" id=1]
-[ext_resource path="res://World/Objects/path841.png" type="Texture" id=2]
-[ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Objects/Barrel/Explosion.gd" type="Script" id=1]
+[ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Objects/Barrel/path841.png" type="Texture" id=3]
+[ext_resource path="res://World/Objects/Barrel/explodemini.wav" type="AudioStream" id=5]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.591954, 1 )
@@ -15,7 +16,7 @@ gradient = SubResource( 1 )
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 132.08
+initial_velocity = 60.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
@@ -49,11 +50,10 @@ scale_curve = SubResource( 7 )
 color_ramp = SubResource( 5 )
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 481.344
+radius = 425.431
 
 [sub_resource type="Animation" id=10]
 length = 1.5
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fire:emitting")
 tracks/0/interp = 1
@@ -104,6 +104,32 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 132.08, 60.0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="Explosion" type="Node2D"]
 script = ExtResource( 1 )
@@ -112,7 +138,7 @@ script = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 amount = 25
 process_material = SubResource( 3 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -122,22 +148,27 @@ scale = Vector2( 2, 2 )
 amount = 50
 explosiveness = 0.74
 process_material = SubResource( 8 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+[node name="Hitbox" parent="." instance=ExtResource( 2 )]
 collision_mask = 7
-damage = 5
+damage = 20
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 9 )
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Explosion = SubResource( 10 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 10.0
 
 [editable path="Hitbox"]

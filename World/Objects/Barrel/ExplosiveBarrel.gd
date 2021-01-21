@@ -1,13 +1,15 @@
 extends StaticBody2D
 
 export var health = 2
-onready var Explosion = preload("res://World/Objects/Explosion.tscn")
+var exploted = false
+onready var Explosion = preload("res://World/Objects/Barrel/Explosion.tscn")
 
 
 func _on_HurtBox_area_entered(area):
 	health -= area.damage
-	if health < 1:
+	if health < 1 and not exploted:
 		#Called deferred because of a bug
+		exploted = true
 		call_deferred("createExplosion")
 		
 func createExplosion():

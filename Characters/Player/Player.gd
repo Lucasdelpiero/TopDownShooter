@@ -62,7 +62,7 @@ func _ready():
 var dir = 14
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-#	print(rifle.capacity)
+	updateHUD()
 	dir = rad2deg(position2D.get_rotation())
 	
 	move(delta)
@@ -115,7 +115,7 @@ func trigger():
 		startReloading()
 
 func shoot():
-	for _i in range(weaponSelected.bulletsShot):
+	for i in range(weaponSelected.bulletsShot):
 		var bullet = Bullet.instance()
 		get_parent().add_child(bullet)
 		bullet.global_position = weaponSelected.global_position

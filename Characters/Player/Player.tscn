@@ -1087,6 +1087,14 @@ shape = SubResource( 17 )
 stream = ExtResource( 24 )
 
 [node name="Debugger" parent="." instance=ExtResource( 10 )]
+
+[node name="Control" parent="Debugger" index="0"]
+debug0 = ""
+debug1 = ""
+debug2 = ""
+debug3 = ""
+debug4 = ""
+debug5 = ""
 [connection signal="area_shape_entered" from="Position2D/Knife/Hitbox" to="." method="_on_Hitbox_area_shape_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]

@@ -47,7 +47,7 @@ func _physics_process(delta):
 			wander_state()
 		CHASE:
 #			chase_state(delta)
-			var _player = playerDetectionZone.player
+			var player = playerDetectionZone.player
 			if player != null:
 				direction = get_angle_to(player.get_global_position())
 				velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
