@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Characters/zombi/idle/skeleton-idle_9.png" type="Texture" id=1]
 [ext_resource path="res://Characters/zombi/idle/skeleton-idle_12.png" type="Texture" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://Characters/zombi/WanderController.tscn" type="PackedScene" id=19]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Characters/zombi/Zombie Sound.wav" type="AudioStream" id=21]
-[ext_resource path="res://HUD/Debugger.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Characters/zombi/PlayerDetectionZone.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/zombi/SoftCollision.tscn" type="PackedScene" id=24]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=25]
@@ -33,10 +32,10 @@ radius = 7.69731
 radius = 7.88
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 9.28936
+radius = 4.4
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 248.278
+radius = 741.307
 
 [sub_resource type="CircleShape2D" id=5]
 
@@ -88,7 +87,6 @@ monitorable = false
 collision_mask = 1
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
-visible = false
 modulate = Color( 1, 1, 1, 0.415686 )
 shape = SubResource( 4 )
 
@@ -103,6 +101,7 @@ animation = "idle"
 frame = 15
 
 [node name="WanderController" parent="." instance=ExtResource( 19 )]
+wander_range = 2400
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
@@ -116,16 +115,6 @@ visible = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Position2D"]
 occluder = SubResource( 7 )
-
-[node name="Debugger" parent="." instance=ExtResource( 22 )]
-
-[node name="Control" parent="Debugger" index="0"]
-debug0 = ""
-debug1 = ""
-debug2 = ""
-debug3 = ""
-debug4 = ""
-debug5 = ""
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="ZombiSoundTimer" to="." method="_on_ZombiSound_timeout"]
 
@@ -136,5 +125,3 @@ debug5 = ""
 [editable path="SoftCollision"]
 
 [editable path="PlayerDetectionZone"]
-
-[editable path="Debugger"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=1]
+
+[node name="zombiExplosive" instance=ExtResource( 1 )]
+modulate = Color( 0.917647, 0.290196, 0.290196, 1 )
+max_speed = 500
+health = 1
+explosive = true
+
+[editable path="HurtBox"]
+
+[editable path="Hitbox"]
+
+[editable path="SoftCollision"]
+
+[editable path="PlayerDetectionZone"]

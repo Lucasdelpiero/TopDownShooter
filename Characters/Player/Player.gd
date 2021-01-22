@@ -11,6 +11,7 @@ var canShoot = true
 var automatic = false
 var velocity = Vector2.ZERO
 export var health = 100
+var bonusHealing = false
 
 signal updateHUD(health, ammo, capacity)
 signal updateHUDWeapon(name)
@@ -20,6 +21,7 @@ onready var position2D = $Position2D
 onready var hurtbox = $HurtBox
 onready var timer = $IdleTimer
 onready var audioGuns = $AudioGuns
+onready var healingTimer = $HealingTimer
 
 onready var rifle = $Position2D/Rifle
 onready var pistol = $Position2D/Pistol
@@ -46,6 +48,7 @@ var animShoot = "RifleShoot"
 var animReload = "RifleReload"
 var animMelee = "KnifeMelee"
 var startedShooting = false
+
 
 enum {
 	PISTOL,
@@ -204,7 +207,7 @@ func _on_HurtBox_area_entered(area):
 	health -= area.damage
 	hurtbox.start_invincibility(0.3)
 	updateHUD()
-#	modulate = Color(1.0, 0.0, 0.0, 1.0)
+	modulate = Color(1.0, 0.0, 0.0, 1.0)
 	if health <= 0:
 		queue_free()
 #	hurtbox.create_hit_effect()
@@ -214,7 +217,15 @@ func _on_HurtBox_area_entered(area):
 #reload when melee
 func _on_Hitbox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	weaponSelected.ammo = weaponSelected.capacity
-	health += 5
+#	health += 5
+	bonusHeal(0.5)
 	updateHUD()
 
-
+func bonusHeal(time):
+	if not bonusHealing:
+		bonusHealing = true
+		healingTimer.start(time)
+		health += 5
+	
+func _on_HealingTimer_timeout():
+	bonusHealing = false

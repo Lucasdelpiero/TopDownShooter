@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=1]
+
+[node name="zombiFast" instance=ExtResource( 1 )]
+modulate = Color( 0, 0, 0, 1 )
+ACCELERATION = 600
+max_speed = 800
+
+[editable path="HurtBox"]
+
+[editable path="Hitbox"]
+
+[editable path="SoftCollision"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="Debugger"]

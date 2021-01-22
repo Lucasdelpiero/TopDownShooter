@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -9,8 +9,6 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_move.png" type="Texture" id=7]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/gunreload1.wav" type="AudioStream" id=9]
-[ext_resource path="res://HUD/Debugger.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=11]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_reload.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_reload.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_idle.png" type="Texture" id=14]
@@ -196,6 +194,18 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 2.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.4, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -995,7 +1005,6 @@ radius = 60.4062
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 0
 script = ExtResource( 1 )
-idle_time = 0.101
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1005,9 +1014,9 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 62, -16 )
-texture = ExtResource( 11 )
-hframes = 20
+position = Vector2( 61.3556, 37.1487 )
+texture = ExtResource( 19 )
+hframes = 15
 
 [node name="Rifle" type="Position2D" parent="Position2D"]
 visible = false
@@ -1052,7 +1061,6 @@ damage = 3
 [node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
 position = Vector2( -78.489, -28.9914 )
 shape = SubResource( 3 )
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
 root_node = NodePath("../..")
@@ -1086,21 +1094,13 @@ shape = SubResource( 17 )
 [node name="AudioGuns" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
 
-[node name="Debugger" parent="." instance=ExtResource( 10 )]
-
-[node name="Control" parent="Debugger" index="0"]
-debug0 = ""
-debug1 = ""
-debug2 = ""
-debug3 = ""
-debug4 = ""
-debug5 = ""
+[node name="HealingTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="area_shape_entered" from="Position2D/Knife/Hitbox" to="." method="_on_Hitbox_area_shape_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
+[connection signal="timeout" from="HealingTimer" to="." method="_on_HealingTimer_timeout"]
 
 [editable path="Position2D/Knife/Hitbox"]
 
 [editable path="HurtBox"]
-
-[editable path="Debugger"]

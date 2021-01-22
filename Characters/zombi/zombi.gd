@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const Blood = preload("res://Characters/zombi/blood.tscn")
 const bullet = preload("res://Characters/Player/Top_Down_Survivor/bullet.png")
+const Explosion = preload("res://World/Objects/Barrel/Explosion.tscn")
 
 onready var animatedSprite = $AnimatedSprite
 onready var wanderController = $WanderController
@@ -26,6 +27,7 @@ var acceleration = 40
 var direction = 0.0
 export var health = 5
 var player = null
+export var explosive = false
 
 func _ready():
 	animatedSprite.rotation_degrees = rand_range(-180, 180)
@@ -69,6 +71,8 @@ func wander_state():
 		update_wander()
 	direction = get_angle_to(wanderController.target_position)
 	velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
+	if global_position.distance_to(wanderController.target_position) < max_speed:
+		state = IDLE
 
 func update_wander():
 	state = pick_random_state([IDLE, WANDER]) # si se ponen los [ ] se convierte en array
@@ -104,12 +108,17 @@ func _on_ZombiSound_timeout():
 #	death()
 
 func _on_HurtBox_area_entered(area):
-	health -= area.damage
-	if health < 1:
-		death()
+	if health > 0:
+		health -= area.damage
+		if health < 1:
+			death()
 
 func death():
 	queue_free()
 	var blood = Blood.instance()
 	get_parent().add_child(blood)
 	blood.global_position = global_position 
+	if explosive:
+		var explosion = Explosion.instance()
+		get_parent().add_child(explosion)
+		explosion.global_position = global_position

@@ -4,15 +4,14 @@
 [ext_resource path="res://World/Objects/Barrel/path841.png" type="Texture" id=2]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=3]
 
-
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.591954, 1 )
 colors = PoolColorArray( 0.101563, 0.101563, 0.101563, 1, 0.184314, 0.180392, 0.180392, 0.854902, 0.298039, 0.294118, 0.294118, 0.811765 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=3]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -20,23 +19,23 @@ initial_velocity = 120.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 5.0
-color_ramp = SubResource( 9 )
+color_ramp = SubResource( 2 )
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.0719424, 0.71223, 0.870504 )
 colors = PoolColorArray( 0.988235, 0.988235, 0.988235, 1, 0.972549, 0.976471, 0.0784314, 1, 1, 0, 0, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="Curve" id=13]
+[sub_resource type="Curve" id=6]
 bake_resolution = 105
 _data = [ Vector2( 0, 1 ), 0.0, 0.496552, 0, 0, Vector2( 1, 0 ), -0.0333333, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=14]
-curve = SubResource( 13 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=8]
 lifetime_randomness = 0.8
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
@@ -47,16 +46,14 @@ initial_velocity = 900.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 20.0
-scale_curve = SubResource( 14 )
-color_ramp = SubResource( 2 )
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=9]
 radius = 481.344
 
-[sub_resource type="Animation" id=7]
-resource_name = "Explosion"
+[sub_resource type="Animation" id=10]
 length = 2.0
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fire:emitting")
 tracks/0/interp = 1
@@ -115,7 +112,7 @@ script = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 amount = 500
 explosiveness = 1.0
-process_material = SubResource( 10 )
+process_material = SubResource( 3 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
@@ -125,7 +122,7 @@ __meta__ = {
 scale = Vector2( 2, 2 )
 amount = 1000
 speed_scale = 2.0
-process_material = SubResource( 5 )
+process_material = SubResource( 8 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
@@ -134,12 +131,11 @@ __meta__ = {
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
 visible = false
 collision_mask = 7
-damage = 5
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Explosion = SubResource( 7 )
+anims/Explosion = SubResource( 10 )
 
 [editable path="Hitbox"]
