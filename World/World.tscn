@@ -103,6 +103,7 @@ light_mask = 0
 position = Vector2( 1, 0 )
 scale = Vector2( 2, 2 )
 z_index = -3
+z_as_relative = false
 tile_set = ExtResource( 7 )
 cell_size = Vector2( 128, 128 )
 collision_layer = 4
@@ -256,21 +257,33 @@ position = Vector2( -74.751, -2114.39 )
 
 [node name="zombiExplosive" parent="Zombies" instance=ExtResource( 10 )]
 position = Vector2( 800.904, -790.225 )
+z_index = 0
+z_as_relative = true
 
 [node name="zombiExplosive2" parent="Zombies" instance=ExtResource( 10 )]
 position = Vector2( -1078.55, -993.121 )
+z_index = 0
+z_as_relative = true
 
 [node name="zombiExplosive3" parent="Zombies" instance=ExtResource( 10 )]
 position = Vector2( 2562.89, -1794.02 )
+z_index = 0
+z_as_relative = true
 
 [node name="zombiBig" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( -822.261, -459.185 )
+z_index = 0
+z_as_relative = true
 
 [node name="zombiBig2" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( -784.164, -1183.04 )
+z_index = 0
+z_as_relative = true
 
 [node name="zombiBig3" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( -584.151, -1675.13 )
+z_index = 0
+z_as_relative = true
 [connection signal="updateHUD" from="Player" to="HUD" method="_on_Player_updateHUD"]
 [connection signal="updateHUDWeapon" from="Player" to="HUD" method="_on_Player_updateHUDWeapon"]
 

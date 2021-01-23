@@ -3,6 +3,8 @@ extends KinematicBody2D
 const Blood = preload("res://Characters/zombi/blood.tscn")
 const bullet = preload("res://Characters/Player/Top_Down_Survivor/bullet.png")
 const Explosion = preload("res://World/Objects/Barrel/Explosion.tscn")
+const BloodParticle = preload("res://Characters/zombi/Blood/BloodParticles.tscn")
+const BloodStain = preload("res://Characters/zombi/Blood/BloodStain.tscn")
 
 onready var animatedSprite = $AnimatedSprite
 onready var wanderController = $WanderController
@@ -97,7 +99,6 @@ func _on_Area_body_entered(body):
 	health -= 1
 	body.queue_free()
 	body.velocity *= 0.75
-	
 	if health < 1:
 		death()
 
@@ -106,6 +107,11 @@ func _on_ZombiSound_timeout():
 
 
 func _on_HurtBox_area_entered(area):
+	var bloodParticle = BloodParticle.instance()
+	get_parent().add_child(bloodParticle)
+	bloodParticle.global_position = global_position
+	bloodParticle.rotation = area.get_parent().direction + 3.14
+	
 	if health > 0:
 		health -= area.damage
 		if health < 1:
@@ -116,6 +122,12 @@ func death():
 	var blood = Blood.instance()
 	get_parent().add_child(blood)
 	blood.global_position = global_position 
+	
+	var bloodStain = BloodStain.instance()
+	get_parent().add_child(bloodStain)
+	bloodStain.global_position = global_position
+	bloodStain.rotation = rand_range(0, 2)
+	
 	if explosive:
 		var explosion = Explosion.instance()
 		get_parent().add_child(explosion)
