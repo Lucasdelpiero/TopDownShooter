@@ -110,7 +110,8 @@ func _on_HurtBox_area_entered(area):
 	var bloodParticle = BloodParticle.instance()
 	get_parent().add_child(bloodParticle)
 	bloodParticle.global_position = global_position
-	bloodParticle.rotation = area.get_parent().direction + 3.14
+	if area.get_parent().is_in_group("Bullets"):
+		bloodParticle.rotation = area.get_parent().direction + 3.14
 	
 	if health > 0:
 		health -= area.damage

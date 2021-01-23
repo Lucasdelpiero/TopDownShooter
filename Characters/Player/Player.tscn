@@ -1004,7 +1004,6 @@ tracks/5/keys = {
 radius = 60.4062
 
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 0
 collision_mask = 0
 script = ExtResource( 1 )
 
