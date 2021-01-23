@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Characters/zombi/zombiFast.tscn" type="PackedScene" id=1]
+
+[node name="Fast Pack" type="Node2D"]
+
+[node name="zombiFast" parent="." instance=ExtResource( 1 )]
+position = Vector2( 11.6752, 10.8593 )
+
+[node name="zombiFast2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 401.851, -312.045 )
+
+[node name="zombiFast3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -284.32, -345.681 )

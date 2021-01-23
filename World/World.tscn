@@ -3,11 +3,11 @@
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tileable2g.png" type="Texture" id=3]
-[ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/zombi/Packs/Basic Pack .tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Objects/Barrel/ExplosiveBarrel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/CanvasLayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Tiles/Walls/walls_tileset.tres" type="TileSet" id=7]
-[ext_resource path="res://Characters/zombi/zombiFast.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Characters/zombi/Packs/Fast Pack.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Characters/zombi/zombiBig.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Characters/zombi/zombiExplosive.tscn" type="PackedScene" id=10]
 [ext_resource path="res://HUD/Pause.gd" type="Script" id=12]
@@ -97,244 +97,6 @@ position = Vector2( -23521.5, -15261.5 )
 
 [node name="BottomRight" parent="Camera/Limits" index="1"]
 position = Vector2( 24099.1, 16454.7 )
-
-[node name="Zombies" type="Node2D" parent="."]
-
-[node name="Zombies" type="Node2D" parent="Zombies"]
-
-[node name="zombi" parent="Zombies/Zombies" instance=ExtResource( 4 )]
-position = Vector2( -176, -1536 )
-
-[node name="zombi5" parent="Zombies/Zombies" instance=ExtResource( 4 )]
-position = Vector2( -272, -2079 )
-
-[node name="zombi6" parent="Zombies/Zombies" instance=ExtResource( 4 )]
-position = Vector2( -1072, -1640 )
-
-[node name="zombi7" parent="Zombies/Zombies" instance=ExtResource( 4 )]
-position = Vector2( -984, -2096 )
-
-[node name="zombi2" parent="Zombies/Zombies" instance=ExtResource( 4 )]
-position = Vector2( -2312, -504 )
-
-[node name="zombi3" parent="Zombies/Zombies" instance=ExtResource( 4 )]
-position = Vector2( -1360, 2528 )
-
-[node name="zombi4" parent="Zombies/Zombies" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="Zombies2" type="Node2D" parent="Zombies"]
-position = Vector2( -480, -800 )
-
-[node name="zombi" parent="Zombies/Zombies2" instance=ExtResource( 4 )]
-position = Vector2( -176, -1536 )
-
-[node name="zombi2" parent="Zombies/Zombies2" instance=ExtResource( 4 )]
-position = Vector2( -2312, -504 )
-
-[node name="zombi3" parent="Zombies/Zombies2" instance=ExtResource( 4 )]
-position = Vector2( -1360, 2528 )
-
-[node name="zombi4" parent="Zombies/Zombies2" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="ZombiesFast" type="Node2D" parent="Zombies"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -1719.5, -1144 )
-
-[node name="zombiFast" parent="Zombies/ZombiesFast" instance=ExtResource( 8 )]
-
-[node name="zombiFast2" parent="Zombies/ZombiesFast" instance=ExtResource( 8 )]
-position = Vector2( 482.57, -241.285 )
-
-[node name="zombiFast3" parent="Zombies/ZombiesFast" instance=ExtResource( 8 )]
-position = Vector2( 184.139, -946.091 )
-
-[node name="zombiFast4" parent="Zombies/ZombiesFast" instance=ExtResource( 8 )]
-position = Vector2( 603.213, -692.107 )
-
-[node name="zombiFast5" parent="Zombies/ZombiesFast" instance=ExtResource( 8 )]
-position = Vector2( -12.6992, -266.684 )
-
-[node name="zombiFast6" parent="Zombies/ZombiesFast" instance=ExtResource( 8 )]
-position = Vector2( -463.521, -666.709 )
-
-[node name="ZombiesFast2" type="Node2D" parent="Zombies"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -138.448, -2661.56 )
-
-[node name="zombiFast" parent="Zombies/ZombiesFast2" instance=ExtResource( 8 )]
-
-[node name="zombiFast2" parent="Zombies/ZombiesFast2" instance=ExtResource( 8 )]
-position = Vector2( 482.57, -241.285 )
-
-[node name="zombiFast3" parent="Zombies/ZombiesFast2" instance=ExtResource( 8 )]
-position = Vector2( 184.139, -946.091 )
-
-[node name="zombiFast4" parent="Zombies/ZombiesFast2" instance=ExtResource( 8 )]
-position = Vector2( 603.213, -692.107 )
-
-[node name="zombiFast5" parent="Zombies/ZombiesFast2" instance=ExtResource( 8 )]
-position = Vector2( -12.6992, -266.684 )
-
-[node name="zombiFast6" parent="Zombies/ZombiesFast2" instance=ExtResource( 8 )]
-position = Vector2( -463.521, -666.709 )
-
-[node name="Zombies4" type="Node2D" parent="Zombies"]
-position = Vector2( -2320, -752 )
-
-[node name="zombi" parent="Zombies/Zombies4" instance=ExtResource( 4 )]
-position = Vector2( -176, -1536 )
-
-[node name="zombi2" parent="Zombies/Zombies4" instance=ExtResource( 4 )]
-position = Vector2( -2312, -504 )
-
-[node name="zombi3" parent="Zombies/Zombies4" instance=ExtResource( 4 )]
-position = Vector2( -1360, 2528 )
-scale = Vector2( 5, 10 )
-
-[node name="zombi4" parent="Zombies/Zombies4" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="Zombies5" type="Node2D" parent="Zombies"]
-position = Vector2( -2320, -1528 )
-
-[node name="zombi" parent="Zombies/Zombies5" instance=ExtResource( 4 )]
-position = Vector2( -176, -1536 )
-
-[node name="zombi2" parent="Zombies/Zombies5" instance=ExtResource( 4 )]
-position = Vector2( -2312, -504 )
-
-[node name="zombi3" parent="Zombies/Zombies5" instance=ExtResource( 4 )]
-position = Vector2( -1360, 2528 )
-
-[node name="zombi4" parent="Zombies/Zombies5" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="Zombies6" type="Node2D" parent="Zombies"]
-position = Vector2( -2648, -1232 )
-
-[node name="zombi" parent="Zombies/Zombies6" instance=ExtResource( 4 )]
-position = Vector2( -176, -1536 )
-
-[node name="zombi2" parent="Zombies/Zombies6" instance=ExtResource( 4 )]
-position = Vector2( -2312, -504 )
-
-[node name="zombi3" parent="Zombies/Zombies6" instance=ExtResource( 4 )]
-position = Vector2( -1360, 2528 )
-
-[node name="zombi4" parent="Zombies/Zombies6" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="Zombies7" type="Node2D" parent="Zombies"]
-position = Vector2( -2320, -1264 )
-
-[node name="zombi" parent="Zombies/Zombies7" instance=ExtResource( 4 )]
-position = Vector2( -176, -1536 )
-
-[node name="zombi2" parent="Zombies/Zombies7" instance=ExtResource( 4 )]
-position = Vector2( -2312, -504 )
-
-[node name="zombi3" parent="Zombies/Zombies7" instance=ExtResource( 4 )]
-position = Vector2( -1360, 2528 )
-scale = Vector2( 10, 15 )
-max_speed = 300
-health = 25
-
-[node name="zombi4" parent="Zombies/Zombies7" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="Zombies8" type="Node2D" parent="Zombies"]
-position = Vector2( -2744, -880 )
-
-[node name="zombi" parent="Zombies/Zombies8" instance=ExtResource( 4 )]
-position = Vector2( -182.727, -1522.55 )
-
-[node name="zombi2" parent="Zombies/Zombies8" instance=ExtResource( 4 )]
-position = Vector2( -2312, -504 )
-
-[node name="zombi3" parent="Zombies/Zombies8" instance=ExtResource( 4 )]
-position = Vector2( -1328, 2496 )
-
-[node name="zombi4" parent="Zombies/Zombies8" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="Zombies9" type="Node2D" parent="Zombies"]
-position = Vector2( -2424, -1464 )
-
-[node name="zombi" parent="Zombies/Zombies9" instance=ExtResource( 4 )]
-position = Vector2( -176, -1536 )
-
-[node name="zombi2" parent="Zombies/Zombies9" instance=ExtResource( 4 )]
-position = Vector2( -2312, -504 )
-
-[node name="zombi3" parent="Zombies/Zombies9" instance=ExtResource( 4 )]
-position = Vector2( -1360, 2528 )
-
-[node name="zombi4" parent="Zombies/Zombies9" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="Zombies10" type="Node2D" parent="Zombies"]
-position = Vector2( -2880, -1552 )
-
-[node name="zombi" parent="Zombies/Zombies10" instance=ExtResource( 4 )]
-position = Vector2( -176, -1536 )
-
-[node name="zombi2" parent="Zombies/Zombies10" instance=ExtResource( 4 )]
-position = Vector2( -2312, -497.273 )
-
-[node name="zombi3" parent="Zombies/Zombies10" instance=ExtResource( 4 )]
-position = Vector2( -1360, 2528 )
-
-[node name="zombi4" parent="Zombies/Zombies10" instance=ExtResource( 4 )]
-position = Vector2( -1256, -880 )
-
-[node name="Zombies Big" type="Node2D" parent="Zombies"]
-position = Vector2( -633.568, -1640.49 )
-
-[node name="zombiBig" parent="Zombies/Zombies Big" instance=ExtResource( 9 )]
-position = Vector2( -5.33936, -10.6787 )
-
-[node name="zombiBig2" parent="Zombies/Zombies Big" instance=ExtResource( 9 )]
-position = Vector2( 32.0363, -416.47 )
-
-[node name="zombiBig3" parent="Zombies/Zombies Big" instance=ExtResource( 9 )]
-position = Vector2( -128.145, -1094.57 )
-
-[node name="zombiBig4" parent="Zombies/Zombies Big" instance=ExtResource( 9 )]
-position = Vector2( 1169.32, -742.171 )
-
-[node name="Explosives" type="Node2D" parent="Zombies"]
-position = Vector2( 491.591, -1491.72 )
-
-[node name="zombiExplosive" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-
-[node name="zombiExplosive5" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( 9374.13, -2305.39 )
-
-[node name="zombiExplosive6" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( -2441, -2169.78 )
-
-[node name="zombiExplosive7" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( -4644.69, 1050.99 )
-
-[node name="zombiExplosive8" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( -6068.61, 2932.59 )
-
-[node name="zombiExplosive9" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( -3220.77, 3000.4 )
-
-[node name="zombiExplosive10" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( -5170.18, -1356.11 )
-
-[node name="zombiExplosive2" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( 6373.73, -1237.45 )
-
-[node name="zombiExplosive3" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( 135.611, -2593.57 )
-
-[node name="zombiExplosive4" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( 135.611, -2593.57 )
 
 [node name="TileMap2" type="TileMap" parent="."]
 light_mask = 0
@@ -457,6 +219,58 @@ position = Vector2( 6511.27, -1018.02 )
 
 [node name="ExplosiveBarrel4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 6218.97, -1209.52 )
+
+[node name="Zombies" type="Node2D" parent="."]
+position = Vector2( 651.402, -1441.63 )
+
+[node name="Basic Pack " parent="Zombies" instance=ExtResource( 4 )]
+
+[node name="Basic Pack 2" parent="Zombies" instance=ExtResource( 4 )]
+position = Vector2( 1804.7, -854.298 )
+
+[node name="Basic Pack 3" parent="Zombies" instance=ExtResource( 4 )]
+position = Vector2( 0.00012207, -1217.37 )
+
+[node name="Basic Pack 4" parent="Zombies" instance=ExtResource( 4 )]
+position = Vector2( 1334.84, 42.7147 )
+
+[node name="Basic Pack 5" parent="Zombies" instance=ExtResource( 4 )]
+position = Vector2( 1067.87, -2071.67 )
+
+[node name="Basic Pack 6" parent="Zombies" instance=ExtResource( 4 )]
+position = Vector2( -1131.94, -2231.85 )
+
+[node name="Basic Pack 7" parent="Zombies" instance=ExtResource( 4 )]
+position = Vector2( -2028.96, -1292.12 )
+
+[node name="Basic Pack 8" parent="Zombies" instance=ExtResource( 4 )]
+position = Vector2( -1697.92, -64.0718 )
+
+[node name="Basic Pack 9" parent="Zombies" instance=ExtResource( 4 )]
+position = Vector2( -3278.37, -640.723 )
+
+[node name="Fast Pack" parent="Zombies" instance=ExtResource( 8 )]
+
+[node name="Fast Pack2" parent="Zombies" instance=ExtResource( 8 )]
+position = Vector2( -74.751, -2114.39 )
+
+[node name="zombiExplosive" parent="Zombies" instance=ExtResource( 10 )]
+position = Vector2( 800.904, -790.225 )
+
+[node name="zombiExplosive2" parent="Zombies" instance=ExtResource( 10 )]
+position = Vector2( -1078.55, -993.121 )
+
+[node name="zombiExplosive3" parent="Zombies" instance=ExtResource( 10 )]
+position = Vector2( 2562.89, -1794.02 )
+
+[node name="zombiBig" parent="Zombies" instance=ExtResource( 9 )]
+position = Vector2( -822.261, -459.185 )
+
+[node name="zombiBig2" parent="Zombies" instance=ExtResource( 9 )]
+position = Vector2( -784.164, -1183.04 )
+
+[node name="zombiBig3" parent="Zombies" instance=ExtResource( 9 )]
+position = Vector2( -584.151, -1675.13 )
 [connection signal="updateHUD" from="Player" to="HUD" method="_on_Player_updateHUD"]
 [connection signal="updateHUDWeapon" from="Player" to="HUD" method="_on_Player_updateHUDWeapon"]
 

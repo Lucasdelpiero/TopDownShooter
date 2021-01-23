@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=1]
+
+[node name="Basic Pack " type="Node2D"]
+
+[node name="zombi" parent="." instance=ExtResource( 1 )]
+position = Vector2( -3.30762, -3.23755 )
+
+[node name="zombi2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 267.308, -328.863 )
+
+[node name="zombi3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -129.595, -402.862 )
+
+[node name="zombi4" parent="." instance=ExtResource( 1 )]
+position = Vector2( -489.499, -79.9576 )
+
+[node name="zombi5" parent="." instance=ExtResource( 1 )]
+position = Vector2( -159.868, 195.856 )
+
+[node name="zombi6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 415.305, 68.0402 )
+
+[node name="zombi7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 146.219, 357.309 )

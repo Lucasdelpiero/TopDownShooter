@@ -5,9 +5,9 @@
 [node name="zombiBig" instance=ExtResource( 1 )]
 health = 25
 
-[node name="AnimatedSprite" parent="." index="5"]
+[node name="AnimatedSprite" parent="." index="0"]
 modulate = Color( 0.337255, 1, 0.223529, 1 )
-scale = Vector2( 0.15, 0.15 )
+scale = Vector2( 1.5, 1.5 )
 
 [editable path="HurtBox"]
 

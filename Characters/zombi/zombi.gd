@@ -104,8 +104,6 @@ func _on_Area_body_entered(body):
 func _on_ZombiSound_timeout():
 	audioStreamPlayer.playing = true
 
-#func _on_Area_area_entered(area):
-#	death()
 
 func _on_HurtBox_area_entered(area):
 	if health > 0:
