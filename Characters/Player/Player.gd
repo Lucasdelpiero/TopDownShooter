@@ -225,7 +225,8 @@ func bonusHeal(time):
 	if not bonusHealing:
 		bonusHealing = true
 		healingTimer.start(time)
-		health += 5
+		if health < 100:
+			health += 5
 	
 func _on_HealingTimer_timeout():
 	bonusHealing = false

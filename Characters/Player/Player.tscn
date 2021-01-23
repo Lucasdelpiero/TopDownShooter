@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_move.png" type="Texture" id=7]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/gunreload1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=10]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_reload.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_reload.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_idle.png" type="Texture" id=14]
@@ -1014,9 +1015,9 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 61.3556, 37.1487 )
-texture = ExtResource( 19 )
-hframes = 15
+position = Vector2( 62, -16 )
+texture = ExtResource( 10 )
+hframes = 20
 
 [node name="Rifle" type="Position2D" parent="Position2D"]
 visible = false
