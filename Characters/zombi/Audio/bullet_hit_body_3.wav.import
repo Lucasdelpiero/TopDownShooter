@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bullet_hit_body_3.wav-a3f29a9902dfd7622776ed2a4785b249.sample"
+
+[deps]
+
+source_file="res://Characters/zombi/Audio/bullet_hit_body_3.wav"
+dest_files=[ "res://.import/bullet_hit_body_3.wav-a3f29a9902dfd7622776ed2a4785b249.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

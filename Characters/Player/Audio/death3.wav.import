@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/death3.wav-97a7616fc14c59533a6e311d8ee32001.sample"
+
+[deps]
+
+source_file="res://Characters/Player/Audio/death3.wav"
+dest_files=[ "res://.import/death3.wav-97a7616fc14c59533a6e311d8ee32001.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

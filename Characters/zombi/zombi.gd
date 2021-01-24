@@ -9,10 +9,18 @@ const BloodStain = preload("res://Characters/zombi/Blood/BloodStain.tscn")
 onready var animatedSprite = $AnimatedSprite
 onready var wanderController = $WanderController
 onready var audioStreamPlayer = $AudioStreamPlayer
+onready var audioHitted = $AudioHitted
 onready var zombiSoundTimer = $ZombiSoundTimer
 onready var position2d = $Position2D
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
+
+const soundsHitted = [
+	"bullet_hit_body_0",
+	"bullet_hit_body_1",
+	"bullet_hit_body_2",
+	"bullet_hit_body_3",
+]
 
 enum{
 	IDLE,
@@ -112,6 +120,9 @@ func _on_HurtBox_area_entered(area):
 	bloodParticle.global_position = global_position
 	if area.get_parent().is_in_group("Bullets"):
 		bloodParticle.rotation = area.get_parent().direction + 3.14
+		soundHitted()
+	else:
+		bloodParticle.rotation = direction
 	
 	if health > 0:
 		health -= area.damage
@@ -133,3 +144,11 @@ func death():
 		var explosion = Explosion.instance()
 		get_parent().add_child(explosion)
 		explosion.global_position = global_position
+
+func soundHitted():
+	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
+	audioHitted.play()
+
+
+
+

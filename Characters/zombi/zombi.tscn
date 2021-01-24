@@ -25,7 +25,7 @@
 [ext_resource path="res://Characters/zombi/SoftCollision.tscn" type="PackedScene" id=24]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=25]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 3 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
@@ -42,7 +42,7 @@ radius = 123.386
 [sub_resource type="CircleShape2D" id=4]
 radius = 2570.35
 
-[sub_resource type="OccluderPolygon2D" id=7]
+[sub_resource type="OccluderPolygon2D" id=5]
 cull_mode = 1
 polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.06127, 1.23976, 4.439, 2.97215, 0.816723, 0.452305, -2.80555, -4.11491, -5.56163 )
 
@@ -59,7 +59,7 @@ health = 3
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 z_index = 2
 z_as_relative = false
-frames = SubResource( 6 )
+frames = SubResource( 1 )
 animation = "idle"
 frame = 15
 
@@ -110,6 +110,8 @@ wander_range = 2400
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
 
+[node name="AudioHitted" type="AudioStreamPlayer" parent="."]
+
 [node name="ZombiSoundTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
@@ -118,7 +120,7 @@ autostart = true
 visible = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Position2D"]
-occluder = SubResource( 7 )
+occluder = SubResource( 5 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 process_parent = true

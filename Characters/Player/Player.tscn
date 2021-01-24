@@ -42,7 +42,7 @@ export var bulletsShot = 1
 "
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 99.3254, 116.344 )
+extents = Vector2( 137.135, 116.344 )
 
 [sub_resource type="Animation" id=4]
 length = 2.0
@@ -1053,7 +1053,6 @@ shotSound = ExtResource( 28 )
 reloadSound = ExtResource( 9 )
 
 [node name="Knife" type="Position2D" parent="Position2D"]
-visible = false
 position = Vector2( 176.749, 40.2214 )
 script = SubResource( 2 )
 capacity = 0
@@ -1064,7 +1063,7 @@ collision_mask = 2
 damage = 3
 
 [node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
-position = Vector2( -78.489, -28.9914 )
+position = Vector2( -36.1105, -27.932 )
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
@@ -1098,6 +1097,9 @@ shape = SubResource( 17 )
 
 [node name="AudioGuns" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
+bus = "Guns"
+
+[node name="AudioPain" type="AudioStreamPlayer" parent="."]
 
 [node name="HealingTimer" type="Timer" parent="."]
 one_shot = true

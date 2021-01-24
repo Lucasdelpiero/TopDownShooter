@@ -21,6 +21,7 @@ onready var position2D = $Position2D
 onready var hurtbox = $HurtBox
 onready var timer = $IdleTimer
 onready var audioGuns = $AudioGuns
+onready var audioPain = $AudioPain
 onready var healingTimer = $HealingTimer
 
 onready var rifle = $Position2D/Rifle
@@ -39,6 +40,18 @@ onready var rifleAmmo = rifle.ammo
 export var shotgunCapacity = 8
 onready var shotgunAmmo = shotgunCapacity
 var reloading = false
+
+const painSounds = [
+	"pain1",
+	"pain2",
+	"pain3",
+]
+
+const deathSounds = [
+	"death1",
+	"death2",
+	"death3",
+] 
 
 onready var ammoSelected = rifleAmmo
 
@@ -60,6 +73,7 @@ enum {
 var state = RIFLE
 
 func _ready():
+	randomize()
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true
 var dir = 14
@@ -114,7 +128,7 @@ func trigger():
 		if (not shooting) or (shooting and automatic):
 			animationPlayer.play(animShoot)
 			startedShooting = true
-	if ammoSelected == 0 and not shooting:
+	if ammoSelected == 0 :
 		startReloading()
 
 func shoot():
@@ -209,7 +223,9 @@ func _on_HurtBox_area_entered(area):
 	updateHUD()
 	modulate = Color(1.0, 0.0, 0.0, 1.0)
 	if health <= 0:
-		queue_free()
+		death()
+	else:
+		soundPain()
 #	hurtbox.create_hit_effect()
 #	var playerHurtSound = PlayerHurtSound.instance()
 #	get_tree().current_scene.add_child(playerHurtSound)
@@ -217,7 +233,6 @@ func _on_HurtBox_area_entered(area):
 #reload when melee
 func _on_Hitbox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	weaponSelected.ammo = weaponSelected.capacity
-#	health += 5
 	bonusHeal(0.5)
 	updateHUD()
 
@@ -230,3 +245,29 @@ func bonusHeal(time):
 	
 func _on_HealingTimer_timeout():
 	bonusHealing = false
+
+func death():
+	soundDeath()
+	queue_free()
+
+func soundPain():
+	# load : get a filesystem and creates an object 
+	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(painSounds[randi() % painSounds.size()]) ) 
+	audioPain.play()
+
+	
+func soundDeath():
+	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(deathSounds[randi() % deathSounds.size()]) ) 
+	audioPain.play()
+
+
+
+
+
+
+
+
+
+
+
+
