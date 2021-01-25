@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barrel.png-add07162be65de25f5695beca7084986.stex"
+path="res://.import/barrel_exp 128x128.png-995b3b79643834742f5d366c4f403b20.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Tiles/Decoration/barrel.png"
-dest_files=[ "res://.import/barrel.png-add07162be65de25f5695beca7084986.stex" ]
+source_file="res://World/Objects/Barrel/barrel_exp 128x128.png"
+dest_files=[ "res://.import/barrel_exp 128x128.png-995b3b79643834742f5d366c4f403b20.stex" ]
 
 [params]
 

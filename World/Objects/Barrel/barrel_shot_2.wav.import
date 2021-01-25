@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/barrel_shot_2.wav-ac529c27a3eb6ac3f79798b535e4b3b2.sample"
+
+[deps]
+
+source_file="res://World/Objects/Barrel/barrel_shot_2.wav"
+dest_files=[ "res://.import/barrel_shot_2.wav-ac529c27a3eb6ac3f79798b535e4b3b2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

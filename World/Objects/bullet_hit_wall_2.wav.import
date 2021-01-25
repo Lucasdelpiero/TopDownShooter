@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bullet_hit_wall_2.wav-8b110957859524aa21692580845691b8.sample"
+
+[deps]
+
+source_file="res://World/Objects/bullet_hit_wall_2.wav"
+dest_files=[ "res://.import/bullet_hit_wall_2.wav-8b110957859524aa21692580845691b8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

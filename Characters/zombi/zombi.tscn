@@ -40,7 +40,7 @@ radius = 132.16
 radius = 123.386
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 2570.35
+radius = 4693.64
 
 [sub_resource type="OccluderPolygon2D" id=5]
 cull_mode = 1

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swosh-14.wav-b8d969631819ca0ece5a1c6f38b101e0.sample"
+
+[deps]
+
+source_file="res://Characters/Player/Top_Down_Survivor/knife/swosh-14.wav"
+dest_files=[ "res://.import/swosh-14.wav-b8d969631819ca0ece5a1c6f38b101e0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
