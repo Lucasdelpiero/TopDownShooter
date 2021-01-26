@@ -287,4 +287,6 @@ z_as_relative = true
 [connection signal="updateHUD" from="Player" to="HUD" method="_on_Player_updateHUD"]
 [connection signal="updateHUDWeapon" from="Player" to="HUD" method="_on_Player_updateHUDWeapon"]
 
+[editable path="HUD"]
+
 [editable path="Camera"]

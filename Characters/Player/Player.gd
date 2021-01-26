@@ -128,7 +128,7 @@ func trigger():
 		if (not shooting) or (shooting and automatic):
 			animationPlayer.play(animShoot)
 			startedShooting = true
-	if ammoSelected == 0 :
+	if ammoSelected == 0 and not shooting:
 		startReloading()
 
 func shoot():

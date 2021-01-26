@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://HUD/EmptyBar.png" type="Texture" id=1]
 [ext_resource path="res://HUD/RedBarBorderless.png" type="Texture" id=2]
 [ext_resource path="res://HUD/bullet_hud.png" type="Texture" id=3]
 [ext_resource path="res://HUD/CanvasLayer.gd" type="Script" id=4]
+[ext_resource path="res://HUD/Scoring.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=6]
 [ext_resource path="res://World/Objects/Weapons/128gunicon.png" type="Texture" id=7]
 [ext_resource path="res://World/Objects/Weapons/128shotgunicon.png" type="Texture" id=8]
@@ -39,7 +40,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
-margin_right = 300.0
+margin_right = 206.0
 margin_bottom = 38.0
 
 [node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
@@ -65,7 +66,7 @@ __meta__ = {
 
 [node name="LifeBar" type="TextureProgress" parent="Control/VBoxContainer"]
 margin_top = 42.0
-margin_right = 300.0
+margin_right = 206.0
 margin_bottom = 70.0
 value = 100.0
 texture_under = ExtResource( 1 )
@@ -139,3 +140,13 @@ margin_bottom = 87.0
 custom_fonts/font = ExtResource( 10 )
 text = "[3]"
 align = 1
+
+[node name="Scoring" parent="." instance=ExtResource( 5 )]
+
+[node name="ComboLabels" parent="Scoring" index="1"]
+margin_top = -80.0
+
+[node name="Score" parent="Scoring/ComboLabels" index="0"]
+valign = 0
+
+[editable path="Scoring"]

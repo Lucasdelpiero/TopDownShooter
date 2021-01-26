@@ -15,6 +15,11 @@ onready var position2d = $Position2D
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
 
+onready var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
+signal killed(type)
+var type = null
+
+
 const soundsHitted = [
 	"bullet_hit_body_0",
 	"bullet_hit_body_1",
@@ -44,6 +49,8 @@ func _ready():
 	animatedSprite.frame = rand_range(0, 8)
 	animatedSprite.playing = true
 	zombiSoundTimer.start(rand_range(4,40))
+	connect("killed", scoreControl, "updateScore")
+	get_type()
 
 func _physics_process(delta):
 	match state:
@@ -144,7 +151,17 @@ func death():
 		var explosion = Explosion.instance()
 		get_parent().add_child(explosion)
 		explosion.global_position = global_position
+	
+	emit_signal("killed", str(type))
 
+func get_type():
+	var groups = self.get_groups()
+	if str(groups[0]) != "physics_process":
+		type = groups[0]
+	else:
+		type = groups[1]
+#	print("0: " + groups[0])
+#	print("1: " + groups[1])
 func soundHitted():
 	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
 	audioHitted.play()
