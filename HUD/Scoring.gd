@@ -5,19 +5,24 @@ var individualScore = 0    # Last action score
 var comboScore = 0         # Total individual score in the combo
 var multiplicator = 0      # Multiplicator to all kill in the combo
 var comboBarValue = 50
-export var comboTime = 2
+export var comboTime = 2.5
+
+var initialAlpha = Color(1.0, 1.0, 1.0, 1.0)
+var fadedAlpha = Color(1.0, 1.0, 1.0, 0.0)
 
 onready var comboLabel = $ComboLabels/Score
 onready var multiplicatorLabel = $ComboLabels/Multiplicator
 onready var totalLabel = $TotalScoreLabel
 onready var comboBar = $ComboLabels/ComboBar
 onready var tweenComboBar = $ComboLabels/ComboBar/Tween
+onready var lastCombo = $ComboLabels/LastCombo
+onready var tweenLastCombo = $ComboLabels/LastCombo/Tween
 
 var dictionary = {
-	"zombi" : 200,
-	"zombiBig" : 1000,
-	"zombiFast" : 400,
-	"zombiExplosive" : 250,
+	"zombi" : 20,
+	"zombiBig" : 100,
+	"zombiFast" : 40,
+	"zombiExplosive" : 25,
 #	"physics_process" : 200
 }
 
@@ -30,6 +35,7 @@ var dictionary = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	startCombo()
+#	fadeLastCombo()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,7 +49,7 @@ func updateScore(name):
 	individualScore = base
 	comboScore += base
 	multiplicator += 1
-	totalScore += 5000
+#	totalScore += 5000
 	
 	updateLabels()
 	
@@ -52,7 +58,7 @@ func updateScore(name):
 	
 
 func startCombo():
-	tweenComboBar.interpolate_property(comboBar, "value", 100, 0, comboTime, Tween.TRANS_LINEAR)
+	tweenComboBar.interpolate_property(comboBar, "value", 100, 0, comboTime,Tween.TRANS_SINE, Tween.EASE_OUT)
 	tweenComboBar.start()
 	changeVisibility(true)
 
@@ -62,6 +68,11 @@ func resetCombo():
 	startCombo()
 
 func endCombo():
+	lastCombo.text = str(comboScore * multiplicator)
+	totalScore += comboScore * multiplicator
+	unFadeLastCombo()
+	fadeLastCombo()
+	
 	comboScore = 0
 	multiplicator = 0
 	updateLabels()
@@ -82,4 +93,13 @@ func changeVisibility(value):
 	comboLabel.visible = value
 	multiplicatorLabel.visible = value
 
+func fadeLastCombo():
+	tweenLastCombo.interpolate_property(lastCombo, "modulate", initialAlpha, fadedAlpha, 1, Tween.TRANS_LINEAR,Tween.EASE_IN, 2)
+	tweenLastCombo.start()
+
+func unFadeLastCombo():
+	tweenLastCombo.interpolate_property(lastCombo, "modulate", fadedAlpha, initialAlpha, 0, Tween.TRANS_LINEAR)
+	tweenLastCombo.start()
+
+#length
 

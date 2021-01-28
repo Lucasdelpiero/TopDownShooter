@@ -143,9 +143,6 @@ align = 1
 
 [node name="Scoring" parent="." instance=ExtResource( 5 )]
 
-[node name="ComboLabels" parent="Scoring" index="1"]
-margin_top = -80.0
-
 [node name="Score" parent="Scoring/ComboLabels" index="0"]
 valign = 0
 

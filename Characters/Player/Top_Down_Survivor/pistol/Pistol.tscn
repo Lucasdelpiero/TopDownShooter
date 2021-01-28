@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol.wav" type="AudioStream" id=2]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/gunreload1.wav" type="AudioStream" id=3]
+
+[node name="Pistol" type="Position2D"]
+visible = false
+position = Vector2( 143.515, 43.0498 )
+script = ExtResource( 1 )
+missDegree = 2
+bulletsShot = 1
+shotSound = ExtResource( 2 )
+reloadSound = ExtResource( 3 )

@@ -9,6 +9,8 @@ onready var rayCast = $Sprite/RayCast2D
 onready var audio = $AudioStreamPlayer
 onready var timer = $Timer
 var collided = false
+var bulletRange = 0
+var ready = false
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -20,8 +22,12 @@ var bulletHitWall = [
 	"bullet_hit_wall_2",
 ]
 
-func _process(delta):
+
+func _physics_process(delta):
+	if not ready:
+		setLifeTime(delta)
 	move(delta)
+
 	
 
 func move(delta):
@@ -44,4 +50,9 @@ func _on_Timer_timeout():
 func _on_Hitbox_area_entered(_area):
 	queue_free()
 
-
+func setLifeTime(delta):
+	var bulletTime = ( bulletRange / speed * delta )
+	timer.set_wait_time(bulletTime)
+	if timer.is_stopped():
+		timer.start()
+	ready = true

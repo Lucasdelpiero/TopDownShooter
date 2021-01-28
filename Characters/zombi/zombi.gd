@@ -110,16 +110,9 @@ func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
 
-func _on_Area_body_entered(body):
-	health -= 1
-	body.queue_free()
-	body.velocity *= 0.75
-	if health < 1:
-		death()
 
 func _on_ZombiSound_timeout():
 	audioStreamPlayer.playing = true
-
 
 func _on_HurtBox_area_entered(area):
 	var bloodParticle = BloodParticle.instance()
@@ -135,6 +128,10 @@ func _on_HurtBox_area_entered(area):
 		health -= area.damage
 		if health < 1:
 			death()
+			if area.get_parent().is_in_group("Knife"):
+				var player = get_tree().get_nodes_in_group("Player")[0]
+				player.weaponSelected.ammo = player.weaponSelected.capacity
+				pass
 
 func death():
 	queue_free()

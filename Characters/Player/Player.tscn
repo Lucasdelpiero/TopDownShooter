@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -7,8 +7,8 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_shoot.png" type="Texture" id=5]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_idle.png" type="Texture" id=6]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_move.png" type="Texture" id=7]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=8]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/gunreload1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/Pistol.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/Knife.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=10]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/swosh-14.wav" type="AudioStream" id=11]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_reload.png" type="Texture" id=12]
@@ -21,29 +21,11 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_melee.png" type="Texture" id=19]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_move.png" type="Texture" id=20]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
-[ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/minigun.wav" type="AudioStream" id=24]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/assaultriflereload1.wav" type="AudioStream" id=25]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotguncock.wav" type="AudioStream" id=26]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun.wav" type="AudioStream" id=27]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol.wav" type="AudioStream" id=28]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 61.606
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Position2D
-
-export var automatic = false
-export var capacity = 12
-onready var ammo = capacity
-export var idleTime = 1.0
-export var missDegree = 3
-export var bulletsShot = 1
-"
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 137.135, 116.344 )
 
 [sub_resource type="Animation" id=4]
 length = 2.0
@@ -1019,7 +1001,9 @@ tracks/5/keys = {
 [sub_resource type="CircleShape2D" id=17]
 radius = 60.4062
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 collision_mask = 0
 script = ExtResource( 1 )
 
@@ -1038,53 +1022,16 @@ texture = ExtResource( 10 )
 hframes = 20
 frame = 9
 
-[node name="Rifle" type="Position2D" parent="Position2D"]
-visible = false
-position = Vector2( 200.799, 31.4274 )
-script = ExtResource( 8 )
+[node name="Rifle" parent="Position2D" instance=ExtResource( 24 )]
+capacity = 50000
+
+[node name="Shotgun" parent="Position2D" instance=ExtResource( 23 )]
 automatic = true
-capacity = 30
-missDegree = 3
-bulletsShot = 1
-shotSound = ExtResource( 24 )
-reloadSound = ExtResource( 25 )
+capacity = 5000
 
-[node name="Shotgun" type="Position2D" parent="Position2D"]
-visible = false
-position = Vector2( 197.683, 31.7141 )
-z_index = 10
-z_as_relative = false
-script = ExtResource( 8 )
-capacity = 8
-bulletsShot = 8
-shotSound = ExtResource( 27 )
-reloadSound = ExtResource( 26 )
+[node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
 
-[node name="Pistol" type="Position2D" parent="Position2D"]
-visible = false
-position = Vector2( 143.515, 43.0498 )
-script = ExtResource( 8 )
-missDegree = 2
-bulletsShot = 1
-shotSound = ExtResource( 28 )
-reloadSound = ExtResource( 9 )
-
-[node name="Knife" type="Position2D" parent="Position2D"]
-position = Vector2( 176.749, 40.2214 )
-script = SubResource( 2 )
-capacity = 0
-bulletsShot = 0
-
-[node name="Hitbox" parent="Position2D/Knife" groups=[
-"Melee",
-] instance=ExtResource( 22 )]
-collision_mask = 6
-damage = 3
-
-[node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
-position = Vector2( -36.1105, -27.932 )
-shape = SubResource( 3 )
-disabled = true
+[node name="Knife" parent="Position2D" instance=ExtResource( 9 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
 root_node = NodePath("../..")
@@ -1124,10 +1071,11 @@ bus = "Guns"
 
 [node name="HealingTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="area_shape_entered" from="Position2D/Knife/Hitbox" to="." method="_on_Hitbox_area_shape_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_HealingTimer_timeout"]
+
+[editable path="Position2D/Knife"]
 
 [editable path="Position2D/Knife/Hitbox"]
 

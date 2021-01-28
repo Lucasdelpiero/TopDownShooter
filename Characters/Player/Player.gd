@@ -13,6 +13,9 @@ var velocity = Vector2.ZERO
 export var health = 100
 var bonusHealing = false
 
+var minBulletSpdBonus = 0.3
+var maxBulletSpdBonus = 1000
+
 signal updateHUD(health, ammo, capacity)
 signal updateHUDWeapon(name)
 
@@ -140,6 +143,14 @@ func shoot():
 		var shotDirection = position2D.rotation + rand_range(- miss, miss)
 		bullet.direction = shotDirection
 		bullet.get_node("Sprite").rotation_degrees = rad2deg(shotDirection)
+		
+		#add range to the bullet
+		var direction = Vector2( cos($Position2D.rotation) , sin($Position2D.rotation))
+		var velocityVector = velocity.normalized()
+		var velocityDot = velocityVector.dot(direction)
+		var inertiaSpeed = weaponSelected.weaponRange * .75 * velocityDot
+		inertiaSpeed = clamp(inertiaSpeed, - weaponSelected.weaponRange * minBulletSpdBonus, maxBulletSpdBonus)
+		bullet.bulletRange = weaponSelected.weaponRange  + inertiaSpeed
 	muzzle()
 	audioGuns.stream = weaponSelected.shotSound
 	audioGuns.play()

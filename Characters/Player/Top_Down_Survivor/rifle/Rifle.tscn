@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/minigun.wav" type="AudioStream" id=2]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/assaultriflereload1.wav" type="AudioStream" id=3]
+
+[node name="Rifle" type="Position2D"]
+visible = false
+position = Vector2( 200.799, 31.4274 )
+script = ExtResource( 1 )
+automatic = true
+capacity = 30
+missDegree = 3
+bulletsShot = 1
+shotSound = ExtResource( 2 )
+reloadSound = ExtResource( 3 )

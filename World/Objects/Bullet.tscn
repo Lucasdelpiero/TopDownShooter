@@ -15,6 +15,7 @@ z_as_relative = false
 collision_layer = 8
 collision_mask = 6
 script = ExtResource( 2 )
+speed = 50.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -28,7 +29,6 @@ collision_mask = 4
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
 collision_layer = 8

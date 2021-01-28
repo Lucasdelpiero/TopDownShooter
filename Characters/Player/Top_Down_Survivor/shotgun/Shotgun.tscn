@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun.wav" type="AudioStream" id=2]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotguncock.wav" type="AudioStream" id=3]
+
+[node name="Shotgun" type="Position2D"]
+visible = false
+position = Vector2( 197.683, 31.7141 )
+z_index = 10
+z_as_relative = false
+script = ExtResource( 1 )
+capacity = 8
+bulletsShot = 8
+weaponRange = 1000
+shotSound = ExtResource( 2 )
+reloadSound = ExtResource( 3 )
