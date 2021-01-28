@@ -36,11 +36,15 @@ anchor_bottom = 1.0
 margin_left = -20.0
 margin_top = -40.0
 margin_right = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Score" type="Label" parent="ComboLabels"]
 margin_top = 1.0
 margin_bottom = 39.0
 grow_horizontal = 0
+text = "12312"
 align = 2
 valign = 1
 
@@ -49,3 +53,18 @@ margin_left = 4.0
 margin_top = 1.0
 margin_right = 4.0
 margin_bottom = 39.0
+text = "x321312"
+
+[node name="ComboBar" type="ProgressBar" parent="ComboLabels"]
+margin_left = -94.0
+margin_top = -22.0
+margin_right = 121.0
+max_value = 100.0
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="ComboLabels/ComboBar"]
+[connection signal="tween_all_completed" from="ComboLabels/ComboBar/Tween" to="." method="_on_Tween_tween_all_completed"]

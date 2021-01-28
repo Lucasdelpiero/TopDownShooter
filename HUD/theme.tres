@@ -1,6 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=2]
+[gd_resource type="Theme" load_steps=4 format=2]
 
 [ext_resource path="res://HUD/default_font.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.709804, 0.709804, 0.709804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.996078, 0.0705882, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.960784, 0.894118, 0.619608, 1 )
 
 [resource]
 default_font = ExtResource( 1 )
@@ -13,3 +24,8 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = SubResource( 1 )
+ProgressBar/styles/fg = SubResource( 2 )
