@@ -16,7 +16,7 @@ onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
 
 onready var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
-signal killed(type)
+signal killed(type, byMelee, byExplosion)
 var type = null
 
 
@@ -127,14 +127,15 @@ func _on_HurtBox_area_entered(area):
 	if health > 0:
 		health -= area.damage
 		if health < 1:
-			death()
+			death(area)
 			if area.get_parent().is_in_group("Knife"):
 				var player = get_tree().get_nodes_in_group("Player")[0]
 				player.weaponSelected.ammo = player.weaponSelected.capacity
 				pass
 
-func death():
+func death(area):
 	queue_free()
+	
 	var blood = Blood.instance()
 	get_parent().add_child(blood)
 	blood.global_position = global_position 
@@ -149,7 +150,10 @@ func death():
 		get_parent().add_child(explosion)
 		explosion.global_position = global_position
 	
-	emit_signal("killed", str(type))
+	var byMelee = area.get_parent().is_in_group("Melee")
+	var byExplosion = area.get_parent().is_in_group("Explosion")
+	
+	emit_signal("killed", str(type), byMelee, byExplosion)
 
 func get_type():
 	var groups = self.get_groups()
@@ -157,8 +161,7 @@ func get_type():
 		type = groups[0]
 	else:
 		type = groups[1]
-#	print("0: " + groups[0])
-#	print("1: " + groups[1])
+
 func soundHitted():
 	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
 	audioHitted.play()

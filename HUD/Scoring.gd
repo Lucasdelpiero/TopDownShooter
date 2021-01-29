@@ -6,6 +6,8 @@ var comboScore = 0         # Total individual score in the combo
 var multiplicator = 0      # Multiplicator to all kill in the combo
 var comboBarValue = 50
 export var comboTime = 2.5
+var killedByMelee = 2
+var killedByExplosion = 2
 
 var initialAlpha = Color(1.0, 1.0, 1.0, 1.0)
 var fadedAlpha = Color(1.0, 1.0, 1.0, 0.0)
@@ -44,12 +46,11 @@ func _process(delta):
 #		timerCombo.start()
 	pass
 
-func updateScore(name):
-	var base = dictionary[name]
-	individualScore = base
-	comboScore += base
+func updateScore(name, byMelee, byExplosion):
+	var base = dictionary[name] 
+	individualScore = base + base * int(byMelee) * killedByMelee + base * int(byExplosion) * killedByExplosion
+	comboScore += individualScore
 	multiplicator += 1
-#	totalScore += 5000
 	
 	updateLabels()
 	
@@ -101,5 +102,4 @@ func unFadeLastCombo():
 	tweenLastCombo.interpolate_property(lastCombo, "modulate", fadedAlpha, initialAlpha, 0, Tween.TRANS_LINEAR)
 	tweenLastCombo.start()
 
-#length
 

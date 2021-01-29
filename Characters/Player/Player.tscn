@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -21,13 +21,14 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_melee.png" type="Texture" id=19]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_move.png" type="Texture" id=20]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
+[ext_resource path="res://HUD/Debugger.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 61.606
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -91,7 +92,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -207,7 +208,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0.4 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -270,7 +271,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -334,7 +335,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -398,7 +399,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -478,7 +479,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -556,7 +557,7 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=9]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -636,7 +637,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -714,7 +715,7 @@ tracks/5/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=11]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -777,7 +778,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -840,7 +841,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=13]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -920,7 +921,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=14]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -998,7 +999,7 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=17]
+[sub_resource type="CircleShape2D" id=15]
 radius = 60.4062
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -1031,34 +1032,36 @@ capacity = 5000
 
 [node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
 
-[node name="Knife" parent="Position2D" instance=ExtResource( 9 )]
+[node name="Knife" parent="Position2D" groups=[
+"Melee",
+] instance=ExtResource( 9 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
 playback_speed = 2.0
-anims/KnifeIdle = SubResource( 4 )
-anims/KnifeMelee = SubResource( 5 )
-anims/KnifeMove = SubResource( 6 )
-anims/PistolIdle = SubResource( 7 )
-anims/PistolMove = SubResource( 8 )
-anims/PistolReload = SubResource( 9 )
-anims/PistolShoot = SubResource( 10 )
+anims/KnifeIdle = SubResource( 2 )
+anims/KnifeMelee = SubResource( 3 )
+anims/KnifeMove = SubResource( 4 )
+anims/PistolIdle = SubResource( 5 )
+anims/PistolMove = SubResource( 6 )
+anims/PistolReload = SubResource( 7 )
+anims/PistolShoot = SubResource( 8 )
 anims/RifleIdle = ExtResource( 4 )
 anims/RifleMove = ExtResource( 2 )
-anims/RifleReload = SubResource( 11 )
-anims/RifleShoot = SubResource( 12 )
-anims/ShotgunIdle = SubResource( 13 )
-anims/ShotgunMove = SubResource( 14 )
-anims/ShotgunReload = SubResource( 15 )
-anims/ShotgunShoot = SubResource( 16 )
+anims/RifleReload = SubResource( 9 )
+anims/RifleShoot = SubResource( 10 )
+anims/ShotgunIdle = SubResource( 11 )
+anims/ShotgunMove = SubResource( 12 )
+anims/ShotgunReload = SubResource( 13 )
+anims/ShotgunShoot = SubResource( 14 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 21 )]
 collision_layer = 2147483649
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 17 )
+shape = SubResource( 15 )
 disabled = true
 
 [node name="IdleTimer" type="Timer" parent="."]
@@ -1071,6 +1074,14 @@ bus = "Guns"
 
 [node name="HealingTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Debugger" parent="." instance=ExtResource( 22 )]
+
+[node name="Control" parent="Debugger" index="0"]
+debug0 = "velocity"
+
+[node name="Label0" parent="Debugger/Control/VBoxContainer" index="5"]
+text = "\"velocity\": Variable not exists"
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_HealingTimer_timeout"]
@@ -1080,3 +1091,5 @@ one_shot = true
 [editable path="Position2D/Knife/Hitbox"]
 
 [editable path="HurtBox"]
+
+[editable path="Debugger"]

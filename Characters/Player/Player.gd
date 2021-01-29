@@ -148,7 +148,9 @@ func shoot():
 		var direction = Vector2( cos($Position2D.rotation) , sin($Position2D.rotation))
 		var velocityVector = velocity.normalized()
 		var velocityDot = velocityVector.dot(direction)
-		var inertiaSpeed = weaponSelected.weaponRange * .75 * velocityDot
+		var absVelocity = (abs(velocity.x) + abs(velocity.y))
+		var isMovingFast = floor ( absVelocity  / 1200 )
+		var inertiaSpeed = weaponSelected.weaponRange  * velocityDot * (.75 * isMovingFast)
 		inertiaSpeed = clamp(inertiaSpeed, - weaponSelected.weaponRange * minBulletSpdBonus, maxBulletSpdBonus)
 		bullet.bulletRange = weaponSelected.weaponRange  + inertiaSpeed
 	muzzle()
