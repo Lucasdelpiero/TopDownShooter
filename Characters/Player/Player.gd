@@ -81,7 +81,7 @@ func _ready():
 	knifeCollision.disabled = true
 var dir = 14
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	updateHUD()
 	dir = rad2deg(position2D.get_rotation())
 	

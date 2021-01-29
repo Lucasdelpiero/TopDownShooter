@@ -1,0 +1,128 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
+[ext_resource path="res://HUD/Main Menu/Options.gd" type="Script" id=2]
+[ext_resource path="res://HUD/Main Menu/SliderSound.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD/Main Menu/PanelBox.tres" type="StyleBox" id=4]
+[ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=5]
+
+[node name="OptionsLayer" type="CanvasLayer"]
+
+[node name="Options" type="Control" parent="."]
+pause_mode = 2
+anchor_left = 0.147461
+anchor_top = 0.138333
+anchor_right = 0.852539
+anchor_bottom = 0.861667
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+custom_styles/panel = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxScreen" type="HBoxContainer" parent="Options/VBoxContainer"]
+margin_right = 722.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxScreen"]
+margin_top = 4.0
+margin_right = 149.0
+margin_bottom = 42.0
+text = "Fullscreen"
+
+[node name="CheckBox" type="CheckBox" parent="Options/VBoxContainer/HBoxScreen"]
+margin_left = 153.0
+margin_right = 177.0
+margin_bottom = 46.0
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+
+[node name="Label2" type="Label" parent="Options/VBoxContainer/HBoxScreen"]
+margin_left = 181.0
+margin_top = 4.0
+margin_right = 487.0
+margin_bottom = 42.0
+text = "   Window resolution: "
+
+[node name="ScreenResolution" type="OptionButton" parent="Options/VBoxContainer/HBoxScreen"]
+margin_left = 491.0
+margin_right = 662.0
+margin_bottom = 44.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1024x600"
+items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
+selected = 0
+
+[node name="HBoxSFX" type="Control" parent="Options/VBoxContainer"]
+margin_top = 50.0
+margin_right = 722.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 420, 40 )
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxSFX"]
+margin_right = 209.0
+margin_bottom = 79.0
+text = "Sound Effects:
+"
+
+[node name="SliderSFX" parent="Options/VBoxContainer/HBoxSFX" instance=ExtResource( 3 )]
+min_value = -60.0
+
+[node name="LabelMute" type="Label" parent="Options/VBoxContainer/HBoxSFX"]
+margin_left = 460.0
+margin_right = 500.0
+margin_bottom = 38.0
+text = "Mute"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mute" type="CheckBox" parent="Options/VBoxContainer/HBoxSFX"]
+margin_left = 540.711
+margin_top = -4.20869
+margin_right = 564.711
+margin_bottom = 41.7913
+focus_mode = 0
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" parent="Options" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = -44.0
+margin_right = 64.0
+margin_bottom = 0.0
+text = "Back"
+[connection signal="toggled" from="Options/VBoxContainer/HBoxScreen/CheckBox" to="Options" method="_on_CheckBox_toggled"]
+[connection signal="item_selected" from="Options/VBoxContainer/HBoxScreen/ScreenResolution" to="Options" method="_on_ScreenResolution_item_selected"]
+[connection signal="value_changed" from="Options/VBoxContainer/HBoxSFX/SliderSFX" to="Options" method="_on_SliderSFX_value_changed"]
+[connection signal="toggled" from="Options/VBoxContainer/HBoxSFX/Mute" to="Options" method="_on_Mute_toggled"]
+[connection signal="pressed" from="Options/BackButton" to="Options" method="_on_BackButton_pressed"]
+
+[editable path="Options/BackButton"]
