@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Camera.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Characters/zombi/zombiExplosive.tscn" type="PackedScene" id=10]
 [ext_resource path="res://HUD/Main Menu/Options.tscn" type="PackedScene" id=11]
 [ext_resource path="res://HUD/Pause.gd" type="Script" id=12]
+[ext_resource path="res://Music/MusicPlayer.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Tileable2g.png 0"
@@ -30,6 +31,8 @@
 0/z_index = 0
 
 [node name="World" type="Node2D"]
+
+[node name="MusicPlayer" parent="." instance=ExtResource( 13 )]
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 layer = 2

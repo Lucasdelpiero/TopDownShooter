@@ -1,6 +1,16 @@
 extends Control
 
-onready var SliderSFX = $VBoxContainer/HBoxSFX/SliderSFX
+onready var SliderSFX = $VBoxContainer/BoxSFX/SliderSFX
+
+func _input(event):
+	if event.is_action_pressed("paused"):
+		var new_pause_state = not get_tree().paused
+		visible = new_pause_state
+
+func _on_BackButton_pressed():
+	visible = false
+	if get_tree().is_paused():
+		get_tree().paused = false
 
 func _on_CheckBox_toggled(button_pressed):
 	OS.set_window_fullscreen(not OS.is_window_fullscreen())
@@ -17,25 +27,23 @@ func _on_ScreenResolution_item_selected(index):
 	OS.center_window()
 
 
-func _on_SliderSFX_value_changed(value):
+func _on_SliderMaster_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
 
-#   AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true)
-
-
-
-func _on_Mute_toggled(button_pressed):
+func _on_MuteMaster_toggled(button_pressed):
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), button_pressed)
 
-func _input(event):
-	if event.is_action_pressed("paused"):
-		var new_pause_state = not get_tree().paused
-		visible = new_pause_state
+func _on_SliderSFX_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SoundEffects"), value)
+
+func _on_MuteSFX_toggled(button_pressed):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("SoundEffects"), button_pressed)
+
+func _on_SliderMusic_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
+
+func _on_MuteMusic_toggled(button_pressed):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), button_pressed)
 
 
 
-
-func _on_BackButton_pressed():
-	visible = false
-	if get_tree().is_paused():
-		get_tree().paused = false

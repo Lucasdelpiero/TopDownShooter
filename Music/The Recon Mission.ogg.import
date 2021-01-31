@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/The Recon Mission.ogg-49d2c995c70394250476473b8ebf58cc.oggstr"
+
+[deps]
+
+source_file="res://Music/The Recon Mission.ogg"
+dest_files=[ "res://.import/The Recon Mission.ogg-49d2c995c70394250476473b8ebf58cc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
