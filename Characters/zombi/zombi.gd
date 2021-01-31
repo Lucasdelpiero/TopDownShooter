@@ -17,6 +17,7 @@ onready var softCollision = $SoftCollision
 
 onready var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
 signal killed(type, byMelee, byExplosion)
+signal fillPlayerAmmo()
 var type = null
 
 
@@ -127,11 +128,10 @@ func _on_HurtBox_area_entered(area):
 	if health > 0:
 		health -= area.damage
 		if health < 1:
-			death(area)
 			if area.get_parent().is_in_group("Knife"):
-				var player = get_tree().get_nodes_in_group("Player")[0]
-				player.weaponSelected.ammo = player.weaponSelected.capacity
-				pass
+				connect("fillPlayerAmmo", get_tree().get_nodes_in_group("Player")[0], "fillAmmo" )
+				emit_signal("fillPlayerAmmo")
+			death(area)
 
 func death(area):
 	queue_free()

@@ -180,9 +180,12 @@ func startReloading():
 	animationPlayer.play(animReload)
 
 func reload():
-	weaponSelected.ammo = weaponSelected.capacity
+	fillAmmo()
 	reloading = false
 	animationPlayer.play(animMove)
+
+func fillAmmo():
+	weaponSelected.ammo = weaponSelected.capacity
 	updateHUD()
 
 func reloadSound():

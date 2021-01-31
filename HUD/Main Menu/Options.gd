@@ -24,7 +24,7 @@ func _on_BackButton_pressed():
 		get_tree().paused = false
 #	print(musicPlayer.tracks[0])
 
-func _on_CheckBox_toggled(button_pressed):
+func _on_CheckBox_toggled(_button_pressed):
 	OS.set_window_fullscreen(not OS.is_window_fullscreen())
 
 

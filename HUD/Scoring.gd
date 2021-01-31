@@ -25,26 +25,11 @@ var dictionary = {
 	"zombiBig" : 100,
 	"zombiFast" : 40,
 	"zombiExplosive" : 25,
-#	"physics_process" : 200
 }
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	startCombo()
-#	fadeLastCombo()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-#	if timerCombo.is_stopped():
-#		timerCombo.start()
-	pass
 
 func updateScore(name, byMelee, byExplosion):
 	var base = dictionary[name] 
