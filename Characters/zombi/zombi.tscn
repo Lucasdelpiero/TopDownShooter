@@ -125,8 +125,8 @@ visible = false
 occluder = SubResource( 5 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-visible = false
-rect = Rect2( -600, -600, 1200, 1200 )
+scale = Vector2( 0.0760488, 0.123189 )
+rect = Rect2( 0, 0, 12, 12 )
 process_parent = true
 physics_process_parent = true
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
