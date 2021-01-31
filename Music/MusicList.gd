@@ -1,6 +1,6 @@
-extends AudioStreamPlayer
+extends Node
 
-onready var tracks = [
+var tracks = [
 	"Fight Them Until We Cant",
 	"The Recon Mission",
 ]

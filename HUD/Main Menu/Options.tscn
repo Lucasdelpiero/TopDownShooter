@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Main Menu/Options.gd" type="Script" id=2]
 [ext_resource path="res://HUD/Main Menu/SliderSound.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/Main Menu/PanelBox.tres" type="StyleBox" id=4]
 [ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Music/MusicList.tscn" type="PackedScene" id=6]
 
 [node name="OptionsLayer" type="CanvasLayer"]
 
@@ -104,9 +105,9 @@ __meta__ = {
 }
 
 [node name="MuteMaster" type="CheckBox" parent="Options/VBoxContainer/BoxMaster"]
-margin_left = 440.0
+margin_left = 450.0
 margin_top = -2.71038
-margin_right = 464.0
+margin_right = 474.0
 margin_bottom = 43.2896
 focus_mode = 0
 enabled_focus_mode = 0
@@ -141,9 +142,9 @@ __meta__ = {
 }
 
 [node name="MuteSFX" type="CheckBox" parent="Options/VBoxContainer/BoxSFX"]
-margin_left = 440.0
+margin_left = 450.0
 margin_top = -4.20869
-margin_right = 464.0
+margin_right = 474.0
 margin_bottom = 41.7913
 focus_mode = 0
 enabled_focus_mode = 0
@@ -181,9 +182,9 @@ __meta__ = {
 }
 
 [node name="MuteMusic" type="CheckBox" parent="Options/VBoxContainer/BoxMusic"]
-margin_left = 440.0
+margin_left = 450.0
 margin_top = -4.20869
-margin_right = 464.0
+margin_right = 474.0
 margin_bottom = 41.7913
 focus_mode = 0
 enabled_focus_mode = 0
@@ -192,15 +193,17 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="Options/VBoxContainer/BoxMusic"]
-margin_left = 400.319
-margin_top = 107.878
-margin_right = 660.319
-margin_bottom = 151.878
-text = "Random Song"
+[node name="OptionMusic" type="OptionButton" parent="Options/VBoxContainer/BoxMusic"]
+margin_left = 499.085
+margin_right = 726.085
+margin_bottom = 44.0
+grow_horizontal = 0
+text = "Choose Song"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MusicList" parent="Options/VBoxContainer/BoxMusic" instance=ExtResource( 6 )]
 
 [node name="BackButton" parent="Options" instance=ExtResource( 5 )]
 anchor_left = 0.0
@@ -220,6 +223,7 @@ text = "Back"
 [connection signal="toggled" from="Options/VBoxContainer/BoxSFX/MuteSFX" to="Options" method="_on_MuteSFX_toggled"]
 [connection signal="value_changed" from="Options/VBoxContainer/BoxMusic/SliderMusic" to="Options" method="_on_SliderMusic_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/BoxMusic/MuteMusic" to="Options" method="_on_MuteMusic_toggled"]
+[connection signal="item_selected" from="Options/VBoxContainer/BoxMusic/OptionMusic" to="Options" method="_on_OptionMusic_item_selected"]
 [connection signal="pressed" from="Options/BackButton" to="Options" method="_on_BackButton_pressed"]
 
 [editable path="Options/BackButton"]
