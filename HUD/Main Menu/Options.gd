@@ -4,6 +4,8 @@ onready var optionMusic = $VBoxContainer/BoxMusic/OptionMusic
 onready var musicList = $VBoxContainer/BoxMusic/MusicList
 onready var musicPlayer = $"/root/MusicPlayer"
 
+var busMaster = AudioServer.get_bus_index("Master")
+
 func _ready():
 	randomize()
 	for i in musicList.tracks.size():
@@ -38,24 +40,29 @@ func _on_ScreenResolution_item_selected(index):
 			OS.set_window_size(Vector2(800, 600))
 	OS.center_window()
 
+func setVolume(bus , value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), value)
+
+func mute(bus, button_pressed):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(bus), button_pressed)
 
 func _on_SliderMaster_value_changed(value):
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
+	setVolume("Master", value)
 
 func _on_MuteMaster_toggled(button_pressed):
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), button_pressed)
+	mute("Master", button_pressed)
 
 func _on_SliderSFX_value_changed(value):
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SoundEffects"), value)
+	setVolume("SoundEffects", value)
 
 func _on_MuteSFX_toggled(button_pressed):
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("SoundEffects"), button_pressed)
+	mute("SoundEffects", button_pressed)
 
 func _on_SliderMusic_value_changed(value):
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
+	setVolume("Music", value)
 
 func _on_MuteMusic_toggled(button_pressed):
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), button_pressed)
+	mute("Music", button_pressed)
 
 func chooseRandomSong():
 	musicPlayer.stream = load ("res://Music/%s.ogg"  %musicList.tracks[randi() % musicList.tracks.size()] )
