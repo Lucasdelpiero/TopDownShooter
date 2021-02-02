@@ -55,3 +55,4 @@ anims/blood = SubResource( 1 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
+bus = "SoundEffects"

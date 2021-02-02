@@ -111,8 +111,10 @@ wander_range = 2400
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
+bus = "SoundEffects"
 
 [node name="AudioHitted" type="AudioStreamPlayer" parent="."]
+bus = "SoundEffects"
 
 [node name="ZombiSoundTimer" type="Timer" parent="."]
 one_shot = true
