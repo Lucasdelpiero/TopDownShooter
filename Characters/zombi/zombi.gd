@@ -15,7 +15,8 @@ onready var position2d = $Position2D
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
 
-onready var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
+onready var navigation = get_tree().get_root().find_node("Navigation2D")
+
 signal killed(type, byMelee, byExplosion)
 signal fillPlayerAmmo()
 var type = null
@@ -50,6 +51,8 @@ func _ready():
 	animatedSprite.frame = rand_range(0, 8)
 	animatedSprite.playing = true
 	zombiSoundTimer.start(rand_range(4,40))
+	yield(get_tree().get_root(), "ready")
+	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
 	connect("killed", scoreControl, "updateScore")
 	get_type()
 

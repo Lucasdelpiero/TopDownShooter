@@ -32,6 +32,9 @@
 0/z_index = 0
 
 [node name="World" type="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="HUD" parent="." instance=ExtResource( 12 )]
 layer = 10
@@ -42,6 +45,9 @@ layer = 10
 
 [node name="OptionsLayer" parent="." instance=ExtResource( 11 )]
 layer = 10
+
+[node name="ScreenResolution" parent="OptionsLayer/Options/VBoxContainer/HBoxScreen" index="3"]
+items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
