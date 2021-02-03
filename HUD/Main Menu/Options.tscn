@@ -11,6 +11,7 @@
 
 [node name="Options" type="Control" parent="."]
 pause_mode = 2
+visible = false
 anchor_left = 0.147461
 anchor_top = 0.138333
 anchor_right = 0.852539

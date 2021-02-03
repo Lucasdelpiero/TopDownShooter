@@ -1004,8 +1004,13 @@ radius = 60.4062
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-collision_mask = 0
+collision_mask = 4
 script = ExtResource( 1 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

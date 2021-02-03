@@ -3,6 +3,7 @@ extends KinematicBody2D
 var Bullet = preload("res://World/Objects/Bullet.tscn")
 var Muzzle = preload("res://World/Objects/Muzzle.tscn")
 
+
 export var speed = 1200
 export var acceleration = 2500
 export(float, 0.01, 0.5) var idle_time = 0.1

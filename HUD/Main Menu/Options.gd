@@ -9,7 +9,6 @@ onready var sliderSFX = $VBoxContainer/BoxSFX/SliderSFX
 onready var sliderMusic = $VBoxContainer/BoxMusic/SliderMusic
 onready var min_value = sliderMaster.min_value
 
-var sliders = []
 
 func _ready():
 	randomize()
