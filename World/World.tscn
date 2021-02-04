@@ -236,31 +236,37 @@ position = Vector2( -74.751, -2114.39 )
 position = Vector2( 800.904, -790.225 )
 z_index = 0
 z_as_relative = true
+collision_mask = 2147483652
 
 [node name="zombiExplosive2" parent="Zombies" instance=ExtResource( 10 )]
 position = Vector2( -1078.55, -993.121 )
 z_index = 0
 z_as_relative = true
+collision_mask = 2147483652
 
 [node name="zombiExplosive3" parent="Zombies" instance=ExtResource( 10 )]
 position = Vector2( 2562.89, -1794.02 )
 z_index = 0
 z_as_relative = true
+collision_mask = 2147483652
 
 [node name="zombiBig" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( -822.261, -459.185 )
 z_index = 0
 z_as_relative = true
+collision_mask = 2147483652
 
 [node name="zombiBig2" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( -784.164, -1183.04 )
 z_index = 0
 z_as_relative = true
+collision_mask = 2147483652
 
 [node name="zombiBig3" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( -584.151, -1675.13 )
 z_index = 0
 z_as_relative = true
+collision_mask = 2147483652
 
 [node name="Grass" parent="." instance=ExtResource( 14 )]
 

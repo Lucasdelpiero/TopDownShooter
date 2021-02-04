@@ -36,7 +36,7 @@ enum{
 export var ACCELERATION = 300
 export var FRICTION = 200
 export var WANDER_TARGET_RANGE = 8
-var state = CHASE
+var state = IDLE
 var velocity = Vector2.ZERO
 export var max_speed = 200
 var acceleration = 40
@@ -70,21 +70,16 @@ func _physics_process(delta):
 		WANDER:
 			seek_player()
 			wander_state()
-		CHASE:
-			chase_state(delta)
-#			var player = playerDetectionZone.player
-#			if player != null:
-#				direction = get_angle_to(player.get_global_position())
-#				velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
-#			else:
-#				state = IDLE
-#	if softCollision.is_colliding():
-#		velocity += softCollision.get_push_vector() * delta * 400
-#	velocity = move_and_slide(velocity)
-#	animatedSprite.rotation_degrees = rad2deg(direction)
+			velocity = move_and_slide(velocity)
+			animatedSprite.rotation_degrees = rad2deg(direction)
 
 func _process(delta):
-	chase_state(delta)
+	match state:
+		CHASE:
+			chase_state(delta)
+			velocity = move_and_slide(velocity)
+
+	
 #STATE MACHINE
 func idle_state(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -110,6 +105,9 @@ func seek_player():
 func chase_state(delta):
 	var moveDistance = max_speed * delta
 	move_along_path(moveDistance)
+	var player = playerDetectionZone.player
+	if player == null:
+		state = IDLE
 
 func pick_random_state(state_list):
 	state_list.shuffle()
@@ -177,6 +175,8 @@ func move_along_path(distance : float) -> void:
 		var distanceToNextPoint = startPoint.distance_to(path[0])
 		if distance <= distanceToNextPoint and distance >= 0.0:
 			position = startPoint.linear_interpolate(path[0], distance / distanceToNextPoint)
+			direction = get_angle_to(path[0])
+			velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
 			break
 		elif distance < 0.0:
 			position = path[0]

@@ -89,6 +89,8 @@ position = Vector2( 857.032, -1756.02 )
 
 [node name="Line2D" type="Line2D" parent="."]
 
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+
 [editable path="Player"]
 
 [editable path="Camera"]

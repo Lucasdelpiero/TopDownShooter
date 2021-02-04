@@ -9,6 +9,7 @@ onready var nav2D : Navigation2D = $Navigation2D
 onready var zombies = []
 onready var player = find_node("Player")
 onready var line2D = $Line2D
+onready var navPolygon = "res://Characters/zombi/zombiNavigationPolygon.tres"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create(HUD)
@@ -21,6 +22,11 @@ func _ready():
 func create(resource):
 	var node = resource.instance()
 	add_child(node)
+	for zombi in zombies:
+		var navZombi = NavigationPolygonInstance.new()
+		nav2D.add_child(navZombi)
+		navZombi.navpoly = navPolygon
+		navZombi.global_position = zombi.global_position
 
 
 func _process(delta):
