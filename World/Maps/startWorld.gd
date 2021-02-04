@@ -7,17 +7,27 @@ var OptionsLayer = preload("res://HUD/Main Menu/Options.tscn")
 
 onready var nav2D : Navigation2D = $Navigation2D
 onready var zombies = []
-
+onready var player = find_node("Player")
+onready var line2D = $Line2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create(HUD)
 	create(PauseScreen)
 	create(Darkness)
 	create(OptionsLayer)
-	zombies = get_tree().get_nodes_in_group("zombi")
-	print(zombies[0])
-	print(zombies.size())
+	
+	
 
-func create(res):
-	var node = res.instance()
+func create(resource):
+	var node = resource.instance()
 	add_child(node)
+
+
+func _process(delta):
+	zombies = get_tree().get_nodes_in_group("zombi")
+	for zombi in zombies:
+		var newPath : = nav2D.get_simple_path(zombi.global_position, player.global_position)
+		zombi.set_path(newPath)
+		line2D.points = newPath
+		pass
+		

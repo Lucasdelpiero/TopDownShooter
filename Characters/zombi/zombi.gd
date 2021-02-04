@@ -14,7 +14,6 @@ onready var zombiSoundTimer = $ZombiSoundTimer
 onready var position2d = $Position2D
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
-
 onready var navigation = get_tree().get_root().find_node("Navigation2D")
 
 signal killed(type, byMelee, byExplosion)
@@ -37,7 +36,7 @@ enum{
 export var ACCELERATION = 300
 export var FRICTION = 200
 export var WANDER_TARGET_RANGE = 8
-var state = IDLE
+var state = CHASE
 var velocity = Vector2.ZERO
 export var max_speed = 200
 var acceleration = 40
@@ -46,7 +45,10 @@ export var health = 5
 var player = null
 export var explosive = false
 
+export var path : = PoolVector2Array() setget set_path
+
 func _ready():
+	set_process(false)
 	animatedSprite.rotation_degrees = rand_range(-180, 180)
 	animatedSprite.frame = rand_range(0, 8)
 	animatedSprite.playing = true
@@ -69,18 +71,20 @@ func _physics_process(delta):
 			seek_player()
 			wander_state()
 		CHASE:
-#			chase_state(delta)
-			var player = playerDetectionZone.player
-			if player != null:
-				direction = get_angle_to(player.get_global_position())
-				velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
-			else:
-				state = IDLE
-	if softCollision.is_colliding():
-		velocity += softCollision.get_push_vector() * delta * 400
-	velocity = move_and_slide(velocity)
-	animatedSprite.rotation_degrees = rad2deg(direction)
+			chase_state(delta)
+#			var player = playerDetectionZone.player
+#			if player != null:
+#				direction = get_angle_to(player.get_global_position())
+#				velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
+#			else:
+#				state = IDLE
+#	if softCollision.is_colliding():
+#		velocity += softCollision.get_push_vector() * delta * 400
+#	velocity = move_and_slide(velocity)
+#	animatedSprite.rotation_degrees = rad2deg(direction)
 
+func _process(delta):
+	chase_state(delta)
 #STATE MACHINE
 func idle_state(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -102,13 +106,10 @@ func update_wander():
 func seek_player():
 	if playerDetectionZone.can_see_player():
 		state = CHASE
-#func chase_state(delta):
-#	var player = playerDetectionZone.player
-#	if player != null:
-#		accelerate_towards_point(player.global_position, delta)
-##		velocity.x = move_toward(global_position.x , player.global_position.x ,50* delta)
-#	else:
-#		state = IDLE
+
+func chase_state(delta):
+	var moveDistance = max_speed * delta
+	move_along_path(moveDistance)
 
 func pick_random_state(state_list):
 	state_list.shuffle()
@@ -169,6 +170,25 @@ func soundHitted():
 	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
 	audioHitted.play()
 
+# Path Finding
+func move_along_path(distance : float) -> void:
+	var startPoint = position
+	for i in range(path.size()):
+		var distanceToNextPoint = startPoint.distance_to(path[0])
+		if distance <= distanceToNextPoint and distance >= 0.0:
+			position = startPoint.linear_interpolate(path[0], distance / distanceToNextPoint)
+			break
+		elif distance < 0.0:
+			position = path[0]
+			set_process(false)
+			break
+		distance -= distanceToNextPoint
+		startPoint = path[0]
+		path.remove(0)
 
-
+func set_path(value : PoolVector2Array) -> void :
+	path = value
+	if value.size() == 0 :
+		return
+	set_process(true)
 
