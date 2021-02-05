@@ -6,6 +6,8 @@ const Explosion = preload("res://World/Objects/Barrel/Explosion.tscn")
 const BloodParticle = preload("res://Characters/zombi/Blood/BloodParticles.tscn")
 const BloodStain = preload("res://Characters/zombi/Blood/BloodStain.tscn")
 
+
+
 onready var animatedSprite = $AnimatedSprite
 onready var wanderController = $WanderController
 onready var audioStreamPlayer = $AudioStreamPlayer
@@ -44,6 +46,7 @@ var direction = 0.0
 export var health = 5
 var player = null
 export var explosive = false
+var rotationSmooth = 0.125
 
 export var path : = PoolVector2Array() setget set_path
 
@@ -78,6 +81,7 @@ func _process(delta):
 		CHASE:
 			chase_state(delta)
 			velocity = move_and_slide(velocity)
+			animatedSprite.rotation_degrees = rad2deg(direction)
 
 	
 #STATE MACHINE
@@ -101,6 +105,10 @@ func update_wander():
 func seek_player():
 	if playerDetectionZone.can_see_player():
 		state = CHASE
+	else:
+		match state:
+			CHASE:
+				state = IDLE
 
 func chase_state(delta):
 	var moveDistance = max_speed * delta
@@ -175,7 +183,7 @@ func move_along_path(distance : float) -> void:
 		var distanceToNextPoint = startPoint.distance_to(path[0])
 		if distance <= distanceToNextPoint and distance >= 0.0:
 			position = startPoint.linear_interpolate(path[0], distance / distanceToNextPoint)
-			direction = get_angle_to(path[0])
+			direction = lerp_angle(direction, get_angle_to(path[0]), rotationSmooth )
 			velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
 			break
 		elif distance < 0.0:

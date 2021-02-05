@@ -5,6 +5,7 @@ var PauseScreen = preload("res://HUD/PauseScreen.tscn")
 var Darkness = preload("res://HUD/Darkness.tscn")
 var OptionsLayer = preload("res://HUD/Main Menu/Options.tscn")
 
+
 onready var nav2D : Navigation2D = $Navigation2D
 onready var zombies = []
 onready var player = find_node("Player")
@@ -30,10 +31,12 @@ func create(resource):
 
 
 func _process(delta):
-	zombies = get_tree().get_nodes_in_group("zombi")
-	for zombi in zombies:
-		var newPath : = nav2D.get_simple_path(zombi.global_position, player.global_position)
-		zombi.set_path(newPath)
-		line2D.points = newPath
-		pass
-		
+	if player != null :
+		zombies = get_tree().get_nodes_in_group("zombi")
+		for zombi in zombies:
+			var newPath : = nav2D.get_simple_path(zombi.global_position, player.global_position, true)
+			zombi.set_path(newPath)
+			line2D.points = newPath
+
+func playerDeath():
+	player = null

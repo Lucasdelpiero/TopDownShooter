@@ -1066,7 +1066,6 @@ collision_layer = 2147483649
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 15 )
-disabled = true
 
 [node name="IdleTimer" type="Timer" parent="."]
 
