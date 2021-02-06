@@ -29,14 +29,3 @@ func create(resource):
 		navZombi.navpoly = navPolygon
 		navZombi.global_position = zombi.global_position
 
-
-func _process(delta):
-	if player != null :
-		zombies = get_tree().get_nodes_in_group("zombi")
-		for zombi in zombies:
-			var newPath : = nav2D.get_simple_path(zombi.global_position, player.global_position, true)
-			zombi.set_path(newPath)
-			line2D.points = newPath
-
-func playerDeath():
-	player = null

@@ -41,7 +41,7 @@ radius = 100.0
 radius = 123.386
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 4693.64
+radius = 1800.0
 
 [sub_resource type="OccluderPolygon2D" id=5]
 cull_mode = 1
@@ -53,11 +53,12 @@ polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.0
 z_index = 2
 z_as_relative = false
 collision_layer = 2147483650
-collision_mask = 2147483655
+collision_mask = 2147483651
 script = ExtResource( 18 )
 FRICTION = 1200
 max_speed = 400
 health = 3
+rotationSmooth = 0.25
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 z_index = 2
@@ -100,6 +101,7 @@ modulate = Color( 1, 1, 1, 0.415686 )
 shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -7, 9 )
 shape = SubResource( 2 )
 __meta__ = {
@@ -131,8 +133,18 @@ scale = Vector2( 0.0760488, 0.123189 )
 rect = Rect2( 0, 0, 12, 12 )
 process_parent = true
 physics_process_parent = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 1800, 0 )
+collision_mask = 4
+
+[node name="PathFindTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="ZombiSoundTimer" to="." method="_on_ZombiSound_timeout"]
+[connection signal="timeout" from="PathFindTimer" to="." method="_on_PathFindTimer_timeout"]
 
 [editable path="HurtBox"]
 

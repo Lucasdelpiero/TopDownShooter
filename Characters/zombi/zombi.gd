@@ -16,7 +16,9 @@ onready var zombiSoundTimer = $ZombiSoundTimer
 onready var position2d = $Position2D
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
-onready var navigation = get_tree().get_root().find_node("Navigation2D")
+onready var navigation = get_tree().get_root().find_node("Navigation2D", true, false)
+onready var rayCast = $RayCast2D
+onready var pathTimer = $PathFindTimer
 
 signal killed(type, byMelee, byExplosion)
 signal fillPlayerAmmo()
@@ -46,7 +48,7 @@ var direction = 0.0
 export var health = 5
 var player = null
 export var explosive = false
-var rotationSmooth = 0.125
+export var rotationSmooth = 0.125
 
 export var path : = PoolVector2Array() setget set_path
 
@@ -60,6 +62,7 @@ func _ready():
 	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
 	connect("killed", scoreControl, "updateScore")
 	get_type()
+
 
 func _physics_process(delta):
 	match state:
@@ -75,13 +78,19 @@ func _physics_process(delta):
 			wander_state()
 			velocity = move_and_slide(velocity)
 			animatedSprite.rotation_degrees = rad2deg(direction)
-
+	rayCast.rotation = direction
+	
 func _process(delta):
 	match state:
 		CHASE:
 			chase_state(delta)
 			velocity = move_and_slide(velocity)
-			animatedSprite.rotation_degrees = rad2deg(direction)
+#			velocity = Vector2.ZERO
+#			while animatedSprite.rotation_degrees > 360:
+#				animatedSprite.rotation -= 360
+#			while animatedSprite.rotation_degrees < 0:
+#				animatedSprite.rotation += 360
+			animatedSprite.rotation = lerp_angle(animatedSprite.rotation, direction, rotationSmooth)
 
 	
 #STATE MACHINE
@@ -111,11 +120,15 @@ func seek_player():
 				state = IDLE
 
 func chase_state(delta):
-	var moveDistance = max_speed * delta
-	move_along_path(moveDistance)
-	var player = playerDetectionZone.player
+	player = playerDetectionZone.player
 	if player == null:
 		state = IDLE
+	else:
+		if pathTimer.is_stopped():
+			get_path()
+		var moveDistance = max_speed * delta
+		move_along_path(moveDistance)
+
 
 func pick_random_state(state_list):
 	state_list.shuffle()
@@ -181,9 +194,9 @@ func move_along_path(distance : float) -> void:
 	var startPoint = position
 	for i in range(path.size()):
 		var distanceToNextPoint = startPoint.distance_to(path[0])
-		if distance <= distanceToNextPoint and distance >= 0.0:
-			position = startPoint.linear_interpolate(path[0], distance / distanceToNextPoint)
-			direction = lerp_angle(direction, get_angle_to(path[0]), rotationSmooth )
+		if distance <= distanceToNextPoint  and distance >= 0.0:
+#			position = startPoint.linear_interpolate(path[0], distance / distanceToNextPoint)
+			direction = get_angle_to(path[0])
 			velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
 			break
 		elif distance < 0.0:
@@ -200,3 +213,11 @@ func set_path(value : PoolVector2Array) -> void :
 		return
 	set_process(true)
 
+func get_path():
+	if player != null:
+		path = navigation.get_simple_path(global_position, player.global_position, true)
+		pathTimer.start(0.2)
+
+
+func _on_PathFindTimer_timeout():
+	get_path()
