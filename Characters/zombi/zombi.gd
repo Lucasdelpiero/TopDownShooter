@@ -49,11 +49,16 @@ export var health = 5
 var player = null
 export var explosive = false
 export var rotationSmooth = 0.125
+var usePathfinding = false
+var timeToPathfind : float = 1.0
 
 export var path : = PoolVector2Array() setget set_path
 
 func _ready():
 	set_process(false)
+	wallCollide(true)
+	randomize()
+	timeToPathfind += randf()
 	animatedSprite.rotation_degrees = rand_range(-180, 180)
 	animatedSprite.frame = rand_range(0, 8)
 	animatedSprite.playing = true
@@ -72,24 +77,19 @@ func _physics_process(delta):
 			if wanderController.get_time_left() == 0:
 				update_wander()
 			idle_state(delta)
-		
+			
 		WANDER:
 			seek_player()
 			wander_state()
-			velocity = move_and_slide(velocity)
 			animatedSprite.rotation_degrees = rad2deg(direction)
-	rayCast.rotation = direction
+	if player != null:
+		var angle = get_angle_to(player.position)
+		rayCast.set_cast_to( position.distance_to(player.position) * position.direction_to(player.position) )
 	
 func _process(delta):
 	match state:
 		CHASE:
 			chase_state(delta)
-			velocity = move_and_slide(velocity)
-#			velocity = Vector2.ZERO
-#			while animatedSprite.rotation_degrees > 360:
-#				animatedSprite.rotation -= 360
-#			while animatedSprite.rotation_degrees < 0:
-#				animatedSprite.rotation += 360
 			animatedSprite.rotation = lerp_angle(animatedSprite.rotation, direction, rotationSmooth)
 
 	
@@ -101,10 +101,12 @@ func idle_state(delta):
 
 func wander_state():
 	if wanderController.get_time_left() == 0:
+		wanderController.start_position = global_position
 		update_wander()
 	direction = get_angle_to(wanderController.target_position)
 	velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
-	if global_position.distance_to(wanderController.target_position) < max_speed:
+	velocity = move_and_slide(velocity)
+	if global_position.distance_to(wanderController.target_position) < max_speed or get_slide_count() > 0 :
 		state = IDLE
 
 func update_wander():
@@ -114,21 +116,24 @@ func update_wander():
 func seek_player():
 	if playerDetectionZone.can_see_player():
 		state = CHASE
-	else:
-		match state:
-			CHASE:
-				state = IDLE
+		wallCollide(false)
+
 
 func chase_state(delta):
 	player = playerDetectionZone.player
 	if player == null:
 		state = IDLE
+		wallCollide(true)
+		
 	else:
-		if pathTimer.is_stopped():
-			get_path()
-		var moveDistance = max_speed * delta
-		move_along_path(moveDistance)
-
+		if rayCast.is_colliding():
+#		if usePathfinding:
+			if pathTimer.is_stopped():
+				get_path()
+			var moveDistance = max_speed * delta
+			move_along_path(moveDistance)
+		else:
+			moveDirect()
 
 func pick_random_state(state_list):
 	state_list.shuffle()
@@ -206,6 +211,9 @@ func move_along_path(distance : float) -> void:
 		distance -= distanceToNextPoint
 		startPoint = path[0]
 		path.remove(0)
+#	move_and_slide( Vector2(0.0, 0.0) )
+	velocity = move_and_slide(velocity)
+
 
 func set_path(value : PoolVector2Array) -> void :
 	path = value
@@ -215,9 +223,21 @@ func set_path(value : PoolVector2Array) -> void :
 
 func get_path():
 	if player != null:
-		path = navigation.get_simple_path(global_position, player.global_position, true)
-		pathTimer.start(0.2)
+		if rayCast.is_colliding():
+			usePathfinding = true
+			path = navigation.get_simple_path(global_position, player.global_position, true)
+			pathTimer.start(timeToPathfind) #0.2 originally
+		else:
+			usePathfinding = false
+			
 
+func moveDirect():
+		direction = get_angle_to(player.get_global_position())
+		velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
+		velocity = move_and_slide(velocity)
 
 func _on_PathFindTimer_timeout():
 	get_path()
+
+func wallCollide(value : bool):
+	set_collision_mask_bit(2, value)
