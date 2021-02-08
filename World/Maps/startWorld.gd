@@ -18,7 +18,7 @@ func _ready():
 	create(Darkness)
 	create(OptionsLayer)
 	
-	
+
 
 func create(resource):
 	var node = resource.instance()

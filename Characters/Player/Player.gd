@@ -19,7 +19,6 @@ var maxBulletSpdBonus = 1000
 
 signal updateHUD(health, ammo, capacity)
 signal updateHUDWeapon(name)
-#signal playerDeath()
 
 onready var animationPlayer = $Position2D/AnimationPlayer
 onready var position2D = $Position2D
@@ -83,7 +82,6 @@ func _ready():
 	yield(get_tree().get_root(), "ready")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 	connect("updateHUD", HUD, "_on_Player_updateHUD")
-#	connect("playerDeath", get_tree().get_root(), "playerDeath")
 	knifeCollision.disabled = true
 var dir = 14
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -214,7 +212,6 @@ func choose_weapon():
 func updateState():
 	automatic = weaponSelected.automatic
 	ammoSelected = weaponSelected.ammo
-#	audioGuns.stream = weaponSelected.shotSound
 	updateAnimations()
 	updateHUD()
 
@@ -270,7 +267,6 @@ func _on_HealingTimer_timeout():
 
 func death():
 	soundDeath()
-#	emit_signal("playerDeath")
 	queue_free()
 
 func soundPain():
