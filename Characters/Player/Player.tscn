@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_melee.png" type="Texture" id=19]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_move.png" type="Texture" id=20]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
-[ext_resource path="res://HUD/Debugger.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 
@@ -1079,8 +1078,6 @@ bus = "SoundEffects"
 
 [node name="HealingTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="Debugger" parent="." instance=ExtResource( 22 )]
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
@@ -1091,5 +1088,3 @@ one_shot = true
 [editable path="Position2D/Knife/Hitbox"]
 
 [editable path="HurtBox"]
-
-[editable path="Debugger"]

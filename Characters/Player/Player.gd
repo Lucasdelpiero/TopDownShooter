@@ -11,13 +11,15 @@ var shooting = false
 var canShoot = true
 var automatic = false
 var velocity = Vector2.ZERO
-export var health = 100
+export var health = 100 setget updateHealth, getHealth
 var bonusHealing = false
 
 var minBulletSpdBonus = 0.3
 var maxBulletSpdBonus = 1000
 
 signal updateHUD(health, ammo, capacity)
+signal updateHealthHUD(health)
+signal updateAmmo(ammo, capacity)
 signal updateHUDWeapon(name)
 
 onready var animationPlayer = $Position2D/AnimationPlayer
@@ -35,7 +37,7 @@ onready var knife = $Position2D/Knife
 onready var knifeCollision = $Position2D/Knife/Hitbox/CollisionShape2D
 
 
-onready var weaponSelected = rifle
+onready var weaponSelected = rifle setget updateWeapon, getWeapon
 
 onready  var pistolCapacity = 12
 onready var pistolAmmo = pistolCapacity
@@ -44,6 +46,7 @@ onready var rifleAmmo = rifle.ammo
 export var shotgunCapacity = 8
 onready var shotgunAmmo = shotgunCapacity
 var reloading = false
+onready var weaponSelectedAmmo = weaponSelected.ammo 
 
 const painSounds = [
 	"pain1",
@@ -80,20 +83,19 @@ func _on_Player_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 	connect("updateHUD", HUD, "_on_Player_updateHUD")
+	connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
 	randomize()
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true
+	updateHUD()
 
 var dir = 14
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	updateHUD()
+#	updateHUD()
 	dir = rad2deg(position2D.get_rotation())
-	
 	move(delta)
-	
-#	updateState()
 	
 	choose_weapon()
 	
@@ -111,7 +113,6 @@ func _physics_process(delta):
 			melee()
 	if Input.is_action_just_pressed("reload"):
 		startReloading()
-#		reload()
 
 func move(delta):
 	var input_vector = Vector2.ZERO
@@ -122,7 +123,6 @@ func move(delta):
 		if (not startedShooting) :
 			if input_vector.x != 0 or input_vector.y != 0:
 				animationPlayer.play(animMove)
-
 			else:
 				animationPlayer.play(animIdle)
 
@@ -166,8 +166,8 @@ func shoot():
 	shooting = true
 	startedShooting = false
 	timer.start(idle_time)
-	weaponSelected.ammo -= 1
-	updateHUD()
+	self.weaponSelected.ammo -= 1
+#	updateHUD()
 
 func melee():
 	canShoot = false
@@ -191,8 +191,7 @@ func reload():
 	animationPlayer.play(animMove)
 
 func fillAmmo():
-	weaponSelected.ammo = weaponSelected.capacity
-	updateHUD()
+	self.weaponSelected.ammo = weaponSelected.capacity
 
 func reloadSound():
 	audioGuns.stream = weaponSelected.reloadSound
@@ -202,20 +201,19 @@ func choose_weapon():
 	if not reloading:
 		if Input.is_action_just_pressed("pistol"):
 			state = PISTOL
-			weaponSelected = pistol
+			self.weaponSelected = pistol
 		if Input.is_action_just_pressed("rifle"):
 			state = RIFLE
-			weaponSelected = rifle
+			self.weaponSelected = rifle
 		if Input.is_action_just_pressed("shotgun"):
-			weaponSelected = shotgun
+			self.weaponSelected = shotgun
 		updateState()
 		emit_signal("updateHUDWeapon", str(weaponSelected.name) )
 
 func updateState():
 	automatic = weaponSelected.automatic
-	ammoSelected = weaponSelected.ammo
+	self.ammoSelected = weaponSelected.ammo
 	updateAnimations()
-	updateHUD()
 
 func updateAnimations():
 	animMove = weaponSelected.name + "Move"
@@ -239,24 +237,20 @@ func updateHUD():
 	emit_signal("updateHUD", health, weaponSelected.ammo, weaponSelected.capacity)
 
 func _on_HurtBox_area_entered(area):
-	health -= area.damage
+	self.health = -area.damage
 	hurtbox.start_invincibility(0.3)
-	updateHUD()
 	modulate = Color(1.0, 0.0, 0.0, 1.0)
 	if health <= 0:
 		death()
 	else:
 		soundPain()
-#	hurtbox.create_hit_effect()
-#	var playerHurtSound = PlayerHurtSound.instance()
-#	get_tree().current_scene.add_child(playerHurtSound)
 
 func bonusHeal(time):
 	if not bonusHealing:
 		bonusHealing = true
 		healingTimer.start(time)
 		if health < 100:
-			health += 5
+			self.health = 5
 	
 func _on_HealingTimer_timeout():
 	bonusHealing = false
@@ -275,4 +269,16 @@ func soundDeath():
 	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(deathSounds[randi() % deathSounds.size()]) ) 
 	audioPain.play()
 
+func getHealth():
+	return health
 
+func updateHealth(change):
+	health += change
+	updateHUD()
+
+func updateWeapon(weapon):
+	weaponSelected = weapon
+	updateHUD()
+
+func getWeapon():
+	return weaponSelected

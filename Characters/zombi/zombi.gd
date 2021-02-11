@@ -62,7 +62,6 @@ func _on_zombi_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
 	connect("killed", scoreControl, "updateScore")
-	print("done")
 	get_type()
 
 
