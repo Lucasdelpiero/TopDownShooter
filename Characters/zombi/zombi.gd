@@ -22,6 +22,7 @@ onready var pathTimer = $PathFindTimer
 
 signal killed(type, byMelee, byExplosion)
 signal fillPlayerAmmo()
+signal healPlayer(time)
 var type = null
 
 
@@ -158,7 +159,9 @@ func _on_HurtBox_area_entered(area):
 		if health < 1:
 			if area.get_parent().is_in_group("Knife"):
 				connect("fillPlayerAmmo", get_tree().get_nodes_in_group("Player")[0], "fillAmmo" )
+				connect("healPlayer", player, "bonusHeal")
 				emit_signal("fillPlayerAmmo")
+				emit_signal("healPlayer", 0.5)
 			death(area)
 
 func death(area):

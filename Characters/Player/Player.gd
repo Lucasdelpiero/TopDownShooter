@@ -76,14 +76,16 @@ enum {
 
 var state = RIFLE
 
-func _ready():
-	randomize()
-	get_tree().call_group("zombies", "set_player", self)
-	yield(get_tree().get_root(), "ready")
+func _on_Player_tree_entered():
+	yield(get_tree().create_timer(0.01), "timeout")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 	connect("updateHUD", HUD, "_on_Player_updateHUD")
+	randomize()
+	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true
+
 var dir = 14
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	updateHUD()
@@ -249,12 +251,6 @@ func _on_HurtBox_area_entered(area):
 #	var playerHurtSound = PlayerHurtSound.instance()
 #	get_tree().current_scene.add_child(playerHurtSound)
 
-#reload when melee
-func _on_Hitbox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
-	weaponSelected.ammo = weaponSelected.capacity
-	bonusHeal(0.5)
-	updateHUD()
-
 func bonusHeal(time):
 	if not bonusHealing:
 		bonusHealing = true
@@ -278,15 +274,5 @@ func soundPain():
 func soundDeath():
 	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(deathSounds[randi() % deathSounds.size()]) ) 
 	audioPain.play()
-
-
-
-
-
-
-
-
-
-
 
 
