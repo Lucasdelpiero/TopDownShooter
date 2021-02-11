@@ -44,10 +44,10 @@ radius = 123.386
 resource_local_to_scene = true
 radius = 3292.98
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=5]
 radius = 64.0
 
-[sub_resource type="OccluderPolygon2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=6]
 cull_mode = 1
 polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.06127, 1.23976, 4.439, 2.97215, 0.816723, 0.452305, -2.80555, -4.11491, -5.56163 )
 
@@ -105,7 +105,7 @@ shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( -7, 9 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -128,7 +128,7 @@ autostart = true
 visible = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Position2D"]
-occluder = SubResource( 5 )
+occluder = SubResource( 6 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 scale = Vector2( 0.0760488, 0.123189 )
@@ -144,6 +144,7 @@ collision_mask = 4
 [node name="PathFindTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+[connection signal="tree_entered" from="." to="." method="_on_zombi_tree_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="ZombiSoundTimer" to="." method="_on_ZombiSound_timeout"]
 [connection signal="timeout" from="PathFindTimer" to="." method="_on_PathFindTimer_timeout"]

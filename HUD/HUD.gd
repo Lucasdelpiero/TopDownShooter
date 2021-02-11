@@ -18,7 +18,6 @@ func _on_Player_updateHUD(health, ammo, capacity):
 	healthBar.value = health
 	label.text = str(ammo) + " / " + str(capacity)
 
-
 func _on_Player_updateHUDWeapon(name):
 	#Resets color for all
 	for i in gridContainer.get_children():

@@ -27,6 +27,10 @@ var dictionary = {
 	"zombiExplosive" : 25,
 }
 
+func _on_Scoring_tree_entered():
+	yield(get_tree().create_timer(0.01), "timeout")
+	startCombo()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	startCombo()
@@ -86,5 +90,8 @@ func fadeLastCombo():
 func unFadeLastCombo():
 	tweenLastCombo.interpolate_property(lastCombo, "modulate", fadedAlpha, initialAlpha, 0, Tween.TRANS_LINEAR)
 	tweenLastCombo.start()
+
+
+
 
 

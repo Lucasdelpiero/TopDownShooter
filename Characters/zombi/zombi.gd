@@ -55,19 +55,23 @@ var timeToPathfind : float = 1.0
 
 export var path : = PoolVector2Array() setget set_path
 
-func _ready():
+func _on_zombi_tree_entered():
 	set_process(false)
 	wallCollide(true)
 	randomize()
+	yield(get_tree().create_timer(0.01), "timeout")
+	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
+	connect("killed", scoreControl, "updateScore")
+	print("done")
+	get_type()
+
+
+func _ready():
 	timeToPathfind += randf()
 	animatedSprite.rotation_degrees = rand_range(-180, 180)
 	animatedSprite.frame = rand_range(0, 8)
 	animatedSprite.playing = true
 	zombiSoundTimer.start(rand_range(4,40))
-	yield(get_tree().get_root(), "ready")
-	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
-	connect("killed", scoreControl, "updateScore")
-	get_type()
 
 
 func _physics_process(delta):
@@ -244,3 +248,6 @@ func _on_PathFindTimer_timeout():
 
 func wallCollide(value : bool):
 	set_collision_mask_bit(2, value)
+
+
+
