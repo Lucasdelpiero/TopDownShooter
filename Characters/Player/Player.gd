@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var Bullet = preload("res://World/Objects/Bullet.tscn")
 var Muzzle = preload("res://World/Objects/Muzzle.tscn")
+var PlayerCamera = preload("res://World/Camera.tscn")
 
 
 export var speed = 1200
@@ -29,6 +30,7 @@ onready var timer = $IdleTimer
 onready var audioGuns = $AudioGuns
 onready var audioPain = $AudioPain
 onready var healingTimer = $HealingTimer
+onready var remoteTransform = $RemoteTransform2D
 
 onready var rifle = $Position2D/Rifle
 onready var pistol = $Position2D/Pistol
@@ -88,6 +90,13 @@ func _on_Player_tree_entered():
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true
 	updateHUD()
+
+func _ready():
+	yield(get_tree().create_timer(0.01), "timeout")
+	var playerCamera = PlayerCamera.instance()
+	get_parent().add_child(playerCamera)
+	playerCamera.global_position = global_position
+	remoteTransform.remote_path = "../../Camera"
 
 var dir = 14
 
