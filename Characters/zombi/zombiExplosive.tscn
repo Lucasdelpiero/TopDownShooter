@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id=2]
+resource_local_to_scene = true
+radius = 3292.98
 
 [node name="zombiExplosive" groups=[
 "zombiExplosive",
@@ -9,6 +17,16 @@ modulate = Color( 0.917647, 0.290196, 0.290196, 1 )
 max_speed = 500
 health = 1
 explosive = true
+type = "zombiExplosive"
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource( 2 )
 
 [editable path="HurtBox"]
 

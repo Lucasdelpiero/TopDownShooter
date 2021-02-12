@@ -23,7 +23,6 @@ onready var pathTimer = $PathFindTimer
 signal killed(type, byMelee, byExplosion)
 signal fillPlayerAmmo()
 signal healPlayer(time)
-var type = null
 
 
 const soundsHitted = [
@@ -52,6 +51,7 @@ export var explosive = false
 export var rotationSmooth = 0.125
 var usePathfinding = false
 var timeToPathfind : float = 1.0
+export var type : String = ""
 
 export var path : = PoolVector2Array() setget set_path
 
@@ -62,7 +62,6 @@ func _on_zombi_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
 	connect("killed", scoreControl, "updateScore")
-	get_type()
 
 
 func _ready():
@@ -87,8 +86,8 @@ func _physics_process(delta):
 			wander_state()
 			animatedSprite.rotation_degrees = rad2deg(direction)
 	if player != null:
-		var angle = get_angle_to(player.position)
-		rayCast.set_cast_to( position.distance_to(player.position) * position.direction_to(player.position) )
+#		var angle = get_angle_to(player.global_position)
+		rayCast.set_cast_to( global_position.distance_to(player.global_position) * global_position.direction_to(player.global_position) )
 	
 func _process(delta):
 	match state:
@@ -118,9 +117,11 @@ func update_wander():
 	wanderController.start_wander_timer(rand_range(1, 3))
 
 func seek_player():
+	player = playerDetectionZone.player
 	if playerDetectionZone.can_see_player():
-		state = CHASE
-		wallCollide(false)
+		if not rayCast.is_colliding():
+			state = CHASE
+			wallCollide(false)
 
 
 func chase_state(delta):
@@ -188,13 +189,6 @@ func death(area):
 	var byExplosion = area.get_parent().is_in_group("Explosion")
 	
 	emit_signal("killed", str(type), byMelee, byExplosion)
-
-func get_type():
-	var groups = self.get_groups()
-	if str(groups[0]) != "physics_process":
-		type = groups[0]
-	else:
-		type = groups[1]
 
 func soundHitted():
 	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 

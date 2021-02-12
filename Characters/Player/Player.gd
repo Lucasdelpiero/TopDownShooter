@@ -48,7 +48,7 @@ onready var rifleAmmo = rifle.ammo
 export var shotgunCapacity = 8
 onready var shotgunAmmo = shotgunCapacity
 var reloading = false
-onready var weaponSelectedAmmo = weaponSelected.ammo 
+onready var weaponSelectedAmmo = weaponSelected.ammo
 
 const painSounds = [
 	"pain1",
@@ -60,7 +60,7 @@ const deathSounds = [
 	"death1",
 	"death2",
 	"death3",
-] 
+]
 
 onready var ammoSelected = rifleAmmo
 
@@ -270,12 +270,12 @@ func death():
 
 func soundPain():
 	# load : get a filesystem and creates an object 
-	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(painSounds[randi() % painSounds.size()]) ) 
+	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(painSounds[randi() % painSounds.size()]) )
 	audioPain.play()
 
 	
 func soundDeath():
-	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(deathSounds[randi() % deathSounds.size()]) ) 
+	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(deathSounds[randi() % deathSounds.size()]) )
 	audioPain.play()
 
 func getHealth():
