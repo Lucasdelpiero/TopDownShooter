@@ -86,6 +86,7 @@ func _on_Player_tree_entered():
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 	connect("updateHUD", HUD, "_on_Player_updateHUD")
 	connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
+	connect("updateHUDWeapon", HUD, "_on_Player_updateHUDWeapon")
 	randomize()
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true

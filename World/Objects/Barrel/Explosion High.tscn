@@ -4,6 +4,8 @@
 [ext_resource path="res://World/Objects/Barrel/path841.png" type="Texture" id=2]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=3]
 
+
+
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.591954, 1 )
 colors = PoolColorArray( 0.101563, 0.101563, 0.101563, 1, 0.184314, 0.180392, 0.180392, 0.854902, 0.298039, 0.294118, 0.294118, 0.811765 )

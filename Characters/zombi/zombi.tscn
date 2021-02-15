@@ -25,6 +25,8 @@
 [ext_resource path="res://Characters/zombi/SoftCollision.tscn" type="PackedScene" id=24]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=25]
 
+
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 3 ), ExtResource( 16 ), ExtResource( 17 ) ],

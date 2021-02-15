@@ -1004,6 +1004,8 @@ radius = 60.4062
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
+z_index = 10
+z_as_relative = false
 collision_mask = 4
 script = ExtResource( 1 )
 
@@ -1039,6 +1041,7 @@ capacity = 5000
 [node name="Knife" parent="Position2D" groups=[
 "Melee",
 ] instance=ExtResource( 9 )]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
 root_node = NodePath("../..")
@@ -1062,6 +1065,7 @@ anims/ShotgunReload = SubResource( 13 )
 anims/ShotgunShoot = SubResource( 14 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 21 )]
+visible = false
 collision_layer = 2147483649
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]

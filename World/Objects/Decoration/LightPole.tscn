@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://World/Objects/Decoration/light_big.png" type="Texture" id=1]
+[ext_resource path="res://World/Objects/Decoration/light_pole_light.png" type="Texture" id=2]
+[ext_resource path="res://World/Objects/Decoration/light_pole_base.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 55.504
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 0.463127, 16.1388, -12.6181, 15.5442, -21.2399, 7.51709, -21.2399, -7.0507, -12.6181, -13.8886, 3.13885, -13.8886, 9.08488, -7.6453, 9.08488, 7.81439 )
+
+[node name="LightPole" type="StaticBody2D"]
+light_mask = -2147483647
+collision_layer = 4
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -4.49492, 0 )
+z_index = 50
+z_as_relative = false
+shape = SubResource( 1 )
+
+[node name="SpriteBase" type="Sprite" parent="."]
+light_mask = 0
+position = Vector2( 192, 0 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="SpriteLight" type="Sprite" parent="."]
+light_mask = 0
+position = Vector2( 200, 0 )
+z_index = 20
+z_as_relative = false
+texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 324.287, -1.7818 )
+texture = ExtResource( 1 )
+texture_scale = 2.0
+color = Color( 0.960784, 0.94902, 0.184314, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2( -54.6882, -3.74577 )
+occluder = SubResource( 2 )

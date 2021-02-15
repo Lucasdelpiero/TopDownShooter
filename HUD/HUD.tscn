@@ -4,10 +4,10 @@
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=2]
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=3]
 [ext_resource path="res://HUD/RedBarBorderless.png" type="Texture" id=4]
-[ext_resource path="res://World/Objects/Weapons/128rifleicon.png" type="Texture" id=5]
+[ext_resource path="res://HUD/Weapons/ak47_icon.png" type="Texture" id=5]
 [ext_resource path="res://HUD/bullet_hud.png" type="Texture" id=6]
-[ext_resource path="res://World/Objects/Weapons/128gunicon.png" type="Texture" id=7]
-[ext_resource path="res://World/Objects/Weapons/128shotgunicon.png" type="Texture" id=8]
+[ext_resource path="res://HUD/Weapons/shotgun_icon.png" type="Texture" id=7]
+[ext_resource path="res://HUD/Weapons/pistol_icon.png" type="Texture" id=8]
 [ext_resource path="res://HUD/EmptyBar.png" type="Texture" id=9]
 [ext_resource path="res://HUD/hud_weapons.tres" type="DynamicFont" id=10]
 
@@ -100,8 +100,10 @@ __meta__ = {
 margin_left = 132.0
 margin_right = 260.0
 margin_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
 rect_min_size = Vector2( 128, 64 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="IconShotgun" type="TextureRect" parent="GridContainer"]
@@ -109,7 +111,7 @@ margin_left = 264.0
 margin_right = 392.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 128, 64 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
