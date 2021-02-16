@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://World/Tiles/Floor/Grass.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Objects/Barrel/ExplosiveBarrel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Tiles/Walls/Walls.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=11]
@@ -172,5 +173,75 @@ collision_mask = 2147483655
 [node name="zombi35" parent="Node2D" instance=ExtResource( 8 )]
 position = Vector2( -319.087, -2496 )
 collision_mask = 2147483655
+
+[node name="Barrels" type="Node2D" parent="."]
+position = Vector2( 2040.5, 640 )
+
+[node name="ExplosiveBarrel" parent="Barrels" instance=ExtResource( 4 )]
+
+[node name="ExplosiveBarrel4" parent="Barrels" instance=ExtResource( 4 )]
+position = Vector2( 194.729, 145 )
+
+[node name="ExplosiveBarrel2" parent="Barrels" instance=ExtResource( 4 )]
+position = Vector2( -160, -119 )
+
+[node name="ExplosiveBarrel3" parent="Barrels" instance=ExtResource( 4 )]
+position = Vector2( -224, 81 )
+
+[node name="Barrels2" type="Node2D" parent="."]
+position = Vector2( -2008.5, -320 )
+
+[node name="ExplosiveBarrel" parent="Barrels2" instance=ExtResource( 4 )]
+
+[node name="ExplosiveBarrel4" parent="Barrels2" instance=ExtResource( 4 )]
+position = Vector2( 194.729, 145 )
+
+[node name="ExplosiveBarrel2" parent="Barrels2" instance=ExtResource( 4 )]
+position = Vector2( -160, -119 )
+
+[node name="ExplosiveBarrel3" parent="Barrels2" instance=ExtResource( 4 )]
+position = Vector2( -224, 81 )
+
+[node name="Barrels3" type="Node2D" parent="."]
+position = Vector2( -1856, -1184 )
+
+[node name="ExplosiveBarrel" parent="Barrels3" instance=ExtResource( 4 )]
+
+[node name="ExplosiveBarrel4" parent="Barrels3" instance=ExtResource( 4 )]
+position = Vector2( 194.729, 145 )
+
+[node name="ExplosiveBarrel2" parent="Barrels3" instance=ExtResource( 4 )]
+position = Vector2( -160, -119 )
+
+[node name="ExplosiveBarrel3" parent="Barrels3" instance=ExtResource( 4 )]
+position = Vector2( -224, 81 )
+
+[node name="Barrels4" type="Node2D" parent="."]
+position = Vector2( 480, -2304 )
+
+[node name="ExplosiveBarrel" parent="Barrels4" instance=ExtResource( 4 )]
+
+[node name="ExplosiveBarrel4" parent="Barrels4" instance=ExtResource( 4 )]
+position = Vector2( 194.729, 145 )
+
+[node name="ExplosiveBarrel2" parent="Barrels4" instance=ExtResource( 4 )]
+position = Vector2( -160, -119 )
+
+[node name="ExplosiveBarrel3" parent="Barrels4" instance=ExtResource( 4 )]
+position = Vector2( -224, 81 )
+
+[node name="Barrels5" type="Node2D" parent="."]
+position = Vector2( 3481.91, -96 )
+
+[node name="ExplosiveBarrel" parent="Barrels5" instance=ExtResource( 4 )]
+
+[node name="ExplosiveBarrel4" parent="Barrels5" instance=ExtResource( 4 )]
+position = Vector2( 194.729, 145 )
+
+[node name="ExplosiveBarrel2" parent="Barrels5" instance=ExtResource( 4 )]
+position = Vector2( -160, -119 )
+
+[node name="ExplosiveBarrel3" parent="Barrels5" instance=ExtResource( 4 )]
+position = Vector2( -224, 81 )
 
 [editable path="Player"]

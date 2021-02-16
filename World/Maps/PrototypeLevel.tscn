@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,12 +9,18 @@
 [ext_resource path="res://World/Objects/Decoration/LightPole.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Muzzle.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Tiles/Decoration/paper_trash.png" type="Texture" id=9]
+[ext_resource path="res://World/Tiles/Decoration/car.png" type="Texture" id=10]
+[ext_resource path="res://World/Tiles/Decoration/vending_machine_front.png" type="Texture" id=11]
+[ext_resource path="res://World/Tiles/Decoration/hydrant.png" type="Texture" id=12]
+[ext_resource path="res://World/Tiles/Decoration/gear_empty.png" type="Texture" id=13]
+
+[sub_resource type="TileSet" id=1]
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1184, -256 )
+position = Vector2( 2256, 64 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -23,6 +29,24 @@ tile_data = PoolIntArray( -1572847, 2, 0, -1572846, 2, 0, -1572845, 2, 0, -15728
 
 [node name="Walls" parent="." instance=ExtResource( 3 )]
 tile_data = PoolIntArray( -1310711, 5, 0, -1245175, 5, 0, -1179639, 5, 0, -1114110, 5, 0, -1114109, 5, 0, -1114108, 5, 0, -1114107, 5, 0, -1114106, 5, 0, -1114105, 5, 0, -1114104, 5, 0, -1114103, 5, 0, -1048575, 5, 0, -1048567, 5, 0, -983039, 5, 0, -983031, 5, 0, -983027, 5, 0, -983026, 5, 0, -983025, 5, 0, -983024, 5, 0, -983023, 5, 0, -983022, 5, 0, -983018, 5, 0, -983017, 5, 0, -983016, 5, 0, -851970, 5, 0, -851969, 5, 0, -917504, 5, 0, -917503, 5, 0, -917495, 5, 0, -917491, 5, 0, -917480, 5, 0, -786434, 5, 0, -786433, 5, 0, -851968, 5, 0, -851967, 5, 0, -851959, 5, 0, -851958, 5, 0, -851957, 5, 0, -851956, 5, 0, -851955, 5, 0, -851944, 5, 0, -720898, 5, 0, -720897, 5, 0, -786432, 5, 0, -786431, 5, 0, -786419, 5, 0, -786408, 5, 0, -655361, 5, 0, -720883, 5, 0, -720872, 5, 0, -589825, 5, 0, -655347, 5, 0, -655336, 5, 0, -524289, 5, 0, -589811, 5, 0, -589800, 5, 0, -458757, 5, 0, -458756, 5, 0, -458755, 5, 0, -458754, 5, 0, -458753, 5, 0, -524288, 5, 0, -524287, 5, 0, -524286, 5, 0, -524285, 5, 0, -524284, 5, 0, -524283, 5, 0, -524282, 5, 0, -524281, 5, 0, -524280, 5, 0, -524279, 5, 0, -524278, 5, 0, -524277, 5, 0, -524276, 5, 0, -524275, 5, 0, -524274, 5, 0, -524264, 5, 0, -458749, 5, 0, -458743, 5, 0, -458739, 5, 0, -458738, 5, 0, -458728, 5, 0, -393213, 5, 0, -393202, 5, 0, -393192, 5, 0, -327677, 5, 0, -327666, 5, 0, -327656, 5, 0, -262141, 5, 0, -262130, 5, 0, -262129, 5, 0, -262128, 5, 0, -262127, 5, 0, -262126, 5, 0, -262125, 5, 0, -262124, 5, 0, -262123, 5, 0, -262122, 5, 0, -262121, 5, 0, -262120, 5, 0, -196605, 5, 0, -65538, 5, 0, -65537, 5, 0, -131072, 5, 0, -131071, 5, 0, -131070, 5, 0, -131069, 5, 0, -2, 5, 0, 65534, 5, 0, 131070, 5, 0, 196606, 5, 0, 196607, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 5, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0 )
+
+[node name="Decoration" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 4
+collision_mask = 0
+format = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="car" type="Sprite" parent="Decoration"]
+position = Vector2( 1760, 736 )
+texture = ExtResource( 10 )
+
+[node name="hydrant" type="Sprite" parent="Decoration"]
+position = Vector2( 1856, 64 )
+texture = ExtResource( 12 )
 
 [node name="Zombies" type="Node" parent="."]
 
@@ -47,47 +71,12 @@ position = Vector2( 2665.92, -1152 )
 [node name="zombiBig" parent="Zombies/Big" instance=ExtResource( 6 )]
 position = Vector2( 856.5, -1664 )
 
-[node name="LightPole" parent="." instance=ExtResource( 7 )]
-position = Vector2( 576, -672 )
-
-[node name="LightPole2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1568, -512 )
-rotation = 3.14159
-
 [node name="LightPole3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1728, -128 )
 rotation = 3.14159
 
 [node name="LightPole4" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1824, 224 )
-rotation = 3.14159
-
-[node name="LightPole5" parent="." instance=ExtResource( 7 )]
-position = Vector2( 2666.83, 43.0498 )
-rotation = 3.14159
-
-[node name="LightPole6" parent="." instance=ExtResource( 7 )]
-position = Vector2( 2545.42, 384 )
-rotation = 3.14159
-
-[node name="LightPole7" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1536, 704 )
-rotation = 3.14159
-
-[node name="LightPole8" parent="." instance=ExtResource( 7 )]
-position = Vector2( 571.505, 640 )
-rotation = 3.14159
-
-[node name="LightPole9" parent="." instance=ExtResource( 7 )]
-position = Vector2( -320, 672 )
-rotation = 3.14159
-
-[node name="LightPole10" parent="." instance=ExtResource( 7 )]
-position = Vector2( -704, -224 )
-rotation = 3.14159
-
-[node name="LightPole11" parent="." instance=ExtResource( 7 )]
-position = Vector2( -256, -640 )
+position = Vector2( 1888, 160 )
 rotation = 3.14159
 
 [node name="Muzzle" parent="." instance=ExtResource( 8 )]
@@ -135,3 +124,27 @@ texture = ExtResource( 9 )
 position = Vector2( 2112, -84.9495 )
 rotation = -1.21998
 texture = ExtResource( 9 )
+
+[node name="vending_machine_front" type="Sprite" parent="."]
+position = Vector2( 2256, -212.95 )
+texture = ExtResource( 11 )
+
+[node name="gear_empty" type="Sprite" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+position = Vector2( 2336, 256 )
+texture = ExtResource( 13 )
+
+[node name="gear_empty4" type="Sprite" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+position = Vector2( 2368, 320 )
+texture = ExtResource( 13 )
+
+[node name="gear_empty2" type="Sprite" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+position = Vector2( 2396.64, 256 )
+texture = ExtResource( 13 )
+
+[node name="gear_empty3" type="Sprite" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+position = Vector2( 2304, 288 )
+texture = ExtResource( 13 )

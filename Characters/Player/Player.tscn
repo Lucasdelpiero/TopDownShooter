@@ -1030,11 +1030,9 @@ hframes = 20
 frame = 9
 
 [node name="Rifle" parent="Position2D" instance=ExtResource( 24 )]
-capacity = 50000
 
 [node name="Shotgun" parent="Position2D" instance=ExtResource( 23 )]
 automatic = true
-capacity = 5000
 
 [node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
 

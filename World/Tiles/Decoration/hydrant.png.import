@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ak47_icon.png-060926221cb90c695b46d50fdf1f4614.stex"
+path="res://.import/hydrant.png-1e70a61c5dba0086034497b0cd682ea9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/Weapons/ak47_icon.png"
-dest_files=[ "res://.import/ak47_icon.png-060926221cb90c695b46d50fdf1f4614.stex" ]
+source_file="res://World/Tiles/Decoration/hydrant.png"
+dest_files=[ "res://.import/hydrant.png-1e70a61c5dba0086034497b0cd682ea9.stex" ]
 
 [params]
 
