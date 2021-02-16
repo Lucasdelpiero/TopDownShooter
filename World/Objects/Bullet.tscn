@@ -10,7 +10,7 @@ extents = Vector2( 32.6415, 3.99916 )
 [node name="Bullet" type="KinematicBody2D" groups=[
 "Bullets",
 ]]
-z_index = 1
+z_index = 25
 z_as_relative = false
 collision_layer = 8
 collision_mask = 6
