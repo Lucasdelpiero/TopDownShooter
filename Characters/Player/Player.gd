@@ -37,6 +37,7 @@ onready var pistol = $Position2D/Pistol
 onready var shotgun = $Position2D/Shotgun
 onready var knife = $Position2D/Knife
 onready var knifeCollision = $Position2D/Knife/Hitbox/CollisionShape2D
+onready var rayCastWall = $Position2D/RayCastWall
 
 
 onready var weaponSelected = rifle setget updateWeapon, getWeapon
@@ -133,9 +134,9 @@ func move(delta):
 		if (not startedShooting) :
 			if input_vector.x != 0 or input_vector.y != 0:
 				animationPlayer.play(animMove)
-			else:
+			elif not rayCastWall.is_colliding():
 				animationPlayer.play(animIdle)
-
+	rayCastWall()
 	
 	velocity = velocity.move_toward(input_vector * speed, acceleration * delta)
 	velocity = move_and_slide(velocity)
@@ -143,6 +144,9 @@ func move(delta):
 	$Position2D.look_at(get_global_mouse_position())
 
 func trigger():
+	if not rayCastWall.is_colliding():
+		canShoot = true
+	
 	if canShoot and ammoSelected > 0 and not reloading:
 		if (not shooting) or (shooting and automatic):
 			animationPlayer.play(animShoot)
@@ -292,3 +296,8 @@ func updateWeapon(weapon):
 
 func getWeapon():
 	return weaponSelected
+
+func rayCastWall():
+	if rayCastWall.is_colliding():
+		canShoot = false
+		animationPlayer.play(animMelee)

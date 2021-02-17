@@ -3,6 +3,7 @@
 [ext_resource path="res://HUD/Pause.gd" type="Script" id=1]
 
 [node name="PauseScreen" type="CanvasLayer"]
+layer = 2
 
 [node name="Pause" type="Control" parent="."]
 pause_mode = 2

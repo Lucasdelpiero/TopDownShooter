@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_move.png" type="Texture" id=7]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/Pistol.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/Knife.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=10]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_melee.png" type="Texture" id=10]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/swosh-14.wav" type="AudioStream" id=11]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol_reload.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_reload.png" type="Texture" id=13]
@@ -332,6 +332,45 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 2.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "PistolMelee"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -1022,17 +1061,28 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 62, -16 )
+position = Vector2( 37.7466, -0.737379 )
 z_index = 10
 z_as_relative = false
 texture = ExtResource( 10 )
-hframes = 20
+hframes = 15
 frame = 9
+
+[node name="RayCastWall" type="RayCast2D" parent="Position2D"]
+position = Vector2( 0, 43.0498 )
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 150, 0 )
+collision_mask = 4
 
 [node name="Rifle" parent="Position2D" instance=ExtResource( 24 )]
 
 [node name="Shotgun" parent="Position2D" instance=ExtResource( 23 )]
+visible = true
 automatic = true
+capacity = 50
+missDegree = 60
+bulletsShot = 45
 
 [node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
 
@@ -1050,6 +1100,7 @@ anims/KnifeIdle = SubResource( 2 )
 anims/KnifeMelee = SubResource( 3 )
 anims/KnifeMove = SubResource( 4 )
 anims/PistolIdle = SubResource( 5 )
+anims/PistolMelee = SubResource( 16 )
 anims/PistolMove = SubResource( 6 )
 anims/PistolReload = SubResource( 7 )
 anims/PistolShoot = SubResource( 8 )

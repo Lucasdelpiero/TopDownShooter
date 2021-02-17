@@ -12,6 +12,7 @@
 [ext_resource path="res://HUD/hud_weapons.tres" type="DynamicFont" id=10]
 
 [node name="HUD" type="CanvasLayer"]
+layer = 5
 script = ExtResource( 3 )
 selectedColor = Color( 0.98, 0.466317, 0.147, 1 )
 
