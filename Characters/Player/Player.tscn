@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -21,8 +21,10 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_melee.png" type="Texture" id=19]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_move.png" type="Texture" id=20]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_melee.png" type="Texture" id=22]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 61.606
@@ -270,6 +272,73 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "PistolBlocked"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.2, 0.25, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stateIdle"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D/Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 41.9865, 2.85687 ) ]
+}
+
 [sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
@@ -355,10 +424,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 9 ]
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Position2D/Sprite:texture")
@@ -598,6 +667,73 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
+[sub_resource type="Animation" id=18]
+resource_name = "RifleBlocked"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9, 10, 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 22 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stateIdle"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D/Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 61.0568, -17.2729 ) ]
+}
+
 [sub_resource type="Animation" id=10]
 length = 2.0
 tracks/0/type = "value"
@@ -757,6 +893,73 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 2.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "ShotgunBlocked"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9, 10, 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 25 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stateIdle"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D/Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 52.5811, -22.5702 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -1070,15 +1273,15 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 28.8409, -4.48306 )
+position = Vector2( 52.5811, -22.5702 )
 z_index = 10
 z_as_relative = false
-texture = ExtResource( 12 )
+texture = ExtResource( 25 )
 hframes = 15
-frame = 2
+frame = 7
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
-position = Vector2( 0, 43.0498 )
+position = Vector2( 0, 22.92 )
 enabled = true
 exclude_parent = false
 cast_to = Vector2( 150, 0 )
@@ -1088,10 +1291,6 @@ collision_mask = 4
 
 [node name="Shotgun" parent="Position2D" instance=ExtResource( 23 )]
 visible = true
-automatic = true
-capacity = 50
-missDegree = 60
-bulletsShot = 45
 
 [node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
 
@@ -1108,15 +1307,18 @@ playback_speed = 2.0
 anims/KnifeIdle = SubResource( 2 )
 anims/KnifeMelee = SubResource( 3 )
 anims/KnifeMove = SubResource( 4 )
+anims/PistolBlocked = SubResource( 17 )
 anims/PistolIdle = SubResource( 5 )
 anims/PistolMelee = SubResource( 6 )
 anims/PistolMove = SubResource( 7 )
 anims/PistolReload = SubResource( 8 )
 anims/PistolShoot = SubResource( 9 )
+anims/RifleBlocked = SubResource( 18 )
 anims/RifleIdle = ExtResource( 4 )
 anims/RifleMove = ExtResource( 2 )
 anims/RifleReload = SubResource( 10 )
 anims/RifleShoot = SubResource( 11 )
+anims/ShotgunBlocked = SubResource( 19 )
 anims/ShotgunIdle = SubResource( 12 )
 anims/ShotgunMove = SubResource( 13 )
 anims/ShotgunReload = SubResource( 14 )

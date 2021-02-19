@@ -8,7 +8,6 @@ var PlayerCamera = preload("res://World/Camera.tscn")
 export var speed = 1200
 export var acceleration = 2500
 export(float, 0.01, 0.5) var idle_time = 0.1
-var shooting = false
 var canShoot = true
 var automatic = false
 var velocity = Vector2.ZERO
@@ -44,20 +43,15 @@ enum {
 	SHOOTING,
 	RELOADING,
 	MELEE,
+	BLOCKED,
 }
 
 var state = IDLE
 
 onready var weaponSelected = rifle setget updateWeapon, getWeapon
 
-onready  var pistolCapacity = 12
-onready var pistolAmmo = pistolCapacity
-onready var rifleCapacity = rifle.capacity
-onready var rifleAmmo = rifle.ammo
-export var shotgunCapacity = 8
-onready var shotgunAmmo = shotgunCapacity
-var reloading = false
 onready var weaponSelectedAmmo = weaponSelected.ammo
+onready var ammoSelected = weaponSelected.ammo
 
 const painSounds = [
 	"pain1",
@@ -71,23 +65,12 @@ const deathSounds = [
 	"death3",
 ]
 
-onready var ammoSelected = rifleAmmo
-
 var animMove = "RifleMove"
 var animIdle = "RifleIdle"
 var animShoot = "RifleShoot"
 var animReload = "RifleReload"
+var animBlocked =  "RifleBlocked"
 var animMelee = "KnifeMelee"
-var startedShooting = false
-
-
-enum {
-	PISTOL,
-	RIFLE,
-	SHOTGUN,
-	KNIFE
-}
-
 
 func _on_Player_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
@@ -111,14 +94,15 @@ var dir = 14
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-#	updateHUD()
-	dir = rad2deg(position2D.get_rotation())
+	
 	move(delta)
 	
 	choose_weapon()
 	
 	match state:
 		IDLE:
+			rayCastWall()
+			
 			if Input.is_action_pressed("shoot"):
 				trigger()
 			
@@ -138,8 +122,13 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("knife"):
 				melee()
 				state = MELEE
-
+		
+		BLOCKED:
+			rayCastWall()
+		
+		
 func move(delta):
+	dir = rad2deg(position2D.get_rotation())
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") -  Input.get_action_strength("ui_up")
@@ -151,7 +140,6 @@ func move(delta):
 			animationPlayer.play(animIdle)
 		else:
 			animationPlayer.play(animIdle)
-	rayCastWall()
 	
 	velocity = velocity.move_toward(input_vector * speed, acceleration * delta)
 	velocity = move_and_slide(velocity)
@@ -163,7 +151,6 @@ func trigger():
 		canShoot = true
 	
 	if canShoot and ammoSelected > 0 :
-		print("CAN SHOOT")
 		animationPlayer.play(animShoot)
 		state = SHOOTING
 	elif ammoSelected == 0:
@@ -252,14 +239,13 @@ func updateAnimations():
 	animIdle = weaponSelected.name + "Idle"
 	animShoot = weaponSelected.name + "Shoot"
 	animReload = weaponSelected.name + "Reload"
-	animMelee = weaponSelected.name + "Melee"
+	animBlocked = weaponSelected.name + "Blocked"
 
 func muzzle():
 	var muzzle = Muzzle.instance()
 	add_child(muzzle)
 	muzzle.global_position = weaponSelected.global_position
 	muzzle.rotation_degrees = position2D.rotation_degrees
-
 
 func updateHUD():
 	emit_signal("updateHUD", health, weaponSelected.ammo, weaponSelected.capacity)
@@ -314,6 +300,11 @@ func getWeapon():
 func rayCastWall():
 	if rayCastWall.is_colliding():
 		canShoot = false
-		animationPlayer.play(animMelee)
+		if state != BLOCKED:
+			animationPlayer.play(animBlocked)
+			animationPlayer.advance(0.05)
+			state = BLOCKED
+	elif state == BLOCKED:
+		animationPlayer.play_backwards(animBlocked)
 
 

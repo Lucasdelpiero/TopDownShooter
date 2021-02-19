@@ -41,19 +41,22 @@ func _physics_process(delta):
 #			pass
 
 func _on_HurtBox_area_entered(area):
-	if not onFire:
-		setOnFire()
+	
 	if area.is_in_group("Melee"):
 		direction = area.get_parent().get_parent().rotation
 		rotation = direction
 		sprite.texture = BarrelDown
 		moving = true
 		toggleCollisionShape()
-
 	else:
 		health -= area.damage
 		audioStreamPlayer.stream = load( "res://World/Objects/Barrel/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
 		audioStreamPlayer.play()
+		if onFire:
+			createExplosion()
+		
+	if not onFire:
+		setOnFire()
 
 	if health < 1 and not exploted:
 		#Called deferred because of a bug
