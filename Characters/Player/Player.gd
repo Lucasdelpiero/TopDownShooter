@@ -39,6 +39,14 @@ onready var knife = $Position2D/Knife
 onready var knifeCollision = $Position2D/Knife/Hitbox/CollisionShape2D
 onready var rayCastWall = $Position2D/RayCastWall
 
+enum {
+	IDLE,
+	SHOOTING,
+	RELOADING,
+	MELEE,
+}
+
+var state = IDLE
 
 onready var weaponSelected = rifle setget updateWeapon, getWeapon
 
@@ -80,7 +88,6 @@ enum {
 	KNIFE
 }
 
-var state = RIFLE
 
 func _on_Player_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
@@ -110,32 +117,40 @@ func _physics_process(delta):
 	
 	choose_weapon()
 	
-	if Input.is_action_pressed("shoot"):
-		if canShoot:
-			trigger()
-	else:
-		shooting = false
+	match state:
+		IDLE:
+			if Input.is_action_pressed("shoot"):
+				trigger()
+				
+			if not Input.is_action_pressed("shoot"):
+				canShoot = true
+			if Input.is_action_just_pressed("knife"):
+				melee()
+				state = MELEE
+			if Input.is_action_just_pressed("reload"):
+				startReloading()
+				state = RELOADING
+#		SHOOTING:
+#			if not Input.is_action_pressed("shoot"):
+#				canShoot = true
+#				state = IDLE
 		
-	if Input.is_action_just_pressed("knife"):
-		if not reloading:
-			melee()
-		else:
-			reloading = false
-			melee()
-	if Input.is_action_just_pressed("reload"):
-		startReloading()
+		RELOADING:
+			if Input.is_action_just_pressed("knife"):
+				melee()
+				state = MELEE
+
 
 func move(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") -  Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
-	if not reloading:
-		if (not startedShooting) :
-			if input_vector.x != 0 or input_vector.y != 0:
-				animationPlayer.play(animMove)
-			elif not rayCastWall.is_colliding():
-				animationPlayer.play(animIdle)
+	if state == IDLE:
+		if input_vector.x != 0 or input_vector.y != 0:
+			animationPlayer.play(animMove)
+		elif not rayCastWall.is_colliding():
+			animationPlayer.play(animIdle)
 	rayCastWall()
 	
 	velocity = velocity.move_toward(input_vector * speed, acceleration * delta)
@@ -144,13 +159,13 @@ func move(delta):
 	$Position2D.look_at(get_global_mouse_position())
 
 func trigger():
-	if not rayCastWall.is_colliding():
-		canShoot = true
+#	if not rayCastWall.is_colliding():
+#		canShoot = true
 	
-	if canShoot and ammoSelected > 0 and not reloading:
-		if (not shooting) or (shooting and automatic):
-			animationPlayer.play(animShoot)
-			startedShooting = true
+	if canShoot and ammoSelected > 0 :
+		animationPlayer.play(animShoot)
+		state = SHOOTING
+		startedShooting = true
 	if ammoSelected == 0 and not shooting:
 		startReloading()
 
@@ -191,9 +206,9 @@ func melee():
 	timer.start(idle_time)
 	# reload after hitting an enemy
 
-func _on_IdleTimer_timeout():
-	if not startedShooting:
-		canShoot = true
+#func _on_IdleTimer_timeout():
+#	if not startedShooting:
+#		canShoot = true
 
 func startReloading():
 	reloading = true
@@ -203,6 +218,7 @@ func reload():
 	fillAmmo()
 	reloading = false
 	animationPlayer.play(animMove)
+	state = IDLE
 
 func fillAmmo():
 	self.weaponSelected.ammo = weaponSelected.capacity
@@ -212,17 +228,18 @@ func reloadSound():
 	audioGuns.play()
 
 func choose_weapon():
-	if not reloading:
-		if Input.is_action_just_pressed("pistol"):
-			state = PISTOL
-			self.weaponSelected = pistol
-		if Input.is_action_just_pressed("rifle"):
-			state = RIFLE
-			self.weaponSelected = rifle
-		if Input.is_action_just_pressed("shotgun"):
-			self.weaponSelected = shotgun
-		updateState()
-		emit_signal("updateHUDWeapon", str(weaponSelected.name) )
+#	if not reloading:
+	if Input.is_action_just_pressed("pistol"):
+		state = IDLE
+		self.weaponSelected = pistol
+	if Input.is_action_just_pressed("rifle"):
+		state = IDLE
+		self.weaponSelected = rifle
+	if Input.is_action_just_pressed("shotgun"):
+		self.weaponSelected = shotgun
+		state = IDLE
+	updateState()
+	emit_signal("updateHUDWeapon", str(weaponSelected.name) )
 
 func updateState():
 	automatic = weaponSelected.automatic
@@ -243,7 +260,7 @@ func muzzle():
 	muzzle.rotation_degrees = position2D.rotation_degrees
 
 func resetVariables():
-	canShoot = true
+#	canShoot = true
 	shooting = false
 	startedShooting = false
 
@@ -301,3 +318,8 @@ func rayCastWall():
 	if rayCastWall.is_colliding():
 		canShoot = false
 		animationPlayer.play(animMelee)
+
+func stateIdle():
+	state = IDLE
+	if automatic == true:
+		canShoot = true
