@@ -121,25 +121,23 @@ func _physics_process(delta):
 		IDLE:
 			if Input.is_action_pressed("shoot"):
 				trigger()
-				
+			
 			if not Input.is_action_pressed("shoot"):
-				canShoot = true
+				if not rayCastWall.is_colliding():
+					canShoot = true
+			
 			if Input.is_action_just_pressed("knife"):
 				melee()
 				state = MELEE
+			
 			if Input.is_action_just_pressed("reload"):
 				startReloading()
 				state = RELOADING
-#		SHOOTING:
-#			if not Input.is_action_pressed("shoot"):
-#				canShoot = true
-#				state = IDLE
 		
 		RELOADING:
 			if Input.is_action_just_pressed("knife"):
 				melee()
 				state = MELEE
-
 
 func move(delta):
 	var input_vector = Vector2.ZERO
@@ -151,6 +149,8 @@ func move(delta):
 			animationPlayer.play(animMove)
 		elif not rayCastWall.is_colliding():
 			animationPlayer.play(animIdle)
+		else:
+			animationPlayer.play(animIdle)
 	rayCastWall()
 	
 	velocity = velocity.move_toward(input_vector * speed, acceleration * delta)
@@ -159,15 +159,18 @@ func move(delta):
 	$Position2D.look_at(get_global_mouse_position())
 
 func trigger():
-#	if not rayCastWall.is_colliding():
-#		canShoot = true
+	if not rayCastWall.is_colliding() and automatic:
+		canShoot = true
 	
 	if canShoot and ammoSelected > 0 :
+		print("CAN SHOOT")
 		animationPlayer.play(animShoot)
 		state = SHOOTING
-		startedShooting = true
-	if ammoSelected == 0 and not shooting:
+	elif ammoSelected == 0:
 		startReloading()
+	else:
+		state = IDLE
+		
 
 func shoot():
 	for i in range(weaponSelected.bulletsShot):
@@ -192,31 +195,24 @@ func shoot():
 	audioGuns.stream = weaponSelected.shotSound
 	audioGuns.play()
 	canShoot = false
-	shooting = true
-	startedShooting = false
-	timer.start(idle_time)
+#	timer.start(idle_time)
 	self.weaponSelected.ammo -= 1
-#	updateHUD()
 
 func melee():
-	canShoot = false
-	shooting = true
-	startedShooting = true
 	animationPlayer.play("KnifeMelee")
 	timer.start(idle_time)
-	# reload after hitting an enemy
 
-#func _on_IdleTimer_timeout():
+func _on_IdleTimer_timeout():
+	pass
 #	if not startedShooting:
 #		canShoot = true
 
 func startReloading():
-	reloading = true
 	animationPlayer.play(animReload)
+	state = RELOADING
 
 func reload():
 	fillAmmo()
-	reloading = false
 	animationPlayer.play(animMove)
 	state = IDLE
 
@@ -228,7 +224,6 @@ func reloadSound():
 	audioGuns.play()
 
 func choose_weapon():
-#	if not reloading:
 	if Input.is_action_just_pressed("pistol"):
 		state = IDLE
 		self.weaponSelected = pistol
@@ -246,6 +241,12 @@ func updateState():
 	self.ammoSelected = weaponSelected.ammo
 	updateAnimations()
 
+func stateIdle():
+	state = IDLE
+	if automatic == true:
+		canShoot = true
+	rayCastWall()
+
 func updateAnimations():
 	animMove = weaponSelected.name + "Move"
 	animIdle = weaponSelected.name + "Idle"
@@ -259,10 +260,6 @@ func muzzle():
 	muzzle.global_position = weaponSelected.global_position
 	muzzle.rotation_degrees = position2D.rotation_degrees
 
-func resetVariables():
-#	canShoot = true
-	shooting = false
-	startedShooting = false
 
 func updateHUD():
 	emit_signal("updateHUD", health, weaponSelected.ammo, weaponSelected.capacity)
@@ -319,7 +316,4 @@ func rayCastWall():
 		canShoot = false
 		animationPlayer.play(animMelee)
 
-func stateIdle():
-	state = IDLE
-	if automatic == true:
-		canShoot = true
+

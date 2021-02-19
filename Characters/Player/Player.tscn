@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_melee.png" type="Texture" id=19]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_move.png" type="Texture" id=20]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
-[ext_resource path="res://HUD/Debugger.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 
@@ -150,14 +149,11 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 1.4, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "stateIdle"
-}, {
-"args": [  ],
-"method": "resetVariables"
 } ]
 }
 tracks/5/type = "value"
@@ -1061,31 +1057,6 @@ z_as_relative = false
 collision_mask = 4
 script = ExtResource( 1 )
 
-[node name="Debugger" parent="." instance=ExtResource( 22 )]
-
-[node name="Control" parent="Debugger" index="0"]
-debug0 = "canShoot"
-debug1 = "reloading"
-debug2 = "state"
-debug3 = "startedShooting"
-debug4 = "reloading"
-debug5 = ""
-
-[node name="Label4" parent="Debugger/Control/VBoxContainer" index="1"]
-text = "\"reloading\": Variable not exists"
-
-[node name="Label3" parent="Debugger/Control/VBoxContainer" index="2"]
-text = "\"startedShooting\": Variable not exists"
-
-[node name="Label2" parent="Debugger/Control/VBoxContainer" index="3"]
-text = "\"state\": Variable not exists"
-
-[node name="Label1" parent="Debugger/Control/VBoxContainer" index="4"]
-text = "\"reloading\": Variable not exists"
-
-[node name="Label0" parent="Debugger/Control/VBoxContainer" index="5"]
-text = "\"canShoot\": Variable not exists"
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 __meta__ = {
 "_editor_description_": ""
@@ -1099,11 +1070,11 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 61.7883, -16.5911 )
+position = Vector2( 28.8409, -4.48306 )
 z_index = 10
 z_as_relative = false
-texture = ExtResource( 16 )
-hframes = 3
+texture = ExtResource( 12 )
+hframes = 15
 frame = 2
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
@@ -1133,6 +1104,7 @@ visible = false
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
+playback_speed = 2.0
 anims/KnifeIdle = SubResource( 2 )
 anims/KnifeMelee = SubResource( 3 )
 anims/KnifeMove = SubResource( 4 )
@@ -1172,8 +1144,6 @@ one_shot = true
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_HealingTimer_timeout"]
-
-[editable path="Debugger"]
 
 [editable path="Position2D/Knife"]
 
