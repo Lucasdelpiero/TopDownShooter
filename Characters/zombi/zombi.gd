@@ -8,7 +8,6 @@ const BloodStain = preload("res://Characters/zombi/Blood/BloodStain.tscn")
 
 
 
-onready var animatedSprite = $AnimatedSprite
 onready var wanderController = $WanderController
 onready var audioStreamPlayer = $AudioStreamPlayer
 onready var audioHitted = $AudioHitted
@@ -19,6 +18,8 @@ onready var softCollision = $SoftCollision
 onready var navigation = get_tree().get_root().find_node("Navigation2D", true, false)
 onready var rayCast = $RayCast2D
 onready var pathTimer = $PathFindTimer
+onready var animationPlayer = $AnimationPlayer
+onready var sprite = $Sprite
 
 signal killed(type, byMelee, byExplosion)
 signal fillPlayerAmmo()
@@ -52,6 +53,7 @@ export var rotationSmooth = 0.125
 var usePathfinding = false
 var timeToPathfind : float = 1.0
 export var type : String = ""
+var attacking = false
 
 export var path : = PoolVector2Array() setget set_path
 
@@ -66,9 +68,8 @@ func _on_zombi_tree_entered():
 
 func _ready():
 	timeToPathfind += randf()
-	animatedSprite.rotation_degrees = rand_range(-180, 180)
-	animatedSprite.frame = rand_range(0, 8)
-	animatedSprite.playing = true
+	sprite.rotation_degrees = rand_range(-180, 180)
+	sprite.frame = rand_range(0, 8)
 	zombiSoundTimer.start(rand_range(4,40))
 
 
@@ -80,11 +81,13 @@ func _physics_process(delta):
 			if wanderController.get_time_left() == 0:
 				update_wander()
 			idle_state(delta)
+			animationPlayer.play("Idle")
 			
 		WANDER:
 			seek_player()
 			wander_state()
-			animatedSprite.rotation_degrees = rad2deg(direction)
+			sprite.rotation_degrees = rad2deg(direction)
+			animationPlayer.play("Move")
 	if player != null:
 #		var angle = get_angle_to(player.global_position)
 		rayCast.set_cast_to( global_position.distance_to(player.global_position) * global_position.direction_to(player.global_position) )
@@ -93,8 +96,9 @@ func _process(delta):
 	match state:
 		CHASE:
 			chase_state(delta)
-			animatedSprite.rotation = lerp_angle(animatedSprite.rotation, direction, rotationSmooth)
-
+			sprite.rotation = lerp_angle(sprite.rotation, direction, rotationSmooth)
+			if attacking == false:
+				animationPlayer.play("Move")
 	
 #STATE MACHINE
 func idle_state(delta):
@@ -242,5 +246,11 @@ func _on_PathFindTimer_timeout():
 func wallCollide(value : bool):
 	set_collision_mask_bit(2, value)
 
+func _on_Hitbox_body_entered(body):
+	attacking = true
+	animationPlayer.play("Attack")
 
+func notAttacking():
+	attacking = false
+	animationPlayer.play("Move")
 

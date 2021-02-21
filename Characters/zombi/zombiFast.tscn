@@ -17,7 +17,10 @@ ACCELERATION = 600
 max_speed = 800
 type = "zombiFast"
 
-[node name="AnimatedSprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0, 0, 0, 1 )
+
+[node name="AnimatedSprite" parent="." index="2"]
 modulate = Color( 0, 0, 0, 1 )
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
