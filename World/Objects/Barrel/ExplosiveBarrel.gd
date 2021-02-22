@@ -52,8 +52,9 @@ func _on_HurtBox_area_entered(area):
 		health -= area.damage
 		audioStreamPlayer.stream = load( "res://World/Objects/Barrel/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
 		audioStreamPlayer.play()
-		if onFire:
+		if onFire and not exploted:
 			createExplosion()
+			exploted = true
 		
 	if not onFire:
 		setOnFire()

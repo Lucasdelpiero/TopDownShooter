@@ -125,7 +125,9 @@ func _physics_process(delta):
 		
 		BLOCKED:
 			rayCastWall()
-		
+			if Input.is_action_just_pressed("knife"):
+				melee()
+				state = MELEE
 		
 func move(delta):
 	dir = rad2deg(position2D.get_rotation())
