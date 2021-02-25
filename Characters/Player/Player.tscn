@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=26]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 61.606
@@ -1232,12 +1233,12 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 61.3556, 37.1487 )
+position = Vector2( 62, -16 )
 z_index = 10
 z_as_relative = false
-texture = ExtResource( 19 )
-hframes = 15
-frame = 6
+texture = ExtResource( 26 )
+hframes = 20
+frame = 2
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
 position = Vector2( 0, 22.92 )
@@ -1256,7 +1257,6 @@ visible = true
 [node name="Knife" parent="Position2D" groups=[
 "Melee",
 ] instance=ExtResource( 9 )]
-visible = false
 
 [node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
 disabled = false
@@ -1265,7 +1265,7 @@ disabled = false
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
-playback_speed = 2.0
+playback_speed = 4.0
 anims/KnifeIdle = SubResource( 2 )
 anims/KnifeMelee = SubResource( 3 )
 anims/KnifeMove = SubResource( 4 )
@@ -1291,7 +1291,6 @@ collision_layer = 2147483649
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 18 )
-disabled = true
 
 [node name="IdleTimer" type="Timer" parent="."]
 

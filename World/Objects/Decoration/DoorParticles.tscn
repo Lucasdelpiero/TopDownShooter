@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.615385, 1 )
+colors = PoolColorArray( 0.34902, 0.247059, 0.00392157, 1, 0.34902, 0.247059, 0.00392157, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 750.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 45.0
+angle_random = 0.54
+scale = 25.0
+scale_random = 0.53
+color_ramp = SubResource( 3 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "DoorParticles"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="DoorParticles" type="Node2D"]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 0, 100 )
+amount = 64
+lifetime = 0.6
+explosiveness = 0.9
+process_material = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "DoorParticles"
+anims/DoorParticles = SubResource( 4 )
