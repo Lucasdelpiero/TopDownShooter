@@ -5,11 +5,11 @@
 [ext_resource path="res://World/Tiles/Walls/Walls.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Characters/zombi/zombiBig.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/Decoration/LightPole.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Barrel/ExplosiveBarrel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=10]
+[ext_resource path="res://HUD/Objectives.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=14]
 
 [node name="PrototypeLevel" type="Node2D"]
@@ -38,58 +38,10 @@ tile_data = PoolIntArray( -327669, 3, 0, -196601, 2, 0, -196591, 2, 0, -196590, 
 [node name="Zombies" type="Node" parent="."]
 
 [node name="zombi" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -1335.02, -1917.67 )
+position = Vector2( -256, -2022.37 )
 
 [node name="zombi2" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -916.411, -1708.37 )
-
-[node name="zombi3" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -1419.87, -1335.02 )
-
-[node name="zombi4" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -1199.25, -989.949 )
-
-[node name="zombi5" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( 752.362, -2324.97 )
-
-[node name="zombi14" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( 619.17, -3780.56 )
-
-[node name="zombi15" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( 1037.77, -3457.09 )
-
-[node name="zombi16" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( 1028.26, -3105.09 )
-
-[node name="zombi17" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( 1380.26, -3048 )
-
-[node name="zombi6" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( 1323.7, -2279.71 )
-
-[node name="zombi7" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -1657.46, -3954.14 )
-
-[node name="zombi10" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -3597.76, -4152.13 )
-
-[node name="zombi11" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -3654.33, -3422.4 )
-
-[node name="zombi12" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -3326.23, -3688.27 )
-
-[node name="zombi13" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -3280.98, -3269.66 )
-
-[node name="zombi8" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -865.499, -3773.12 )
-
-[node name="zombi9" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -1431.18, -3518.56 )
-
-[node name="zombiBig" parent="Zombies" instance=ExtResource( 6 )]
-position = Vector2( 247.355, -3367.83 )
+position = Vector2( 256, -1865.37 )
 
 [node name="Props" type="Node" parent="."]
 
@@ -115,9 +67,6 @@ rotation = 2.87979
 position = Vector2( 4452.85, 193.979 )
 rotation = 1.83259
 
-[node name="ExplosiveBarrel3" parent="Props/Barrels" instance=ExtResource( 8 )]
-position = Vector2( 2566.3, -297.677 )
-
 [node name="ExplosiveBarrel5" parent="Props/Barrels" instance=ExtResource( 8 )]
 position = Vector2( 3502.62, -282.575 )
 
@@ -132,7 +81,7 @@ position = Vector2( 3857.52, -342.982 )
 rotation = -1.57079
 
 [node name="Door" parent="Props" instance=ExtResource( 9 )]
-position = Vector2( -640, -1408 )
+position = Vector2( -512, -1699.37 )
 rotation = -1.5708
 
 [node name="Door3" parent="Props" instance=ExtResource( 9 )]
@@ -141,3 +90,7 @@ position = Vector2( -1280, -3200 )
 [node name="Door2" parent="Props" instance=ExtResource( 9 )]
 position = Vector2( 640, -1536 )
 rotation = -4.71239
+
+[node name="Objectives" parent="." instance=ExtResource( 11 )]
+killAll = false
+survive = true

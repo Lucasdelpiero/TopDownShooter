@@ -63,8 +63,9 @@ func _on_zombi_tree_entered():
 	randomize()
 	yield(get_tree().create_timer(0.01), "timeout")
 	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
+	var objectiveControl = get_tree().get_root().find_node("Objectives", true, false)
 	connect("killed", scoreControl, "updateScore")
-
+	connect("killed", objectiveControl, "updateObjective")
 
 func _ready():
 	timeToPathfind += randf()

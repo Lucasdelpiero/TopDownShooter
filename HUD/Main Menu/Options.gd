@@ -59,7 +59,6 @@ func setVolume(bus , value):
 	if value == min_value :
 		value = -72
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), value)
-	print(value)
 
 func mute(bus, button_pressed):
 	AudioServer.set_bus_mute(AudioServer.get_bus_index(bus), button_pressed)

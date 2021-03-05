@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Characters/zombi/zombi.gd" type="Script" id=18]
+[ext_resource path="res://Characters/zombi/Zombi.gd" type="Script" id=1]
 [ext_resource path="res://Characters/zombi/WanderController.tscn" type="PackedScene" id=19]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Characters/zombi/Zombie Sound.wav" type="AudioStream" id=21]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Characters/zombi/Animations/zombi_idle.png" type="Texture" id=26]
 [ext_resource path="res://Characters/zombi/Animations/zombi_move.png" type="Texture" id=27]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 resource_name = "Attack"
 length = 0.5
 tracks/0/type = "value"
@@ -65,7 +65,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 resource_name = "Idle"
 length = 1.5
 loop = true
@@ -106,7 +106,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 resource_name = "Move"
 length = 1.6
 loop = true
@@ -147,21 +147,21 @@ tracks/2/keys = {
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1, 2, 3 ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=11]
 resource_local_to_scene = true
 radius = 80.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=12]
 radius = 123.386
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=13]
 resource_local_to_scene = true
 radius = 3200.0
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=7]
 radius = 64.0
 
-[sub_resource type="OccluderPolygon2D" id=6]
+[sub_resource type="OccluderPolygon2D" id=8]
 cull_mode = 1
 polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.06127, 1.23976, 4.439, 2.97215, 0.816723, 0.452305, -2.80555, -4.11491, -5.56163 )
 
@@ -172,7 +172,7 @@ z_index = 2
 z_as_relative = false
 collision_layer = 2147483650
 collision_mask = 2147483651
-script = ExtResource( 18 )
+script = ExtResource( 1 )
 FRICTION = 1200
 max_speed = 400
 health = 3
@@ -186,9 +186,9 @@ hframes = 9
 frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Attack = SubResource( 9 )
-anims/Idle = SubResource( 7 )
-anims/Move = SubResource( 8 )
+anims/Attack = SubResource( 1 )
+anims/Idle = SubResource( 9 )
+anims/Move = SubResource( 10 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 25 )]
 visible = false
@@ -196,7 +196,7 @@ collision_layer = 2147483650
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( -7, 9 )
-shape = SubResource( 2 )
+shape = SubResource( 11 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 20 )]
 visible = false
@@ -205,14 +205,14 @@ damage = 10
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( -7, 9 )
-shape = SubResource( 2 )
+shape = SubResource( 11 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 24 )]
 visible = false
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 12 )
 disabled = true
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 23 )]
@@ -222,11 +222,11 @@ collision_mask = 1
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.415686 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( -7, 9 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -249,7 +249,7 @@ autostart = true
 visible = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Position2D"]
-occluder = SubResource( 6 )
+occluder = SubResource( 8 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 scale = Vector2( 0.0760488, 0.123189 )
