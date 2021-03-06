@@ -71,7 +71,11 @@ func checkCompletion():
 
 	for i in currentObjectives.size():
 		if currentObjectives[i] == false:
-			return #If any objective not completed it returns
+			return #If any objective not completed it return
+	for i in optionalObjectives.size():
+		if optionalObjectives[i] == false:
+			if i < currentOptional.size(): # Fix bug with i out of range if no current optional objective
+				currentOptional.remove(i)
 	completed() # Win
 
 func checkOptional():
