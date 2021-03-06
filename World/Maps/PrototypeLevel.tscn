@@ -38,10 +38,13 @@ tile_data = PoolIntArray( -327669, 3, 0, -196601, 2, 0, -196591, 2, 0, -196590, 
 [node name="Zombies" type="Node" parent="."]
 
 [node name="zombi" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -256, -2022.37 )
+position = Vector2( 896, -1856.37 )
+
+[node name="zombi3" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( -73.279, -1856.37 )
 
 [node name="zombi2" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( 256, -1865.37 )
+position = Vector2( 889, -1536 )
 
 [node name="Props" type="Node" parent="."]
 
@@ -61,6 +64,14 @@ rotation = -1.83259
 
 [node name="ExplosiveBarrel2" parent="Props/Barrels" instance=ExtResource( 8 )]
 position = Vector2( 2886.52, 542.34 )
+rotation = 2.87979
+
+[node name="ExplosiveBarrel3" parent="Props/Barrels" instance=ExtResource( 8 )]
+position = Vector2( -207.279, -1655 )
+rotation = 2.87979
+
+[node name="ExplosiveBarrel9" parent="Props/Barrels" instance=ExtResource( 8 )]
+position = Vector2( -128, -896 )
 rotation = 2.87979
 
 [node name="ExplosiveBarrel4" parent="Props/Barrels" instance=ExtResource( 8 )]
@@ -92,5 +103,6 @@ position = Vector2( 640, -1536 )
 rotation = -4.71239
 
 [node name="Objectives" parent="." instance=ExtResource( 11 )]
-killAll = false
-survive = true
+withMelee = true
+meleeAmount = 2
+withExplosion = true
