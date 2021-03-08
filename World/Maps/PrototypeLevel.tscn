@@ -103,6 +103,8 @@ position = Vector2( 640, -1536 )
 rotation = -4.71239
 
 [node name="Objectives" parent="." instance=ExtResource( 11 )]
+killAll = false
+survive = true
+timeSurvive = 60.0
 withMelee = true
-meleeAmount = 2
-withExplosion = true
+meleeAmount = 7

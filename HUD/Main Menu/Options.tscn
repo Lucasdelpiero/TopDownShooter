@@ -8,7 +8,7 @@
 [ext_resource path="res://Music/MusicList.tscn" type="PackedScene" id=6]
 
 [node name="OptionsLayer" type="CanvasLayer"]
-layer = 10
+layer = 100
 
 [node name="Options" type="Control" parent="."]
 pause_mode = 2
@@ -195,17 +195,30 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="OptionMusic" type="OptionButton" parent="Options/VBoxContainer/BoxMusic"]
-margin_left = 499.085
-margin_right = 726.085
-margin_bottom = 44.0
-grow_horizontal = 0
-text = "Choose Song"
+[node name="BoxMusic2" type="Control" parent="Options/VBoxContainer"]
+margin_top = 182.0
+margin_right = 721.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 420, 40 )
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/BoxMusic2"]
+margin_right = 40.0
+margin_bottom = 38.0
+text = "Song Playing :"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicList" parent="Options/VBoxContainer/BoxMusic" instance=ExtResource( 6 )]
+[node name="OptionMusic" type="OptionButton" parent="Options/VBoxContainer/BoxMusic2"]
+margin_left = 252.0
+margin_top = -3.0
+margin_right = 645.0
+margin_bottom = 41.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicList" parent="Options/VBoxContainer/BoxMusic2" instance=ExtResource( 6 )]
 
 [node name="BackButton" parent="Options" instance=ExtResource( 5 )]
 anchor_left = 0.0
@@ -225,7 +238,7 @@ text = "Back"
 [connection signal="toggled" from="Options/VBoxContainer/BoxSFX/MuteSFX" to="Options" method="_on_MuteSFX_toggled"]
 [connection signal="value_changed" from="Options/VBoxContainer/BoxMusic/SliderMusic" to="Options" method="_on_SliderMusic_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/BoxMusic/MuteMusic" to="Options" method="_on_MuteMusic_toggled"]
-[connection signal="item_selected" from="Options/VBoxContainer/BoxMusic/OptionMusic" to="Options" method="_on_OptionMusic_item_selected"]
+[connection signal="item_selected" from="Options/VBoxContainer/BoxMusic2/OptionMusic" to="Options" method="_on_OptionMusic_item_selected"]
 [connection signal="pressed" from="Options/BackButton" to="Options" method="_on_BackButton_pressed"]
 
 [editable path="Options/BackButton"]

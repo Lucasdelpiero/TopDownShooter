@@ -26,12 +26,22 @@ var currentObjectives = [killAllCompleted, surviveCompleted]
 var optionalObjectives = [withMelee ,withExplosion]
 var currentOptional = [withMeleeCompleted, withExplosionCompleted]
 
+var listObjectives = []
+
 # Count
 var zombiesLeft = 0
 var killedByExplosion = 0
 var killedByMelee = 0
 
+onready var base = $CanvasLayer/Base
 onready var label = $CanvasLayer/Base/Label
+onready var lKillAll = $CanvasLayer/Base/VBoxContainer/LKillAll
+onready var lSurvive = $CanvasLayer/Base/VBoxContainer/LSurvive
+onready var lOptional = $CanvasLayer/Base/VBoxContainer/LOptional
+onready var lMelee = $CanvasLayer/Base/VBoxContainer/LMelee
+onready var lExplosion = $CanvasLayer/Base/VBoxContainer/LExplosion
+onready var vBoxObjectives = $CanvasLayer/Base/VBoxContainer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,8 +50,32 @@ func _ready():
 	objectives = [ killAll, survive ] 
 	optionalObjectives = [withMelee ,withExplosion]
 	addObjectives()
+	
+	lKillAll.visible = killAll
+	lSurvive.visible = survive
+	lMelee.visible = withMelee
+	lExplosion.visible = withExplosion
+	lOptional.visible = (withExplosion or withMelee)
+	
+	#Create List
+	var list = vBoxObjectives.get_children() 
+	for i in list.size():
+		if list[i] is Label:
+			listObjectives.append(list[i]) 
+	
 	if survive:
 		$TimerSurvive.start(timeSurvive)
+		lSurvive.text = "Survive for %s seconds" % str(timeSurvive)
+	if withMelee:
+		lMelee.text = "Kill %s zombies in melee" % str(meleeAmount)
+	if withExplosion:
+		lExplosion.text = "Kill %s zombies with an explosion" % str(explosionAmount)
+
+func _process(delta):
+	if Input.is_action_just_pressed("jump"):
+		base.set_visible(not base.is_visible())
+
+##########################################################################################################
 
 func updateObjective(name, byMelee, byExplosion):
 #	zombiesLeft =  get_tree().get_nodes_in_group("zombi").size()

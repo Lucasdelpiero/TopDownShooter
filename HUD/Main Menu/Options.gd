@@ -1,7 +1,7 @@
 extends Control
 
-onready var optionMusic = $VBoxContainer/BoxMusic/OptionMusic
-onready var musicList = $VBoxContainer/BoxMusic/MusicList
+onready var optionMusic = $VBoxContainer/BoxMusic2/OptionMusic
+onready var musicList = $VBoxContainer/BoxMusic2/MusicList
 onready var musicPlayer = $"/root/MusicPlayer"
 
 onready var sliderMaster = $VBoxContainer/BoxMaster/SliderMaster
@@ -19,7 +19,7 @@ func _ready():
 	
 	for i in musicList.tracks.size():
 		optionMusic.add_item(musicList.tracks[i])
-		optionMusic.text = "Choose Song"
+#		optionMusic.text = "Choose Song"
 		pass
 
 
@@ -88,4 +88,4 @@ func chooseRandomSong():
 func _on_OptionMusic_item_selected(index):
 	musicPlayer.stream = load ("res://Music/%s.ogg"  %musicList.tracks[index] )
 	musicPlayer.play()
-	optionMusic.text = "Choose Song"
+#	optionMusic.text = "Choose Song"

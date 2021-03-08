@@ -1219,6 +1219,8 @@ z_index = 10
 z_as_relative = false
 collision_mask = 4
 script = ExtResource( 1 )
+speed = 1250
+acceleration = 3500
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 __meta__ = {
