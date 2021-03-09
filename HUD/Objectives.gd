@@ -113,7 +113,6 @@ func checkCompletion():
 	completed() # Win
 
 func checkOptional():
-	print(currentOptional)
 	for i in currentOptional.size():
 		if currentOptional[i] == false:
 			return

@@ -145,6 +145,8 @@ jump={
 2d_physics/layer_6="SoftCollision"
 2d_render/layer_7="Object"
 2d_physics/layer_7="Object"
+2d_render/layer_8="Ammo"
+2d_physics/layer_8="Ammo"
 
 [rendering]
 

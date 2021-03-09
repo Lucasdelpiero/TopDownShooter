@@ -25,7 +25,6 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=26]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 61.606
@@ -547,8 +546,92 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-length = 0.3
+length = 0.1
 loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 28.4204, -11.4204 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+}, {
+"args": [  ],
+"method": "stateIdle"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Position2D/AnimationPlayer:playback_speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "PistolShoot (copy)"
+length = 0.2
+loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
 tracks/0/interp = 1
@@ -604,7 +687,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -1235,12 +1318,12 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 62, -16 )
+position = Vector2( 28.4204, -11.4204 )
 z_index = 10
 z_as_relative = false
-texture = ExtResource( 26 )
-hframes = 20
-frame = 2
+texture = ExtResource( 5 )
+hframes = 3
+frame = 1
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
 position = Vector2( 0, 22.92 )
@@ -1267,7 +1350,6 @@ disabled = false
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
-playback_speed = 4.0
 anims/KnifeIdle = SubResource( 2 )
 anims/KnifeMelee = SubResource( 3 )
 anims/KnifeMove = SubResource( 4 )
@@ -1276,6 +1358,7 @@ anims/PistolIdle = SubResource( 6 )
 anims/PistolMove = SubResource( 7 )
 anims/PistolReload = SubResource( 8 )
 anims/PistolShoot = SubResource( 9 )
+"anims/PistolShoot (copy)" = SubResource( 19 )
 anims/RifleBlocked = SubResource( 10 )
 anims/RifleIdle = ExtResource( 4 )
 anims/RifleMove = ExtResource( 2 )

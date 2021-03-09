@@ -94,6 +94,11 @@ var dir = 14
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if Input.is_action_just_pressed("jump"):
+		var a = "rifle"
+		grabAmmo(get(a), 10)
+		updateHUD()
+	
 	
 	move(delta)
 	
@@ -115,8 +120,9 @@ func _physics_process(delta):
 				state = MELEE
 			
 			if Input.is_action_just_pressed("reload"):
-				startReloading()
-				state = RELOADING
+				if weaponSelected.reserveAmmo > 0:
+					startReloading()
+					state = RELOADING
 		
 		RELOADING:
 			if Input.is_action_just_pressed("knife"):
@@ -155,7 +161,7 @@ func trigger():
 	if canShoot and ammoSelected > 0 :
 		animationPlayer.play(animShoot)
 		state = SHOOTING
-	elif ammoSelected == 0:
+	elif ammoSelected == 0 and weaponSelected.reserveAmmo > 0:
 		startReloading()
 	else:
 		state = IDLE
@@ -171,7 +177,7 @@ func shoot():
 		bullet.direction = shotDirection
 		bullet.get_node("Sprite").rotation_degrees = rad2deg(shotDirection)
 		
-		#add range to the bullet
+		#add range to the bullet to compensate player movement
 		var direction = Vector2( cos($Position2D.rotation) , sin($Position2D.rotation))
 		var velocityVector = velocity.normalized()
 		var velocityDot = velocityVector.dot(direction)
@@ -206,11 +212,18 @@ func reload():
 	state = IDLE
 
 func fillAmmo():
-	self.weaponSelected.ammo = weaponSelected.capacity
+	var reloadAmount = min(weaponSelected.capacity - weaponSelected.ammo, weaponSelected.reserveAmmo)
+	self.weaponSelected.reserveAmmo -= reloadAmount
+	self.weaponSelected.ammo +=  reloadAmount
+#	self.weaponSelected.ammo = weaponSelected.capacity
 
 func reloadSound():
 	audioGuns.stream = weaponSelected.reloadSound
 	audioGuns.play()
+
+func grabAmmo(type, amount):
+	get(type).pickedAmmo(amount)
+	updateHUD()
 
 func choose_weapon():
 	if Input.is_action_just_pressed("pistol"):
@@ -250,7 +263,7 @@ func muzzle():
 	muzzle.rotation_degrees = position2D.rotation_degrees
 
 func updateHUD():
-	emit_signal("updateHUD", health, weaponSelected.ammo, weaponSelected.capacity)
+	emit_signal("updateHUD", health, weaponSelected.ammo, weaponSelected.reserveAmmo)
 
 func _on_HurtBox_area_entered(area):
 	self.health = -area.damage
