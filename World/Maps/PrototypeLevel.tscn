@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=10]
 [ext_resource path="res://HUD/Objectives.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Objects/Weapons/Ammo/ShotgunAmmo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/Objects/Weapons/Ammo/PistolAmmo.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=14]
 
 [node name="PrototypeLevel" type="Node2D"]
@@ -104,23 +106,37 @@ position = Vector2( -1280, -3200 )
 position = Vector2( 640, -1536 )
 rotation = -4.71239
 
-[node name="RifleAmmo" parent="Props" instance=ExtResource( 6 )]
-position = Vector2( -336.612, -1280 )
-monitorable = false
-
-[node name="RifleAmmo2" parent="Props" instance=ExtResource( 6 )]
-position = Vector2( -233.365, -1408 )
-monitorable = false
-
-[node name="RifleAmmo3" parent="Props" instance=ExtResource( 6 )]
-position = Vector2( 128, -1556 )
-monitorable = false
-
-[node name="RifleAmmo4" parent="Props" instance=ExtResource( 6 )]
-position = Vector2( -203.865, -1850 )
-monitorable = false
-
 [node name="Objectives" parent="." instance=ExtResource( 11 )]
 survive = true
-timeSurvive = 10.0
+timeSurvive = 60.0
 withMelee = true
+
+[node name="Bullets" type="Node" parent="."]
+
+[node name="ShotgunAmmo" parent="Bullets" instance=ExtResource( 12 )]
+position = Vector2( 157.5, -1600 )
+
+[node name="ShotgunAmmo3" parent="Bullets" instance=ExtResource( 12 )]
+position = Vector2( -50.4715, -1856.37 )
+
+[node name="ShotgunAmmo2" parent="Bullets" instance=ExtResource( 12 )]
+position = Vector2( -336.612, -1556 )
+collision_mask = 2147483649
+
+[node name="RifleAmmo" parent="Bullets" instance=ExtResource( 6 )]
+position = Vector2( -90.7393, -1216 )
+
+[node name="RifleAmmo3" parent="Bullets" instance=ExtResource( 6 )]
+position = Vector2( -336.612, -1216 )
+
+[node name="RifleAmmo2" parent="Bullets" instance=ExtResource( 6 )]
+position = Vector2( 128, -896 )
+
+[node name="PistolAmmo" parent="Bullets" instance=ExtResource( 13 )]
+position = Vector2( -336.612, -2176 )
+
+[node name="PistolAmmo2" parent="Bullets" instance=ExtResource( 13 )]
+position = Vector2( 128, -2176 )
+
+[node name="PistolAmmo3" parent="Bullets" instance=ExtResource( 13 )]
+position = Vector2( -256, -2688 )

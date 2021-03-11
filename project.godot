@@ -131,7 +131,7 @@ jump={
 
 [layer_names]
 
-2d_render/layer_1="Player"
+2d_render/layer_1="PlayerHitbox"
 2d_physics/layer_1="Player"
 2d_render/layer_2="Enemies"
 2d_physics/layer_2="Enemies"

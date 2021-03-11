@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pickAmmo.wav-baf2d726d38972d3417e3797677d160a.sample"
+
+[deps]
+
+source_file="res://World/Objects/Weapons/Ammo/pickAmmo.wav"
+dest_files=[ "res://.import/pickAmmo.wav-baf2d726d38972d3417e3797677d160a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

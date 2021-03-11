@@ -26,9 +26,6 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 61.606
-
 [sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
@@ -627,7 +624,7 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=10]
 resource_name = "PistolShoot (copy)"
 length = 0.2
 loop = true
@@ -710,8 +707,7 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "RifleBlocked"
+[sub_resource type="Animation" id=11]
 length = 0.6
 step = 0.05
 tracks/0/type = "value"
@@ -777,7 +773,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -857,7 +853,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -938,8 +934,7 @@ tracks/5/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "ShotgunBlocked"
+[sub_resource type="Animation" id=14]
 length = 0.6
 step = 0.05
 tracks/0/type = "value"
@@ -1005,7 +1000,7 @@ tracks/4/keys = {
 "values": [ Vector2( 52.5811, -22.5702 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -1068,7 +1063,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -1131,7 +1126,7 @@ tracks/4/keys = {
 "values": [ 4.0 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -1211,7 +1206,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -1292,7 +1287,10 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=18]
+[sub_resource type="CircleShape2D" id=1]
+radius = 61.606
+
+[sub_resource type="CircleShape2D" id=19]
 radius = 60.4062
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -1300,6 +1298,7 @@ radius = 60.4062
 ]]
 z_index = 10
 z_as_relative = false
+collision_layer = 65
 collision_mask = 4
 script = ExtResource( 1 )
 speed = 1250
@@ -1309,11 +1308,6 @@ acceleration = 3500
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 8, 0 )
-shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
 
@@ -1342,6 +1336,7 @@ visible = true
 [node name="Knife" parent="Position2D" groups=[
 "Melee",
 ] instance=ExtResource( 9 )]
+visible = false
 
 [node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
 disabled = false
@@ -1358,24 +1353,28 @@ anims/PistolIdle = SubResource( 6 )
 anims/PistolMove = SubResource( 7 )
 anims/PistolReload = SubResource( 8 )
 anims/PistolShoot = SubResource( 9 )
-"anims/PistolShoot (copy)" = SubResource( 19 )
-anims/RifleBlocked = SubResource( 10 )
+"anims/PistolShoot (copy)" = SubResource( 10 )
+anims/RifleBlocked = SubResource( 11 )
 anims/RifleIdle = ExtResource( 4 )
 anims/RifleMove = ExtResource( 2 )
-anims/RifleReload = SubResource( 11 )
-anims/RifleShoot = SubResource( 12 )
-anims/ShotgunBlocked = SubResource( 13 )
-anims/ShotgunIdle = SubResource( 14 )
-anims/ShotgunMove = SubResource( 15 )
-anims/ShotgunReload = SubResource( 16 )
-anims/ShotgunShoot = SubResource( 17 )
+anims/RifleReload = SubResource( 12 )
+anims/RifleShoot = SubResource( 13 )
+anims/ShotgunBlocked = SubResource( 14 )
+anims/ShotgunIdle = SubResource( 15 )
+anims/ShotgunMove = SubResource( 16 )
+anims/ShotgunReload = SubResource( 17 )
+anims/ShotgunShoot = SubResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 8, 0 )
+shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 21 )]
 visible = false
 collision_layer = 2147483649
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 18 )
+shape = SubResource( 19 )
 
 [node name="IdleTimer" type="Timer" parent="."]
 
