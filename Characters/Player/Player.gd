@@ -94,11 +94,6 @@ var dir = 14
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Input.is_action_just_pressed("jump"):
-		var a = "rifle"
-		grabAmmo(get(a), 10)
-		updateHUD()
-	
 	
 	move(delta)
 	
@@ -222,7 +217,7 @@ func reloadSound():
 	audioGuns.play()
 
 func grabAmmo(type, amount):
-	get(type).pickedAmmo(amount)
+	get(type).pickedAmmo(amount) #Add ammo to weapon
 	updateHUD()
 
 func choose_weapon():

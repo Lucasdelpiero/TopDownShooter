@@ -1,0 +1,28 @@
+[gd_resource type="TileSet" load_steps=2 format=2]
+
+[ext_resource path="res://World/Tiles/Walls/tileset.png" type="Texture" id=1]
+
+[resource]
+0/name = "tileset.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 1408, 1024 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 432, Vector2( 0, 1 ), 438, Vector2( 0, 2 ), 54, Vector2( 0, 3 ), 48, Vector2( 0, 5 ), 377, Vector2( 0, 6 ), 125, Vector2( 0, 7 ), 125, Vector2( 1, 0 ), 504, Vector2( 1, 1 ), 511, Vector2( 1, 2 ), 63, Vector2( 1, 3 ), 56, Vector2( 1, 5 ), 317, Vector2( 1, 6 ), 380, Vector2( 1, 7 ), 313, Vector2( 2, 0 ), 216, Vector2( 2, 1 ), 219, Vector2( 2, 2 ), 27, Vector2( 2, 3 ), 24, Vector2( 2, 5 ), 312, Vector2( 2, 6 ), 60, Vector2( 2, 7 ), 124, Vector2( 3, 0 ), 144, Vector2( 3, 1 ), 146, Vector2( 3, 2 ), 18, Vector2( 3, 3 ), 16, Vector2( 3, 7 ), 120, Vector2( 4, 0 ), 176, Vector2( 4, 1 ), 182, Vector2( 4, 2 ), 434, Vector2( 4, 3 ), 50, Vector2( 4, 7 ), 57, Vector2( 5, 0 ), 248, Vector2( 5, 3 ), 59, Vector2( 6, 0 ), 440, Vector2( 6, 3 ), 62, Vector2( 7, 0 ), 152, Vector2( 7, 1 ), 155, Vector2( 7, 2 ), 218, Vector2( 7, 3 ), 26, Vector2( 7, 4 ), 243, Vector2( 7, 5 ), 179, Vector2( 7, 6 ), 242, Vector2( 7, 7 ), 178, Vector2( 8, 0 ), 147, Vector2( 8, 1 ), 150, Vector2( 8, 2 ), 210, Vector2( 8, 3 ), 402, Vector2( 8, 4 ), 414, Vector2( 8, 5 ), 158, Vector2( 8, 6 ), 410, Vector2( 8, 7 ), 154, Vector2( 9, 0 ), 403, Vector2( 9, 1 ), 215, Vector2( 9, 2 ), 407, Vector2( 9, 3 ), 471, Vector2( 9, 4 ), 189, Vector2( 9, 5 ), 185, Vector2( 9, 6 ), 188, Vector2( 9, 7 ), 184, Vector2( 10, 0 ), 214, Vector2( 10, 1 ), 470, Vector2( 10, 2 ), 467, Vector2( 10, 3 ), 403, Vector2( 10, 4 ), 378, Vector2( 10, 5 ), 122, Vector2( 10, 6 ), 314, Vector2( 10, 7 ), 58 ]
+0/autotile/icon_coordinate = Vector2( 1, 1 )
+0/autotile/tile_size = Vector2( 128, 128 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [ Vector3( 1, 0, 2 ) ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0

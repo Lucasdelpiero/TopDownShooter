@@ -26,7 +26,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -90,7 +90,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
 tracks/0/interp = 1
@@ -204,7 +204,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -267,7 +267,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "PistolBlocked"
 length = 0.3
 step = 0.05
@@ -334,7 +334,7 @@ tracks/4/keys = {
 "values": [ Vector2( 41.9865, 2.85687 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -398,7 +398,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -462,7 +462,7 @@ tracks/4/keys = {
 "values": [ 4.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -542,7 +542,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 0.1
 loop = true
 step = 0.05
@@ -624,7 +624,7 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "PistolShoot (copy)"
 length = 0.2
 loop = true
@@ -707,7 +707,7 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 0.6
 step = 0.05
 tracks/0/type = "value"
@@ -773,7 +773,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -853,7 +853,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -934,7 +934,7 @@ tracks/5/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 length = 0.6
 step = 0.05
 tracks/0/type = "value"
@@ -1000,7 +1000,7 @@ tracks/4/keys = {
 "values": [ Vector2( 52.5811, -22.5702 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -1063,7 +1063,7 @@ tracks/4/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -1126,7 +1126,7 @@ tracks/4/keys = {
 "values": [ 4.0 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
@@ -1206,7 +1206,7 @@ tracks/5/keys = {
 "values": [ 1.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -1287,7 +1287,7 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=18]
 radius = 61.606
 
 [sub_resource type="CircleShape2D" id=19]
@@ -1345,29 +1345,29 @@ disabled = false
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
-anims/KnifeIdle = SubResource( 2 )
-anims/KnifeMelee = SubResource( 3 )
-anims/KnifeMove = SubResource( 4 )
-anims/PistolBlocked = SubResource( 5 )
-anims/PistolIdle = SubResource( 6 )
-anims/PistolMove = SubResource( 7 )
-anims/PistolReload = SubResource( 8 )
-anims/PistolShoot = SubResource( 9 )
-"anims/PistolShoot (copy)" = SubResource( 10 )
-anims/RifleBlocked = SubResource( 11 )
+anims/KnifeIdle = SubResource( 1 )
+anims/KnifeMelee = SubResource( 2 )
+anims/KnifeMove = SubResource( 3 )
+anims/PistolBlocked = SubResource( 4 )
+anims/PistolIdle = SubResource( 5 )
+anims/PistolMove = SubResource( 6 )
+anims/PistolReload = SubResource( 7 )
+anims/PistolShoot = SubResource( 8 )
+"anims/PistolShoot (copy)" = SubResource( 9 )
+anims/RifleBlocked = SubResource( 10 )
 anims/RifleIdle = ExtResource( 4 )
 anims/RifleMove = ExtResource( 2 )
-anims/RifleReload = SubResource( 12 )
-anims/RifleShoot = SubResource( 13 )
-anims/ShotgunBlocked = SubResource( 14 )
-anims/ShotgunIdle = SubResource( 15 )
-anims/ShotgunMove = SubResource( 16 )
-anims/ShotgunReload = SubResource( 17 )
-anims/ShotgunShoot = SubResource( 18 )
+anims/RifleReload = SubResource( 11 )
+anims/RifleShoot = SubResource( 12 )
+anims/ShotgunBlocked = SubResource( 13 )
+anims/ShotgunIdle = SubResource( 14 )
+anims/ShotgunMove = SubResource( 15 )
+anims/ShotgunReload = SubResource( 16 )
+anims/ShotgunShoot = SubResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 8, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 18 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 21 )]
 visible = false
