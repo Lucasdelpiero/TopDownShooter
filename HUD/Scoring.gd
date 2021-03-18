@@ -19,6 +19,7 @@ onready var comboBar = $ComboLabels/ComboBar
 onready var tweenComboBar = $ComboLabels/ComboBar/Tween
 onready var lastCombo = $ComboLabels/LastCombo
 onready var tweenLastCombo = $ComboLabels/LastCombo/Tween
+var optionsControl 
 
 var dictionary = {
 	"zombi" : 20,
@@ -26,14 +27,16 @@ var dictionary = {
 	"zombiFast" : 40,
 	"zombiExplosive" : 25,
 }
-
+signal updateMusic(value)
 func _on_Scoring_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
-	startCombo()
+#	startCombo()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	startCombo()
+	yield(get_tree().create_timer(1), "timeout")
+	optionsControl = get_tree().get_root().find_node("Options", true, false)
+	connect("updateMusic", optionsControl, "activateMusic")
 
 func updateScore(name, byMelee, byExplosion):
 	var base = dictionary[name] 
@@ -51,6 +54,7 @@ func startCombo():
 	tweenComboBar.interpolate_property(comboBar, "value", 100, 0, comboTime,Tween.TRANS_SINE, Tween.EASE_OUT)
 	tweenComboBar.start()
 	changeVisibility(true)
+	emit_signal("updateMusic", true)
 
 func resetCombo():
 	tweenComboBar.interpolate_property(comboBar, "value", 0, 100, 0, Tween.TRANS_LINEAR)
@@ -72,6 +76,7 @@ func endCombo():
 func _on_Tween_tween_all_completed():
 	if comboBar.value == 0:
 		endCombo()
+		fadeMusic()
 
 func updateLabels():
 	comboLabel.text = str(comboScore)
@@ -91,6 +96,8 @@ func unFadeLastCombo():
 	tweenLastCombo.interpolate_property(lastCombo, "modulate", fadedAlpha, initialAlpha, 0, Tween.TRANS_LINEAR)
 	tweenLastCombo.start()
 
+func fadeMusic():
+	emit_signal("updateMusic", false)
 
 
 

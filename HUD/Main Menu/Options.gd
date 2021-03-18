@@ -9,6 +9,11 @@ onready var sliderSFX = $VBoxContainer/BoxSFX/SliderSFX
 onready var sliderMusic = $VBoxContainer/BoxMusic/SliderMusic
 onready var min_value = sliderMaster.min_value
 
+export var dynamicMusic = true
+var dynamicActive = false
+var dynamicVolume = 0.0
+export var dynamicAccel = 0.02
+var targetMusicVolume = 0.5
 
 func _ready():
 	randomize()
@@ -22,11 +27,19 @@ func _ready():
 #		optionMusic.text = "Choose Song"
 		pass
 
+func _process(delta):
+	if dynamicMusic:
+		dynamicVolumeUpdate(dynamicActive)
 
 func _input(event):
 	if event.is_action_pressed("paused"):
 		var new_pause_state = not get_tree().paused
 		visible = new_pause_state
+	if event.is_action_pressed("reload"):
+		dynamicActive = true
+
+	if event.is_action_pressed("jump"):
+		dynamicActive = false
 
 func _on_BackButton_pressed():
 	visible = false
@@ -37,7 +50,6 @@ func _on_BackButton_pressed():
 
 func _on_CheckBox_toggled(_button_pressed):
 	OS.set_window_fullscreen(not OS.is_window_fullscreen())
-
 
 func _on_ScreenResolution_item_selected(index):
 	match index:
@@ -53,7 +65,7 @@ func _on_ScreenResolution_item_selected(index):
 
 func getVolume(bus, slider):
 	var volume  = AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus))
-	slider.value = volume
+	slider.value = db2linear(volume)
 
 func setVolume(bus , value):
 	if value == min_value :
@@ -64,19 +76,20 @@ func mute(bus, button_pressed):
 	AudioServer.set_bus_mute(AudioServer.get_bus_index(bus), button_pressed)
 
 func _on_SliderMaster_value_changed(value):
-	setVolume("Master", value)
+	setVolume("Master", linear2db(value))
 
 func _on_MuteMaster_toggled(button_pressed):
 	mute("Master", button_pressed)
 
 func _on_SliderSFX_value_changed(value):
-	setVolume("SoundEffects", value)
+	setVolume("SoundEffects", linear2db(value))
 
 func _on_MuteSFX_toggled(button_pressed):
 	mute("SoundEffects", button_pressed)
 
 func _on_SliderMusic_value_changed(value):
-	setVolume("Music", value)
+	setVolume("Music", linear2db(value) )
+	targetMusicVolume = value
 
 func _on_MuteMusic_toggled(button_pressed):
 	mute("Music", button_pressed)
@@ -89,3 +102,14 @@ func _on_OptionMusic_item_selected(index):
 	musicPlayer.stream = load ("res://Music/%s.ogg"  %musicList.tracks[index] )
 	musicPlayer.play()
 #	optionMusic.text = "Choose Song"
+
+## Dynamic  Music
+func dynamicVolumeUpdate(value):
+	dynamicVolume = lerp(dynamicVolume, float(value) , dynamicAccel)
+	var totalVolume = dynamicVolume * targetMusicVolume
+	setVolume("Music", linear2db(totalVolume))
+	pass
+
+func activateMusic(value):
+	dynamicActive = value
+#dynamicVolume = dynamicVolume.lerp( dynamicVolume, 0.2)

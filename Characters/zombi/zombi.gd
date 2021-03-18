@@ -197,7 +197,8 @@ func death(area):
 	emit_signal("killed", str(type), byMelee, byExplosion)
 	
 	var corpse = Corpse.instance()
-	get_parent().add_child(corpse)
+#	get_parent().add_child(corpse)
+	call_deferred("add_child", corpse)
 	corpse.global_position = global_position
 #	corpse.rotation = sprite.rotation
 	corpse.rotation = get_angle_to(area.global_position)

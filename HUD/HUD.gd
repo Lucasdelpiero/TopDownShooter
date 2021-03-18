@@ -10,6 +10,13 @@ onready var gridContainer = $GridContainer
 export(Color, RGBA) var defaultColor = Color(1.0, 1.0, 1.0, 1.0)
 export(Color, RGBA) var selectedColor = Color(1.0, 0.0, 0.0, 1.0)
 
+var optionsControl
+
+func _ready():
+	yield(get_tree().create_timer(0.05), "timeout")
+	optionsControl = get_tree().get_root().find_node("Options", true, false)
+	connect("updateMusic", optionsControl, "activateMusic")
+
 func _process(delta):
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
