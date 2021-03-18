@@ -5,6 +5,7 @@ const bullet = preload("res://Characters/Player/Top_Down_Survivor/bullet.png")
 const Explosion = preload("res://World/Objects/Barrel/Explosion.tscn")
 const BloodParticle = preload("res://Characters/zombi/Blood/BloodParticles.tscn")
 const BloodStain = preload("res://Characters/zombi/Blood/BloodStain.tscn")
+const Corpse = preload("res://Characters/zombi/Animations/ZombiCorpse.tscn")
 
 
 
@@ -194,6 +195,14 @@ func death(area):
 	var byExplosion = area.get_parent().is_in_group("Explosion")
 	
 	emit_signal("killed", str(type), byMelee, byExplosion)
+	
+	var corpse = Corpse.instance()
+	get_parent().add_child(corpse)
+	corpse.global_position = global_position
+#	corpse.rotation = sprite.rotation
+	corpse.rotation = get_angle_to(area.global_position)
+	if byMelee or byExplosion:
+		corpse.push()
 
 func soundHitted():
 	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
