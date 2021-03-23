@@ -40,13 +40,12 @@ enum{
 	WANDER,
 	CHASE
 }
+export var MAX_SPEED = 200
 export var ACCELERATION = 300
 export var FRICTION = 200
 export var WANDER_TARGET_RANGE = 8
 var state = IDLE
 var velocity = Vector2.ZERO
-export var max_speed = 200
-var acceleration = 40
 var direction = 0.0
 export var health = 5
 var player = null
@@ -114,9 +113,9 @@ func wander_state():
 		wanderController.start_position = global_position
 		update_wander()
 	direction = get_angle_to(wanderController.target_position)
-	velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
+	velocity = Vector2(cos(direction) * MAX_SPEED, sin(direction) * MAX_SPEED)
 	velocity = move_and_slide(velocity)
-	if global_position.distance_to(wanderController.target_position) < max_speed or get_slide_count() > 0 :
+	if global_position.distance_to(wanderController.target_position) < MAX_SPEED or get_slide_count() > 0 :
 		state = IDLE
 
 func update_wander():
@@ -142,7 +141,7 @@ func chase_state(delta):
 #		if usePathfinding:
 			if pathTimer.is_stopped():
 				get_path()
-			var moveDistance = max_speed * delta
+			var moveDistance = MAX_SPEED * delta
 			move_along_path(moveDistance)
 		else:
 			moveDirect()
@@ -218,7 +217,7 @@ func move_along_path(distance : float) -> void:
 		if distance <= distanceToNextPoint  and distance >= 0.0:
 #			position = startPoint.linear_interpolate(path[0], distance / distanceToNextPoint)
 			direction = get_angle_to(path[0])
-			velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
+			velocity = Vector2(cos(direction) * MAX_SPEED, sin(direction) * MAX_SPEED)
 			break
 		elif distance < 0.0:
 			position = path[0]
@@ -250,7 +249,7 @@ func get_path():
 
 func moveDirect():
 		direction = get_angle_to(player.get_global_position())
-		velocity = Vector2(cos(direction) * max_speed, sin(direction) * max_speed)
+		velocity = Vector2(cos(direction) * MAX_SPEED, sin(direction) * MAX_SPEED)
 		velocity = move_and_slide(velocity)
 
 func _on_PathFindTimer_timeout():

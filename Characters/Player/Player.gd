@@ -13,6 +13,7 @@ var automatic = false
 var velocity = Vector2.ZERO
 export var health = 100 setget updateHealth, getHealth
 var bonusHealing = false
+var distanceToBendBullet = 400
 
 var minBulletSpdBonus = 0.3
 var maxBulletSpdBonus = 1000
@@ -91,9 +92,10 @@ func _ready():
 	remoteTransform.remote_path = "../../Camera"
 
 var dir = 14
-
+onready var line = $Node/Line2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	$Position2D.look_at(get_global_mouse_position())
 	
 	move(delta)
 	
@@ -129,7 +131,7 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("knife"):
 				melee()
 				state = MELEE
-		
+
 func move(delta):
 	dir = rad2deg(position2D.get_rotation())
 	var input_vector = Vector2.ZERO
@@ -147,7 +149,7 @@ func move(delta):
 	velocity = velocity.move_toward(input_vector * speed, acceleration * delta)
 	velocity = move_and_slide(velocity)
 	
-	$Position2D.look_at(get_global_mouse_position())
+	
 
 func trigger():
 	if not rayCastWall.is_colliding() and automatic:
@@ -168,7 +170,12 @@ func shoot():
 		get_parent().add_child(bullet)
 		bullet.global_position = weaponSelected.global_position
 		var miss = deg2rad(weaponSelected.missDegree)
-		var shotDirection = position2D.rotation + rand_range(- miss, miss)
+#		var shotDirection = position2D.rotation + rand_range(- miss, miss)
+		var baseDirection = position2D.rotation
+		if global_position.distance_to(get_global_mouse_position()) > distanceToBendBullet :
+			baseDirection = bullet.get_angle_to(get_global_mouse_position() + velocity / 10 ) + rand_range(- miss, miss)
+			
+		var shotDirection = baseDirection + rand_range(- miss, miss)
 		bullet.direction = shotDirection
 		bullet.get_node("Sprite").rotation_degrees = rad2deg(shotDirection)
 		

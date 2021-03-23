@@ -1301,8 +1301,8 @@ z_as_relative = false
 collision_layer = 65
 collision_mask = 4
 script = ExtResource( 1 )
-speed = 1250
-acceleration = 3500
+speed = 1500
+acceleration = 5000
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 __meta__ = {
@@ -1332,6 +1332,7 @@ collision_mask = 4
 visible = true
 
 [node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
+missDegree = 0
 
 [node name="Knife" parent="Position2D" groups=[
 "Melee",
