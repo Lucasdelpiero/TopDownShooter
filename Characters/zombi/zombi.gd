@@ -21,6 +21,7 @@ onready var rayCast = $RayCast2D
 onready var pathTimer = $PathFindTimer
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
+onready var line = $Node/Line2D
 
 signal killed(type, byMelee, byExplosion)
 signal fillPlayerAmmo()
@@ -60,7 +61,7 @@ export var path : = PoolVector2Array() setget set_path
 
 func _on_zombi_tree_entered():
 	set_process(false)
-	wallCollide(true)
+	wallCollide(true) 
 	randomize()
 	yield(get_tree().create_timer(0.01), "timeout")
 	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
@@ -134,7 +135,7 @@ func chase_state(delta):
 	player = playerDetectionZone.player
 	if player == null:
 		state = IDLE
-		wallCollide(true)
+		wallCollide(true) 
 		
 	else:
 		if rayCast.is_colliding():
@@ -242,6 +243,7 @@ func get_path():
 			usePathfinding = true
 			path = navigation.get_simple_path(global_position, player.global_position, true)
 			pathTimer.start(timeToPathfind) #0.2 originally
+			line.points = path
 		else:
 			usePathfinding = false
 			

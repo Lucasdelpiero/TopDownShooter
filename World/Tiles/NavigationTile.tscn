@@ -8,4 +8,3 @@ z_as_relative = false
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 128 )
 format = 1
-tile_data = PoolIntArray( 65563, 0, 0 )
