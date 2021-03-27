@@ -59,6 +59,8 @@ func _on_ScreenResolution_item_selected(index):
 			OS.set_window_size(Vector2(1280, 1024))
 		2:
 			OS.set_window_size(Vector2(800, 600))
+		3:
+			OS.set_window_size(Vector2(1280, 720))
 	OS.center_window()
 
 ## SOUND OPTIONS

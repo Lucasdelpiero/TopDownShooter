@@ -21,7 +21,6 @@ onready var rayCast = $RayCast2D
 onready var pathTimer = $PathFindTimer
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
-onready var line = $Node/Line2D
 
 signal killed(type, byMelee, byExplosion)
 signal fillPlayerAmmo()
@@ -197,8 +196,8 @@ func death(area):
 	emit_signal("killed", str(type), byMelee, byExplosion)
 	
 	var corpse = Corpse.instance()
-#	get_parent().add_child(corpse)
-	call_deferred("add_child", corpse)
+	get_parent().add_child(corpse)
+#	call_deferred("add_child", corpse)
 	corpse.global_position = global_position
 #	corpse.rotation = sprite.rotation
 	corpse.rotation = get_angle_to(area.global_position)
@@ -242,7 +241,6 @@ func get_path():
 			usePathfinding = true
 			path = navigation.get_simple_path(global_position, player.global_position, true)
 			pathTimer.start(timeToPathfind) #0.2 originally
-			line.points = path
 		else:
 			usePathfinding = false
 			
