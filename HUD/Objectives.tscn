@@ -1,8 +1,69 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/Objectives.gd" type="Script" id=1]
 [ext_resource path="res://HUD/font_objective.tres" type="DynamicFont" id=2]
 [ext_resource path="res://HUD/Objectives.tres" type="Theme" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Hide"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("VBoxContainer:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 749, -0.25, 0, 0.48, 337.003, 1028.15, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("VBoxContainer:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 164, -0.25, 0, 0.25, 0, 164, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 749, 164 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Show"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("VBoxContainer:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1028.15, -0.25, 0, 0.25, 0, 690, -0.83, -0.015686, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("VBoxContainer:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 164, -0.25, 0, 0.25, 0, 164, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
 
 [node name="Objectives" type="Control"]
 theme = ExtResource( 3 )
@@ -41,10 +102,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -210.0
+margin_left = -334.0
 margin_top = -136.0
-margin_right = -17.0
-margin_bottom = -38.0
+margin_right = -75.9995
+margin_bottom = 136.0
 grow_horizontal = 0
 alignment = 2
 __meta__ = {
@@ -101,6 +162,11 @@ margin_right = 258.0
 margin_bottom = 272.0
 text = "Explosion"
 align = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Base"]
+anims/Hide = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Show = SubResource( 3 )
 
 [node name="TimerSurvive" type="Timer" parent="."]
 one_shot = true

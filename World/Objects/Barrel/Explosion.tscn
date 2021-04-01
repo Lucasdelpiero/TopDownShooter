@@ -16,7 +16,7 @@ gradient = SubResource( 1 )
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 132.08
+initial_velocity = 60.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
@@ -116,20 +116,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
-tracks/5/type = "audio"
-tracks/5/path = NodePath("AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 5 )
-} ],
-"times": PoolRealArray( 0 )
-}
 
 [node name="Explosion" type="Node2D" groups=[
 "Explosion",
@@ -142,6 +128,7 @@ script = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 z_index = 20
 z_as_relative = false
+emitting = false
 amount = 25
 process_material = SubResource( 3 )
 texture = ExtResource( 3 )
@@ -153,6 +140,7 @@ __meta__ = {
 scale = Vector2( 2, 2 )
 z_index = 20
 z_as_relative = false
+emitting = false
 amount = 50
 explosiveness = 0.74
 process_material = SubResource( 8 )

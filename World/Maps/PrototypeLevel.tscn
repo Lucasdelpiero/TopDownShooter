@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://World/Objects/Weapons/Ammo/PistolAmmo.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Characters/zombi/Animations/ZombiDead.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/LevelControl/ControlSpawner.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Tiles/Walls/WallsTemplate.tscn" type="PackedScene" id=17]
 
 [node name="PrototypeLevel" type="Node2D"]
@@ -222,7 +223,13 @@ position = Vector2( -101.594, -2044.57 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -349.704, -482.89 )
 
-[node name="Spawner" parent="." instance=ExtResource( 3 )]
+[node name="ControlSpawner" parent="." instance=ExtResource( 16 )]
+continuous = true
+autoStart = true
+
+[node name="Spawner" parent="ControlSpawner" groups=[
+"spawn",
+] instance=ExtResource( 3 )]
 position = Vector2( 9.2887, -2471.59 )
 enemy0 = ExtResource( 5 )
 amount0 = 2
@@ -230,6 +237,4 @@ enemy1 = ExtResource( 6 )
 amount1 = 1
 enemy2 = ExtResource( 12 )
 amount2 = 2
-continuous = true
-autoStart = true
 timerTime = 5.0

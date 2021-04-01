@@ -145,8 +145,34 @@ text = "[3]"
 align = 1
 
 [node name="Scoring" parent="." instance=ExtResource( 1 )]
+margin_left = -0.558713
+margin_right = 8.44128
 
 [node name="Score" parent="Scoring/ComboLabels" index="0"]
+margin_left = 1.18921
+margin_top = 41.433
+margin_right = 1.18921
+margin_bottom = 79.433
 valign = 0
+
+[node name="Multiplicator" parent="Scoring/ComboLabels" index="1"]
+margin_left = 5.18921
+margin_top = 41.433
+margin_right = 5.18921
+margin_bottom = 79.433
+
+[node name="ComboBar" parent="Scoring/ComboLabels" index="2"]
+visible = true
+margin_left = -96.3784
+margin_top = 13.0816
+margin_right = 118.622
+margin_bottom = 35.0816
+
+[node name="LastCombo" parent="Scoring/ComboLabels" index="3"]
+margin_left = -64.2675
+margin_top = -48.832
+margin_right = 91.7325
+margin_bottom = -8.83203
+text = "asda"
 
 [editable path="Scoring"]

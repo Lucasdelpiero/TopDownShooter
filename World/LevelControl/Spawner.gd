@@ -42,7 +42,6 @@ func spawn():
 		if (enemy != null):
 			for o in enemiesAmount[i]:
 				totalZombies += 1
-				print(getEnemyAmount())
 				if totalZombies > zombiCap:
 					return
 				var Zombi = load( enemies[i].get_path() )

@@ -33,6 +33,9 @@ var zombiesLeft = 0
 var killedByExplosion = 0
 var killedByMelee = 0
 
+#Animation
+var showing = true
+
 onready var base = $CanvasLayer/Base
 onready var label = $CanvasLayer/Base/Label
 onready var lKillAll = $CanvasLayer/Base/VBoxContainer/LKillAll
@@ -41,6 +44,7 @@ onready var lOptional = $CanvasLayer/Base/VBoxContainer/LOptional
 onready var lMelee = $CanvasLayer/Base/VBoxContainer/LMelee
 onready var lExplosion = $CanvasLayer/Base/VBoxContainer/LExplosion
 onready var vBoxObjectives = $CanvasLayer/Base/VBoxContainer
+onready var animationPlayer = $CanvasLayer/Base/AnimationPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -73,20 +77,24 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("jump"):
-		base.set_visible(not base.is_visible())
+#		base.set_visible(not base.is_visible())
+		if showing:
+			animationPlayer.play("Hide")
+			showing = false
+		else:
+			animationPlayer.play("Show")
+			showing = true
+
 
 ##########################################################################################################
 
 func updateObjective(name, byMelee, byExplosion):
-#	zombiesLeft =  get_tree().get_nodes_in_group("zombi").size()
+	zombiesLeft =  get_tree().get_nodes_in_group("zombi").size()
 	zombiesLeft -= 1
 	if byMelee:
 		killedByMelee += 1
 	if byExplosion:
 		killedByExplosion += 1
-	
-#	print("Melee " +str(byMelee))
-#	print("Explosion " +str(byExplosion))
 	checkCompletion()
 
 func checkCompletion(): 
