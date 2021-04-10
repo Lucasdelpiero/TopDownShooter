@@ -27,6 +27,15 @@ var dictionary = {
 	"zombiFast" : 40,
 	"zombiExplosive" : 25,
 }
+
+#STATS
+onready var timeLabel = $TimeLabel
+var timeStart = 0
+var timeNow = 0
+var maxCombo = 0
+var totalMelee = 0
+var totalExplosion = 0 
+
 signal updateMusic(value)
 func _on_Scoring_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
@@ -35,8 +44,12 @@ func _on_Scoring_tree_entered():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yield(get_tree().create_timer(1), "timeout")
+	timeStart = OS.get_unix_time()
 	optionsControl = get_tree().get_root().find_node("Options", true, false)
 	connect("updateMusic", optionsControl, "activateMusic")
+
+func _process(delta):
+	get_time()
 
 func updateScore(name, byMelee, byExplosion):
 	var base = dictionary[name] 
@@ -47,7 +60,6 @@ func updateScore(name, byMelee, byExplosion):
 	updateLabels()
 	
 	resetCombo()
-
 	
 
 func startCombo():
@@ -67,6 +79,8 @@ func endCombo():
 	unFadeLastCombo()
 	fadeLastCombo()
 	
+	if multiplicator > maxCombo:
+		maxCombo = multiplicator
 	comboScore = 0
 	multiplicator = 0
 	updateLabels()
@@ -99,6 +113,14 @@ func unFadeLastCombo():
 func fadeMusic():
 	emit_signal("updateMusic", false)
 
+func get_time():
+	timeNow = OS.get_unix_time()
+	var timeElapsed = timeNow - timeStart
+	var minutes = timeElapsed / 60
+	var seconds = timeElapsed % 60 # lo que sobra de los minutos
+	var str_elapsed = "%02d : %02d" % [minutes, seconds]
+	timeLabel.text = str_elapsed 
+#	return (timeNow - timeStart) 
 
 
 

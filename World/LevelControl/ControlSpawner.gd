@@ -5,7 +5,7 @@ onready var timer = $Timer
 export(bool) var continuous = false
 export(bool) var turnOnAllDied = false
 export(bool) var autoStart = false
-export(float, 1.0, 60.0, 1.0) var timerTime 
+export(float, 1.0, 60.0, 1.0) var timerTime = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

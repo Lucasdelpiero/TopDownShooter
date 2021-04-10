@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://World/LevelControl/ControlSpawner.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Tiles/Walls/WallsTemplate.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/LevelControl/LevelChanger.tscn" type="PackedScene" id=18]
+[ext_resource path="res://World/LevelControl/Teleporter.tscn" type="PackedScene" id=19]
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -71,10 +72,10 @@ position = Vector2( 1475.41, -3695.6 )
 position = Vector2( 1531.98, -3305.28 )
 
 [node name="zombi13" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -1607.57, -3763.48 )
+position = Vector2( -1688.2, -3864.27 )
 
 [node name="zombi14" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -1138.06, -3910.56 )
+position = Vector2( -1314.45, -3910.56 )
 
 [node name="zombi15" parent="Zombies" instance=ExtResource( 5 )]
 position = Vector2( -985.32, -3837.02 )
@@ -83,7 +84,7 @@ position = Vector2( -985.32, -3837.02 )
 position = Vector2( -1596.26, -3441.04 )
 
 [node name="zombi17" parent="Zombies" instance=ExtResource( 5 )]
-position = Vector2( -1596.26, -3441.04 )
+position = Vector2( -1253.56, -3526.71 )
 
 [node name="zombi18" parent="Zombies" instance=ExtResource( 5 )]
 position = Vector2( -2874.71, -2089.05 )
@@ -242,5 +243,14 @@ amount2 = 2
 timerTime = 5.0
 
 [node name="LevelChanger" parent="." instance=ExtResource( 18 )]
-position = Vector2( 105.145, -578.537 )
+position = Vector2( 993.145, -538.537 )
 targetScene = "res://World/Maps/PrototypeLevel2.tscn"
+
+[node name="Teleporter" parent="." instance=ExtResource( 19 )]
+position = Vector2( 94.9603, -410.238 )
+rotation = -1.57079
+spawn = NodePath("../Teleporter2")
+
+[node name="Teleporter2" parent="." instance=ExtResource( 19 )]
+position = Vector2( -45.3572, 624.921 )
+spawn = NodePath("../Teleporter")

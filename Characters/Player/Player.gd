@@ -92,7 +92,7 @@ func _ready():
 	remoteTransform.remote_path = "../../Camera"
 
 var dir = 14
-onready var line = $Node/Line2D
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	$Position2D.look_at(get_global_mouse_position())
