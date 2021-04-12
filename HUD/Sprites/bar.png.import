@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blood_red_bar.png-657393e574de03b89fbd0e7821a1a8c0.stex"
+path="res://.import/bar.png-220cf5a9a4eee81c7a12a797f8570e7a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/blood_red_bar.png"
-dest_files=[ "res://.import/blood_red_bar.png-657393e574de03b89fbd0e7821a1a8c0.stex" ]
+source_file="res://HUD/Sprites/bar.png"
+dest_files=[ "res://.import/bar.png-220cf5a9a4eee81c7a12a797f8570e7a.stex" ]
 
 [params]
 

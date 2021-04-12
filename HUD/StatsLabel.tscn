@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="StatsLabel" type="Label"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "placeholder"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bullet_hud.png-b61bdec8420713ecacb01e9a1e2fe6a7.stex"
+path="res://.import/EmptyBar.png-ef495a14de9241e91f3f1b497c8dc01b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/bullet_hud.png"
-dest_files=[ "res://.import/bullet_hud.png-b61bdec8420713ecacb01e9a1e2fe6a7.stex" ]
+source_file="res://HUD/Sprites/EmptyBar.png"
+dest_files=[ "res://.import/EmptyBar.png-ef495a14de9241e91f3f1b497c8dc01b.stex" ]
 
 [params]
 

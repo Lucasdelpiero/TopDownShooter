@@ -2,7 +2,7 @@ extends Node
 
 
 
-var crosshair = preload("res://HUD/crosshair.png")
+var crosshair = preload("res://HUD/Sprites/crosshair.png")
 var offset = 16
 
 

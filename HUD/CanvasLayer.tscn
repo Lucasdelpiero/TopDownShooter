@@ -1,15 +1,18 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://HUD/EmptyBar.png" type="Texture" id=1]
-[ext_resource path="res://HUD/RedBarBorderless.png" type="Texture" id=2]
-[ext_resource path="res://HUD/bullet_hud.png" type="Texture" id=3]
+[ext_resource path="res://HUD/Sprites/EmptyBar.png" type="Texture" id=1]
+[ext_resource path="res://HUD/Sprites/RedBarBorderless.png" type="Texture" id=2]
+[ext_resource path="res://HUD/Sprites/bullet_hud.png" type="Texture" id=3]
 [ext_resource path="res://HUD/CanvasLayer.gd" type="Script" id=4]
 [ext_resource path="res://HUD/Scoring.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=6]
 [ext_resource path="res://World/Objects/Weapons/128gunicon.png" type="Texture" id=7]
 [ext_resource path="res://World/Objects/Weapons/128shotgunicon.png" type="Texture" id=8]
 [ext_resource path="res://World/Objects/Weapons/128rifleicon.png" type="Texture" id=9]
-[ext_resource path="res://HUD/hud_weapons.tres" type="DynamicFont" id=10]
+[ext_resource path="res://HUD/Fonts/hud_weapons.tres" type="DynamicFont" id=10]
+
+
+
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 4 )

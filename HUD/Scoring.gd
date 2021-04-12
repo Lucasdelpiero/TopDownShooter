@@ -29,10 +29,11 @@ var dictionary = {
 }
 
 #STATS
+onready var Stats = preload("res://HUD/Stats.tscn")
 onready var timeLabel = $TimeLabel
-var timeStart = 0
 var timeNow = 0
 var maxCombo = 0
+var totalKilled = 0
 var totalMelee = 0
 var totalExplosion = 0 
 
@@ -44,18 +45,24 @@ func _on_Scoring_tree_entered():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yield(get_tree().create_timer(1), "timeout")
-	timeStart = OS.get_unix_time()
 	optionsControl = get_tree().get_root().find_node("Options", true, false)
 	connect("updateMusic", optionsControl, "activateMusic")
 
 func _process(delta):
-	get_time()
+	if Input.is_action_just_pressed("reload"):
+		statsResult()
+#	get_time()
+	pass
 
 func updateScore(name, byMelee, byExplosion):
 	var base = dictionary[name] 
 	individualScore = base + base * int(byMelee) * killedByMelee + base * int(byExplosion) * killedByExplosion
 	comboScore += individualScore
 	multiplicator += 1
+	
+	totalKilled += 1
+	totalMelee += int(byMelee)
+	totalExplosion += int(byExplosion)
 	
 	updateLabels()
 	
@@ -113,14 +120,23 @@ func unFadeLastCombo():
 func fadeMusic():
 	emit_signal("updateMusic", false)
 
-func get_time():
-	timeNow = OS.get_unix_time()
-	var timeElapsed = timeNow - timeStart
-	var minutes = timeElapsed / 60
-	var seconds = timeElapsed % 60 # lo que sobra de los minutos
+func _on_Timer_timeout():
+	timeNow += 1
+	var minutes = timeNow / 60
+	var seconds = timeNow % 60 # lo que sobra de los minutos
 	var str_elapsed = "%02d : %02d" % [minutes, seconds]
 	timeLabel.text = str_elapsed 
-#	return (timeNow - timeStart) 
+#	print("by melee: " + str(totalMelee))
+#	print("by explosion: " + str(totalExplosion))
 
-
-
+func statsResult():
+	var stats = Stats.instance()
+	add_child(stats)
+	stats.totalScore.text += str(totalScore)
+	stats.totalKilled.text += str(totalKilled)
+	stats.time.text += str(timeNow)
+	stats.maxCombo.text += str(maxCombo)
+	stats.totalMelee.text += str(totalMelee)
+	stats.totalExplosion.text += str(totalExplosion)
+	
+	pass

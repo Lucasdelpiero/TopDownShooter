@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/life_bar.png-bb8c3f9f13310ba7541827c2a4329cb9.stex"
+path="res://.import/crosshair.png-0e097e8be6d9cc1a38d8f029f2dc0dab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/life_bar.png"
-dest_files=[ "res://.import/life_bar.png-bb8c3f9f13310ba7541827c2a4329cb9.stex" ]
+source_file="res://HUD/Sprites/crosshair.png"
+dest_files=[ "res://.import/crosshair.png-0e097e8be6d9cc1a38d8f029f2dc0dab.stex" ]
 
 [params]
 

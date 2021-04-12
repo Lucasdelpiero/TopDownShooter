@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/Objectives.gd" type="Script" id=1]
-[ext_resource path="res://HUD/font_objective.tres" type="DynamicFont" id=2]
+[ext_resource path="res://HUD/Fonts/font_objective.tres" type="DynamicFont" id=2]
 [ext_resource path="res://HUD/Objectives.tres" type="Theme" id=3]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"

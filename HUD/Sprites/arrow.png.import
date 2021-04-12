@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bar.png-c914ec9f239cd6baf13141e179c97744.stex"
+path="res://.import/arrow.png-daaba556ca44df6bffb865f1954a8243.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/bar.png"
-dest_files=[ "res://.import/bar.png-c914ec9f239cd6baf13141e179c97744.stex" ]
+source_file="res://HUD/Sprites/arrow.png"
+dest_files=[ "res://.import/arrow.png-daaba556ca44df6bffb865f1954a8243.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow.png-91b0c9bd37cc8a37c6faf8f38cbef7ea.stex"
+path="res://.import/RedBarBorderless.png-7f191d316eec62437f68abd7e6f42696.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/arrow.png"
-dest_files=[ "res://.import/arrow.png-91b0c9bd37cc8a37c6faf8f38cbef7ea.stex" ]
+source_file="res://HUD/Sprites/RedBarBorderless.png"
+dest_files=[ "res://.import/RedBarBorderless.png-7f191d316eec62437f68abd7e6f42696.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

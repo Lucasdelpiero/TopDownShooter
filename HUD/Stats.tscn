@@ -1,11 +1,80 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://HUD/Stats.gd" type="Script" id=1]
+[ext_resource path="res://HUD/theme.tres" type="Theme" id=2]
+[ext_resource path="res://HUD/StatsLabel.tscn" type="PackedScene" id=3]
 
 [node name="Stats" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -204.0
+margin_right = 193.0
+margin_bottom = 205.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 40.0
+grow_horizontal = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TotalScore" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 236.0
+margin_bottom = 38.0
+text = "Total Score: "
+
+[node name="MaxCombo" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 42.0
+margin_right = 236.0
+margin_bottom = 80.0
+text = "Max Combo: "
+
+[node name="Time" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 84.0
+margin_right = 236.0
+margin_bottom = 122.0
+text = "Time: "
+
+[node name="TotalKilled" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 126.0
+margin_right = 236.0
+margin_bottom = 164.0
+text = "Total Killed: "
+
+[node name="TotalMelee" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 168.0
+margin_right = 236.0
+margin_bottom = 206.0
+text = "Total Melee: "
+
+[node name="TotalExposion" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 210.0
+margin_right = 236.0
+margin_bottom = 248.0
+text = "Total Explosion: "
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

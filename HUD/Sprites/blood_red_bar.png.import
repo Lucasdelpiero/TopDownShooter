@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EmptyBar.png-336ed3390b16ff5cd00ae69d54448d95.stex"
+path="res://.import/blood_red_bar.png-3a4404a68715d8eea16b822cc18ce982.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/EmptyBar.png"
-dest_files=[ "res://.import/EmptyBar.png-336ed3390b16ff5cd00ae69d54448d95.stex" ]
+source_file="res://HUD/Sprites/blood_red_bar.png"
+dest_files=[ "res://.import/blood_red_bar.png-3a4404a68715d8eea16b822cc18ce982.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

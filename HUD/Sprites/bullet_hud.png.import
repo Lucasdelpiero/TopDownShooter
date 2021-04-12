@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedBarBorderless.png-e3fce9fd23ba8a59202aed58104bd29a.stex"
+path="res://.import/bullet_hud.png-ac65c25ce0c06f77755c3d622196eecd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/RedBarBorderless.png"
-dest_files=[ "res://.import/RedBarBorderless.png-e3fce9fd23ba8a59202aed58104bd29a.stex" ]
+source_file="res://HUD/Sprites/bullet_hud.png"
+dest_files=[ "res://.import/bullet_hud.png-ac65c25ce0c06f77755c3d622196eecd.stex" ]
 
 [params]
 
