@@ -21,9 +21,12 @@ func _ready():
 	if autoStart:
 		timer.start()
 
-func activate(index):
+func spawn(index):
 	childrens[index].spawn()
 
+func activate():
+	for i in childrens.size():
+		childrens[i].activate()
 
 func _on_Timer_timeout():
-	activate(0)
+	spawn(0)

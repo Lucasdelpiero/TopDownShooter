@@ -46,7 +46,8 @@ func spawn():
 					return
 				var Zombi = load( enemies[i].get_path() )
 				var zombi = Zombi.instance()
-				get_parent().add_child(zombi)
+				get_parent().call_deferred("add_child", zombi)
+#				get_parent().add_child(zombi)
 				var randomness = Vector2(rand_range(-randomRange, randomRange), rand_range(-randomRange, randomRange))
 				zombi.global_position = global_position + randomness
 
@@ -60,3 +61,7 @@ func _on_Timer_timeout():
 #			timer.start()
 	elif not turnOnAllDied:
 		spawn()
+
+func activate():
+	spawn()
+	print("it has activated")

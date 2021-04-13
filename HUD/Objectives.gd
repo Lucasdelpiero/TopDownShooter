@@ -1,6 +1,7 @@
 extends Control
 
 # Required objectives
+var allCompleted = false
 export var killAll = false
 export var survive = false
 export(float, 2.0, 60.0, 5.0) var timeSurvive = 2.0
@@ -46,6 +47,7 @@ onready var lExplosion = $CanvasLayer/Base/VBoxContainer/LExplosion
 onready var vBoxObjectives = $CanvasLayer/Base/VBoxContainer
 onready var animationPlayer = $CanvasLayer/Base/AnimationPlayer
 
+signal completedLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,6 +76,9 @@ func _ready():
 		lMelee.text = "Kill %s zombies in melee" % str(meleeAmount)
 	if withExplosion:
 		lExplosion.text = "Kill %s zombies with an explosion" % str(explosionAmount)
+	yield(get_tree().create_timer(0.1),"timeout")
+	var scoring = get_tree().get_root().find_node("Scoring", true, false)
+	connect("completedLevel", scoring, "statsResult")
 
 func _process(delta):
 	if Input.is_action_just_pressed("jump"):
@@ -143,7 +148,10 @@ func addObjectives(): # Keep only active objectives
 #	print("objectives" + str(currentOptional))
 
 func completed():
-	label.visible = true
+	if not allCompleted:
+		label.visible = true
+		emit_signal("completedLevel")
+		allCompleted = true
 
 func _on_TimerSurvive_timeout():
 	surviveCompleted = true

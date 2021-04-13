@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://World/Tiles/Walls/WallsTemplate.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/LevelControl/LevelChanger.tscn" type="PackedScene" id=18]
 [ext_resource path="res://World/LevelControl/Teleporter.tscn" type="PackedScene" id=19]
+[ext_resource path="res://World/LevelControl/Activator.tscn" type="PackedScene" id=20]
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -227,21 +228,6 @@ position = Vector2( -101.594, -2044.57 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -349.704, -482.89 )
 
-[node name="ControlSpawner" parent="." instance=ExtResource( 16 )]
-autoStart = true
-
-[node name="Spawner" parent="ControlSpawner" groups=[
-"spawn",
-] instance=ExtResource( 3 )]
-position = Vector2( 9.2887, -2471.59 )
-enemy0 = ExtResource( 5 )
-amount0 = 2
-enemy1 = ExtResource( 6 )
-amount1 = 1
-enemy2 = ExtResource( 12 )
-amount2 = 2
-timerTime = 5.0
-
 [node name="LevelChanger" parent="." instance=ExtResource( 18 )]
 position = Vector2( 993.145, -538.537 )
 targetScene = "res://World/Maps/PrototypeLevel2.tscn"
@@ -254,3 +240,27 @@ spawn = NodePath("../Teleporter2")
 [node name="Teleporter2" parent="." instance=ExtResource( 19 )]
 position = Vector2( -45.3572, 624.921 )
 spawn = NodePath("../Teleporter")
+
+[node name="Activator" parent="." instance=ExtResource( 20 )]
+position = Vector2( -603.446, 496.707 )
+
+[node name="ControlSpawner" parent="Activator" instance=ExtResource( 16 )]
+
+[node name="Spawner" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
+position = Vector2( 9.2887, -2471.59 )
+enemy0 = ExtResource( 5 )
+amount0 = 2
+enemy1 = ExtResource( 6 )
+amount1 = 1
+enemy2 = ExtResource( 12 )
+amount2 = 2
+timerTime = 5.0
+
+[node name="Spawner2" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
+position = Vector2( 596.967, -767.842 )
+enemy0 = ExtResource( 5 )
+amount0 = 2
+
+[node name="Spawner3" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
+position = Vector2( 644.787, -28.0846 )
+enemy0 = ExtResource( 5 )
