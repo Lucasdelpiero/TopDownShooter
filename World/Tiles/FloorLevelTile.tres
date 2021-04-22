@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=15 format=2]
+[gd_resource type="TileSet" load_steps=16 format=2]
 
 [ext_resource path="res://World/Tiles/Floor/Dirt_04 128x128.png" type="Texture" id=1]
 [ext_resource path="res://World/Tiles/Walls/seamless_brick-003-128x128.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://World/Tiles/Floor/rust_1_spec 128x128.png" type="Texture" id=5]
 [ext_resource path="res://World/Tiles/Floor/tileable_grass_00 128x128.png" type="Texture" id=6]
 [ext_resource path="res://World/Tiles/Floor/tilable-IMG_0044-grey1 128x128.png" type="Texture" id=7]
+[ext_resource path="res://World/Tiles/Floor/wood_floor.png" type="Texture" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -157,3 +158,17 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
+7/name = "wood_floor.png 7"
+7/texture = ExtResource( 8 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 128, 128 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0

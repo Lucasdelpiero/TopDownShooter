@@ -187,7 +187,8 @@ func death(area):
 	
 	if explosive:
 		var explosion = Explosion.instance()
-		get_parent().add_child(explosion)
+#		get_parent().add_child(explosion)
+		get_parent().call_deferred("add_child", explosion)
 		explosion.global_position = global_position
 	
 	var byMelee = area.get_parent().is_in_group("Melee")

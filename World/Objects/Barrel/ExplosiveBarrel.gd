@@ -74,7 +74,8 @@ func setOnFire():
 
 func createExplosion():
 	var explosion = Explosion.instance()
-	get_parent().add_child(explosion)
+#	get_parent().add_child(explosion)
+	get_parent().call_deferred("add_child", explosion)
 	explosion.global_position = global_position
 	queue_free()
 
