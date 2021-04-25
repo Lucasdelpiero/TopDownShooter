@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://HUD/Sprites/rectanble_black.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 256, 88 )
+modulate_color = Color( 1, 1, 1, 0.666667 )
+
+[node name="OC" type="PanelContainer"]
+show_behind_parent = true
+margin_right = 63.0
+margin_bottom = 14.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

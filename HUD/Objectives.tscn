@@ -1,25 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://HUD/Objectives.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Fonts/font_objective.tres" type="DynamicFont" id=2]
 [ext_resource path="res://HUD/Objectives.tres" type="Theme" id=3]
+[ext_resource path="res://HUD/ObjectivesContainer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD/VSO.tscn" type="PackedScene" id=5]
 
-
-[sub_resource type="Animation" id=1]
-resource_name = "Hide"
+[sub_resource type="Animation" id=2]
+loop = true
 step = 0.01
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("VBoxContainer:rect_position:x")
+tracks/0/path = NodePath("VBC:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 749, -0.25, 0, 0.48, 337.003, 1028.15, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 620, -0.25, 0, 0.25, 0, 1028.15, -0.780382, 56.8219, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("VBoxContainer:rect_position:y")
+tracks/1/path = NodePath("VBC:rect_position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -29,11 +30,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=3]
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("VBoxContainer:rect_position")
+tracks/0/path = NodePath("VBC:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -45,20 +45,20 @@ tracks/0/keys = {
 "values": [ Vector2( 749, 164 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Show"
+[sub_resource type="Animation" id=4]
+step = 0.01
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("VBoxContainer:rect_position:x")
+tracks/0/path = NodePath("VBC:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1028.15, -0.25, 0, 0.25, 0, 690, -0.83, -0.015686, 0.25, 0 ),
+"points": PoolRealArray( 1028.15, -0.25, 0, 0.25, 0, 620, -0.701075, -120.741, 0.314797, 65.4089 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("VBoxContainer:rect_position:y")
+tracks/1/path = NodePath("VBC:rect_position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -100,76 +100,211 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Base"]
+[node name="VBC" type="VBoxContainer" parent="CanvasLayer/Base"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -275.0
+margin_left = -404.0
 margin_top = -136.0
-margin_right = -16.9998
+margin_right = -8.99902
 margin_bottom = 136.0
 grow_horizontal = 0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="OC" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
+margin_right = 395.0
+margin_bottom = 38.0
+
+[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC"]
+margin_right = 395.0
+margin_bottom = 38.0
 alignment = 2
+
+[node name="VSO" parent="CanvasLayer/Base/VBC/OC/HBC" instance=ExtResource( 5 )]
+margin_left = 144.0
+margin_right = 174.0
+margin_bottom = 38.0
+
+[node name="LObjectives" type="Label" parent="CanvasLayer/Base/VBC/OC/HBC"]
+margin_left = 178.0
+margin_right = 361.0
+margin_bottom = 38.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Objectives:   "
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LObjectives" type="Label" parent="CanvasLayer/Base/VBoxContainer"]
-margin_right = 258.0
+[node name="VSO2" parent="CanvasLayer/Base/VBC/OC/HBC" instance=ExtResource( 5 )]
+margin_left = 365.0
+margin_right = 395.0
 margin_bottom = 38.0
-custom_fonts/font = ExtResource( 2 )
-text = "Objectives:"
-align = 2
+
+[node name="OC2" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
+margin_top = 42.0
+margin_right = 395.0
+margin_bottom = 80.0
+
+[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC2"]
+margin_right = 395.0
+margin_bottom = 38.0
+alignment = 2
+
+[node name="VSO" parent="CanvasLayer/Base/VBC/OC2/HBC" instance=ExtResource( 5 )]
+margin_left = 104.0
+margin_right = 134.0
+margin_bottom = 38.0
+
+[node name="LKillAll" type="Label" parent="CanvasLayer/Base/VBC/OC2/HBC"]
+margin_left = 138.0
+margin_right = 361.0
+margin_bottom = 38.0
+text = "Kill all zombies "
+align = 1
+
+[node name="VSO2" parent="CanvasLayer/Base/VBC/OC2/HBC" instance=ExtResource( 5 )]
+margin_left = 365.0
+margin_right = 395.0
+margin_bottom = 38.0
+
+[node name="OC3" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
+margin_top = 84.0
+margin_right = 395.0
+margin_bottom = 122.0
+
+[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC3"]
+margin_right = 395.0
+margin_bottom = 38.0
+alignment = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VSO" parent="CanvasLayer/Base/VBC/OC3/HBC" instance=ExtResource( 5 )]
+margin_bottom = 38.0
+
+[node name="LSurvive" type="Label" parent="CanvasLayer/Base/VBC/OC3/HBC"]
+margin_left = 34.0
+margin_right = 361.0
+margin_bottom = 38.0
+text = "Survive for 60 seconds"
+align = 1
 valign = 1
 
-[node name="LKillAll" type="Label" parent="CanvasLayer/Base/VBoxContainer"]
-margin_top = 42.0
-margin_right = 258.0
-margin_bottom = 80.0
-text = "Kill all zombies "
-align = 2
+[node name="VSO2" parent="CanvasLayer/Base/VBC/OC3/HBC" instance=ExtResource( 5 )]
+margin_left = 365.0
+margin_right = 395.0
+margin_bottom = 38.0
 
-[node name="LSurvive" type="Label" parent="CanvasLayer/Base/VBoxContainer"]
-margin_top = 84.0
-margin_right = 258.0
-margin_bottom = 122.0
-text = "Survive "
-align = 2
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Base/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Base/VBC"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 126.0
-margin_right = 258.0
+margin_right = 395.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="LOptional" type="Label" parent="CanvasLayer/Base/VBoxContainer"]
+[node name="OC4" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
 margin_top = 150.0
-margin_right = 258.0
+margin_right = 395.0
 margin_bottom = 188.0
+
+[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC4"]
+margin_right = 395.0
+margin_bottom = 38.0
+alignment = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VSO" parent="CanvasLayer/Base/VBC/OC4/HBC" instance=ExtResource( 5 )]
+margin_left = 69.0
+margin_right = 99.0
+margin_bottom = 38.0
+
+[node name="LOptional" type="Label" parent="CanvasLayer/Base/VBC/OC4/HBC"]
+margin_left = 103.0
+margin_right = 361.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 2 )
 text = "Bonus Objectives:"
-align = 2
+align = 1
 
-[node name="LMelee" type="Label" parent="CanvasLayer/Base/VBoxContainer"]
+[node name="VSO2" parent="CanvasLayer/Base/VBC/OC4/HBC" instance=ExtResource( 5 )]
+margin_left = 365.0
+margin_right = 395.0
+margin_bottom = 38.0
+
+[node name="OC5" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
 margin_top = 192.0
-margin_right = 258.0
+margin_right = 395.0
 margin_bottom = 230.0
-text = "Melee"
-align = 2
 
-[node name="LExplosion" type="Label" parent="CanvasLayer/Base/VBoxContainer"]
+[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC5"]
+margin_right = 395.0
+margin_bottom = 38.0
+alignment = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VSO" parent="CanvasLayer/Base/VBC/OC5/HBC" instance=ExtResource( 5 )]
+margin_left = 240.0
+margin_right = 270.0
+margin_bottom = 38.0
+
+[node name="LMelee" type="Label" parent="CanvasLayer/Base/VBC/OC5/HBC"]
+margin_left = 274.0
+margin_right = 361.0
+margin_bottom = 38.0
+text = "Melee"
+align = 1
+
+[node name="VSO2" parent="CanvasLayer/Base/VBC/OC5/HBC" instance=ExtResource( 5 )]
+margin_left = 365.0
+margin_right = 395.0
+margin_bottom = 38.0
+
+[node name="OC6" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
 margin_top = 234.0
-margin_right = 258.0
+margin_right = 395.0
 margin_bottom = 272.0
+
+[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC6"]
+margin_right = 395.0
+margin_bottom = 38.0
+alignment = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VSO" parent="CanvasLayer/Base/VBC/OC6/HBC" instance=ExtResource( 5 )]
+margin_left = 188.0
+margin_right = 218.0
+margin_bottom = 38.0
+
+[node name="LExplosion" type="Label" parent="CanvasLayer/Base/VBC/OC6/HBC"]
+margin_left = 222.0
+margin_right = 361.0
+margin_bottom = 38.0
 text = "Explosion"
-align = 2
+align = 1
+
+[node name="VSO2" parent="CanvasLayer/Base/VBC/OC6/HBC" instance=ExtResource( 5 )]
+margin_left = 365.0
+margin_right = 395.0
+margin_bottom = 38.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Base"]
-anims/Hide = SubResource( 1 )
-anims/Idle = SubResource( 2 )
-anims/Show = SubResource( 3 )
+anims/Hide = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Show = SubResource( 4 )
 
 [node name="TimerSurvive" type="Timer" parent="."]
 one_shot = true

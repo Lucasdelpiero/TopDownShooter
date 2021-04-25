@@ -39,12 +39,12 @@ var showing = true
 
 onready var base = $CanvasLayer/Base
 onready var label = $CanvasLayer/Base/Label
-onready var lKillAll = $CanvasLayer/Base/VBoxContainer/LKillAll
-onready var lSurvive = $CanvasLayer/Base/VBoxContainer/LSurvive
-onready var lOptional = $CanvasLayer/Base/VBoxContainer/LOptional
-onready var lMelee = $CanvasLayer/Base/VBoxContainer/LMelee
-onready var lExplosion = $CanvasLayer/Base/VBoxContainer/LExplosion
-onready var vBoxObjectives = $CanvasLayer/Base/VBoxContainer
+onready var lKillAll = $CanvasLayer/Base/VBC/OC2/HBC/LKillAll
+onready var lSurvive = $CanvasLayer/Base/VBC/OC3/HBC/LSurvive
+onready var lOptional = $CanvasLayer/Base/VBC/OC4/HBC/LOptional
+onready var lMelee = $CanvasLayer/Base/VBC/OC5/HBC/LMelee
+onready var lExplosion = $CanvasLayer/Base/VBC/OC6/HBC/LExplosion
+onready var vBoxObjectives = $CanvasLayer/Base/VBC
 onready var animationPlayer = $CanvasLayer/Base/AnimationPlayer
 
 signal completedLevel

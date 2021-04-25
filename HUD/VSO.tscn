@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="VSO" type="VSeparator"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 30.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 30, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
