@@ -11,9 +11,6 @@
 [ext_resource path="res://HUD/Sprites/EmptyBar.png" type="Texture" id=9]
 [ext_resource path="res://HUD/Fonts/hud_weapons.tres" type="DynamicFont" id=10]
 
-
-
-
 [node name="HUD" type="CanvasLayer"]
 layer = 5
 script = ExtResource( 3 )

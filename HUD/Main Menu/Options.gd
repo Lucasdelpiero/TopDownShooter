@@ -9,6 +9,10 @@ onready var sliderSFX = $VBoxContainer/BoxSFX/SliderSFX
 onready var sliderMusic = $VBoxContainer/BoxMusic/SliderMusic
 onready var min_value = sliderMaster.min_value
 
+onready var muteMaster = $VBoxContainer/BoxMaster/MuteMaster
+onready var muteSFX = $VBoxContainer/BoxSFX/MuteSFX
+onready var muteMusic = $VBoxContainer/BoxMusic/MuteMusic
+
 export var dynamicMusic = true
 var dynamicActive = false
 var dynamicVolume = 0.0
@@ -27,7 +31,7 @@ func _ready():
 #		optionMusic.text = "Choose Song"
 		pass
 
-func _process(delta):
+func _process(_delta):
 	if dynamicMusic:
 		dynamicVolumeUpdate(dynamicActive)
 
@@ -70,12 +74,26 @@ func getVolume(bus, slider):
 	slider.value = db2linear(volume)
 
 func setVolume(bus , value):
-	if value == min_value :
-		value = -72
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), value)
+	print("value: " + str(value) )
+	print("min value: " + str(linear2db(min_value)))
+	if value <= linear2db(min_value) :
+#		value = -72
+		mute(bus, true)
+		print("muted")
+		
+	else:
+		mute(bus, false)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), value)
+	updateMuted()
 
-func mute(bus, button_pressed):
-	AudioServer.set_bus_mute(AudioServer.get_bus_index(bus), button_pressed)
+func mute(bus, value):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(bus), value)
+
+func updateMuted():
+	muteMaster.pressed = AudioServer.is_bus_mute(AudioServer.get_bus_index("Master"))
+	muteSFX.pressed = AudioServer.is_bus_mute(AudioServer.get_bus_index("SoundEffects"))
+	muteMusic.pressed = AudioServer.is_bus_mute(AudioServer.get_bus_index("Music"))
+
 
 func _on_SliderMaster_value_changed(value):
 	setVolume("Master", linear2db(value))

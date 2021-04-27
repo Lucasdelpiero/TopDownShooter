@@ -22,6 +22,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+dynamicMusic = false
 
 [node name="Panel" type="Panel" parent="Options"]
 anchor_right = 1.0
@@ -230,6 +231,7 @@ margin_top = -44.0
 margin_right = 64.0
 margin_bottom = 0.0
 text = "Back"
+
 [connection signal="toggled" from="Options/VBoxContainer/HBoxScreen/CheckBox" to="Options" method="_on_CheckBox_toggled"]
 [connection signal="item_selected" from="Options/VBoxContainer/HBoxScreen/ScreenResolution" to="Options" method="_on_ScreenResolution_item_selected"]
 [connection signal="value_changed" from="Options/VBoxContainer/BoxMaster/SliderMaster" to="Options" method="_on_SliderMaster_value_changed"]

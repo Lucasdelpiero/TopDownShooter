@@ -30,7 +30,7 @@ func _physics_process(delta):
 
 	
 
-func move(delta):
+func move(_delta):
 	
 	motion.x = speed * cos(direction)
 	motion.y = speed * sin(direction)
