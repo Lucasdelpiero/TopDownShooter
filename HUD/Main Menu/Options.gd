@@ -74,12 +74,9 @@ func getVolume(bus, slider):
 	slider.value = db2linear(volume)
 
 func setVolume(bus , value):
-	print("value: " + str(value) )
-	print("min value: " + str(linear2db(min_value)))
 	if value <= linear2db(min_value) :
 #		value = -72
 		mute(bus, true)
-		print("muted")
 		
 	else:
 		mute(bus, false)

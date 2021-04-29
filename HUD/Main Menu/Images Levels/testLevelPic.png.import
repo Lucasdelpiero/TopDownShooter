@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rectanble_black.png-6d6661502154d2accc6980928d0fabbf.stex"
+path="res://.import/testLevelPic.png-668b72d772950f4367956fb10a4ae636.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/Sprites/rectanble_black.png"
-dest_files=[ "res://.import/rectanble_black.png-6d6661502154d2accc6980928d0fabbf.stex" ]
+source_file="res://HUD/Main Menu/Images Levels/testLevelPic.png"
+dest_files=[ "res://.import/testLevelPic.png-668b72d772950f4367956fb10a4ae636.stex" ]
 
 [params]
 

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
+[ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
+[ext_resource path="res://HUD/VSO.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD/Main Menu/Images Levels/testLevelPic.png" type="Texture" id=4]
+[ext_resource path="res://HUD/Main Menu/Level Selector/PreviousButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD/Main Menu/Level Selector/NextButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD/Main Menu/Level Selector/LevelSelector.gd" type="Script" id=7]
+[ext_resource path="res://HUD/Main Menu/StartButton.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 256, 88 )
+modulate_color = Color( 0.117647, 0.117647, 0.117647, 0.686275 )
+
+[node name="LevelSelector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelPicture" type="TextureRect" parent="."]
+margin_left = 216.043
+margin_top = 145.749
+margin_right = 675.043
+margin_bottom = 399.749
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 261.0
+margin_top = 86.0
+margin_right = 650.0
+margin_bottom = 124.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_right = 389.0
+margin_bottom = 38.0
+
+[node name="VSO" parent="PanelContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_bottom = 38.0
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_left = 34.0
+margin_right = 117.0
+margin_bottom = 38.0
+text = "Level:"
+align = 1
+
+[node name="VSO2" parent="PanelContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 121.0
+margin_right = 151.0
+margin_bottom = 38.0
+
+[node name="PreviousButton" parent="." instance=ExtResource( 5 )]
+margin_left = -435.051
+margin_top = 241.83
+margin_right = -270.051
+margin_bottom = 281.831
+
+[node name="NextButton" parent="." instance=ExtResource( 6 )]
+margin_left = 157.505
+margin_top = 247.487
+margin_right = 256.505
+margin_bottom = 287.487
+
+[node name="StartButton" parent="." instance=ExtResource( 8 )]
+margin_left = -147.966
+margin_top = 452.548
+margin_right = 5.03448
+margin_bottom = 492.548
+
+[connection signal="pressed" from="PreviousButton" to="." method="_on_PreviousButton_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
