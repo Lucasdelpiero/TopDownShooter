@@ -34,18 +34,17 @@ var levelPic = [
 	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
 ]
 
+var levelDiamond = []
+
 var levelSelected = 0
 
 onready var levelLabel = $PanelContainer/VBoxContainer/LevelLabel
 onready var picture = $LevelPicture
+onready var allLevels = $DiamondParent
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	levelDiamond = allLevels.get_children()
+	updateInfo()
 
 func startGame():
 	get_tree().change_scene(levelList[levelSelected])
@@ -53,9 +52,7 @@ func startGame():
 
 func updateInfo():
 	levelLabel.text = "Level: " + levelName[levelSelected]
-#	print(levelPic[levelSelected])
 	picture.set_texture(load(levelPic[levelSelected])) 
-	pass
 
 func _on_PreviousButton_pressed():
 	if levelSelected > 0:
@@ -63,8 +60,6 @@ func _on_PreviousButton_pressed():
 	else:
 		levelSelected = levelList.size() - 1
 	updateInfo()
-
-
 
 func _on_NextButton_pressed():
 	if levelSelected < (levelList.size() - 1):
@@ -74,8 +69,13 @@ func _on_NextButton_pressed():
 	print(levelSelected)
 	updateInfo()
 
-
 func _on_StartButton_pressed():
 	startGame()
 
-
+func _on_diamond_chosen(name):
+	for i in levelDiamond.size():
+		if levelDiamond[i].name != name:
+			levelDiamond[i].pressed = false
+		else:
+			levelSelected = i
+			updateInfo()

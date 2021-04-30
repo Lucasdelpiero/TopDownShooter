@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://HUD/Main Menu/Level Selector/NextButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://HUD/Main Menu/Level Selector/LevelSelector.gd" type="Script" id=7]
 [ext_resource path="res://HUD/Main Menu/StartButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://HUD/Main Menu/Level Selector/LevelButton.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -83,6 +84,58 @@ margin_top = 452.548
 margin_right = 5.03448
 margin_bottom = 492.548
 
+[node name="DiamondParent" type="HBoxContainer" parent="."]
+margin_left = 282.0
+margin_top = 408.0
+margin_right = 597.0
+margin_bottom = 446.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelButton" parent="DiamondParent" instance=ExtResource( 9 )]
+
+[node name="LevelButton2" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 36.0
+margin_right = 68.0
+
+[node name="LevelButton3" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 72.0
+margin_right = 104.0
+
+[node name="LevelButton4" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 108.0
+margin_right = 140.0
+
+[node name="LevelButton5" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 144.0
+margin_right = 176.0
+
+[node name="LevelButton6" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 180.0
+margin_right = 212.0
+
+[node name="LevelButton7" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 216.0
+margin_right = 248.0
+
+[node name="LevelButton8" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 252.0
+margin_right = 284.0
+
+[node name="LevelButton9" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 288.0
+margin_right = 320.0
+
 [connection signal="pressed" from="PreviousButton" to="." method="_on_PreviousButton_pressed"]
 [connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton" to="." method="_on_diamond_chosen"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton2" to="." method="_on_diamond_chosen"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton3" to="." method="_on_diamond_chosen"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton4" to="." method="_on_diamond_chosen"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton5" to="." method="_on_diamond_chosen"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton6" to="." method="_on_diamond_chosen"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton7" to="." method="_on_diamond_chosen"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton8" to="." method="_on_diamond_chosen"]
+[connection signal="diamondChosen" from="DiamondParent/LevelButton9" to="." method="_on_diamond_chosen"]
