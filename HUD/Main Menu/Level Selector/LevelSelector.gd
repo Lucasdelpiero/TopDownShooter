@@ -53,6 +53,9 @@ func startGame():
 func updateInfo():
 	levelLabel.text = "Level: " + levelName[levelSelected]
 	picture.set_texture(load(levelPic[levelSelected])) 
+	for i in levelDiamond.size():
+		levelDiamond[i].pressed = false
+	levelDiamond[levelSelected].pressed = true
 
 func _on_PreviousButton_pressed():
 	if levelSelected > 0:
@@ -66,7 +69,6 @@ func _on_NextButton_pressed():
 		levelSelected += 1
 	else:
 		levelSelected = 0
-	print(levelSelected)
 	updateInfo()
 
 func _on_StartButton_pressed():
@@ -79,3 +81,4 @@ func _on_diamond_chosen(name):
 		else:
 			levelSelected = i
 			updateInfo()
+
