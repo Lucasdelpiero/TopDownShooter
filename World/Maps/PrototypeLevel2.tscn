@@ -14,7 +14,7 @@
 [ext_resource path="res://World/Objects/Barrel/ExplosiveBarrel.tscn" type="PackedScene" id=17]
 [ext_resource path="res://HUD/Objectives.tscn" type="PackedScene" id=19]
 
-[node name="PrototypeLevel" type="Node2D"]
+[node name="PrototypeLevel2" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="TileMaps" type="Node" parent="."]
@@ -72,7 +72,7 @@ position = Vector2( -1607.57, -3763.48 )
 position = Vector2( -1138.06, -3910.56 )
 
 [node name="zombi15" parent="Zombies" instance=ExtResource( 2 )]
-position = Vector2( -985.32, -3837.02 )
+position = Vector2( -884.413, -3830.29 )
 
 [node name="zombi16" parent="Zombies" instance=ExtResource( 2 )]
 position = Vector2( -1596.26, -3441.04 )
@@ -90,7 +90,7 @@ position = Vector2( -2405.19, -2236.13 )
 position = Vector2( -3072.7, -2547.26 )
 
 [node name="zombi20" parent="Zombies" instance=ExtResource( 2 )]
-position = Vector2( -985.32, -3837.02 )
+position = Vector2( -911.321, -3554.48 )
 
 [node name="zombi21" parent="Zombies" instance=ExtResource( 2 )]
 position = Vector2( -2863.4, -1766.61 )
@@ -195,8 +195,8 @@ position = Vector2( 823.599, -2297.26 )
 rotation = 1.57079
 
 [node name="Objectives" parent="." instance=ExtResource( 19 )]
+killAll = false
 survive = true
-timeSurvive = 60.0
 withMelee = true
 
 [node name="Bullets" type="Node" parent="."]

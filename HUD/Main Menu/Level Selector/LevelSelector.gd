@@ -45,6 +45,7 @@ onready var allLevels = $DiamondParent
 func _ready():
 	levelDiamond = allLevels.get_children()
 	updateInfo()
+	test()
 
 func startGame():
 	get_tree().change_scene(levelList[levelSelected])
@@ -81,4 +82,12 @@ func _on_diamond_chosen(name):
 		else:
 			levelSelected = i
 			updateInfo()
+
+func test():
+	var scores = GlobalControl.max_scores.values()
+	$label1.text = "Prototype: " + str(scores[0])
+	$Label2.text = "Prototype2: " + str(scores[1])
+	
+
+
 

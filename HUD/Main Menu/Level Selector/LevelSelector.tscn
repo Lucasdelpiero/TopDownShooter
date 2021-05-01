@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -9,8 +9,25 @@
 [ext_resource path="res://HUD/Main Menu/Level Selector/LevelSelector.gd" type="Script" id=7]
 [ext_resource path="res://HUD/Main Menu/StartButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://HUD/Main Menu/Level Selector/LevelButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HUD/Main Menu/LoadButton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://HUD/Main Menu/SaveButton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 256, 88 )
+modulate_color = Color( 0.117647, 0.117647, 0.117647, 0.686275 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 256, 88 )
+modulate_color = Color( 1, 1, 1, 0.686275 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 256, 88 )
+
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 256, 88 )
 modulate_color = Color( 0.117647, 0.117647, 0.117647, 0.686275 )
@@ -71,18 +88,30 @@ margin_left = -435.051
 margin_top = 241.83
 margin_right = -270.051
 margin_bottom = 281.831
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 
 [node name="NextButton" parent="." instance=ExtResource( 6 )]
 margin_left = 157.505
 margin_top = 247.487
 margin_right = 256.505
 margin_bottom = 287.487
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 
 [node name="StartButton" parent="." instance=ExtResource( 8 )]
 margin_left = -147.966
 margin_top = 452.548
 margin_right = 5.03448
 margin_bottom = 492.548
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 
 [node name="DiamondParent" type="HBoxContainer" parent="."]
 margin_left = 282.0
@@ -127,6 +156,42 @@ margin_right = 284.0
 margin_left = 288.0
 margin_right = 320.0
 
+[node name="SaveButton" parent="." instance=ExtResource( 11 )]
+margin_left = 160.434
+margin_top = 163.925
+margin_right = 246.434
+margin_bottom = 203.925
+
+[node name="LoadButton" parent="." instance=ExtResource( 10 )]
+margin_left = 263.778
+margin_top = 165.707
+margin_right = 349.778
+margin_bottom = 205.707
+
+[node name="label1" type="Label" parent="."]
+margin_left = 669.956
+margin_top = 349.232
+margin_right = 825.956
+margin_bottom = 387.232
+text = "Prototype: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 675.301
+margin_top = 391.995
+margin_right = 849.301
+margin_bottom = 429.995
+text = "Prototype2: "
+
+[node name="TestButton" parent="." instance=ExtResource( 12 )]
+margin_left = 292.287
+margin_top = 245.888
+margin_right = 378.287
+margin_bottom = 285.888
+text = "Test"
+
 [connection signal="pressed" from="PreviousButton" to="." method="_on_PreviousButton_pressed"]
 [connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
@@ -139,3 +204,6 @@ margin_right = 320.0
 [connection signal="diamondChosen" from="DiamondParent/LevelButton7" to="." method="_on_diamond_chosen"]
 [connection signal="diamondChosen" from="DiamondParent/LevelButton8" to="." method="_on_diamond_chosen"]
 [connection signal="diamondChosen" from="DiamondParent/LevelButton9" to="." method="_on_diamond_chosen"]
+[connection signal="pressed" from="SaveButton" to="SaveButton" method="save_game"]
+[connection signal="pressed" from="LoadButton" to="LoadButton" method="load_game"]
+[connection signal="pressed" from="TestButton" to="." method="test"]

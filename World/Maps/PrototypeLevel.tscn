@@ -216,8 +216,8 @@ position = Vector2( 823.599, -2297.26 )
 rotation = 1.57079
 
 [node name="Objectives" parent="." instance=ExtResource( 11 )]
+killAll = false
 survive = true
-timeSurvive = 60.0
 withMelee = true
 
 [node name="Bullets" type="Node" parent="."]
