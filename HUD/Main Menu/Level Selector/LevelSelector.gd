@@ -1,12 +1,13 @@
 extends Control
 
 var levelList = [
-	"res://World/Maps/PrototypeLevel.tscn",
-	"res://World/Maps/PrototypeLevel2.tscn",
-	"res://World/Maps/PrototypeLevel2.tscn",
-	"res://World/Maps/PrototypeLevel2.tscn",
-	"res://World/Maps/PrototypeLevel2.tscn",
-	"res://World/Maps/PrototypeLevel2.tscn",
+	"PrototypeLevel",
+	"PrototypeLevel2",
+	"PrototypeLevel2",
+	"PrototypeLevel2",
+	"PrototypeLevel2",
+	"PrototypeLevel2",
+	"PrototypeLevel2",
 ] 
 var levelName = [
 	"Tutorial",
@@ -48,7 +49,9 @@ func _ready():
 	test()
 
 func startGame():
-	get_tree().change_scene(levelList[levelSelected])
+	var map = "res://World/Maps/" +  levelList[levelSelected] + ".tscn"
+	print(map)
+	get_tree().change_scene(map)
 	pass
 
 func updateInfo():
@@ -84,9 +87,9 @@ func _on_diamond_chosen(name):
 			updateInfo()
 
 func test():
-	var scores = GlobalControl.max_scores.values()
-	$label1.text = "Prototype: " + str(scores[0])
-	$Label2.text = "Prototype2: " + str(scores[1])
+#	var scores = GlobalControl.max_score["PrototypeLevel"].score
+	$label1.text = "Prototype: " + str(GlobalControl.max_score["PrototypeLevel"].score)
+#	$Label2.text = "Prototype2: " + str(scores[1])
 	
 
 

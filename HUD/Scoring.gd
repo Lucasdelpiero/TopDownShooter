@@ -138,5 +138,8 @@ func statsResult():
 	stats.maxCombo.text += str(maxCombo)
 	stats.totalMelee.text += str(totalMelee)
 	stats.totalExplosion.text += str(totalExplosion)
+
+func debug(aName):
+	GlobalControl.update_max_score(aName, 2503, maxCombo, timeNow, totalKilled, totalMelee, totalExplosion )
+	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
 	
-	pass
