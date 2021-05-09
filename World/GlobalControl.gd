@@ -16,12 +16,23 @@ func _ready():
 	pass # Replace with function body.
 
 
-func update_max_score(name, aScore, aCombo, aTime, tKilled, tMelee, tExplosion):
-	max_score[name].score = aScore
-	max_score[name].combo = aCombo
-	max_score[name].time = aTime
-	max_score[name].killed = tKilled
-	max_score[name].melee = tMelee
-	max_score[name].explosion = tKilled
+#func update_max_score(name, aScore, aCombo, aTime, tKilled, tMelee, tExplosion):
+#	max_score[name].score = aScore
+#	max_score[name].combo = aCombo
+#	max_score[name].time = aTime
+#	max_score[name].killed = tKilled
+#	max_score[name].melee = tMelee
+#	max_score[name].explosion = tKilled
+#
+#	print(max_score)
+
+func update_max_score(results):
+	max_score[ results["name"] ].score = results["score"]
+	max_score[ results["name"] ].combo = results["maxCombo"]
+	max_score[ results["name"] ].time = results["time"]
+	max_score[ results["name"] ].killed = results["totalKilled"]
+	max_score[ results["name"] ].melee = results["totalMelee"]
+	max_score[ results["name"] ].explosion = results["totalKilled"]
 	
 	print(max_score)
+
