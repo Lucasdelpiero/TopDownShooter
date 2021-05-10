@@ -149,6 +149,7 @@ func debug(aName):
 		"totalMelee" : totalMelee,
 		"totalExplosion" : totalExplosion,
 	}
+	
 	GlobalControl.update_max_score(results)
-	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
+#	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
 	

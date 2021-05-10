@@ -26,7 +26,8 @@ func _ready():
 #
 #	print(max_score)
 
-func update_max_score(results):
+
+func update_max_score(results : Dictionary):
 	max_score[ results["name"] ].score = results["score"]
 	max_score[ results["name"] ].combo = results["maxCombo"]
 	max_score[ results["name"] ].time = results["time"]

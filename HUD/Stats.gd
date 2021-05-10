@@ -12,8 +12,9 @@ onready var totalExplosion = $Panel/VBoxContainer/TotalExposion
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = true
 #	totalScoreL.text = str(totalScore)
-	pass # Replace with function body.
+	pass 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,4 +23,13 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	queue_free()
+#	queue_free()
+	pass
+
+
+
+
+func _on_ContinueButton_pressed():
+	get_tree().paused = false
+	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
+	pass 

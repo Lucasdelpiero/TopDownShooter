@@ -5,6 +5,7 @@
 [ext_resource path="res://HUD/StatsLabel.tscn" type="PackedScene" id=3]
 
 [node name="Stats" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
@@ -73,8 +74,17 @@ margin_right = 236.0
 margin_bottom = 248.0
 text = "Total Explosion: "
 
+[node name="ContinueButton" type="Button" parent="Panel"]
+margin_left = 123.817
+margin_top = 273.827
+margin_right = 264.817
+margin_bottom = 317.827
+text = "Continue"
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[connection signal="pressed" from="Panel/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
