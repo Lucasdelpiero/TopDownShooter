@@ -31,12 +31,13 @@ func load_game():
 	
 	var global = GlobalControl
 	
-#	print(save_dict)
+	
 	global.max_score = save_dict.global.max_score
 	
+	print(save_dict.global.max_score)
 	get_parent().test()
 	
-
+	
 
 
 

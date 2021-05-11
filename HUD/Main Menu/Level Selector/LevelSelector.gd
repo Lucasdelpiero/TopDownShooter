@@ -88,8 +88,9 @@ func _on_diamond_chosen(name):
 
 func test():
 #	var scores = GlobalControl.max_score["PrototypeLevel"].score
-	$label1.text = "Prototype: " + str(GlobalControl.max_score["PrototypeLevel"].score)
+#	$label1.text = "Prototype: " + str(GlobalControl.max_score["PrototypeLevel"].score)
 #	$Label2.text = "Prototype2: " + str(scores[1])
+	pass
 	
 
 

@@ -143,8 +143,10 @@ func addObjectives(): # Keep only active objectives
 			currentObjectives.remove(i)
 	
 	for i in optionalObjectives.size():
-		if optionalObjectives[i] == false:
-			currentOptional.remove(i)
+		var o = optionalObjectives.size() - 1 - i
+		if optionalObjectives[o] == false:
+			currentOptional.remove(o)
+			
 #	print("objectives" + str(currentOptional))
 
 func completed():

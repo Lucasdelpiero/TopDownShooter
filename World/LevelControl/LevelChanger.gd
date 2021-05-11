@@ -17,5 +17,5 @@ func _on_LevelChanger_body_entered(_body):
 	changeLevel()
 
 func changeLevel():
-	get_tree().change_scene(targetScene)
+	get_tree().change_scene(targetScene) 
 
