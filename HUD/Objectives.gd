@@ -78,9 +78,10 @@ func _ready():
 		lExplosion.text = "Kill %s zombies with an explosion" % str(explosionAmount)
 	yield(get_tree().create_timer(0.1),"timeout")
 	var scoring = get_tree().get_root().find_node("Scoring", true, false)
+# warning-ignore:return_value_discarded
 	connect("completedLevel", scoring, "statsResult")
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
 #		base.set_visible(not base.is_visible())
 		if showing:
@@ -93,7 +94,7 @@ func _process(delta):
 
 ##########################################################################################################
 
-func updateObjective(name, byMelee, byExplosion):
+func updateObjective(_name, byMelee, byExplosion):
 	zombiesLeft =  get_tree().get_nodes_in_group("zombi").size()
 	zombiesLeft -= 1
 	if byMelee:

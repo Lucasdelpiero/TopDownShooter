@@ -34,6 +34,7 @@ func move(_delta):
 	
 	motion.x = speed * cos(direction)
 	motion.y = speed * sin(direction)
+# warning-ignore:return_value_discarded
 	move_and_collide(motion)
 	if rayCast.is_colliding() and not collided:
 		audio.stream = load ("res://World/Objects/%s.wav" % str(bulletHitWall[ randi() % bulletHitWall.size() ] ) )

@@ -15,15 +15,16 @@ var optionsControl
 func _ready():
 	yield(get_tree().create_timer(0.05), "timeout")
 	optionsControl = get_tree().get_root().find_node("Options", true, false)
-	connect("updateMusic", optionsControl, "activateMusic")
+#	connect("updateMusic", optionsControl, "activateMusic")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("restart"):
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
-func _on_Player_updateHUD(health, ammo, capacity):
-	healthBar.value = health
-	label.text = str(ammo) + " / " + str(capacity)
+func _on_Player_updateHUD(aHealth, aAmmo, aCapacity):
+	healthBar.value = aHealth
+	label.text = str(aAmmo) + " / " + str(aCapacity)
 
 func _on_Player_updateHUDWeapon(name):
 	#Resets color for all
@@ -32,10 +33,10 @@ func _on_Player_updateHUDWeapon(name):
 	
 	#Sets the color to the selected color
 	var icon = get_node("GridContainer/Icon%s" %name)
-	var label = get_node("GridContainer/Label%s" %name)
+	var labels = get_node("GridContainer/Label%s" %name)
 	if icon != null:
 		icon.modulate = Color(selectedColor)
-	if label != null:
-		label.modulate = Color(selectedColor)
+	if labels != null:
+		labels.modulate = Color(selectedColor)
 
 

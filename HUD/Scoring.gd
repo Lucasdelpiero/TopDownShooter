@@ -46,9 +46,10 @@ func _on_Scoring_tree_entered():
 func _ready():
 	yield(get_tree().create_timer(1), "timeout")
 	optionsControl = get_tree().get_root().find_node("Options", true, false)
+# warning-ignore:return_value_discarded
 	connect("updateMusic", optionsControl, "activateMusic")
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("reload"):
 		statsResult()
 #	get_time()

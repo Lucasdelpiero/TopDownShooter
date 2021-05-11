@@ -19,8 +19,8 @@ var minBulletSpdBonus = 0.3
 var maxBulletSpdBonus = 1000
 
 signal updateHUD(health, ammo, capacity)
-signal updateHealthHUD(health)
-signal updateAmmo(ammo, capacity)
+#signal updateHealthHUD(health)
+#signal updateAmmo(ammo, capacity)
 signal updateHUDWeapon(name)
 
 onready var animationPlayer = $Position2D/AnimationPlayer
@@ -76,9 +76,10 @@ var animMelee = "KnifeMelee"
 func _on_Player_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
+# warning-ignore:return_value_discarded
 	connect("updateHUD", HUD, "_on_Player_updateHUD")
-	connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
-	connect("updateHUDWeapon", HUD, "_on_Player_updateHUDWeapon")
+#	connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
+#	connect("updateHUDWeapon", HUD, "_on_Player_updateHUDWeapon")
 	randomize()
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true
@@ -103,7 +104,7 @@ func _physics_process(delta):
 	
 	match state:
 		IDLE:
-			rayCastWall()
+			rayCastWallCollision()
 			
 			if Input.is_action_pressed("shoot"):
 				trigger()
@@ -127,7 +128,7 @@ func _physics_process(delta):
 				state = MELEE
 		
 		BLOCKED:
-			rayCastWall()
+			rayCastWallCollision()
 			if Input.is_action_just_pressed("knife"):
 				melee()
 				state = MELEE
@@ -165,7 +166,7 @@ func trigger():
 		
 
 func shoot():
-	for i in range(weaponSelected.bulletsShot):
+	for _i in range(weaponSelected.bulletsShot):
 		var bullet = Bullet.instance()
 		get_parent().add_child(bullet)
 		bullet.global_position = weaponSelected.global_position
@@ -249,7 +250,7 @@ func stateIdle():
 	state = IDLE
 	if automatic == true:
 		canShoot = true
-	rayCastWall()
+	rayCastWallCollision()
 
 func updateAnimations():
 	animMove = weaponSelected.name + "Move"
@@ -314,7 +315,7 @@ func updateWeapon(weapon):
 func getWeapon():
 	return weaponSelected
 
-func rayCastWall():
+func rayCastWallCollision():
 	if rayCastWall.is_colliding():
 		canShoot = false
 		if state != BLOCKED:

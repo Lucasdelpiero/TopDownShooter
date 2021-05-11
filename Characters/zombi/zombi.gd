@@ -64,7 +64,9 @@ func _on_zombi_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var scoreControl = get_tree().get_root().find_node("Scoring", true, false)
 	var objectiveControl = get_tree().get_root().find_node("Objectives", true, false)
+# warning-ignore:return_value_discarded
 	connect("killed", scoreControl, "updateScore")
+# warning-ignore:return_value_discarded
 	connect("killed", objectiveControl, "updateObjective")
 
 func _ready():
@@ -167,7 +169,9 @@ func _on_HurtBox_area_entered(area):
 		health -= area.damage
 		if health < 1:
 			if area.get_parent().is_in_group("Knife"):
+# warning-ignore:return_value_discarded
 				connect("fillPlayerAmmo", get_tree().get_nodes_in_group("Player")[0], "fillAmmo" )
+# warning-ignore:return_value_discarded
 				connect("healPlayer", player, "bonusHeal")
 				emit_signal("fillPlayerAmmo")
 				emit_signal("healPlayer", 0.5)
@@ -212,7 +216,7 @@ func soundHitted():
 # Path Finding
 func move_along_path(distance : float) -> void:
 	var startPoint = position
-	for i in range(path.size()):
+	for _i in range(path.size()):
 		var distanceToNextPoint = startPoint.distance_to(path[0])
 		if distance <= distanceToNextPoint  and distance >= 0.0:
 #			position = startPoint.linear_interpolate(path[0], distance / distanceToNextPoint)
@@ -257,7 +261,7 @@ func _on_PathFindTimer_timeout():
 func wallCollide(value : bool):
 	set_collision_mask_bit(2, value)
 
-func _on_Hitbox_body_entered(body):
+func _on_Hitbox_body_entered(_body):
 	attacking = true
 	animationPlayer.play("Attack")
 

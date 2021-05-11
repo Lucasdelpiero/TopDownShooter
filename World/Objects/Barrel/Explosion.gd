@@ -10,7 +10,7 @@ func _ready():
 	if amount <= soundAmount:
 		$AudioStreamPlayer.play()
 
-func _process(delta):
+func _process(_delta):
 	animation.play("Explosion")
 
 

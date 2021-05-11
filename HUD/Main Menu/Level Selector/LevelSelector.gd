@@ -51,6 +51,7 @@ func _ready():
 func startGame():
 	var map = "res://World/Maps/" +  levelList[levelSelected] + ".tscn"
 	print(map)
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(map)
 	pass
 
