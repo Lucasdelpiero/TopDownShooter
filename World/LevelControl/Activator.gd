@@ -13,7 +13,7 @@ func _ready():
 #	print(childrens)
 
 
-func _on_Activator_body_exited(body):
+func _on_Activator_body_exited(_body):
 	if not used:
 		activate()
 		used = true

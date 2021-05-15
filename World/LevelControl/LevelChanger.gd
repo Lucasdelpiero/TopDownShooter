@@ -17,5 +17,6 @@ func _on_LevelChanger_body_entered(_body):
 	changeLevel()
 
 func changeLevel():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(targetScene) 
 

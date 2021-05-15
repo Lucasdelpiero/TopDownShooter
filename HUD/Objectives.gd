@@ -57,11 +57,11 @@ func _ready():
 	optionalObjectives = [withMelee ,withExplosion]
 	addObjectives()
 	
-	lKillAll.visible = killAll
-	lSurvive.visible = survive
-	lMelee.visible = withMelee
-	lExplosion.visible = withExplosion
-	lOptional.visible = (withExplosion or withMelee)
+	shown(lKillAll, killAll)
+	shown(lSurvive, survive) 
+	shown(lMelee, withMelee) 
+	shown(lExplosion, withExplosion)  
+	shown(lOptional, withExplosion or withMelee)
 	
 	#Create List
 	var list = vBoxObjectives.get_children() 
@@ -72,10 +72,13 @@ func _ready():
 	if survive:
 		$TimerSurvive.start(timeSurvive)
 		lSurvive.text = "Survive for %s seconds" % str(timeSurvive)
+
 	if withMelee:
 		lMelee.text = "Kill %s zombies in melee" % str(meleeAmount)
+
 	if withExplosion:
 		lExplosion.text = "Kill %s zombies with an explosion" % str(explosionAmount)
+
 	yield(get_tree().create_timer(0.1),"timeout")
 	var scoring = get_tree().get_root().find_node("Scoring", true, false)
 # warning-ignore:return_value_discarded
@@ -108,10 +111,10 @@ func checkCompletion():
 	if zombiesLeft < 1:
 		killAllCompleted = true
 	if withMelee:
-		if killedByMelee == meleeAmount:
+		if killedByMelee >= meleeAmount:
 			withMeleeCompleted = true
 	if withExplosion:
-		if killedByExplosion == explosionAmount:
+		if killedByExplosion >= explosionAmount:
 			withExplosionCompleted = true
 	
 	updateCompletion()
@@ -140,8 +143,9 @@ func updateCompletion(): # Update content of arrays
 
 func addObjectives(): # Keep only active objectives
 	for i in objectives.size():
-		if objectives[i] == false:
-			currentObjectives.remove(i)
+		var o = objectives.size() - 1 - i
+		if objectives[o] == false:
+			currentObjectives.remove(o)
 	
 	for i in optionalObjectives.size():
 		var o = optionalObjectives.size() - 1 - i
@@ -161,6 +165,8 @@ func _on_TimerSurvive_timeout():
 	surviveCompleted = true
 	checkCompletion()
 
+func shown(node, value : bool):
+	node.get_parent().get_parent().visible = value
 
 func debug(aName):
 	var scoring = get_tree().get_root().find_node("Scoring", true, false)

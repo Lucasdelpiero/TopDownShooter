@@ -29,7 +29,7 @@ func _ready():
 	timer.one_shot = not continuous
 
 	if not turnOnAllDied:
-		timer.wait_time = timerTime
+		timer.wait_time = timerTime + 0.1
 	if autoStart:
 		timer.start()
 	pass # Replace with function body.

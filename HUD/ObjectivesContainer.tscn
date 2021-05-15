@@ -14,7 +14,7 @@ margin_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

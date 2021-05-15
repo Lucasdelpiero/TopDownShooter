@@ -80,7 +80,7 @@ func createExplosion():
 	queue_free()
 
 func toggleCollisionShape():
-	areaCollision.set_shape(ShapeRectangle)
+	areaCollision.call_deferred("set_shape", ShapeRectangle)
 
 func _on_Timer_timeout():
 	createExplosion()

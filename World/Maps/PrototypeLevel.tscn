@@ -218,7 +218,6 @@ rotation = 1.57079
 [node name="Objectives" parent="." instance=ExtResource( 11 )]
 killAll = false
 survive = true
-withMelee = true
 
 [node name="Bullets" type="Node" parent="."]
 
@@ -269,7 +268,6 @@ enemy1 = ExtResource( 6 )
 amount1 = 1
 enemy2 = ExtResource( 12 )
 amount2 = 2
-continuous = true
 autoStart = true
 timerTime = 3.0
 
