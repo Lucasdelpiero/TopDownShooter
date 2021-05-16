@@ -9,6 +9,8 @@ export var comboTime = 2.5
 var killedByMelee = 2
 var killedByExplosion = 2
 
+export(float, 0.1, 3.0, 0.1) var timeStats = 1.0 #Time to show the stats panel
+
 var initialAlpha = Color(1.0, 1.0, 1.0, 1.0)
 var fadedAlpha = Color(1.0, 1.0, 1.0, 0.0)
 
@@ -50,8 +52,6 @@ func _ready():
 	connect("updateMusic", optionsControl, "activateMusic")
 
 func _process(_delta):
-	if Input.is_action_just_pressed("reload"):
-		statsResult()
 #	get_time()
 	pass
 
@@ -131,19 +131,25 @@ func _on_Timer_timeout():
 #	print("by explosion: " + str(totalExplosion))
 
 func statsResult():
+	var time = timeNow #To fix the time delay
+	yield(get_tree().create_timer(timeStats), "timeout")
+	
+	endCombo()
+	sendResults( get_parent().name )
+	
 	var stats = Stats.instance()
 	add_child(stats)
 	stats.totalScore.text += str(totalScore)
 	stats.totalKilled.text += str(totalKilled)
-	stats.time.text += str(timeNow)
+	stats.time.text += str(time)
 	stats.maxCombo.text += str(maxCombo)
 	stats.totalMelee.text += str(totalMelee)
 	stats.totalExplosion.text += str(totalExplosion)
 
-func debug(aName):
+func sendResults(aName):
 	var results = {
 		"name" : aName,
-		"score" : 2503,
+		"score" : totalScore,
 		"maxCombo" : maxCombo,
 		"time" : timeNow,
 		"totalKilled" : totalKilled,

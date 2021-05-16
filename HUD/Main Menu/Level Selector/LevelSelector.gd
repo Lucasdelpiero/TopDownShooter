@@ -3,7 +3,7 @@ extends Control
 var levelList = [
 	"PrototypeLevel",
 	"PrototypeLevel2",
-	"PrototypeLevel2",
+	"ExteriorTest",
 	"PrototypeLevel2",
 	"PrototypeLevel2",
 	"PrototypeLevel2",

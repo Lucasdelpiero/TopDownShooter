@@ -159,7 +159,6 @@ func completed():
 		label.visible = true
 		emit_signal("completedLevel")
 		allCompleted = true
-		debug(get_parent().name)
 
 func _on_TimerSurvive_timeout():
 	surviveCompleted = true
@@ -168,9 +167,3 @@ func _on_TimerSurvive_timeout():
 func shown(node, value : bool):
 	node.get_parent().get_parent().visible = value
 
-func debug(aName):
-	var scoring = get_tree().get_root().find_node("Scoring", true, false)
-	scoring.debug(aName)
-#	GlobalControl.update_max_score(get_parent().name, 2503)
-#	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
-	

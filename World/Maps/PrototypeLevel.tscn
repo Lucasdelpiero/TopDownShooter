@@ -218,6 +218,7 @@ rotation = 1.57079
 [node name="Objectives" parent="." instance=ExtResource( 11 )]
 killAll = false
 survive = true
+timeSurvive = 30.0
 
 [node name="Bullets" type="Node" parent="."]
 
