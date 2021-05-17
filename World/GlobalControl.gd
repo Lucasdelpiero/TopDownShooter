@@ -30,3 +30,9 @@ func update_max_score(results : Dictionary):
 	
 	print(max_score)
 
+func giveScore(key):
+	if max_score.has(key):
+		return max_score[key]["score"]
+	else:
+		return "0"
+	pass

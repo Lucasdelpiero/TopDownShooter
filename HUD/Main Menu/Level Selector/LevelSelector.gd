@@ -8,6 +8,8 @@ var levelList = [
 	"PrototypeLevel2",
 	"PrototypeLevel2",
 	"PrototypeLevel2",
+	"PrototypeLevel2",
+	"PrototypeLevel2",
 ] 
 var levelName = [
 	"Tutorial",
@@ -18,6 +20,8 @@ var levelName = [
 	"hhffh",
 	"hh",
 	"hffhh",
+	"Yes",
+	"No",
 ]
 
 var levelPic = [
@@ -42,8 +46,12 @@ var levelSelected = 0
 onready var levelLabel = $PanelContainer/VBoxContainer/LevelLabel
 onready var picture = $LevelPicture
 onready var allLevels = $DiamondParent
+export(NodePath) var maxScoreLPath
+onready var maxScoreL = get_node(maxScoreLPath)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	maxScoreL.text = "Max Score: "
 	levelDiamond = allLevels.get_children()
 	updateInfo()
 	test()
@@ -61,6 +69,11 @@ func updateInfo():
 	for i in levelDiamond.size():
 		levelDiamond[i].pressed = false
 	levelDiamond[levelSelected].pressed = true
+	updateScoreLabel()
+
+func updateScoreLabel():
+	var scoreLevel = GlobalControl.giveScore(levelList[levelSelected])
+	maxScoreL.text = "Max Score: " + str(scoreLevel)
 
 func _on_PreviousButton_pressed():
 	if levelSelected > 0:
@@ -86,6 +99,8 @@ func _on_diamond_chosen(name):
 		else:
 			levelSelected = i
 			updateInfo()
+
+
 
 func test():
 #	var scores = GlobalControl.max_score["PrototypeLevel"].score

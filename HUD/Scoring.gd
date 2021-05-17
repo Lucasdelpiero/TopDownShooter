@@ -38,6 +38,7 @@ var maxCombo = 0
 var totalKilled = 0
 var totalMelee = 0
 var totalExplosion = 0 
+var levelName = "none"
 
 signal updateMusic(value)
 func _on_Scoring_tree_entered():
@@ -135,7 +136,7 @@ func statsResult():
 	yield(get_tree().create_timer(timeStats), "timeout")
 	
 	endCombo()
-	sendResults( get_parent().name )
+	sendResults( levelName )
 	
 	var stats = Stats.instance()
 	add_child(stats)

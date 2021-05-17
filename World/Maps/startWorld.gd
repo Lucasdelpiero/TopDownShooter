@@ -16,6 +16,8 @@ func _ready():
 	create(PauseScreen)
 	create(Darkness)
 	create(OptionsLayer)
+	var scoring = find_node("Scoring", true , false)
+	scoring.levelName = name
 	
 
 
