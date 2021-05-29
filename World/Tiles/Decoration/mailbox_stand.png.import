@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset_template.png-8cc02c004f11462d441d5c64eab6dba0.stex"
+path="res://.import/mailbox_stand.png-79c6fd333750a27364c3cf7155c0bd72.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Tiles/Walls/tileset_template.png"
-dest_files=[ "res://.import/tileset_template.png-8cc02c004f11462d441d5c64eab6dba0.stex" ]
+source_file="res://World/Tiles/Decoration/mailbox_stand.png"
+dest_files=[ "res://.import/mailbox_stand.png-79c6fd333750a27364c3cf7155c0bd72.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

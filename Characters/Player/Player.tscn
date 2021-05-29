@@ -854,8 +854,9 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=12]
-length = 0.3
+length = 0.2
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:frame")
 tracks/0/interp = 1
@@ -863,10 +864,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.101, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 1, 2 ]
+"values": [ 0, 1, 2 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D/Sprite:texture")
@@ -911,7 +912,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -1312,12 +1313,12 @@ __meta__ = {
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 28.4204, -11.4204 )
+position = Vector2( 62, -16 )
 z_index = 10
 z_as_relative = false
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 hframes = 3
-frame = 1
+frame = 2
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
 position = Vector2( 0, 22.92 )
@@ -1327,9 +1328,9 @@ cast_to = Vector2( 150, 0 )
 collision_mask = 4
 
 [node name="Rifle" parent="Position2D" instance=ExtResource( 24 )]
+visible = true
 
 [node name="Shotgun" parent="Position2D" instance=ExtResource( 23 )]
-visible = true
 
 [node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
 missDegree = 0
@@ -1346,6 +1347,7 @@ disabled = false
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
+playback_speed = 2.0
 anims/KnifeIdle = SubResource( 1 )
 anims/KnifeMelee = SubResource( 2 )
 anims/KnifeMove = SubResource( 3 )
@@ -1388,13 +1390,12 @@ bus = "SoundEffects"
 
 [node name="HealingTimer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_HealingTimer_timeout"]
 
 [editable path="Position2D/Knife"]
-
 [editable path="Position2D/Knife/Hitbox"]
-
 [editable path="HurtBox"]

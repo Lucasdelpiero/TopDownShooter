@@ -266,6 +266,7 @@ collision_mask = 4
 [node name="PathFindTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
 [connection signal="tree_entered" from="." to="." method="_on_zombi_tree_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
@@ -273,9 +274,6 @@ one_shot = true
 [connection signal="timeout" from="PathFindTimer" to="." method="_on_PathFindTimer_timeout"]
 
 [editable path="HurtBox"]
-
 [editable path="Hitbox"]
-
 [editable path="SoftCollision"]
-
 [editable path="PlayerDetectionZone"]

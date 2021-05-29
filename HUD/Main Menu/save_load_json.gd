@@ -1,4 +1,4 @@
-extends Node
+extends MenuButtonClass
 
 const SAVE_PATH = "user://save_json.json"
 
@@ -35,7 +35,7 @@ func load_game():
 	global.max_score = save_dict.global.max_score
 	
 	print(save_dict.global.max_score)
-	get_parent().test()
+	get_parent().updateInfo()
 	
 	
 

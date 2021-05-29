@@ -79,7 +79,8 @@ func _on_Player_tree_entered():
 # warning-ignore:return_value_discarded
 	connect("updateHUD", HUD, "_on_Player_updateHUD")
 #	connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
-#	connect("updateHUDWeapon", HUD, "_on_Player_updateHUDWeapon")
+# warning-ignore:return_value_discarded
+	connect("updateHUDWeapon", HUD, "_on_Player_updateHUDWeapon")
 	randomize()
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true

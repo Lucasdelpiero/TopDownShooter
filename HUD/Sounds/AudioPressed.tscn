@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://HUD/Sounds/rollover2.ogg" type="AudioStream" id=1]
+
+[node name="AudioPressed" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )

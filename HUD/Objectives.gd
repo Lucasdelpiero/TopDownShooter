@@ -98,15 +98,17 @@ func _process(_delta):
 ##########################################################################################################
 
 func updateObjective(_name, byMelee, byExplosion):
-	zombiesLeft =  get_tree().get_nodes_in_group("zombi").size()
-	zombiesLeft -= 1
+	
 	if byMelee:
 		killedByMelee += 1
 	if byExplosion:
 		killedByExplosion += 1
+		
+	yield(get_tree().create_timer(1.0), "timeout")
 	checkCompletion()
 
 func checkCompletion(): 
+	zombiesLeft =  get_tree().get_nodes_in_group("zombi").size()
 	
 	if zombiesLeft < 1:
 		killAllCompleted = true

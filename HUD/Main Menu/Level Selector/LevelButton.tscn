@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://HUD/Sprites/diamond.png" type="Texture" id=1]
 [ext_resource path="res://HUD/Main Menu/Level Selector/LevelButton.gd" type="Script" id=2]
+[ext_resource path="res://HUD/Sounds/AudioPressed.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD/Sounds/AudioHover.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -12,12 +14,12 @@ texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 0.992157, 0, 0, 1 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 1, 1, 1, 0.686275 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 1, 1, 1, 0.686275 )
@@ -32,8 +34,8 @@ size_flags_vertical = 0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 toggle_mode = true
 enabled_focus_mode = 0
 script = ExtResource( 2 )
@@ -41,4 +43,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioHover" parent="." instance=ExtResource( 4 )]
+
+[node name="AudioPressed" parent="." instance=ExtResource( 3 )]
+
+[connection signal="mouse_entered" from="." to="." method="_on_LevelButton_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_LevelButton_pressed"]

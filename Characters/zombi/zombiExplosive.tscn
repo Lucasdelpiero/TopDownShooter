@@ -14,7 +14,6 @@ radius = 3292.98
 "zombiExplosive",
 ] instance=ExtResource( 1 )]
 modulate = Color( 0.917647, 0.290196, 0.290196, 1 )
-max_speed = 500
 health = 1
 explosive = true
 type = "zombiExplosive"
@@ -29,9 +28,6 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [editable path="HurtBox"]
-
 [editable path="Hitbox"]
-
 [editable path="SoftCollision"]
-
 [editable path="PlayerDetectionZone"]

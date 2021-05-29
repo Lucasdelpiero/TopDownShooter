@@ -35,7 +35,6 @@ anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
 margin_right = 249.0
-text = "Start Game"
 
 [node name="OptionsButton" parent="VBoxContainer" instance=ExtResource( 6 )]
 anchor_left = 0.0
@@ -54,9 +53,6 @@ margin_right = 249.0
 margin_bottom = 144.0
 
 [node name="OptionsLayer" parent="." instance=ExtResource( 2 )]
-
-[node name="ScreenResolution" parent="OptionsLayer/Options/VBoxContainer/HBoxScreen" index="3"]
-items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
