@@ -86,5 +86,7 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="pressed" from="Panel/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

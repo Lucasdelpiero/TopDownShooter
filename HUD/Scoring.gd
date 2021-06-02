@@ -140,12 +140,12 @@ func statsResult():
 	
 	var stats = Stats.instance()
 	add_child(stats)
-	stats.totalScore.text += str(totalScore)
-	stats.totalKilled.text += str(totalKilled)
-	stats.time.text += str(time)
-	stats.maxCombo.text += str(maxCombo)
-	stats.totalMelee.text += str(totalMelee)
-	stats.totalExplosion.text += str(totalExplosion)
+	stats.totalScore = totalScore
+	stats.totalKilled = totalKilled
+	stats.time = time
+	stats.maxCombo = maxCombo
+	stats.totalMelee = totalMelee
+	stats.totalExplosion = totalExplosion
 
 func sendResults(aName):
 	var results = {
