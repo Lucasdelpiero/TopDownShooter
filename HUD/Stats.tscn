@@ -80,10 +80,12 @@ margin_top = 273.827
 margin_right = 264.817
 margin_bottom = 317.827
 text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+wait_time = 0.08
 autostart = true
 
 [node name="Tween" type="Tween" parent="."]

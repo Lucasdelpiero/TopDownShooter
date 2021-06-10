@@ -19,7 +19,10 @@ onready var totalExplosionL = $Panel/VBoxContainer/TotalExposion
 var totalExplosion = 0
 var totalExplosionTw = 0
 onready var tween = $Tween
+onready var audio = $AudioStreamPlayer
 export(float, 0.1, 5.0, 0.1) var countDuration = 1.5
+
+onready var timer = $Timer
 
 var scoresList = [
 	"totalScore",
@@ -30,6 +33,9 @@ var scoresList = [
 	"totalExplosion",
 ]
 
+var lastInt = [ 0, 0, 0, 0, 0, 0,]
+
+var Sfx = preload("res://HUD/Sounds/Sfx.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,8 +47,12 @@ func _ready():
 		updateScore(scoresList[i], i)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
+	for i in lastInt.size():
+		updateSound(i)
 	updateLabels()
+	if Input.is_action_just_pressed("ui_accept"):
+		skipAnimation()
 #	print(totalScoreTw)
 
 
@@ -59,7 +69,30 @@ func updateLabels():
 	totalExplosionL.text = "Total Explosion: " + str( int( totalExplosionTw ) )
 
 
+func skipAnimation():
+	tween.stop_all()
+	for i in scoresList.size():
+		set( scoresList[i] + "Tw", get(scoresList[i]) ) 
+
+func soundPoints():
+	var sfx = Sfx.instance()
+	add_child(sfx)
+	sfx.play("points")
+
+
+var canPLaySound = false
+func updateSound(value):
+	if lastInt[value] != int( get(scoresList[value] + "Tw" ) ):
+		lastInt[value] = int( get(scoresList[value] + "Tw" ) )
+		
+		if canPLaySound:
+			canPLaySound = false
+			soundPoints()
+			timer.start()
+
+
 func _on_Timer_timeout():
+	canPLaySound = true
 #	queue_free()
 	pass
 
@@ -68,3 +101,5 @@ func _on_ContinueButton_pressed():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
 	pass 
+
+

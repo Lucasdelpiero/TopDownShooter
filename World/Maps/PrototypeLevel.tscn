@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -21,6 +21,9 @@
 [ext_resource path="res://World/LevelControl/Teleporter.tscn" type="PackedScene" id=19]
 [ext_resource path="res://World/LevelControl/Activator.tscn" type="PackedScene" id=20]
 [ext_resource path="res://World/Tiles/Floor/grass_seemless.png" type="Texture" id=21]
+[ext_resource path="res://World/Tiles/Walls/Test/wall_gray.png" type="Texture" id=22]
+[ext_resource path="res://World/Tiles/Walls/Test/wall_gray_distorted.png" type="Texture" id=23]
+[ext_resource path="res://World/Tiles/Walls/Test/wall_gray_distorted2.png" type="Texture" id=24]
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -45,6 +48,7 @@ margin_bottom = 3174.0
 texture = ExtResource( 21 )
 stretch_mode = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -53,6 +57,42 @@ tile_data = PoolIntArray( -2031644, 1, 0, -2031643, 1, 0, -2031642, 1, 0, -20316
 
 [node name="DecorationTile" parent="TileMaps" instance=ExtResource( 10 )]
 tile_data = PoolIntArray( -327669, 3, 0, -196601, 2, 0, -196591, 2, 0, -196590, 2, 0, -196589, 2, 0, -131054, -1610612734, 0, 10, -1610612734, 0, 11, -1073741822, 0, 12, 2, 0, 19, -1610612734, 0, 131086, 1, 0, 196624, -1610612734, 0 )
+
+[node name="TextureRect2" type="TextureRect" parent="TileMaps"]
+margin_left = 2577.0
+margin_top = -2375.0
+margin_right = 4259.0
+margin_bottom = -1998.0
+texture = ExtResource( 22 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="TileMaps"]
+margin_left = 2602.0
+margin_top = -1890.0
+margin_right = 4305.0
+margin_bottom = -1524.0
+texture = ExtResource( 23 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="TileMaps"]
+margin_left = 2613.0
+margin_top = -1376.0
+margin_right = 4284.0
+margin_bottom = -957.0
+texture = ExtResource( 24 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="Zombies" type="Node" parent="."]
 
@@ -218,7 +258,7 @@ rotation = 1.57079
 [node name="Objectives" parent="." instance=ExtResource( 11 )]
 killAll = false
 survive = true
-timeSurvive = 30.0
+timeSurvive = 10.0
 
 [node name="Bullets" type="Node" parent="."]
 
