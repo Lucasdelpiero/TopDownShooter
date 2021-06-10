@@ -19,7 +19,6 @@ onready var totalExplosionL = $Panel/VBoxContainer/TotalExposion
 var totalExplosion = 0
 var totalExplosionTw = 0
 onready var tween = $Tween
-onready var audio = $AudioStreamPlayer
 export(float, 0.1, 5.0, 0.1) var countDuration = 1.5
 
 onready var timer = $Timer
