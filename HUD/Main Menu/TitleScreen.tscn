@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Main Menu/Options.tscn" type="PackedScene" id=2]
@@ -6,10 +6,13 @@
 [ext_resource path="res://HUD/Main Menu/ExitButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/Main Menu/TitleScreen.gd" type="Script" id=5]
 [ext_resource path="res://HUD/Main Menu/OptionsButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD/Transition.tscn" type="PackedScene" id=7]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.561218
+margin_right = 0.561279
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -53,6 +56,21 @@ margin_right = 249.0
 margin_bottom = 144.0
 
 [node name="OptionsLayer" parent="." instance=ExtResource( 2 )]
+
+[node name="ScreenResolution" parent="OptionsLayer/Options/VBoxContainer/HBoxScreen" index="3"]
+items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 346.493
+margin_top = 104.122
+margin_right = -363.507
+margin_bottom = -457.878
+theme = ExtResource( 1 )
+text = "TOP DOWN SHOOTER"
+
+[node name="Transition" parent="." instance=ExtResource( 7 )]
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]

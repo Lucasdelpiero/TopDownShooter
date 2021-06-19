@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://HUD/Main Menu/LoadButton.tscn" type="PackedScene" id=10]
 [ext_resource path="res://HUD/Main Menu/SaveButton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://HUD/Main Menu/TitleScreen.tscn" type="PackedScene" id=13]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -205,6 +206,14 @@ margin_top = 245.888
 margin_right = 378.287
 margin_bottom = 285.888
 text = "Test"
+
+[node name="BackButton" parent="." instance=ExtResource( 12 )]
+margin_left = -359.005
+margin_top = 465.109
+margin_right = -273.005
+margin_bottom = 505.109
+text = "Back"
+transition = ExtResource( 13 )
 
 [connection signal="pressed" from="PreviousButton" to="." method="_on_PreviousButton_pressed"]
 [connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]

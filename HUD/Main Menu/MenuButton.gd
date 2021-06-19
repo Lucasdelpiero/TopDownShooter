@@ -4,25 +4,16 @@ class_name MenuButtonClass
 
 onready var audioHover = $AudioHover
 onready var audioPressed = $AudioPressed
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+export(PackedScene) var transition = null
 
 func _on_mouse_entered():
 	audioHover.play()
 
-
 func _on_mouse_exited():
+	focus_mode = Control.FOCUS_NONE
 	pass # Replace with function body.
-
 
 func _on_pressed():
 	audioPressed.play()
+	if transition != null:
+		get_tree().change_scene(transition.get_path())

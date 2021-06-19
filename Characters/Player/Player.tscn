@@ -160,7 +160,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.1, 0.5 ),
+"times": PoolRealArray( 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -1313,12 +1313,12 @@ __meta__ = {
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 62, -16 )
+position = Vector2( 61.3556, 37.1487 )
 z_index = 10
 z_as_relative = false
-texture = ExtResource( 3 )
-hframes = 3
-frame = 2
+texture = ExtResource( 19 )
+hframes = 15
+frame = 8
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
 position = Vector2( 0, 22.92 )
@@ -1339,9 +1339,6 @@ missDegree = 0
 "Melee",
 ] instance=ExtResource( 9 )]
 visible = false
-
-[node name="CollisionShape2D" parent="Position2D/Knife/Hitbox" index="0"]
-disabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
 root_node = NodePath("../..")
