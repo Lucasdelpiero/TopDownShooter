@@ -14,6 +14,8 @@ export(float, 0.1, 3.0, 0.1) var timeStats = 1.0 #Time to show the stats panel
 var initialAlpha = Color(1.0, 1.0, 1.0, 1.0)
 var fadedAlpha = Color(1.0, 1.0, 1.0, 0.0)
 
+onready var ScoreBubble = preload("res://Effects/ScoreBubble.tscn")
+
 onready var comboLabel = $ComboLabels/Score
 onready var multiplicatorLabel = $ComboLabels/Multiplicator
 onready var totalLabel = $TotalScoreLabel
@@ -56,7 +58,7 @@ func _process(_delta):
 #	get_time()
 	pass
 
-func updateScore(name, byMelee, byExplosion):
+func updateScore(name, byMelee, byExplosion, pos):
 	var base = dictionary[name] 
 	individualScore = base + base * int(byMelee) * killedByMelee + base * int(byExplosion) * killedByExplosion
 	comboScore += individualScore
@@ -65,6 +67,11 @@ func updateScore(name, byMelee, byExplosion):
 	totalKilled += 1
 	totalMelee += int(byMelee)
 	totalExplosion += int(byExplosion)
+	
+	var scoreBubble = ScoreBubble.instance()
+	get_parent().get_parent().add_child(scoreBubble)
+	scoreBubble.global_position = pos
+	scoreBubble.text = "50000"
 	
 	updateLabels()
 	

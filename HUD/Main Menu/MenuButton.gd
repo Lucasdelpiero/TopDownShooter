@@ -13,7 +13,7 @@ func _on_mouse_exited():
 	focus_mode = Control.FOCUS_NONE
 	pass # Replace with function body.
 
-func _on_pressed():
+func _on_pressed(): 
 	audioPressed.play()
 	if transition != null:
-		get_tree().change_scene(transition.get_path())
+		get_tree().change_scene(transition.get_path()) 

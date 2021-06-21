@@ -6,6 +6,7 @@ const Explosion = preload("res://World/Objects/Barrel/Explosion.tscn")
 const BloodParticle = preload("res://Characters/zombi/Blood/BloodParticles.tscn")
 const BloodStain = preload("res://Characters/zombi/Blood/BloodStain.tscn")
 const Corpse = preload("res://Characters/zombi/Animations/ZombiCorpse.tscn")
+const ScoreBubble = preload("res://Effects/ScoreBubble.tscn")
 
 
 
@@ -22,7 +23,7 @@ onready var pathTimer = $PathFindTimer
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
 
-signal killed(type, byMelee, byExplosion)
+signal killed(type, byMelee, byExplosion, pos)
 signal fillPlayerAmmo()
 signal healPlayer(time)
 
@@ -189,6 +190,11 @@ func death(area):
 	bloodStain.global_position = global_position
 	bloodStain.rotation = rand_range(0, 2)
 	
+#	var scoreBubble = ScoreBubble.instance()
+#	get_parent().add_child(scoreBubble)
+#	scoreBubble.global_position = global_position
+#	scoreBubble.text = "50000"
+	
 	if explosive:
 		var explosion = Explosion.instance()
 #		get_parent().add_child(explosion)
@@ -198,7 +204,7 @@ func death(area):
 	var byMelee = area.get_parent().is_in_group("Melee")
 	var byExplosion = area.get_parent().is_in_group("Explosion")
 	
-	emit_signal("killed", str(type), byMelee, byExplosion)
+	emit_signal("killed", str(type), byMelee, byExplosion, global_position)
 	
 	var corpse = Corpse.instance()
 #	get_parent().add_child(corpse)

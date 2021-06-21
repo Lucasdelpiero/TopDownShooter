@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "MenuButtonClass",
 "language": "GDScript",
 "path": "res://HUD/Main Menu/MenuButton.gd"
+}, {
+"base": "RichTextEffect",
+"class": "RichTextGhost",
+"language": "GDScript",
+"path": "res://Effects/RichTextLabel.gd"
 } ]
 _global_script_class_icons={
 "GitAPI": "",
-"MenuButtonClass": ""
+"MenuButtonClass": "",
+"RichTextGhost": ""
 }
 
 [application]
