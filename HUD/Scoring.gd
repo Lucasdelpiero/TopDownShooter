@@ -43,6 +43,8 @@ var totalExplosion = 0
 var levelName = "none"
 
 signal updateMusic(value)
+signal createScoreBubble(aScore, aMultiplier)
+
 func _on_Scoring_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 #	startCombo()
@@ -53,6 +55,8 @@ func _ready():
 	optionsControl = get_tree().get_root().find_node("Options", true, false)
 # warning-ignore:return_value_discarded
 	connect("updateMusic", optionsControl, "activateMusic")
+	
+	
 
 func _process(_delta):
 #	get_time()
@@ -71,7 +75,10 @@ func updateScore(name, byMelee, byExplosion, pos):
 	var scoreBubble = ScoreBubble.instance()
 	get_parent().get_parent().add_child(scoreBubble)
 	scoreBubble.global_position = pos
-	scoreBubble.text = "50000"
+# warning-ignore:return_value_discarded
+	connect("createScoreBubble", scoreBubble, "setValues")
+	emit_signal("createScoreBubble", base, multiplicator)
+	disconnect("createScoreBubble", scoreBubble, "setValues")
 	
 	updateLabels()
 	

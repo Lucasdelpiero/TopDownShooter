@@ -16,4 +16,5 @@ func _on_mouse_exited():
 func _on_pressed(): 
 	audioPressed.play()
 	if transition != null:
+# warning-ignore:return_value_discarded
 		get_tree().change_scene(transition.get_path()) 

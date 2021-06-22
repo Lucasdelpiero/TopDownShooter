@@ -97,7 +97,7 @@ func _process(_delta):
 
 ##########################################################################################################
 
-func updateObjective(_name, byMelee, byExplosion, pos):
+func updateObjective(_name, byMelee, byExplosion, _pos):
 	
 	if byMelee:
 		killedByMelee += 1

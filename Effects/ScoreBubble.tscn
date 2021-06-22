@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Effects/ScoreBubble.gd" type="Script" id=1]
 [ext_resource path="res://Effects/RichTextLabel.gd" type="Script" id=2]
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=3]
+[ext_resource path="res://HUD/Fonts/scoreBubble.tres" type="Theme" id=4]
 
 [sub_resource type="RichTextEffect" id=1]
 script = ExtResource( 2 )
@@ -10,7 +11,7 @@ script = ExtResource( 2 )
 [sub_resource type="Animation" id=2]
 resource_name = "Fade Out"
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Label:rect_position:x")
+tracks/0/path = NodePath("VBoxContainer:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("Label:rect_position:y")
+tracks/1/path = NodePath("VBoxContainer:rect_position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -30,7 +31,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("Label:modulate:a")
+tracks/2/path = NodePath("VBoxContainer:modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -44,13 +45,42 @@ tracks/2/keys = {
 z_index = 50
 z_as_relative = false
 script = ExtResource( 1 )
+lScoreP = NodePath("VBoxContainer/LScore")
+lMultiplierP = NodePath("VBoxContainer/LMultiplier")
+color_0 = Color( 0.862745, 0.156863, 0.156863, 1 )
+color_1 = Color( 0.45098, 0.596078, 0.815686, 1 )
+color_2 = Color( 0.513726, 0.717647, 0.478431, 1 )
+color_3 = Color( 0.94902, 0.964706, 0.513726, 1 )
+color_4 = Color( 0.117647, 0.658824, 0.584314, 1 )
 
-[node name="Label" type="Label" parent="."]
-margin_right = 54.0
-margin_bottom = 38.0
-rect_scale = Vector2( 4, 4 )
-theme = ExtResource( 3 )
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 437.0
+margin_bottom = 215.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LScore" type="Label" parent="VBoxContainer"]
+margin_right = 219.0
+margin_bottom = 151.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 4 )
 text = "200"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LMultiplier" type="Label" parent="VBoxContainer"]
+margin_left = 223.0
+margin_right = 433.0
+margin_bottom = 151.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 4 )
+text = "x50"
 __meta__ = {
 "_edit_use_anchors_": false
 }
