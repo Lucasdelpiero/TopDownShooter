@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var LabelComment = preload("res://Effects/LabelComment.tscn")
 onready var richLabel = $RichTextLabel
 #onready var label = $Label
 export(NodePath) var lScoreP
@@ -8,31 +9,31 @@ export(NodePath) var lMultiplierP
 onready var lMultiplier = get_node(lMultiplierP)
 export(float, 1, 10) var length : float = 9.0
 export var text = ""
-export(Color, RGB) var color_0 
-export(Color, RGB) var color_1 
-export(Color, RGB) var color_2 
-export(Color, RGB) var color_3 
-export(Color, RGB) var color_4 
+export(Array, Color, RGB) var Colors
 
 var score = 0
 var multiplier = 0 
 
-var Colors = [
-]
+signal setComment(value)
+
+var comments = {
+	3 : "Good",
+	5 : "Better",
+	10 : "Nice",
+	20 :"Bloodthisthy",
+	30 : "Massacre",
+	12 : "Nice",
+	14 : "Nice",
+	16 : "Nice",
+	1 : "Nice",
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Colors = [
-	color_0,
-	color_1,
-	color_2,
-	color_3,
-	color_4,
-]
+
 	randomize()
 	
-	lScore.modulate = Color(1.0, 0.0, 0.0)
-	lScore.modulate = Colors[int(round(rand_range(0.0, 4.0)))]
+#	lScore.modulate = Colors[int(round(rand_range(0.0, 4.0)))]
 	$AnimationPlayer.play("Fade Out")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +49,32 @@ func setValues(aScore, aMultiplier):
 	multiplier = aMultiplier
 	lScore.text = str(score)
 	lMultiplier.text = "x" + str(multiplier)
+	multiplierColor(aMultiplier)
+	if aMultiplier in comments:
+		commentCreate(aMultiplier)
+
+func multiplierColor(value):
+	if value < 3:
+		mColor(0)
+	elif value < 5:
+		mColor(1)
+	elif value < 10:
+		mColor(2)
+	elif value < 20:
+		mColor(3)
+	else:
+		mColor(4)
+
+func mColor(a):
+	lMultiplier.modulate = Colors[a]
+
+func commentCreate(value):
+	var labelComment = LabelComment.instance()
+	get_parent().add_child(labelComment)
+	labelComment.global_position = global_position
+	connect("setComment", labelComment, "comment")
+	emit_signal("setComment", comments[value])
+	disconnect("setComment", labelComment, "comment")
 
 func _on_Timer_timeout():
 	if length > 1.1:

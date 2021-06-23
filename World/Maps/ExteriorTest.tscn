@@ -203,7 +203,7 @@ z_as_relative = false
 texture = ExtResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( -104.994, -209.128 )
+position = Vector2( 8844.15, -1578.09 )
 
 [node name="mailbox_broken" type="Sprite" parent="."]
 position = Vector2( 745.556, -355.724 )
