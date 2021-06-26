@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Top Down Shooter Project"
-run/main_scene="res://World/Maps/PrototypeLevel.tscn"
+run/main_scene="res://World/Maps/ExteriorTest.tscn"
 config/icon="res://icon.png"
 
 [audio]
@@ -139,6 +139,11 @@ restart={
 jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+control={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
  ]
 }
 

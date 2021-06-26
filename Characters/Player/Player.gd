@@ -35,6 +35,7 @@ onready var remoteTransform = $RemoteTransform2D
 onready var rifle = $Position2D/Rifle
 onready var pistol = $Position2D/Pistol
 onready var shotgun = $Position2D/Shotgun
+onready var superShotgun = $Position2D/SuperShotgun
 onready var knife = $Position2D/Knife
 onready var knifeCollision = $Position2D/Knife/Hitbox/CollisionShape2D
 onready var rayCastWall = $Position2D/RayCastWall
@@ -237,7 +238,8 @@ func choose_weapon():
 		state = IDLE
 		self.weaponSelected = rifle
 	if Input.is_action_just_pressed("shotgun"):
-		self.weaponSelected = shotgun
+#		self.weaponSelected = shotgun
+		self.weaponSelected = superShotgun
 		state = IDLE
 	updateState()
 	emit_signal("updateHUDWeapon", str(weaponSelected.name) )
@@ -254,11 +256,17 @@ func stateIdle():
 	rayCastWallCollision()
 
 func updateAnimations():
-	animMove = weaponSelected.name + "Move"
-	animIdle = weaponSelected.name + "Idle"
-	animShoot = weaponSelected.name + "Shoot"
-	animReload = weaponSelected.name + "Reload"
-	animBlocked = weaponSelected.name + "Blocked"
+	changeAnimation("Move")
+	changeAnimation("Idle")
+	changeAnimation("Shoot")
+	changeAnimation("Reload")
+	changeAnimation("Blocked")
+
+func changeAnimation(value : String):
+	if animationPlayer.has_animation(weaponSelected.name + value):
+		set("anim" + value, weaponSelected.name + value) 
+	else:
+		set("anim" + value, rifle.name + value)
 
 func muzzle():
 	var muzzle = Muzzle.instance()

@@ -34,7 +34,8 @@ func _ready():
 	randomize()
 	
 #	lScore.modulate = Colors[int(round(rand_range(0.0, 4.0)))]
-	$AnimationPlayer.play("Fade Out")
+#	$AnimationPlayer.play("Fade Out")
+	$AnimationPlayer.play("Fade")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

@@ -7,10 +7,12 @@
 z_index = 100
 z_as_relative = false
 script = ExtResource( 2 )
+scale_end = 1.2
 
 [node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_top = -300.0
+margin_right = 671.0
+margin_bottom = -149.0
 theme = ExtResource( 1 )
 text = "COMMENT!"
 __meta__ = {

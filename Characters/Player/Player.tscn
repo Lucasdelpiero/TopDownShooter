@@ -1332,6 +1332,10 @@ visible = true
 
 [node name="Shotgun" parent="Position2D" instance=ExtResource( 23 )]
 
+[node name="SuperShotgun" parent="Position2D" instance=ExtResource( 23 )]
+capacity = 22
+bulletsShot = 16
+
 [node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
 missDegree = 0
 

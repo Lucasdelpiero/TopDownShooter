@@ -32,11 +32,12 @@ func _on_Player_updateHUDWeapon(name):
 		i.modulate = Color(defaultColor)
 	
 	#Sets the color to the selected color
-	var icon = get_node("GridContainer/Icon%s" %name)
-	var labels = get_node("GridContainer/Label%s" %name)
-	if icon != null:
-		icon.modulate = Color(selectedColor)
-	if labels != null:
-		labels.modulate = Color(selectedColor)
+	if has_node("GridContainer/Icon%s" %name):
+		var icon = get_node("GridContainer/Icon%s" %name)
+		var labels = get_node("GridContainer/Label%s" %name)
+		if icon != null:
+			icon.modulate = Color(selectedColor)
+		if labels != null:
+			labels.modulate = Color(selectedColor)
 
 

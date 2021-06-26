@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Effects/ScoreBubble.gd" type="Script" id=1]
 [ext_resource path="res://Effects/RichTextLabel.gd" type="Script" id=2]
@@ -7,6 +7,39 @@
 
 [sub_resource type="RichTextEffect" id=1]
 script = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("VBoxContainer:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("VBoxContainer:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -300, -0.25, 0, 0.25, 0, -450, -0.575478, 18.7288, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("VBoxContainer:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.729412, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.7, 1 )
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Fade Out"
@@ -50,8 +83,9 @@ lMultiplierP = NodePath("VBoxContainer/LMultiplier")
 Colors = [ Color( 1, 0.964706, 0.964706, 1 ), Color( 0.964706, 0.905882, 0.435294, 1 ), Color( 0.960784, 0.878431, 0.192157, 1 ), Color( 0.921569, 0.592157, 0.121569, 1 ), Color( 1, 0.101961, 0.164706, 1 ) ]
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
+margin_top = -300.0
 margin_right = 437.0
-margin_bottom = 215.0
+margin_bottom = -85.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
@@ -100,6 +134,7 @@ wait_time = 0.001
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 3 )
 "anims/Fade Out" = SubResource( 2 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

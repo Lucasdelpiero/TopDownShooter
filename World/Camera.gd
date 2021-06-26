@@ -32,11 +32,12 @@ func _process(delta):
 	
 
 func _input(_event):
-	if Input.is_action_pressed("zoom_in"):
-		zoomfactor -= 0.01 * zoomSpeed
-		zooming = true
-	elif Input.is_action_pressed("zoom_out"):
-		zoomfactor += 0.01 * zoomSpeed
-		zooming = true
-	else:
-		zooming = false
+	if Input.is_action_pressed("control"):
+		if Input.is_action_pressed("zoom_in"):
+			zoomfactor -= 0.01 * zoomSpeed
+			zooming = true
+		elif Input.is_action_pressed("zoom_out"):
+			zoomfactor += 0.01 * zoomSpeed
+			zooming = true
+		else:
+			zooming = false
