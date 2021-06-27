@@ -266,7 +266,7 @@ func changeAnimation(value : String):
 	if animationPlayer.has_animation(weaponSelected.name + value):
 		set("anim" + value, weaponSelected.name + value) 
 	else:
-		set("anim" + value, rifle.name + value)
+		set("anim" + value, weaponSelected.type + value)
 
 func muzzle():
 	var muzzle = Muzzle.instance()
