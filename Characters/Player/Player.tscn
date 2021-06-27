@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=26]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/SuperShotgun.tscn" type="PackedScene" id=27]
 
 [sub_resource type="Animation" id=1]
 length = 2.0
@@ -1313,12 +1315,11 @@ __meta__ = {
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 61.3556, 37.1487 )
+position = Vector2( 62, -16 )
 z_index = 10
 z_as_relative = false
-texture = ExtResource( 19 )
-hframes = 15
-frame = 8
+texture = ExtResource( 26 )
+hframes = 20
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
 position = Vector2( 0, 22.92 )
@@ -1327,17 +1328,22 @@ exclude_parent = false
 cast_to = Vector2( 150, 0 )
 collision_mask = 4
 
-[node name="Rifle" parent="Position2D" instance=ExtResource( 24 )]
+[node name="Weapons" type="Node2D" parent="Position2D"]
+
+[node name="Rifle" parent="Position2D/Weapons" instance=ExtResource( 24 )]
 visible = true
 
-[node name="Shotgun" parent="Position2D" instance=ExtResource( 23 )]
-
-[node name="SuperShotgun" parent="Position2D" instance=ExtResource( 23 )]
-capacity = 22
-bulletsShot = 16
-
-[node name="Pistol" parent="Position2D" instance=ExtResource( 8 )]
+[node name="Pistol" parent="Position2D/Weapons" instance=ExtResource( 8 )]
 missDegree = 0
+
+[node name="Shotgun" parent="Position2D/Weapons" instance=ExtResource( 23 )]
+
+[node name="SuperShotgun" parent="Position2D/Weapons" instance=ExtResource( 27 )]
+
+[node name="RifleChachi" parent="Position2D/Weapons" instance=ExtResource( 24 )]
+capacity = 600
+missDegree = 9
+bulletsShot = 5
 
 [node name="Knife" parent="Position2D" groups=[
 "Melee",
@@ -1348,7 +1354,7 @@ visible = false
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
-playback_speed = 2.0
+playback_speed = 4.0
 anims/KnifeIdle = SubResource( 1 )
 anims/KnifeMelee = SubResource( 2 )
 anims/KnifeMove = SubResource( 3 )

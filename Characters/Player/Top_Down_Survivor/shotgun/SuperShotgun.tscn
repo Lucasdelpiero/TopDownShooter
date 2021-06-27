@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=1]
+
+[node name="SuperShotgun" instance=ExtResource( 1 )]
+capacity = 22
+bulletsShot = 16

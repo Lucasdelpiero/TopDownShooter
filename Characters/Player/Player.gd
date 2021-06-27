@@ -32,10 +32,11 @@ onready var audioPain = $AudioPain
 onready var healingTimer = $HealingTimer
 onready var remoteTransform = $RemoteTransform2D
 
-onready var rifle = $Position2D/Rifle
-onready var pistol = $Position2D/Pistol
-onready var shotgun = $Position2D/Shotgun
-onready var superShotgun = $Position2D/SuperShotgun
+onready var weapons = $Position2D/Weapons
+onready var rifle = get_node("Position2D/Weapons/Rifle")
+onready var pistol = get_node("Position2D/Weapons/Pistol")
+onready var shotgun = get_node("Position2D/Weapons/Shotgun")
+#onready var superShotgun = get_node("Position2D/Weapons/SuperShotgun")
 onready var knife = $Position2D/Knife
 onready var knifeCollision = $Position2D/Knife/Hitbox/CollisionShape2D
 onready var rayCastWall = $Position2D/RayCastWall
@@ -103,13 +104,16 @@ func _physics_process(delta):
 	move(delta)
 	
 	choose_weapon()
-	
+	if Input.is_action_just_pressed("change_weapon"):
+		changeWeapon()
+		
 	match state:
 		IDLE:
 			rayCastWallCollision()
 			
 			if Input.is_action_pressed("shoot"):
 				trigger()
+				checkWeapons()
 			
 			if not Input.is_action_pressed("shoot"):
 				if not rayCastWall.is_colliding():
@@ -238,8 +242,8 @@ func choose_weapon():
 		state = IDLE
 		self.weaponSelected = rifle
 	if Input.is_action_just_pressed("shotgun"):
-#		self.weaponSelected = shotgun
-		self.weaponSelected = superShotgun
+		self.weaponSelected = shotgun
+#		self.weaponSelected = superShotgun
 		state = IDLE
 	updateState()
 	emit_signal("updateHUDWeapon", str(weaponSelected.name) )
@@ -324,6 +328,10 @@ func updateWeapon(weapon):
 func getWeapon():
 	return weaponSelected
 
+func addWeapon(weaponName : String):
+#	weapons.add_child()
+	pass
+
 func rayCastWallCollision():
 	if rayCastWall.is_colliding():
 		canShoot = false
@@ -334,4 +342,29 @@ func rayCastWallCollision():
 	elif state == BLOCKED:
 		animationPlayer.play_backwards(animBlocked)
 
+func checkWeapons():
+#	print(str(rifle.get_filename()))
+#	var Test = load("res://Characters/Player/Top_Down_Survivor/" + weaponSelected.type.to_lower() + "/" + weaponSelected.name + ".tscn")
 
+#	var test = Test.instance()
+#	weapons.add_child(test)
+#	test.global_position = global_position
+#	var w = weapons.get_children()
+#	for a in w.size():
+#		print(w[a].name)
+	pass
+
+func changeWeapon():
+	var weaponsCarried = weapons.get_children()
+	for i in weaponsCarried.size():
+		if weaponsCarried[i] == weaponSelected:
+			var newWeapon
+			if i + 1 < weaponsCarried.size():
+				newWeapon = i + 1
+			else:
+				newWeapon = 0
+			self.weaponSelected = weaponsCarried[newWeapon]
+			print(i)
+			break
+#			print(weaponsCarried[i])
+	pass
