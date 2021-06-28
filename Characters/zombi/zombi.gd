@@ -38,7 +38,8 @@ const soundsHitted = [
 enum{
 	IDLE,
 	WANDER,
-	CHASE
+	CHASE,
+	STAGGERED,
 }
 export var MAX_SPEED = 200
 export var ACCELERATION = 300
@@ -55,6 +56,8 @@ var usePathfinding = false
 var timeToPathfind : float = 1.0
 export var type : String = ""
 var attacking = false
+var staggered = false
+var bleeding = false
 
 export var path : = PoolVector2Array() setget set_path
 
@@ -92,6 +95,9 @@ func _physics_process(delta):
 			wander_state()
 			sprite.rotation_degrees = rad2deg(direction)
 			animationPlayer.play("Move")
+		STAGGERED:
+			stagger()
+			velocity = move_and_slide(velocity)
 	if player != null:
 #		var angle = get_angle_to(player.global_position)
 		rayCast.set_cast_to( global_position.distance_to(player.global_position) * global_position.direction_to(player.global_position) )
@@ -129,7 +135,7 @@ func seek_player():
 	if playerDetectionZone.can_see_player():
 		if not rayCast.is_colliding():
 			state = CHASE
-			wallCollide(false)
+#			wallCollide(false) ## activated so they dont stuck in walls
 
 
 func chase_state(delta):
@@ -157,14 +163,10 @@ func _on_ZombiSound_timeout():
 	audioStreamPlayer.playing = true
 
 func _on_HurtBox_area_entered(area):
-	var bloodParticle = BloodParticle.instance()
-	get_parent().add_child(bloodParticle)
-	bloodParticle.global_position = global_position
-	if area.get_parent().is_in_group("Bullets"):
-		bloodParticle.rotation = area.get_parent().direction + 3.14
-		soundHitted()
-	else:
-		bloodParticle.rotation = direction
+	bleed(area)
+	
+	staggered = true
+	state = STAGGERED
 	
 	if health > 0:
 		health -= area.damage
@@ -177,6 +179,31 @@ func _on_HurtBox_area_entered(area):
 				emit_signal("fillPlayerAmmo")
 				emit_signal("healPlayer", 0.5)
 			death(area)
+
+func bleed(area):
+	if bleeding == false:
+		bleeding = true
+		$BleedTimer.start()
+		var bloodParticle = BloodParticle.instance()
+		get_parent().add_child(bloodParticle)
+		bloodParticle.global_position = global_position
+		if area.get_parent().is_in_group("Bullets"):
+			bloodParticle.rotation = area.get_parent().direction + 3.14
+			soundHitted()
+		else:
+			bloodParticle.rotation = direction
+
+
+
+func stagger():
+	var staggerTime = 0.1
+	velocity = lerp(velocity, velocity / 2 , staggerTime)
+	if staggered:
+		$StaggerTimer.start()
+		staggered = false
+
+func _on_StaggerTimer_timeout():
+	state = IDLE
 
 func death(area):
 	queue_free()
@@ -250,15 +277,19 @@ func get_path():
 	if player != null:
 		if rayCast.is_colliding():
 			usePathfinding = true
-			path = navigation.get_simple_path(global_position, player.global_position, true)
+#			path = navigation.get_simple_path(global_position, player.global_position, true)
+			path = navigation.get_simple_path(global_position, player.global_position, false)
 			pathTimer.start(timeToPathfind) #0.2 originally
 		else:
 			usePathfinding = false
 			
 
 func moveDirect():
-		direction = get_angle_to(player.get_global_position())
-		velocity = Vector2(cos(direction) * MAX_SPEED, sin(direction) * MAX_SPEED)
+		var playerDirection = get_angle_to(player.get_global_position())
+		direction = lerp_angle(direction, playerDirection, 0.1)
+		velocity.x = lerp(velocity.x, MAX_SPEED * cos(direction), 0.1)
+		velocity.y = lerp(velocity.y, MAX_SPEED * sin(direction), 0.1)
+
 		velocity = move_and_slide(velocity)
 
 func _on_PathFindTimer_timeout():
@@ -274,4 +305,6 @@ func _on_Hitbox_body_entered(_body):
 func notAttacking():
 	attacking = false
 	animationPlayer.play("Move")
+
+
 

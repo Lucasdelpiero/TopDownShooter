@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Characters/zombi/zombiFast.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Characters/zombi/zombiExplosive.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Tiles/Decoration/mailbox_stand.png" type="Texture" id=12]
 [ext_resource path="res://World/Tiles/Decoration/mailbox_broken.png" type="Texture" id=13]
 [ext_resource path="res://World/Tiles/Decoration/bench.png" type="Texture" id=14]
@@ -89,6 +88,15 @@ position = Vector2( 7676.5, -1288.44 )
 [node name="zombi23" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( 7815.32, -1672.87 )
 
+[node name="zombi36" parent="Zombies" instance=ExtResource( 9 )]
+position = Vector2( 6679.22, -1330.28 )
+
+[node name="zombi37" parent="Zombies" instance=ExtResource( 9 )]
+position = Vector2( 7031.62, -892.46 )
+
+[node name="zombi38" parent="Zombies" instance=ExtResource( 9 )]
+position = Vector2( 7170.44, -1276.89 )
+
 [node name="zombi24" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( 6854.24, -305.993 )
 
@@ -138,45 +146,15 @@ position = Vector2( -760.511, -945.34 )
 
 [node name="zombiFast" parent="Zombies/Explosives" instance=ExtResource( 10 )]
 position = Vector2( 5755.99, -2613.09 )
+health = 3
 
 [node name="zombiFast2" parent="Zombies/Explosives" instance=ExtResource( 10 )]
 position = Vector2( 6079.26, -2433.5 )
+health = 3
 
 [node name="zombiFast3" parent="Zombies/Explosives" instance=ExtResource( 10 )]
 position = Vector2( 5702.11, -2253.9 )
-
-[node name="zombiExplosive" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 6746.04, -1082.15 )
-
-[node name="zombiExplosive2" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 6898.25, -1300.96 )
-
-[node name="zombiExplosive3" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 7202.69, -1006.04 )
-
-[node name="zombiExplosive4" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 7649.83, -2271.35 )
-
-[node name="zombiExplosive5" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 7802.05, -2490.17 )
-
-[node name="zombiExplosive6" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 8106.49, -2195.24 )
-
-[node name="zombiExplosive7" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 8068.43, -244.944 )
-
-[node name="zombiExplosive8" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 8220.65, -463.758 )
-
-[node name="zombiExplosive9" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 8525.09, -168.834 )
-
-[node name="zombiExplosive10" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 7059.99, 753.99 )
-
-[node name="zombiExplosive11" parent="Zombies/Explosives" instance=ExtResource( 11 )]
-position = Vector2( 7364.42, 1048.91 )
+health = 3
 
 [node name="car" type="Sprite" parent="."]
 position = Vector2( -1361.81, -1504.09 )

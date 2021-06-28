@@ -366,5 +366,5 @@ func changeWeapon():
 			self.weaponSelected = weaponsCarried[newWeapon]
 			print(i)
 			break
-#			print(weaponsCarried[i])
-	pass
+
+

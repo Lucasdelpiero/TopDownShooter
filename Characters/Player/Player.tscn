@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -26,7 +26,6 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=26]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/SuperShotgun.tscn" type="PackedScene" id=27]
 
 [sub_resource type="Animation" id=1]
 length = 2.0
@@ -1338,12 +1337,12 @@ missDegree = 0
 
 [node name="Shotgun" parent="Position2D/Weapons" instance=ExtResource( 23 )]
 
-[node name="SuperShotgun" parent="Position2D/Weapons" instance=ExtResource( 27 )]
-
-[node name="RifleChachi" parent="Position2D/Weapons" instance=ExtResource( 24 )]
-capacity = 600
-missDegree = 9
-bulletsShot = 5
+[node name="Shotgun2" parent="Position2D/Weapons" instance=ExtResource( 23 )]
+automatic = true
+capacity = 500
+missDegree = 30
+bulletsShot = 15
+weaponRange = 450
 
 [node name="Knife" parent="Position2D" groups=[
 "Melee",

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Characters/zombi/Animations/ZombiDead.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Characters/zombi/zombiExplosive.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=3]
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=5]
@@ -38,14 +38,8 @@ tile_data = PoolIntArray( -327669, 3, 0, -196601, 2, 0, -196591, 2, 0, -196590, 
 
 [node name="Zombies" type="Node" parent="."]
 
-[node name="zombiExplosive" parent="Zombies" instance=ExtResource( 2 )]
-position = Vector2( 16.0181, -2055.65 )
-
-[node name="zombiExplosive2" parent="Zombies" instance=ExtResource( 2 )]
-position = Vector2( 21.3574, -2263.89 )
-
-[node name="zombiExplosive3" parent="Zombies" instance=ExtResource( 2 )]
-position = Vector2( 256.289, -2205.16 )
+[node name="zombi" parent="Zombies" instance=ExtResource( 2 )]
+position = Vector2( 235.451, -1957.61 )
 
 [node name="Props" type="Node" parent="."]
 
