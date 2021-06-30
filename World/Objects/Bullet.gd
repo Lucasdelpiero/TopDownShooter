@@ -8,6 +8,7 @@ var motion = Vector2.ZERO
 onready var rayCast = $Sprite/RayCast2D
 onready var audio = $AudioStreamPlayer
 onready var timer = $Timer
+onready var hitbox = $Hitbox
 var collided = false
 var bulletRange = 0
 var ready = false

@@ -1331,6 +1331,7 @@ collision_mask = 4
 
 [node name="Rifle" parent="Position2D/Weapons" instance=ExtResource( 24 )]
 visible = true
+damage = 50
 
 [node name="Pistol" parent="Position2D/Weapons" instance=ExtResource( 8 )]
 missDegree = 0
@@ -1338,7 +1339,6 @@ missDegree = 0
 [node name="Shotgun" parent="Position2D/Weapons" instance=ExtResource( 23 )]
 
 [node name="Shotgun2" parent="Position2D/Weapons" instance=ExtResource( 23 )]
-automatic = true
 capacity = 500
 missDegree = 30
 bulletsShot = 15

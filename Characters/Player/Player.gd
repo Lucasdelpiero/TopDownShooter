@@ -173,9 +173,11 @@ func trigger():
 
 func shoot():
 	for _i in range(weaponSelected.bulletsShot):
-		var bullet = Bullet.instance()
+		var bullet = weaponSelected.AmmoShot.instance()
 		get_parent().add_child(bullet)
 		bullet.global_position = weaponSelected.global_position
+#		bullet.damage = weaponSelected.damage
+		bullet.hitbox.damage = weaponSelected.damage
 		var miss = deg2rad(weaponSelected.missDegree)
 #		var shotDirection = position2D.rotation + rand_range(- miss, miss)
 		var baseDirection = position2D.rotation

@@ -146,15 +146,12 @@ position = Vector2( -760.511, -945.34 )
 
 [node name="zombiFast" parent="Zombies/Explosives" instance=ExtResource( 10 )]
 position = Vector2( 5755.99, -2613.09 )
-health = 3
 
 [node name="zombiFast2" parent="Zombies/Explosives" instance=ExtResource( 10 )]
 position = Vector2( 6079.26, -2433.5 )
-health = 3
 
 [node name="zombiFast3" parent="Zombies/Explosives" instance=ExtResource( 10 )]
 position = Vector2( 5702.11, -2253.9 )
-health = 3
 
 [node name="car" type="Sprite" parent="."]
 position = Vector2( -1361.81, -1504.09 )

@@ -1,6 +1,7 @@
 extends Position2D
 
 export(String, "Rifle", "Pistol", "Shotgun" ) var type = "Rifle"
+export(PackedScene) var AmmoShot 
 export var automatic = false
 export var capacity = 12
 onready var ammo = capacity
