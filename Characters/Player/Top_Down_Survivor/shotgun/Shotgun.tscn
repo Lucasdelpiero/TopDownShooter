@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/WeaponBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun.wav" type="AudioStream" id=2]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotguncock.wav" type="AudioStream" id=3]
 

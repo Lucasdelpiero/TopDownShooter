@@ -24,7 +24,7 @@ func _process(_delta):
 
 func _on_Player_updateHUD(aHealth, aAmmo, aCapacity):
 	healthBar.value = aHealth
-	label.text = str(aAmmo) + " / " + str(aCapacity)
+#	label.text = str(aAmmo) + " / " + str(aCapacity)
 
 func _on_Player_updateHUDWeapon(name):
 	#Resets color for all
@@ -40,4 +40,7 @@ func _on_Player_updateHUDWeapon(name):
 		if labels != null:
 			labels.modulate = Color(selectedColor)
 
+func _on_Update_Ammo(ammo, capacity):
+	label.text = str(ammo) + " / " + str(capacity)
+	print("EMMITED")
 

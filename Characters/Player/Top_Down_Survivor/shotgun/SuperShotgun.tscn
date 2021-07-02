@@ -1,7 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/WeaponBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotguncock.wav" type="AudioStream" id=2]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun.wav" type="AudioStream" id=3]
 
 [node name="SuperShotgun" instance=ExtResource( 1 )]
+position = Vector2( 197.683, 31.7141 )
+z_index = 10
+z_as_relative = false
+type = "Shotgun"
+automatic = false
 capacity = 22
+missDegree = 20
 bulletsShot = 16
+weaponRange = 1000
+shotSound = ExtResource( 3 )
+reloadSound = ExtResource( 2 )

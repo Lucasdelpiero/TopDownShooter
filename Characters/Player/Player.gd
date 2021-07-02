@@ -20,7 +20,7 @@ var maxBulletSpdBonus = 1000
 
 signal updateHUD(health, ammo, capacity)
 #signal updateHealthHUD(health)
-#signal updateAmmo(ammo, capacity)
+signal updateAmmo(ammo, capacity)
 signal updateHUDWeapon(name)
 
 onready var animationPlayer = $Position2D/AnimationPlayer
@@ -50,6 +50,7 @@ enum {
 }
 
 var state = IDLE
+
 
 onready var weaponSelected = rifle setget updateWeapon, getWeapon
 
@@ -103,7 +104,7 @@ func _physics_process(delta):
 	
 	move(delta)
 	
-	choose_weapon()
+#	choose_weapon()
 	if Input.is_action_just_pressed("change_weapon"):
 		changeWeapon()
 		
@@ -112,7 +113,8 @@ func _physics_process(delta):
 			rayCastWallCollision()
 			
 			if Input.is_action_pressed("shoot"):
-				trigger()
+#				trigger()
+				weapons.trigger()
 				checkWeapons()
 			
 			if not Input.is_action_pressed("shoot"):
@@ -124,6 +126,7 @@ func _physics_process(delta):
 				state = MELEE
 			
 			if Input.is_action_just_pressed("reload"):
+#				weapons.reload() #
 				if weaponSelected.reserveAmmo > 0:
 					startReloading()
 					state = RELOADING
@@ -261,6 +264,12 @@ func stateIdle():
 		canShoot = true
 	rayCastWallCollision()
 
+func stateShooting():
+	state = SHOOTING
+#	canShoot = false
+func stateReloading():
+	state = RELOADING
+
 func updateAnimations():
 	changeAnimation("Move")
 	changeAnimation("Idle")
@@ -269,10 +278,10 @@ func updateAnimations():
 	changeAnimation("Blocked")
 
 func changeAnimation(value : String):
-	if animationPlayer.has_animation(weaponSelected.name + value):
-		set("anim" + value, weaponSelected.name + value) 
+	if animationPlayer.has_animation(weapons.weaponSelected.name + value):
+		set("anim" + value, weapons.weaponSelected.name + value) 
 	else:
-		set("anim" + value, weaponSelected.type + value)
+		set("anim" + value, weapons.weaponSelected.type + value)
 
 func muzzle():
 	var muzzle = Muzzle.instance()

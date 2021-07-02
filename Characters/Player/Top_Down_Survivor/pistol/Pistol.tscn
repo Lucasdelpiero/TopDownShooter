@@ -1,14 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/pistol.wav" type="AudioStream" id=2]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/pistol/gunreload1.wav" type="AudioStream" id=3]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/WeaponBase.tscn" type="PackedScene" id=1]
 
 [node name="Pistol" instance=ExtResource( 1 )]
-position = Vector2( 143.515, 43.0498 )
 type = "Pistol"
 automatic = false
 capacity = 12
-missDegree = 2
-shotSound = ExtResource( 2 )
-reloadSound = ExtResource( 3 )

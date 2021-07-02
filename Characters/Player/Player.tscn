@@ -25,7 +25,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=26]
+[ext_resource path="res://Characters/Player/Weapons.gd" type="Script" id=27]
 
 [sub_resource type="Animation" id=1]
 length = 2.0
@@ -913,12 +913,9 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "shoot"
-}, {
 "args": [  ],
 "method": "stateIdle"
 } ]
@@ -934,6 +931,20 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 2.0 ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("Position2D/Weapons")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -1288,6 +1299,20 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 1.0 ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("Position2D/Weapons")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
 
 [sub_resource type="CircleShape2D" id=18]
 radius = 61.606
@@ -1317,8 +1342,8 @@ __meta__ = {
 position = Vector2( 62, -16 )
 z_index = 10
 z_as_relative = false
-texture = ExtResource( 26 )
-hframes = 20
+texture = ExtResource( 3 )
+hframes = 3
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
 position = Vector2( 0, 22.92 )
@@ -1328,21 +1353,20 @@ cast_to = Vector2( 150, 0 )
 collision_mask = 4
 
 [node name="Weapons" type="Node2D" parent="Position2D"]
+script = ExtResource( 27 )
+mainP = NodePath("../..")
+rayCastWallP = NodePath("../RayCastWall")
+animationPlayerP = NodePath("../AnimationPlayer")
+position2DP = NodePath("..")
+audioGunsP = NodePath("../../AudioGuns")
 
 [node name="Rifle" parent="Position2D/Weapons" instance=ExtResource( 24 )]
 visible = true
-damage = 50
 
 [node name="Pistol" parent="Position2D/Weapons" instance=ExtResource( 8 )]
-missDegree = 0
+position = Vector2( 149.142, 44.0266 )
 
 [node name="Shotgun" parent="Position2D/Weapons" instance=ExtResource( 23 )]
-
-[node name="Shotgun2" parent="Position2D/Weapons" instance=ExtResource( 23 )]
-capacity = 500
-missDegree = 30
-bulletsShot = 15
-weaponRange = 450
 
 [node name="Knife" parent="Position2D" groups=[
 "Melee",
@@ -1353,7 +1377,7 @@ visible = false
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
-playback_speed = 4.0
+playback_speed = 2.0
 anims/KnifeIdle = SubResource( 1 )
 anims/KnifeMelee = SubResource( 2 )
 anims/KnifeMove = SubResource( 3 )
@@ -1398,6 +1422,7 @@ bus = "SoundEffects"
 one_shot = true
 
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
+[connection signal="tree_entered" from="Position2D/Weapons" to="Position2D/Weapons" method="_on_Weapons_tree_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_HealingTimer_timeout"]
