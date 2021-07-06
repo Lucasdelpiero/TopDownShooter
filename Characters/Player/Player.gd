@@ -260,8 +260,8 @@ func updateState():
 
 func stateIdle():
 	state = IDLE
-	if automatic == true:
-		canShoot = true
+#	if automatic == true:
+#		canShoot = true
 	rayCastWallCollision()
 
 func stateShooting():

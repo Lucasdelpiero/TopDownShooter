@@ -19,7 +19,8 @@ var canShoot = true
 var automatic = false
 
 onready var weaponSelected = weaponsCarried[0]
-onready var ammoSelected = weaponSelected.ammo
+onready var ammoSelected  = weaponSelected.ammo 
+#ammoSelected = weaponSelected.ammo 
 signal updateHUDAmmo(ammo, capacity)
 # Declare member variables here. Examples:
 # var a = 2
@@ -30,10 +31,12 @@ func _on_Weapons_tree_entered():
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 	connect("updateHUDAmmo", HUD, "_on_Update_Ammo")
 	emit_signal("updateHUDAmmo", "0", "44")
+	ammoSelected = weaponSelected.ammo 
 	pass # Replace with function body.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	updateState()
 	pass # Replace with function body.
 
 
@@ -41,8 +44,11 @@ func _physics_process(delta):
 	
 	choose_weapon()
 	
-#	if Input.is_action_pressed("shoot"):
-#		trigger()
+	if Input.is_action_just_pressed("change_weapon"):
+		changeWeapon()
+	
+	if Input.is_action_pressed("shoot"):
+		trigger()
 		
 	if not Input.is_action_pressed("shoot"):
 		if not rayCastWall.is_colliding():
@@ -51,6 +57,7 @@ func _physics_process(delta):
 
 func trigger():
 	print("TRIGGERED")
+	print("automatic: " + str(automatic))
 	self.ammoSelected = weaponSelected.ammo
 	if not rayCastWall.is_colliding() and automatic:
 		canShoot = true
@@ -68,8 +75,10 @@ func trigger():
 
 func shoot():
 	print("SHOOTED")
-	emit_signal("updateHUDAmmo", weaponSelected.ammo, weaponSelected.reserveAmmo)
 	weaponSelected.shoot(main.velocity ,position2D.rotation)
+	updateAmmo()
+	canShoot = false
+	playSound(weaponSelected.shotSound)
 
 func playSound(shotSound):
 	audioGuns.stream = shotSound
@@ -83,9 +92,9 @@ func startReloading():
 func choose_weapon():
 	weaponsCarried = get_children()
 	if Input.is_action_just_pressed("pistol"):
-		self.weaponSelected = weaponsCarried[0]
-	if Input.is_action_just_pressed("rifle"):
 		self.weaponSelected = weaponsCarried[1]
+	if Input.is_action_just_pressed("rifle"):
+		self.weaponSelected = weaponsCarried[0]
 	if Input.is_action_just_pressed("shotgun"):
 		self.weaponSelected = weaponsCarried[2]
 #		self.weaponSelected = superShotgun
@@ -94,9 +103,39 @@ func choose_weapon():
 
 
 func updateState():
-#	automatic = weaponSelected.automatic
+	automatic = weaponSelected.automatic
 	self.ammoSelected = weaponSelected.ammo
 	main.updateAnimations()
+	updateAmmo()
 
+func updateAmmo():
+	emit_signal("updateHUDAmmo", weaponSelected.ammo, weaponSelected.reserveAmmo)
 
+func reloadSound():
+	audioGuns.stream = weaponSelected.reloadSound
+	audioGuns.play()
 
+func reload():
+	fillAmmo()
+	main.stateIdle()
+#	animationPlayer.play(animMove)
+#	state = IDLE
+
+func fillAmmo():
+	var reloadAmount = min(weaponSelected.capacity - weaponSelected.ammo, weaponSelected.reserveAmmo)
+	self.weaponSelected.reserveAmmo -= reloadAmount
+	self.weaponSelected.ammo +=  reloadAmount
+#	self.weaponSelected.ammo = weaponSelected.capacity
+
+func changeWeapon():
+#	var weaponsCarried = weapons.get_children()
+	for i in weaponsCarried.size():
+		if weaponsCarried[i] == weaponSelected:
+			var newWeapon
+			if i + 1 < weaponsCarried.size():
+				newWeapon = i + 1
+			else:
+				newWeapon = 0
+			self.weaponSelected = weaponsCarried[newWeapon]
+			print(i)
+			break
