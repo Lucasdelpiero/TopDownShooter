@@ -47,9 +47,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("change_weapon"):
 		changeWeapon()
 	
-	if Input.is_action_pressed("shoot"):
-		trigger()
-		
 	if not Input.is_action_pressed("shoot"):
 		if not rayCastWall.is_colliding():
 			canShoot = true
@@ -139,3 +136,15 @@ func changeWeapon():
 			self.weaponSelected = weaponsCarried[newWeapon]
 			print(i)
 			break
+
+func checkWeapons():
+#	print(str(rifle.get_filename()))
+#	var Test = load("res://Characters/Player/Top_Down_Survivor/" + weaponSelected.type.to_lower() + "/" + weaponSelected.name + ".tscn")
+
+#	var test = Test.instance()
+#	weapons.add_child(test)
+#	test.global_position = global_position
+#	var w = weapons.get_children()
+#	for a in w.size():
+#		print(w[a].name)
+	pass
