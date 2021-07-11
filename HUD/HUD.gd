@@ -22,9 +22,6 @@ func _process(_delta):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
-func _on_Player_updateHUD(aHealth, aAmmo, aCapacity):
-	healthBar.value = aHealth
-#	label.text = str(aAmmo) + " / " + str(aCapacity)
 
 func _on_Player_updateHUDWeapon(name):
 	#Resets color for all
@@ -40,7 +37,8 @@ func _on_Player_updateHUDWeapon(name):
 		if labels != null:
 			labels.modulate = Color(selectedColor)
 
-func _on_Update_Ammo(ammo, capacity):
-	label.text = str(ammo) + " / " + str(capacity)
-	print("EMMITED")
+func _on_Update_Ammo(aAmmo, aCapacity):
+	label.text = str(aAmmo) + " / " + str(aCapacity)
 
+func _on_Player_updateHealth(aHealth):
+	healthBar.value = aHealth

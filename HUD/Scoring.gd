@@ -6,13 +6,15 @@ var comboScore = 0         # Total individual score in the combo
 var multiplicator = 0      # Multiplicator to all kill in the combo
 var comboBarValue = 50
 export var comboTime = 2.5
-var killedByMelee = 2
-var killedByExplosion = 2
+var bonusByMelee = 1      
+var bonusByExplosion = 2
 
 export(float, 0.1, 3.0, 0.1) var timeStats = 1.0 #Time to show the stats panel
 
 var initialAlpha = Color(1.0, 1.0, 1.0, 1.0)
 var fadedAlpha = Color(1.0, 1.0, 1.0, 0.0)
+
+export(Array, Color, RGB) var Colors
 
 onready var ScoreBubble = preload("res://Effects/ScoreBubble.tscn")
 
@@ -23,6 +25,7 @@ onready var comboBar = $ComboLabels/ComboBar
 onready var tweenComboBar = $ComboLabels/ComboBar/Tween
 onready var lastCombo = $ComboLabels/LastCombo
 onready var tweenLastCombo = $ComboLabels/LastCombo/Tween
+onready var multiplicatorC = $Multiplicator
 var optionsControl 
 
 var dictionary = {
@@ -55,6 +58,7 @@ func _ready():
 	optionsControl = get_tree().get_root().find_node("Options", true, false)
 # warning-ignore:return_value_discarded
 	connect("updateMusic", optionsControl, "activateMusic")
+	multiplicatorC.Colors = Colors
 	
 	
 
@@ -64,7 +68,7 @@ func _process(_delta):
 
 func updateScore(name, byMelee, byExplosion, pos):
 	var base = dictionary[name] 
-	individualScore = base + base * int(byMelee) * killedByMelee + base * int(byExplosion) * killedByExplosion
+	individualScore = base + base * int(byMelee) * bonusByMelee + base * int(byExplosion) * bonusByExplosion
 	comboScore += individualScore
 	multiplicator += 1
 	
@@ -77,8 +81,9 @@ func updateScore(name, byMelee, byExplosion, pos):
 	scoreBubble.global_position = pos
 # warning-ignore:return_value_discarded
 	connect("createScoreBubble", scoreBubble, "setValues")
-	emit_signal("createScoreBubble", base, multiplicator)
+	emit_signal("createScoreBubble", individualScore, multiplicator)
 	disconnect("createScoreBubble", scoreBubble, "setValues")
+	multiplicatorC.updateMultiplicator(multiplicator)
 	
 	updateLabels()
 	

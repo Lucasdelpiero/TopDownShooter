@@ -173,7 +173,7 @@ func _on_HurtBox_area_entered(area):
 		if health < 1:
 			if area.get_parent().is_in_group("Knife"):
 # warning-ignore:return_value_discarded
-				connect("fillPlayerAmmo", get_tree().get_nodes_in_group("Player")[0], "fillAmmo" )
+				connect("fillPlayerAmmo", get_tree().get_nodes_in_group("Weapons")[0], "fillAmmo" )
 # warning-ignore:return_value_discarded
 				connect("healPlayer", player, "bonusHeal")
 				emit_signal("fillPlayerAmmo")

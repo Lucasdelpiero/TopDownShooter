@@ -55,8 +55,9 @@ func _process(_delta):
 #	print(totalScoreTw)
 
 
-func updateScore(property, delay):
-	tween.interpolate_property(self , property + "Tw" , 0 , get(property), countDuration  , Tween.TRANS_LINEAR, Tween.TRANS_LINEAR, countDuration * delay)
+func updateScore(property, _delay):
+#	tween.interpolate_property(self , property + "Tw" , 0 , get(property), countDuration  , Tween.TRANS_LINEAR, Tween.TRANS_LINEAR, countDuration * delay)
+	tween.interpolate_property(self , property + "Tw" , 0 , get(property), countDuration  , Tween.TRANS_LINEAR, Tween.TRANS_LINEAR, 0)
 	tween.start()
 
 func updateLabels():

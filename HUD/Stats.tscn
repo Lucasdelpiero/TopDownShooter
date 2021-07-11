@@ -13,6 +13,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+countDuration = 3.0
 
 [node name="Panel" type="Panel" parent="."]
 anchor_left = 0.5

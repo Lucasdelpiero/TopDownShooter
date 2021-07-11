@@ -73,6 +73,7 @@ func commentCreate(value):
 	var labelComment = LabelComment.instance()
 	get_parent().add_child(labelComment)
 	labelComment.global_position = global_position
+# warning-ignore:return_value_discarded
 	connect("setComment", labelComment, "comment")
 	emit_signal("setComment", comments[value])
 	disconnect("setComment", labelComment, "comment")

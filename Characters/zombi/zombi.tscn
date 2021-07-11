@@ -175,7 +175,7 @@ collision_mask = 2147483651
 script = ExtResource( 1 )
 MAX_SPEED = 500
 FRICTION = 1200
-health = 3
+health = 10
 rotationSmooth = 0.25
 type = "zombi"
 

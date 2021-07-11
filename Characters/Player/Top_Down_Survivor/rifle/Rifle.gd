@@ -14,6 +14,8 @@ export var bulletsShot = 12
 export var damage = 1
 export var weaponRange = 2000
 
+export var bulletsxFrame = 3
+
 var distanceToBendBullet = 400
 var minBulletSpdBonus = 0.3
 var maxBulletSpdBonus = 1000
@@ -33,7 +35,10 @@ func trigger():
 		pass
 
 func shoot(vel : Vector2, rot):
-	for _i in range(bulletsShot):
+	for i in range(bulletsShot):
+		if (i % bulletsxFrame) == 0 :
+			yield(get_tree().create_timer(0.01),"timeout")
+		
 		var velocity = vel
 		var bullet = AmmoShot.instance()
 		get_tree().get_root().add_child(bullet)
@@ -45,7 +50,6 @@ func shoot(vel : Vector2, rot):
 		var baseDirection = rot
 		if global_position.distance_to(get_global_mouse_position()) > distanceToBendBullet :
 			baseDirection = bullet.get_angle_to(get_global_mouse_position() + velocity / 10 ) + rand_range(- miss, miss)
-		print(baseDirection)
 		var shotDirection = baseDirection + rand_range(- miss, miss)
 		bullet.direction = shotDirection
 		bullet.get_node("Sprite").rotation_degrees = rad2deg(shotDirection)
@@ -69,7 +73,7 @@ func shoot(vel : Vector2, rot):
 
 func muzzle(rot):
 	var muzzle = Muzzle.instance()
-	add_child(muzzle)
+	get_tree().get_root().add_child(muzzle)
 	muzzle.global_position = global_position
 	muzzle.rotation_degrees = rot
 

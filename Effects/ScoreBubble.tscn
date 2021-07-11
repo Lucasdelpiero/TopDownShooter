@@ -8,7 +8,7 @@
 [sub_resource type="RichTextEffect" id=1]
 script = ExtResource( 2 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Fade"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("VBoxContainer:rect_position:x")
@@ -41,8 +41,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.4, 0.7, 1 )
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Fade Out"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("VBoxContainer:rect_position:x")
 tracks/0/interp = 1
@@ -134,8 +133,8 @@ wait_time = 0.001
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Fade = SubResource( 3 )
-"anims/Fade Out" = SubResource( 2 )
+anims/Fade = SubResource( 2 )
+"anims/Fade Out" = SubResource( 3 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

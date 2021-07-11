@@ -29,6 +29,7 @@ signal updateHUDAmmo(ammo, capacity)
 func _on_Weapons_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
+# warning-ignore:return_value_discarded
 	connect("updateHUDAmmo", HUD, "_on_Update_Ammo")
 	emit_signal("updateHUDAmmo", "0", "44")
 	ammoSelected = weaponSelected.ammo 
@@ -40,7 +41,7 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	choose_weapon()
 	
@@ -53,13 +54,10 @@ func _physics_process(delta):
 	
 
 func trigger():
-	print("TRIGGERED")
-	print("automatic: " + str(automatic))
 	self.ammoSelected = weaponSelected.ammo
 	if not rayCastWall.is_colliding() and automatic:
 		canShoot = true
-	print(ammoSelected)
-	print(weaponSelected.name)
+
 	if canShoot and ammoSelected > 0:
 #		weaponSelected.shoot(main.velocity ,position2D.rotation)
 		animationPlayer.play(main.animShoot)
@@ -71,7 +69,6 @@ func trigger():
 		pass
 
 func shoot():
-	print("SHOOTED")
 	weaponSelected.shoot(main.velocity ,position2D.rotation)
 	updateAmmo()
 	canShoot = false
@@ -134,8 +131,6 @@ func changeWeapon():
 			else:
 				newWeapon = 0
 			self.weaponSelected = weaponsCarried[newWeapon]
-			print(i)
-			break
 
 func checkWeapons():
 #	print(str(rifle.get_filename()))

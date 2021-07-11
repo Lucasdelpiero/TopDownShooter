@@ -18,10 +18,7 @@ var distanceToBendBullet = 400
 var minBulletSpdBonus = 0.3
 var maxBulletSpdBonus = 1000
 
-signal updateHUD(health, ammo, capacity)
-#signal updateHealthHUD(health)
-signal updateAmmo(ammo, capacity)
-signal updateHUDWeapon(name)
+signal updateHealthHUD(health)
 
 onready var animationPlayer = $Position2D/AnimationPlayer
 onready var position2D = $Position2D
@@ -51,7 +48,6 @@ enum {
 
 var state = IDLE
 
-
 const painSounds = [
 	"pain1",
 	"pain2",
@@ -75,14 +71,10 @@ func _on_Player_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 # warning-ignore:return_value_discarded
-	connect("updateHUD", HUD, "_on_Player_updateHUD")
-#	connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
-# warning-ignore:return_value_discarded
-#	connect("updateHUDWeapon", HUD, "_on_Player_updateHUDWeapon")
+	connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
 	randomize()
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true
-	updateHUD()
 
 func _ready():
 	yield(get_tree().create_timer(0.01), "timeout")
@@ -95,7 +87,7 @@ var dir = 14
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	$Position2D.look_at(get_global_mouse_position())	
+	$Position2D.look_at(get_global_mouse_position())
 	move(delta)
 		
 	match state:
@@ -152,15 +144,12 @@ func startReloading():
 
 func grabAmmo(type, amount):
 	get(type).pickedAmmo(amount) #Add ammo to weapon
-	updateHUD()
 
 func updateState():
 	updateAnimations()
 
 func stateIdle():
 	state = IDLE
-#	if automatic == true:
-#		canShoot = true
 	rayCastWallCollision()
 
 func stateShooting():
@@ -182,9 +171,6 @@ func changeAnimation(value : String):
 	else:
 		set("anim" + value, weapons.weaponSelected.type + value)
 
-
-func updateHUD():
-	emit_signal("updateHUD", health, "weaponSelected.ammo"," weaponSelected.reserveAmmo")
 
 func _on_HurtBox_area_entered(area):
 	self.health = -area.damage
@@ -224,17 +210,18 @@ func getHealth():
 
 func updateHealth(change):
 	health += change
-	updateHUD()
+	emit_signal("updateHealthHUD", health)
+
 
 func rayCastWallCollision():
 	if rayCastWall.is_colliding():
 		canShoot = false
 		if state != BLOCKED:
 			animationPlayer.play(animBlocked)
-			animationPlayer.advance(0.05)
 			state = BLOCKED
 	elif state == BLOCKED:
 		animationPlayer.play_backwards(animBlocked)
 
-
-
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	if state != BLOCKED:
+		stateIdle()
