@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD/Scoring.gd" type="Script" id=1]
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=2]
+[ext_resource path="res://HUD/VSO.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/WhiteContainer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/Multiplicator.gd" type="Script" id=5]
 
@@ -105,44 +106,75 @@ __meta__ = {
 [node name="Multiplicator" type="Control" parent="."]
 anchor_top = 0.256
 anchor_bottom = 0.256
-margin_top = -0.102005
-margin_right = 40.0
-margin_bottom = 39.898
+margin_left = 4.0
+margin_top = 0.194992
+margin_right = 44.0
+margin_bottom = 40.195
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-containerP = NodePath("WC")
-lMultiplierP = NodePath("WC/Label")
+containerP = NodePath("VBC/WC")
+lMultiplierP = NodePath("VBC/WC/HBC/Label")
+lMessageP = NodePath("VBC/LMessage")
+offset = 3.0
 
-[node name="WC" parent="Multiplicator" instance=ExtResource( 4 )]
-margin_right = 118.0
-margin_bottom = 38.0
-size_flags_horizontal = 12
-size_flags_vertical = 12
-
-[node name="Label" type="Label" parent="Multiplicator/WC"]
-margin_right = 118.0
-margin_bottom = 38.0
+[node name="VBC" type="VBoxContainer" parent="Multiplicator"]
+margin_right = 137.0
+margin_bottom = 80.0
 grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LMessage" type="Label" parent="Multiplicator/VBC"]
+margin_right = 137.0
+margin_bottom = 38.0
+text = "Message"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WC" parent="Multiplicator/VBC" instance=ExtResource( 4 )]
+margin_top = 42.0
+margin_right = 137.0
+margin_bottom = 80.0
+grow_horizontal = 1
+rect_min_size = Vector2( 64, 0 )
+
+[node name="HBC" type="HBoxContainer" parent="Multiplicator/VBC/WC"]
+margin_right = 137.0
+margin_bottom = 38.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 12
+alignment = 1
+
+[node name="VSO" parent="Multiplicator/VBC/WC/HBC" instance=ExtResource( 3 )]
+margin_left = 16.0
+margin_right = 46.0
+margin_bottom = 38.0
+
+[node name="Label" type="Label" parent="Multiplicator/VBC/WC/HBC"]
+margin_left = 50.0
+margin_right = 86.0
+margin_bottom = 38.0
 text = "14"
 align = 1
 
-[node name="HBC" type="HBoxContainer" parent="Multiplicator/WC"]
-margin_left = 118.0
-margin_top = 38.0
-margin_right = 118.0
+[node name="VSO2" parent="Multiplicator/VBC/WC/HBC" instance=ExtResource( 3 )]
+margin_left = 90.0
+margin_right = 120.0
 margin_bottom = 38.0
-grow_horizontal = 0
-size_flags_horizontal = 12
-size_flags_vertical = 12
-alignment = 1
 
 [node name="ShakeTimer" type="Timer" parent="Multiplicator"]
 wait_time = 0.01
 
 [node name="StopShakeTimer" type="Timer" parent="Multiplicator"]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="Timer" type="Timer" parent="."]
