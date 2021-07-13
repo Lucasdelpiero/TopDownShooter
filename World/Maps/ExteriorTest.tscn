@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://World/Tiles/Decoration/mailbox_broken.png" type="Texture" id=13]
 [ext_resource path="res://World/Tiles/Decoration/bench.png" type="Texture" id=14]
 [ext_resource path="res://World/Tiles/Decoration/car.png" type="Texture" id=15]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/SuperShotgun.tscn" type="PackedScene" id=17]
 
 [node name="ExteriorTest" type="Node2D"]
 script = ExtResource( 5 )
@@ -222,12 +224,18 @@ z_as_relative = false
 texture = ExtResource( 14 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 8844.15, -1578.09 )
+position = Vector2( 11229.5, -1985.63 )
 
 [node name="Spawner" parent="." instance=ExtResource( 11 )]
 position = Vector2( 6014.35, -1876.34 )
 enemy0 = ExtResource( 9 )
 amount0 = 5
 continuous = true
-autoStart = true
 timerTime = 3.0
+
+[node name="PickeableWeapon" parent="." instance=ExtResource( 16 )]
+position = Vector2( 10919.7, -2373.32 )
+
+[node name="PickeableWeapon2" parent="." instance=ExtResource( 16 )]
+position = Vector2( 12010.1, -2380.45 )
+Weapon = ExtResource( 17 )

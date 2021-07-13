@@ -131,6 +131,7 @@ func changeWeapon():
 			else:
 				newWeapon = 0
 			self.weaponSelected = weaponsCarried[newWeapon]
+			break
 
 func checkWeapons():
 #	print(str(rifle.get_filename()))
@@ -143,3 +144,7 @@ func checkWeapons():
 #	for a in w.size():
 #		print(w[a].name)
 	pass
+
+func updateWeaponsCarried():
+	weaponsCarried = get_children()
+	print(weaponsCarried)

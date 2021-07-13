@@ -28,6 +28,7 @@ onready var audioGuns = $AudioGuns
 onready var audioPain = $AudioPain
 onready var healingTimer = $HealingTimer
 onready var remoteTransform = $RemoteTransform2D
+onready var spawnWeapons = $Position2D/SpawnWeapons
 
 onready var weapons = $Position2D/Weapons
 onready var rifle = get_node("Position2D/Weapons/Rifle")
@@ -142,6 +143,14 @@ func startReloading():
 	animationPlayer.play(animReload)
 	state = RELOADING
 
+func grabWeapon(path):
+	var weaponPicked = load(path)
+	var wp = weaponPicked.instance()
+	weapons.add_child(wp)
+	var paths = str(get_path_to(spawnWeapons)) + "/" + str(wp.type)
+	wp.global_position = get_node(paths).global_position
+	weapons.updateWeaponsCarried()
+
 func grabAmmo(type, amount):
 	get(type).pickedAmmo(amount) #Add ammo to weapon
 
@@ -173,7 +182,7 @@ func changeAnimation(value : String):
 
 
 func _on_HurtBox_area_entered(area):
-	self.health = -area.damage
+	self.health = -area.damaged
 	hurtbox.start_invincibility(0.3)
 	modulate = Color(1.0, 0.0, 0.0, 1.0)
 	if health <= 0:

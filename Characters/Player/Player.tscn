@@ -1327,21 +1327,32 @@ position2DP = NodePath("..")
 audioGunsP = NodePath("../../AudioGuns")
 
 [node name="Rifle" parent="Position2D/Weapons" instance=ExtResource( 24 )]
-visible = true
-capacity = 600
-missDegree = 30
-bulletsShot = 10
 
 [node name="Pistol" parent="Position2D/Weapons" instance=ExtResource( 8 )]
+visible = true
 position = Vector2( 149.142, 44.0266 )
 
 [node name="Shotgun" parent="Position2D/Weapons" instance=ExtResource( 23 )]
-capacity = 900
 
 [node name="Knife" parent="Position2D" groups=[
 "Melee",
 ] instance=ExtResource( 9 )]
 visible = false
+
+[node name="SpawnWeapons" type="Position2D" parent="Position2D"]
+visible = false
+
+[node name="Rifle" type="Position2D" parent="Position2D/SpawnWeapons"]
+visible = false
+position = Vector2( 201.045, 30.204 )
+
+[node name="Pistol" type="Position2D" parent="Position2D/SpawnWeapons"]
+visible = false
+position = Vector2( 149.132, 45.306 )
+
+[node name="Shotgun" type="Position2D" parent="Position2D/SpawnWeapons"]
+visible = false
+position = Vector2( 197, 31 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D"]
 root_node = NodePath("../..")
