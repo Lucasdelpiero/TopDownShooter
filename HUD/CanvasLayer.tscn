@@ -11,9 +11,6 @@
 [ext_resource path="res://World/Objects/Weapons/128rifleicon.png" type="Texture" id=9]
 [ext_resource path="res://HUD/Fonts/hud_weapons.tres" type="DynamicFont" id=10]
 
-
-
-
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 4 )
 selectedColor = Color( 0.98, 0.466317, 0.147, 1 )

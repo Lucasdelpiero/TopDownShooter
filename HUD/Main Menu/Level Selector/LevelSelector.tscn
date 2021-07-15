@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://HUD/Main Menu/SaveButton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=12]
 [ext_resource path="res://HUD/Main Menu/TitleScreen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://HUD/Crosshair.tscn" type="PackedScene" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -50,6 +51,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 maxScoreLPath = NodePath("MaxScoreL")
+
+[node name="Crosshair" parent="." instance=ExtResource( 14 )]
 
 [node name="LevelPicture" type="TextureRect" parent="."]
 margin_left = 216.043

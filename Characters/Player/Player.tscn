@@ -1331,6 +1331,7 @@ audioGunsP = NodePath("../../AudioGuns")
 [node name="Pistol" parent="Position2D/Weapons" instance=ExtResource( 8 )]
 visible = true
 position = Vector2( 149.142, 44.0266 )
+missDegree = 0
 
 [node name="Shotgun" parent="Position2D/Weapons" instance=ExtResource( 23 )]
 

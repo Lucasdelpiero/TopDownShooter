@@ -6,6 +6,7 @@ onready var capacity = 0
 onready var healthBar = $Control/VBoxContainer/LifeBar
 onready var label = $Control/VBoxContainer/HBoxContainer/Label
 onready var gridContainer = $GridContainer
+onready var crosshair = $Crosshair
 
 export(Color, RGBA) var defaultColor = Color(1.0, 1.0, 1.0, 1.0)
 export(Color, RGBA) var selectedColor = Color(1.0, 0.0, 0.0, 1.0)
@@ -18,6 +19,7 @@ func _ready():
 #	connect("updateMusic", optionsControl, "activateMusic")
 
 func _process(_delta):
+#	crosshair.rect_position = get_viewport().get_mouse_position() 
 	if Input.is_action_just_pressed("restart"):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()

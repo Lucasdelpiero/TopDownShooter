@@ -1,5 +1,6 @@
 extends Control
 
+
 var levelList = [
 	"PrototypeLevel",
 	"PrototypeLevel2",
@@ -55,6 +56,7 @@ func _ready():
 	levelDiamond = allLevels.get_children()
 	updateInfo()
 	test()
+
 
 func startGame():
 	var map = "res://World/Maps/" +  levelList[levelSelected] + ".tscn"
