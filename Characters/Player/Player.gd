@@ -181,7 +181,7 @@ func changeAnimation(value : String):
 
 
 func _on_HurtBox_area_entered(area):
-	self.health = -area.damaged
+	self.health = -area.damage
 	hurtbox.start_invincibility(0.3)
 	modulate = Color(1.0, 0.0, 0.0, 1.0)
 	if health <= 0:

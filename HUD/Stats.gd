@@ -39,6 +39,7 @@ var Sfx = preload("res://HUD/Sounds/Sfx.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = true
+	GlobalControl.showMouse(true)
 	yield(get_tree().create_timer(0.1), "timeout")
 #	addScoresToDict()
 	
@@ -98,8 +99,10 @@ func _on_Timer_timeout():
 
 func _on_ContinueButton_pressed():
 	get_tree().paused = false
+	GlobalControl.showMouse(true)
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
 	pass 
+
 
 

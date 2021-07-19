@@ -55,8 +55,7 @@ func shoot(vel : Vector2, rot):
 		bullet.get_node("Sprite").rotation_degrees = rad2deg(shotDirection)
 		
 		#add range to the bullet to compensate player movement
-		var direction = Vector2( cos(deg2rad(rot)) , sin(deg2rad(rot)))
-#		print(direction)
+		var direction = Vector2( cos(rot) , sin((rot)))
 		var velocityVector = velocity.normalized()
 		var velocityDot = velocityVector.dot(direction)
 		var absVelocity = (abs(velocity.x) + abs(velocity.y))

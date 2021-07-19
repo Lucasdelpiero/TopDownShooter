@@ -8,7 +8,7 @@
 [ext_resource path="res://Music/MusicList.tscn" type="PackedScene" id=6]
 
 [node name="OptionsLayer" type="CanvasLayer"]
-layer = 100
+layer = 15
 
 [node name="Options" type="Control" parent="."]
 pause_mode = 2
@@ -17,6 +17,7 @@ anchor_left = 0.147461
 anchor_top = 0.138333
 anchor_right = 0.852539
 anchor_bottom = 0.861667
+mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {

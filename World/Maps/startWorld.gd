@@ -12,6 +12,7 @@ onready var player = find_node("Player")
 onready var navPolygon = "res://Characters/zombi/zombiNavigationPolygon.tres"
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalControl.showMouse(false)
 	create(HUD)
 	create(PauseScreen)
 	create(Darkness)

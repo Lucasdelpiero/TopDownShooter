@@ -147,8 +147,6 @@ func _on_Timer_timeout():
 	var seconds = timeNow % 60 # lo que sobra de los minutos
 	var str_elapsed = "%02d : %02d" % [minutes, seconds]
 	timeLabel.text = str_elapsed 
-#	print("by melee: " + str(totalMelee))
-#	print("by explosion: " + str(totalExplosion))
 
 func statsResult():
 	var time = timeNow #To fix the time delay
@@ -158,7 +156,7 @@ func statsResult():
 	sendResults( levelName )
 	
 	var stats = Stats.instance()
-	add_child(stats)
+	get_parent().add_child(stats)
 	stats.totalScore = totalScore
 	stats.totalKilled = totalKilled
 	stats.time = time

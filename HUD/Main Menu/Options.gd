@@ -39,6 +39,8 @@ func _input(event):
 	if event.is_action_pressed("paused"):
 		var new_pause_state = not get_tree().paused
 		visible = new_pause_state
+		GlobalControl.showMouse(new_pause_state)
+		print("bool: " + str(!new_pause_state))
 	if event.is_action_pressed("reload"):
 		dynamicActive = true
 
@@ -49,8 +51,11 @@ func _on_BackButton_pressed():
 	visible = false
 	if get_tree().is_paused():
 		get_tree().paused = false
+		GlobalControl.showMouse(false)
 
 ## SCREEN OPTIONS
+
+
 
 func _on_CheckBox_toggled(_button_pressed):
 	OS.set_window_fullscreen(not OS.is_window_fullscreen())
