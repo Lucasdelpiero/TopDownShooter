@@ -20,6 +20,9 @@ func _ready():
 	var scoring = find_node("Scoring", true , false)
 	scoring.levelName = name
 	
+	GlobalControl.world = self
+	GlobalControl.pausable = true
+	
 
 
 func create(resource):

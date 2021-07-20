@@ -224,7 +224,7 @@ z_as_relative = false
 texture = ExtResource( 14 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 11229.5, -1985.63 )
+position = Vector2( 41.4414, -6.78967 )
 
 [node name="Spawner" parent="." instance=ExtResource( 11 )]
 position = Vector2( 6014.35, -1876.34 )
@@ -234,7 +234,7 @@ continuous = true
 timerTime = 3.0
 
 [node name="PickeableWeapon" parent="." instance=ExtResource( 16 )]
-position = Vector2( 10919.7, -2373.32 )
+position = Vector2( 131.214, -622.807 )
 
 [node name="PickeableWeapon2" parent="." instance=ExtResource( 16 )]
 position = Vector2( 12010.1, -2380.45 )

@@ -1,6 +1,7 @@
 extends Node
 
-
+var world = null
+var pausable = false
 
 #var crosshair = preload("res://HUD/Sprites/crosshair.png")
 var offset = 16
@@ -17,6 +18,8 @@ func _ready():
 #	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(offset + 5, offset))
 #	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_CROSS, Vector2(offset + 5, offset))
 	pass # Replace with function body.
+#
+
 
 func showMouse(value : bool):
 	if value == true:

@@ -39,8 +39,7 @@ func _input(event):
 	if event.is_action_pressed("paused"):
 		var new_pause_state = not get_tree().paused
 		visible = new_pause_state
-		GlobalControl.showMouse(new_pause_state)
-		print("bool: " + str(!new_pause_state))
+#		print("bool: " + str(!new_pause_state))
 	if event.is_action_pressed("reload"):
 		dynamicActive = true
 
@@ -54,7 +53,6 @@ func _on_BackButton_pressed():
 		GlobalControl.showMouse(false)
 
 ## SCREEN OPTIONS
-
 
 
 func _on_CheckBox_toggled(_button_pressed):
@@ -117,7 +115,10 @@ func _on_MuteMusic_toggled(button_pressed):
 	mute("Music", button_pressed)
 
 func chooseRandomSong():
-	musicPlayer.stream = load ("res://Music/%s.ogg"  %musicList.tracks[randi() % musicList.tracks.size()] )
+	var newSong = randi() % musicList.tracks.size()
+	musicPlayer.stream = load ("res://Music/%s.ogg"  %musicList.tracks[newSong])
+	optionMusic.text = musicList.tracks[newSong]
+	optionMusic.selected = newSong
 	musicPlayer.play()
 
 func _on_OptionMusic_item_selected(index):
@@ -135,3 +136,4 @@ func dynamicVolumeUpdate(value):
 func activateMusic(value):
 	dynamicActive = value
 #dynamicVolume = dynamicVolume.lerp( dynamicVolume, 0.2)
+

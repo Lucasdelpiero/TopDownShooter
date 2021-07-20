@@ -8,6 +8,7 @@
 [ext_resource path="res://Music/MusicList.tscn" type="PackedScene" id=6]
 
 [node name="OptionsLayer" type="CanvasLayer"]
+pause_mode = 2
 layer = 15
 
 [node name="Options" type="Control" parent="."]
@@ -232,6 +233,10 @@ margin_top = -44.0
 margin_right = 64.0
 margin_bottom = 0.0
 text = "Back"
+
+[node name="Timer" type="Timer" parent="Options"]
+wait_time = 4.0
+autostart = true
 
 [connection signal="toggled" from="Options/VBoxContainer/HBoxScreen/CheckBox" to="Options" method="_on_CheckBox_toggled"]
 [connection signal="item_selected" from="Options/VBoxContainer/HBoxScreen/ScreenResolution" to="Options" method="_on_ScreenResolution_item_selected"]

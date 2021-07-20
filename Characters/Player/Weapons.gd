@@ -31,7 +31,7 @@ func _on_Weapons_tree_entered():
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 # warning-ignore:return_value_discarded
 	connect("updateHUDAmmo", HUD, "_on_Update_Ammo")
-	emit_signal("updateHUDAmmo", "0", "44")
+	emit_signal("updateHUDAmmo", "0", "44", "55")
 	ammoSelected = weaponSelected.ammo 
 	pass # Replace with function body.
 
@@ -76,6 +76,8 @@ func shoot():
 
 func playSound(shotSound):
 	audioGuns.stream = shotSound
+	var pitchOffset = 0.1;
+	audioGuns.pitch_scale = 1.0 + rand_range(-pitchOffset , pitchOffset)
 	audioGuns.play()
 
 func startReloading():

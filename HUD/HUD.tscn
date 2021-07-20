@@ -13,7 +13,7 @@
 [ext_resource path="res://HUD/Crosshair.tscn" type="PackedScene" id=11]
 
 [node name="HUD" type="CanvasLayer"]
-layer = 100
+layer = 10
 script = ExtResource( 3 )
 selectedColor = Color( 0.98, 0.466317, 0.147, 1 )
 
@@ -22,6 +22,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -190.0
 margin_right = 349.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -168,7 +169,7 @@ visible = true
 margin_left = -96.3784
 margin_top = 13.0816
 margin_right = 118.622
-margin_bottom = 35.0816
+margin_bottom = 25.0816
 
 [node name="LastCombo" parent="Scoring/ComboLabels" index="3"]
 margin_left = -64.2675
@@ -178,5 +179,6 @@ margin_bottom = -8.83203
 text = "asda"
 
 [node name="Crosshair" parent="." instance=ExtResource( 11 )]
+mouse_filter = 1
 
 [editable path="Scoring"]
