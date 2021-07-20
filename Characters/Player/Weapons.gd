@@ -21,7 +21,7 @@ var automatic = false
 onready var weaponSelected = weaponsCarried[0]
 onready var ammoSelected  = weaponSelected.ammo 
 #ammoSelected = weaponSelected.ammo 
-signal updateHUDAmmo(ammo, capacity)
+signal updateHUDAmmo(ammo, capacity, reserve)
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -103,7 +103,7 @@ func updateState():
 	updateAmmo()
 
 func updateAmmo():
-	emit_signal("updateHUDAmmo", weaponSelected.ammo, weaponSelected.reserveAmmo)
+	emit_signal("updateHUDAmmo", weaponSelected.ammo, weaponSelected.capacity,weaponSelected.reserveAmmo)
 
 func reloadSound():
 	audioGuns.stream = weaponSelected.reloadSound

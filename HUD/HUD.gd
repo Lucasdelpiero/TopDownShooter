@@ -39,8 +39,9 @@ func _on_Player_updateHUDWeapon(name):
 		if labels != null:
 			labels.modulate = Color(selectedColor)
 
-func _on_Update_Ammo(aAmmo, aCapacity):
-	label.text = str(aAmmo) + " / " + str(aCapacity)
+func _on_Update_Ammo(aAmmo, aCapacity, aReserve):
+	label.text = str(aAmmo) + " / " + str(aReserve)
+	crosshair.updateAmmo(aAmmo, aCapacity)
 
 func _on_Player_updateHealth(aHealth):
 	healthBar.value = aHealth
