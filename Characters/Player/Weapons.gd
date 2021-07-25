@@ -20,11 +20,7 @@ var automatic = false
 
 onready var weaponSelected = weaponsCarried[0]
 onready var ammoSelected  = weaponSelected.ammo 
-#ammoSelected = weaponSelected.ammo 
 signal updateHUDAmmo(ammo, capacity, reserve)
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 func _on_Weapons_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
@@ -33,25 +29,25 @@ func _on_Weapons_tree_entered():
 	connect("updateHUDAmmo", HUD, "_on_Update_Ammo")
 	emit_signal("updateHUDAmmo", "0", "44", "55")
 	ammoSelected = weaponSelected.ammo 
-	pass # Replace with function body.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	updateState()
 	pass # Replace with function body.
 
-
 func _physics_process(_delta):
 	
 	choose_weapon()
 	
-	if Input.is_action_just_pressed("change_weapon"):
-		changeWeapon()
-	
 	if not Input.is_action_pressed("shoot"):
 		if not rayCastWall.is_colliding():
 			canShoot = true
-	
+
+func _input(_event):
+	if Input.is_action_pressed("wheel_up"):
+		changeWeapon("next")
+	if Input.is_action_pressed("wheel_down"):
+		changeWeapon("previous")
 
 func trigger():
 	self.ammoSelected = weaponSelected.ammo
@@ -84,7 +80,6 @@ func startReloading():
 	animationPlayer.play(main.animReload)
 	main.stateReloading()
 
-
 func choose_weapon():
 	weaponsCarried = get_children()
 	if Input.is_action_just_pressed("pistol"):
@@ -96,7 +91,6 @@ func choose_weapon():
 #		self.weaponSelected = superShotgun
 	updateState()
 #	emit_signal("updateHUDWeapon", str(weaponSelected.name) )
-
 
 func updateState():
 	automatic = weaponSelected.automatic
@@ -123,17 +117,34 @@ func fillAmmo():
 	self.weaponSelected.ammo +=  reloadAmount
 #	self.weaponSelected.ammo = weaponSelected.capacity
 
-func changeWeapon():
-#	var weaponsCarried = weapons.get_children()
+func changeWeapon(event : String):
+	match event:
+		"next":
+			nextWeapon()
+		"previous":
+			previousWeapon()
+
+func getCurrentWeapon():
 	for i in weaponsCarried.size():
 		if weaponsCarried[i] == weaponSelected:
-			var newWeapon
-			if i + 1 < weaponsCarried.size():
-				newWeapon = i + 1
-			else:
-				newWeapon = 0
-			self.weaponSelected = weaponsCarried[newWeapon]
-			break
+			return i
+
+func nextWeapon():
+	var currentWeapon = getCurrentWeapon()
+	if currentWeapon + 1 < weaponsCarried.size():
+		selectWeapon(currentWeapon + 1) 
+		return
+	selectWeapon(0)
+
+func previousWeapon():
+	var currentWeapon = getCurrentWeapon()
+	if currentWeapon - 1 >= 0:
+		selectWeapon(currentWeapon - 1) 
+		return
+	selectWeapon( weaponsCarried.size() - 1 )
+
+func selectWeapon(newWeapon):
+	self.weaponSelected = weaponsCarried[ newWeapon ]
 
 func checkWeapons():
 #	print(str(rifle.get_filename()))
