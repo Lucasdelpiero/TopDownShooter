@@ -18,20 +18,27 @@ var canShoot = true
 
 var automatic = false
 
-onready var weaponSelected = weaponsCarried[0]
+onready var weaponSelected = weaponsCarried[0] setget setWeaponSelected, getWeaponSelected
+var weaponSelectedIndex = 0
 onready var ammoSelected  = weaponSelected.ammo 
 signal updateHUDAmmo(ammo, capacity, reserve)
+signal getHUDWeapons( weaponList)
+signal getSelectedWeapon( selected )
 
 func _on_Weapons_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 # warning-ignore:return_value_discarded
 	connect("updateHUDAmmo", HUD, "_on_Update_Ammo")
+	connect("getHUDWeapons", HUD, "updateHUDWeapons")
+	connect("getSelectedWeapon", HUD, "updateWeaponSelected")
 	emit_signal("updateHUDAmmo", "0", "44", "55")
 	ammoSelected = weaponSelected.ammo 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	yield(get_tree().create_timer(0.01), "timeout")
+	updateWeaponsCarried()
 #	updateState()
 	pass # Replace with function body.
 
@@ -69,6 +76,7 @@ func shoot():
 	updateAmmo()
 	canShoot = false
 	playSound(weaponSelected.shotSound)
+#	updateWeaponsCarried() 
 
 func playSound(shotSound):
 	audioGuns.stream = shotSound
@@ -82,15 +90,18 @@ func startReloading():
 
 func choose_weapon():
 	weaponsCarried = get_children()
-	if Input.is_action_just_pressed("pistol"):
-		self.weaponSelected = weaponsCarried[1]
-	if Input.is_action_just_pressed("rifle"):
-		self.weaponSelected = weaponsCarried[0]
-	if Input.is_action_just_pressed("shotgun"):
-		self.weaponSelected = weaponsCarried[2]
-#		self.weaponSelected = superShotgun
+	if Input.is_action_just_pressed("1"):
+		selectWeapon(0)
+	if Input.is_action_just_pressed("2"):
+		selectWeapon(1)
+	if Input.is_action_just_pressed("3"):
+		selectWeapon(2)
+	if Input.is_action_just_pressed("4"):
+		selectWeapon(3)
+	if Input.is_action_just_pressed("5"):
+		selectWeapon(4)
+
 	updateState()
-#	emit_signal("updateHUDWeapon", str(weaponSelected.name) )
 
 func updateState():
 	automatic = weaponSelected.automatic
@@ -144,20 +155,22 @@ func previousWeapon():
 	selectWeapon( weaponsCarried.size() - 1 )
 
 func selectWeapon(newWeapon):
-	self.weaponSelected = weaponsCarried[ newWeapon ]
-
-func checkWeapons():
-#	print(str(rifle.get_filename()))
-#	var Test = load("res://Characters/Player/Top_Down_Survivor/" + weaponSelected.type.to_lower() + "/" + weaponSelected.name + ".tscn")
-
-#	var test = Test.instance()
-#	weapons.add_child(test)
-#	test.global_position = global_position
-#	var w = weapons.get_children()
-#	for a in w.size():
-#		print(w[a].name)
-	pass
+	if  newWeapon < weaponsCarried.size():
+		self.weaponSelected = weaponsCarried[ newWeapon ]
+		weaponSelectedIndex = newWeapon
+		emit_signal("getSelectedWeapon", getCurrentWeapon())
 
 func updateWeaponsCarried():
 	weaponsCarried = get_children()
-	print(weaponsCarried)
+	emit_signal("getHUDWeapons", weaponsCarried)
+	yield(get_tree().create_timer(0.01), "timeout")
+	emit_signal("getSelectedWeapon", getCurrentWeapon())
+
+func setWeaponSelected(value):
+	if weaponsCarried.has(value) :
+		weaponSelected = value
+		emit_signal("getSelectedWeapon", getCurrentWeapon())
+
+func getWeaponSelected():
+	return weaponSelected
+

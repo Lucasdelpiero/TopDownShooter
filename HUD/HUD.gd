@@ -2,14 +2,24 @@ extends CanvasLayer
 
 onready var ammo = 0
 onready var capacity = 0
+var weaponSelected = 0
 
 onready var healthBar = $Control/VBoxContainer/LifeBar
 onready var label = $Control/VBoxContainer/HBoxContainer/Label
 onready var gridContainer = $GridContainer
+onready var weaponsSlots = $WeaponsSlots
 onready var crosshair = $Crosshair
+
+var iconImages = {
+	"Rifle" : "res://HUD/Weapons/rifle_icon.png" ,
+	"Pistol" : "res://HUD/Weapons/pistol_icon.png",
+	"Shotgun" : "res://HUD/Weapons/shotgun_icon.png",
+}
 
 export(Color, RGBA) var defaultColor = Color(1.0, 1.0, 1.0, 1.0)
 export(Color, RGBA) var selectedColor = Color(1.0, 0.0, 0.0, 1.0)
+
+onready var iconBase = preload("res://HUD/Weapons/IconBase.tscn")
 
 var optionsControl
 
@@ -24,20 +34,14 @@ func _process(_delta):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
-
-func _on_Player_updateHUDWeapon(name):
-	#Resets color for all
-	for i in gridContainer.get_children():
-		i.modulate = Color(defaultColor)
-	
-	#Sets the color to the selected color
-	if has_node("GridContainer/Icon%s" %name):
-		var icon = get_node("GridContainer/Icon%s" %name)
-		var labels = get_node("GridContainer/Label%s" %name)
-		if icon != null:
-			icon.modulate = Color(selectedColor)
-		if labels != null:
-			labels.modulate = Color(selectedColor)
+func updateWeaponSelected( selected : int):
+	var weaponList = weaponsSlots.get_children()
+	weaponSelected = selected
+	for i in weaponList.size():
+		if i == weaponSelected:
+			weaponList[i].modulate = Color(selectedColor)
+		else:
+			weaponList[i].modulate = Color(defaultColor)
 
 func _on_Update_Ammo(aAmmo, aCapacity, aReserve):
 	label.text = str(aAmmo) + " / " + str(aReserve)
@@ -45,3 +49,22 @@ func _on_Update_Ammo(aAmmo, aCapacity, aReserve):
 
 func _on_Player_updateHealth(aHealth):
 	healthBar.value = aHealth
+
+func updateHUDWeapons( weaponList : Array ):
+	for i in weaponList.size():
+		print(str(weaponList[i].name) + ",type: " + str(weaponList[i].type) )
+	deleteIcons()
+	createIcons(weaponList)
+
+func deleteIcons():
+	var icons = weaponsSlots.get_children()
+	for i in icons.size():
+		icons[i].queue_free()
+
+func createIcons( weaponList : Array ):
+	for i in weaponList.size():
+		var icon = iconBase.instance()
+		weaponsSlots.add_child(icon)
+		var typeWeapon = weaponList[i].type
+		icon.texture = load(iconImages[typeWeapon])
+		icon.get_child(0).text = "[%s]" %str(i + 1)

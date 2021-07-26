@@ -9,7 +9,7 @@
 [ext_resource path="res://HUD/Objectives.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Characters/zombi/zombiFast.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Objects/Barrel/ExplosiveBarrel.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/LevelControl/Spawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Tiles/Decoration/mailbox_stand.png" type="Texture" id=12]
 [ext_resource path="res://World/Tiles/Decoration/mailbox_broken.png" type="Texture" id=13]
@@ -20,6 +20,9 @@
 
 [node name="ExteriorTest" type="Node2D"]
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Objectives" parent="." instance=ExtResource( 7 )]
 
@@ -147,18 +150,6 @@ position = Vector2( -760.511, -945.34 )
 
 [node name="Explosives" type="Node" parent="Zombies"]
 
-[node name="zombiFast" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( 5755.99, -2613.09 )
-health = 3
-
-[node name="zombiFast2" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( 6079.26, -2433.5 )
-health = 3
-
-[node name="zombiFast3" parent="Zombies/Explosives" instance=ExtResource( 10 )]
-position = Vector2( 5702.11, -2253.9 )
-health = 3
-
 [node name="Node" type="Node" parent="Zombies"]
 
 [node name="car" type="Sprite" parent="Zombies/Node"]
@@ -223,6 +214,45 @@ z_index = 5
 z_as_relative = false
 texture = ExtResource( 14 )
 
+[node name="Spawner" parent="Zombies" instance=ExtResource( 11 )]
+position = Vector2( 8660.86, 977.839 )
+enemy0 = ExtResource( 9 )
+amount0 = 13
+continuous = true
+autoStart = true
+timerTime = 3.0
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Barrels" type="Node" parent="Objects"]
+
+[node name="ExplosiveBarrel" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 4755.79, -2880.08 )
+
+[node name="ExplosiveBarrel5" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 1377.8, -746.614 )
+
+[node name="ExplosiveBarrel2" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 5028.83, -2880.08 )
+
+[node name="ExplosiveBarrel3" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 5282.81, -2880.08 )
+
+[node name="ExplosiveBarrel4" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 5517.75, -2873.73 )
+
+[node name="ExplosiveBarrel6" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 4489.11, -2346.71 )
+
+[node name="ExplosiveBarrel7" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 4603.4, -2143.53 )
+
+[node name="ExplosiveBarrel8" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 5105.02, -2137.18 )
+
+[node name="ExplosiveBarrel9" parent="Objects/Barrels" instance=ExtResource( 10 )]
+position = Vector2( 5378.05, -2143.53 )
+
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 41.4414, -6.78967 )
 
@@ -237,5 +267,5 @@ timerTime = 3.0
 position = Vector2( 131.214, -622.807 )
 
 [node name="PickeableWeapon2" parent="." instance=ExtResource( 16 )]
-position = Vector2( 12010.1, -2380.45 )
+position = Vector2( 1152.28, -18.3969 )
 Weapon = ExtResource( 17 )

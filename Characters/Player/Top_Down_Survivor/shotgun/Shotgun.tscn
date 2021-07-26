@@ -13,6 +13,7 @@ automatic = false
 capacity = 8
 missDegree = 20
 bulletsShot = 8
+damage = 13
 weaponRange = 1000
 shotSound = ExtResource( 2 )
 reloadSound = ExtResource( 3 )

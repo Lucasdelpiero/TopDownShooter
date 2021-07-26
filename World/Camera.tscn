@@ -6,7 +6,7 @@
 "Camera",
 ]]
 current = true
-zoom = Vector2( 4, 4 )
+zoom = Vector2( 5, 5 )
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""

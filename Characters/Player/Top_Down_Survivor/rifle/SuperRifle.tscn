@@ -14,5 +14,6 @@ automatic = true
 capacity = 90
 missDegree = 3
 bulletsShot = 5
+damage = 25
 shotSound = ExtResource( 3 )
 reloadSound = ExtResource( 4 )

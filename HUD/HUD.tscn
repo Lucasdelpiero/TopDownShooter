@@ -7,7 +7,7 @@
 [ext_resource path="res://HUD/Weapons/rifle_icon.png" type="Texture" id=5]
 [ext_resource path="res://HUD/Sprites/bullet_hud.png" type="Texture" id=6]
 [ext_resource path="res://HUD/Weapons/shotgun_icon.png" type="Texture" id=7]
-[ext_resource path="res://HUD/Weapons/pistol_icon.png" type="Texture" id=8]
+[ext_resource path="res://HUD/Weapons/IconBase.tscn" type="PackedScene" id=8]
 [ext_resource path="res://HUD/Sprites/EmptyBar.png" type="Texture" id=9]
 [ext_resource path="res://HUD/Fonts/hud_weapons.tres" type="DynamicFont" id=10]
 [ext_resource path="res://HUD/Crosshair.tscn" type="PackedScene" id=11]
@@ -78,7 +78,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="WeaponsSlots" type="HBoxContainer" parent="."]
+margin_right = 607.0
+margin_bottom = 92.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GridContainer" type="GridContainer" parent="."]
+visible = false
 margin_left = 2.0
 margin_top = 5.0
 margin_right = 394.0
@@ -99,15 +107,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IconPistol" type="TextureRect" parent="GridContainer"]
+[node name="IconBase" parent="GridContainer" instance=ExtResource( 8 )]
 margin_left = 132.0
 margin_right = 260.0
-margin_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 128, 64 )
-texture = ExtResource( 8 )
-expand = true
 
 [node name="IconShotgun" type="TextureRect" parent="GridContainer"]
 margin_left = 264.0
