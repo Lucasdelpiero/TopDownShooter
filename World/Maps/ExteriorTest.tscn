@@ -217,14 +217,11 @@ texture = ExtResource( 14 )
 [node name="Spawner" parent="Zombies" instance=ExtResource( 11 )]
 position = Vector2( 1714.4, -1346.12 )
 enemy0 = "zombi"
-amount0 = 7
 enemy1 = "zombiBig"
-amount1 = 2
 enemy2 = "zombiExplosive"
-amount2 = 5
 continuous = true
 autoStart = true
-timerTime = 5.0
+timerTime = 2.0
 
 [node name="Objects" type="Node" parent="."]
 
@@ -259,12 +256,6 @@ position = Vector2( 5378.05, -2143.53 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 41.4414, -6.78967 )
-
-[node name="Spawner" parent="." instance=ExtResource( 11 )]
-position = Vector2( 6014.35, -1876.34 )
-amount0 = 5
-continuous = true
-timerTime = 3.0
 
 [node name="PickeableWeapon" parent="." instance=ExtResource( 16 )]
 position = Vector2( 131.214, -622.807 )

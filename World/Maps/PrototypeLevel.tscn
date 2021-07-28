@@ -301,9 +301,6 @@ position = Vector2( -603.446, 496.707 )
 [node name="Spawner" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
 position = Vector2( 9.2887, -2471.59 )
 enemy0 = "zombi"
-amount0 = 1
-amount1 = 1
-amount2 = 1
 continuous = true
 autoStart = true
 timerTime = 1.0

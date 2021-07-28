@@ -3,13 +3,13 @@ extends Node2D
 var zombiCap = 60
 #export(Resource) var enemy0 = null
 export(String, "none","zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy0 = "none"
-export(int,1, 50) var amount0 
+export(int,1, 50) var amount0 = 1
 #export(Resource) var enemy1 = null
 export(String, "none" ,"zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy1 = "none"
-export(int,1, 50) var amount1 
+export(int,1, 50) var amount1 = 1
 #export(Resource) var enemy2 = null
 export(String,"none" ,"zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy2 = "none"
-export(int,1, 50) var amount2 
+export(int,1, 50) var amount2 = 1
 
 export(bool) var continuous = false
 export(bool) var turnOnAllDied = false
@@ -65,10 +65,12 @@ func spawn():
 	for i in enemies.size():
 		var enemy = enemies[i]
 		if (enemy != "none"):
+			print("pan")
 			for o in enemiesAmount[i]:
 				totalZombies += 1
 				if totalZombies > zombiCap:
 					return
+				print(enemiesDir[enemies[i]])
 				var Zombi = load( enemiesDir[enemies[i]] )
 				var zombi = Zombi.instance()
 				get_parent().call_deferred("add_child", zombi)
