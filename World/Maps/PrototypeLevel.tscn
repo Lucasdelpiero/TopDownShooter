@@ -1,17 +1,15 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/LevelControl/Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Characters/zombi/zombiBig.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/Decoration/LightPole.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Barrel/ExplosiveBarrel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=10]
 [ext_resource path="res://HUD/Objectives.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Characters/zombi/zombiExplosive.tscn" type="PackedScene" id=12]
 [ext_resource path="res://World/Objects/Weapons/Ammo/PistolAmmo.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Characters/zombi/Animations/ZombiDead.tscn" type="PackedScene" id=15]
@@ -299,24 +297,13 @@ spawn = NodePath("../Teleporter")
 position = Vector2( -603.446, 496.707 )
 
 [node name="ControlSpawner" parent="Activator" instance=ExtResource( 16 )]
-autoStart = true
 
 [node name="Spawner" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
 position = Vector2( 9.2887, -2471.59 )
-enemy0 = ExtResource( 5 )
-amount0 = 2
-enemy1 = ExtResource( 6 )
+enemy0 = "zombi"
+amount0 = 1
 amount1 = 1
-enemy2 = ExtResource( 12 )
-amount2 = 2
+amount2 = 1
+continuous = true
 autoStart = true
-timerTime = 3.0
-
-[node name="Spawner2" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
-position = Vector2( 596.967, -767.842 )
-enemy0 = ExtResource( 5 )
-amount0 = 2
-
-[node name="Spawner3" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
-position = Vector2( 644.787, -28.0846 )
-enemy0 = ExtResource( 5 )
+timerTime = 1.0

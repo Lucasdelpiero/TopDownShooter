@@ -22,10 +22,6 @@ var comments = {
 	10 : "Nice",
 	20 :"Bloodthisthy",
 	30 : "Massacre",
-	12 : "Nice",
-	14 : "Nice",
-	16 : "Nice",
-	1 : "Nice",
 }
 
 # Called when the node enters the scene tree for the first time.
