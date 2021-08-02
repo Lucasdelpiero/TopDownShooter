@@ -20,6 +20,16 @@ func _ready():
 	pass # Replace with function body.
 #
 
+var timeSlow = false
+
+func _input(event):
+	if Input.is_action_just_pressed("special"):
+		if timeSlow == false:
+			Engine.time_scale = 0.4
+			timeSlow = true
+		else:
+			Engine.time_scale = 1.0
+			timeSlow = false
 
 func showMouse(value : bool):
 	if value == true:

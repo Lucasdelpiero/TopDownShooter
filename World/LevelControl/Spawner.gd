@@ -1,13 +1,10 @@
 extends Node2D
 
 var zombiCap = 60
-#export(Resource) var enemy0 = null
 export(String, "none","zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy0 = "none"
-export(int,1, 50) var amount0 = 1
-#export(Resource) var enemy1 = null
+export(int,1, 50) var amount0 = 1 #Godot bug if not specified the default vallue
 export(String, "none" ,"zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy1 = "none"
 export(int,1, 50) var amount1 = 1
-#export(Resource) var enemy2 = null
 export(String,"none" ,"zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy2 = "none"
 export(int,1, 50) var amount2 = 1
 

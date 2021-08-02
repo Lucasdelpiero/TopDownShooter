@@ -24,7 +24,6 @@ func _ready():
 	GlobalControl.pausable = true
 	
 
-
 func create(resource):
 	var node = resource.instance()
 	add_child(node)
