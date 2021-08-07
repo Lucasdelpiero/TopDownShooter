@@ -170,7 +170,7 @@ polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.0
 ]]
 z_index = 5
 z_as_relative = false
-collision_layer = 2147483650
+collision_layer = 2147483906
 collision_mask = 2147483651
 script = ExtResource( 1 )
 MAX_SPEED = 500
@@ -261,7 +261,7 @@ physics_process_parent = true
 visible = false
 enabled = true
 cast_to = Vector2( 3500, 0 )
-collision_mask = 4
+collision_mask = 260
 
 [node name="PathFindTimer" type="Timer" parent="."]
 wait_time = 0.2

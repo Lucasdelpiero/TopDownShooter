@@ -9,7 +9,6 @@ signal pickWeapon(path)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	weaponPath = Weapon.get_path()
-	print(weaponPath)
 	var weapon = Weapon.instance()
 	call_deferred("add_child", weapon)
 

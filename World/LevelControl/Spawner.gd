@@ -62,12 +62,10 @@ func spawn():
 	for i in enemies.size():
 		var enemy = enemies[i]
 		if (enemy != "none"):
-			print("pan")
 			for o in enemiesAmount[i]:
 				totalZombies += 1
 				if totalZombies > zombiCap:
 					return
-				print(enemiesDir[enemies[i]])
 				var Zombi = load( enemiesDir[enemies[i]] )
 				var zombi = Zombi.instance()
 				get_parent().call_deferred("add_child", zombi)
@@ -87,4 +85,3 @@ func _on_Timer_timeout():
 
 func activate():
 	spawn()
-	print("it has activated")

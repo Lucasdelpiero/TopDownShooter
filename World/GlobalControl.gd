@@ -25,7 +25,7 @@ var timeSlow = false
 func _input(event):
 	if Input.is_action_just_pressed("special"):
 		if timeSlow == false:
-			Engine.time_scale = 0.4
+			Engine.time_scale = 0.3
 			timeSlow = true
 		else:
 			Engine.time_scale = 1.0

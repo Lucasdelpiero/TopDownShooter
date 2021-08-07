@@ -201,6 +201,10 @@ special={
 2d_physics/layer_7="Object"
 2d_render/layer_8="Ammo"
 2d_physics/layer_8="Ammo"
+2d_render/layer_9="WallShootable"
+2d_physics/layer_9="WallShootable"
+2d_render/layer_10="Navigation"
+2d_physics/layer_10="Navigation"
 
 [rendering]
 

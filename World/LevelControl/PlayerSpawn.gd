@@ -16,4 +16,4 @@ func spawnPlayer():
 	var player = Player.instance()
 	get_tree().add_child(player)
 	player.global_position = global_position
-	pass
+

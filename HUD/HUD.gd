@@ -51,8 +51,6 @@ func _on_Player_updateHealth(aHealth):
 	healthBar.value = aHealth
 
 func updateHUDWeapons( weaponList : Array ):
-	for i in weaponList.size():
-		print(str(weaponList[i].name) + ",type: " + str(weaponList[i].type) )
 	deleteIcons()
 	createIcons(weaponList)
 

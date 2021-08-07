@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://World/Tiles/Decoration/car.png" type="Texture" id=1]
+[ext_resource path="res://World/Objects/Decoration/Car.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 212.825, 496.017 )
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 195.567
+height = 616.837
+
+[node name="Car" type="KinematicBody2D" groups=[
+"obstacles",
+]]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 64, 64 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2( 59.4332, 48.7426 )
+rotation = 1.5708
+collision_layer = 0
+collision_mask = 512
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionTiles" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="CollisionBodies" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 56.2584, 42.3929 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_Area2D_body_shape_entered"]
