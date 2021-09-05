@@ -127,27 +127,16 @@ position = Vector2( 3857.52, -342.982 )
 rotation = -1.57079
 
 [node name="Objectives" parent="." instance=ExtResource( 18 )]
+finishAtCompletion = false
 killAll = false
-survive = true
 timeSurvive = 55.0
+withMelee = true
+meleeAmount = 5
 
 [node name="Bullets" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 19 )]
 position = Vector2( -349.704, -482.89 )
-
-[node name="LevelChanger" parent="." instance=ExtResource( 22 )]
-position = Vector2( 2095.59, -742.414 )
-targetScene = "res://World/Maps/PrototypeLevel2.tscn"
-
-[node name="Teleporter" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1522.1, 578.942 )
-rotation = -1.57079
-spawn = NodePath("../Teleporter2")
-
-[node name="Teleporter2" parent="." instance=ExtResource( 15 )]
-position = Vector2( -45.3572, 624.921 )
-spawn = NodePath("../Teleporter")
 
 [node name="Tutorial" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -159,8 +148,10 @@ margin_bottom = 0.0
 position = Vector2( -251.675, -1385.73 )
 z_as_relative = false
 collision_mask = 1
-text = "Pan con dulce de leche Pan con dulce de leche Pan con dulce de leche Pan con dulce de leche Pan con dulce de leche Pan con dulce de leche"
+text = "Pan con dulce de leche "
 playerTrigger = true
+condition = "kill"
+conditionAmount = 10
 
 [node name="CollisionShape2D" parent="Tutorial/Pan" index="0"]
 position = Vector2( 252.112, 304.437 )
@@ -169,10 +160,27 @@ position = Vector2( 252.112, 304.437 )
 position = Vector2( -1090.46, -1069.08 )
 text = "¡¡ALFONSO!!"
 playerTrigger = true
+condition = "explosion"
+conditionAmount = 4
 
-[node name="Activator" parent="." instance=ExtResource( 11 )]
+[node name="Triggers" type="Node" parent="."]
+
+[node name="Teleporter" parent="Triggers" instance=ExtResource( 15 )]
+position = Vector2( 1522.1, 578.942 )
+rotation = -1.57079
+spawn = NodePath("../Teleporter2")
+
+[node name="Activator" parent="Triggers" instance=ExtResource( 11 )]
 position = Vector2( -603.446, 496.707 )
 
-[node name="ControlSpawner" parent="Activator" instance=ExtResource( 20 )]
+[node name="ControlSpawner" parent="Triggers/Activator" instance=ExtResource( 20 )]
+
+[node name="LevelChanger" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 2095.59, -742.414 )
+targetScene = "res://World/Maps/PrototypeLevel2.tscn"
+
+[node name="Teleporter2" parent="Triggers" instance=ExtResource( 15 )]
+position = Vector2( -45.3572, 624.921 )
+spawn = NodePath("../Teleporter")
 
 [editable path="Tutorial/Pan"]

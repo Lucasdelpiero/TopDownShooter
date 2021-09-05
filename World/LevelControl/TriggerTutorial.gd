@@ -5,6 +5,8 @@ export var playerTrigger = false
 export var zombiTrigger = false
 export var damageTrigger = false
 
+export(String, "none","kill", "melee","explosion") var condition = "none"
+export(int, 1, 10) var conditionAmount = 1
 
 onready var hitbox = $CollisionShape2D
 
@@ -21,11 +23,13 @@ func _ready():
 
 func sendInfo():
 	get_parent().write(text)
+	get_parent().sendObjective(condition, conditionAmount)
 	pass
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	sendInfo()
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
+	pass
 	sendInfo()
 

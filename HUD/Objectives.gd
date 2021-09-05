@@ -2,6 +2,7 @@ extends Control
 
 # Required objectives
 var allCompleted = false
+export var finishAtCompletion = true #finish level when objectives are completed
 export var killAll = false
 export var survive = false
 export(float, 2.0, 60.0, 5.0) var timeSurvive = 2.0
@@ -112,6 +113,8 @@ func checkCompletion():
 	
 	if zombiesLeft < 1:
 		killAllCompleted = true
+	
+	# Optionals Objectives
 	if withMelee:
 		if killedByMelee >= meleeAmount:
 			withMeleeCompleted = true
@@ -156,8 +159,15 @@ func addObjectives(): # Keep only active objectives
 			
 #	print("objectives" + str(currentOptional))
 
+func newObjectives(aCondition, aConditionAmount): # Add new objectives to the list
+	print("RECIBIDO")
+	print("Condition: " + aCondition)
+	print("Amount: " + str(aConditionAmount))
+#	optionalObjectives.append()
+	pass
+
 func completed():
-	if not allCompleted:
+	if not allCompleted and finishAtCompletion:
 		label.visible = true
 		emit_signal("completedLevel")
 		allCompleted = true
