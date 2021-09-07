@@ -1340,6 +1340,9 @@ missDegree = 0
 ] instance=ExtResource( 9 )]
 visible = false
 
+[node name="Hitbox" parent="Position2D/Knife" index="0"]
+damage = 100
+
 [node name="SpawnWeapons" type="Position2D" parent="Position2D"]
 visible = false
 

@@ -145,16 +145,13 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="Pan" parent="Tutorial" instance=ExtResource( 8 )]
-position = Vector2( -251.675, -1385.73 )
+position = Vector2( -255.913, -1080.6 )
 z_as_relative = false
 collision_mask = 1
 text = "Pan con dulce de leche "
 playerTrigger = true
-condition = "kill"
-conditionAmount = 10
-
-[node name="CollisionShape2D" parent="Tutorial/Pan" index="0"]
-position = Vector2( 252.112, 304.437 )
+condition = "melee"
+conditionAmount = 8
 
 [node name="Alfonso" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( -1090.46, -1069.08 )
@@ -162,6 +159,13 @@ text = "¡¡ALFONSO!!"
 playerTrigger = true
 condition = "explosion"
 conditionAmount = 4
+
+[node name="Alfonso2" parent="Tutorial" instance=ExtResource( 8 )]
+position = Vector2( -734.48, -1967.5 )
+text = "¡¡ALFONSO!!"
+playerTrigger = true
+condition = "melee"
+conditionAmount = 10
 
 [node name="Triggers" type="Node" parent="."]
 
@@ -182,5 +186,3 @@ targetScene = "res://World/Maps/PrototypeLevel2.tscn"
 [node name="Teleporter2" parent="Triggers" instance=ExtResource( 15 )]
 position = Vector2( -45.3572, 624.921 )
 spawn = NodePath("../Teleporter")
-
-[editable path="Tutorial/Pan"]

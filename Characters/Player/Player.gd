@@ -116,7 +116,6 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("knife"):
 				melee()
 				state = MELEE
-
 func move(delta):
 	dir = rad2deg(position2D.get_rotation())
 	var input_vector = Vector2.ZERO
@@ -182,6 +181,7 @@ func changeAnimation(value : String):
 
 func _on_HurtBox_area_entered(area):
 	self.health = -area.damage
+	health = clamp(health,0, 500)
 	hurtbox.start_invincibility(0.3)
 	modulate = Color(1.0, 0.0, 0.0, 1.0)
 	if health <= 0:
@@ -201,7 +201,7 @@ func _on_HealingTimer_timeout():
 
 func death():
 	soundDeath()
-	queue_free()
+#	queue_free() # da un bug con los zombies
 
 func soundPain():
 	# load : get a filesystem and creates an object 

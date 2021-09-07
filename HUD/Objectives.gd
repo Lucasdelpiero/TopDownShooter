@@ -7,11 +7,28 @@ export var killAll = false
 export var survive = false
 export(float, 2.0, 60.0, 5.0) var timeSurvive = 2.0
 
+var objectivesDict = {
+	kill = {
+		"value" : "killZombies",
+		"amount" : "totalKilled",
+	},
+	melee = {
+		"value" : "withMelee",
+		"amount" : "meleeAmount",
+	} ,
+	explosion = {
+		"value" : "withExplosion",
+		"amount" : "explosionAmount",
+	},
+}
+
+
 # Optional objectives
 export var withMelee = false
 export(int, 1, 100, 1) var meleeAmount = 1
 export var withExplosion = false
 export(int, 1, 100, 1) var explosionAmount = 1
+var killZombies = false # Kill certain amount
 
 # Required completion
 var killAllCompleted = false
@@ -34,6 +51,7 @@ var listObjectives = []
 var zombiesLeft = 0
 var killedByExplosion = 0
 var killedByMelee = 0
+var totalKilled = 0
 
 #Animation
 var showing = true
@@ -53,10 +71,11 @@ signal completedLevel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	zombiesLeft = get_tree().get_nodes_in_group("zombi").size()
+	updateDict()
 	# Updating the arrays with the changes made in editor
 	objectives = [ killAll, survive ] 
 	optionalObjectives = [withMelee ,withExplosion]
-	addObjectives()
+#	addObjectives() # bc if the tutorial
 	
 	shown(lKillAll, killAll)
 	shown(lSurvive, survive) 
@@ -104,7 +123,8 @@ func updateObjective(_name, byMelee, byExplosion, _pos):
 		killedByMelee += 1
 	if byExplosion:
 		killedByExplosion += 1
-		
+	
+	totalKilled += 1
 	yield(get_tree().create_timer(1.0), "timeout")
 	checkCompletion()
 
@@ -160,11 +180,35 @@ func addObjectives(): # Keep only active objectives
 #	print("objectives" + str(currentOptional))
 
 func newObjectives(aCondition, aConditionAmount): # Add new objectives to the list
-	print("RECIBIDO")
+#	print("RECIBIDO")
 	print("Condition: " + aCondition)
-	print("Amount: " + str(aConditionAmount))
+#	print("Amount: " + str(aConditionAmount))
+	
+#	var value = objectivesDict[aCondition]["value"]
+#	print(value)
 #	optionalObjectives.append()
+	var value = str(objectivesDict[aCondition]["value"])
+	var amountObjective = str(objectivesDict[aCondition]["amount"])
+	print("value: " + str(value))
+	print("amount: " +str(amountObjective))
+	self.set(value, true)
+	self.set(amountObjective, aConditionAmount)
+#	currentOptional.append(objectivesDict[aCondition]["value"])
+	print("with exp: " +str(withExplosion))
+	print("with melee: " +str(withMelee))
+	print("optionals: " + str(optionalObjectives))
+	updateDict()
+	
+	######pa borrar
 	pass
+	
+var objectivesDictss = {
+	kill = {
+		"value" : killZombies,
+		"amount" : totalKilled,
+	},
+}
+
 
 func completed():
 	if not allCompleted and finishAtCompletion:
@@ -179,3 +223,19 @@ func _on_TimerSurvive_timeout():
 func shown(node, value : bool):
 	node.get_parent().get_parent().visible = value
 
+func updateDict():
+	optionalObjectives = [withMelee ,withExplosion]
+	shown(lKillAll, killAll)
+	shown(lSurvive, survive) 
+	shown(lMelee, withMelee) 
+	shown(lExplosion, withExplosion)  
+	shown(lOptional, withExplosion or withMelee)
+	if survive:
+		$TimerSurvive.start(timeSurvive)
+		lSurvive.text = "Survive for %s seconds" % str(timeSurvive)
+
+	if withMelee:
+		lMelee.text = "Kill %s zombies in melee" % str(meleeAmount)
+
+	if withExplosion:
+		lExplosion.text = "Kill %s zombies with an explosion" % str(explosionAmount)

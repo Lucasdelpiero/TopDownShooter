@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://World/LevelControl/TriggerTutorial.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 322.561, 222.742 )
@@ -15,6 +16,14 @@ script = ExtResource( 1 )
 z_index = 500
 z_as_relative = false
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.992157, 0, 0, 1 )
+position = Vector2( -0.344451, -0.215667 )
+scale = Vector2( 2.52029, 1.7412 )
+z_index = 4
+z_as_relative = false
+texture = ExtResource( 2 )
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
