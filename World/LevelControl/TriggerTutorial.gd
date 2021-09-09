@@ -13,8 +13,6 @@ onready var hitbox = $CollisionShape2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yield(get_tree().create_timer(0.1), "timeout")
-	print(text)
-	print("player: " + str(playerTrigger))
 	set_collision_mask_bit(0, playerTrigger)
 	set_collision_mask_bit(1,zombiTrigger)
 	if damageTrigger:
@@ -24,12 +22,11 @@ func _ready():
 func sendInfo():
 	get_parent().write(text)
 	get_parent().sendObjective(condition, conditionAmount)
-	pass
 
 func _on_body_entered(_body):
 	sendInfo()
 
 func _on_area_entered(_area):
 	pass
-	sendInfo()
+#	sendInfo()
 

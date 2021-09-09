@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://World/Tiles/Floor/grass_seemless.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://World/Objects/Barrel/ExplosiveBarrel.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/LevelControl/Activator.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/LevelControl/Teleporter.tscn" type="PackedScene" id=15]
 [ext_resource path="res://World/Tiles/Walls/WallsTemplate.tscn" type="PackedScene" id=17]
@@ -89,6 +90,12 @@ __meta__ = {
 
 [node name="Zombies" type="Node" parent="."]
 
+[node name="zombi" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 1102.75, -2780.86 )
+
+[node name="zombi2" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 1573.66, -2794.31 )
+
 [node name="Props" type="Node" parent="."]
 
 [node name="LightPole3" parent="Props" instance=ExtResource( 9 )]
@@ -151,14 +158,14 @@ collision_mask = 1
 text = "Pan con dulce de leche "
 playerTrigger = true
 condition = "melee"
-conditionAmount = 8
+conditionAmount = 2
 
 [node name="Alfonso" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( -1090.46, -1069.08 )
 text = "¡¡ALFONSO!!"
 playerTrigger = true
 condition = "explosion"
-conditionAmount = 4
+conditionAmount = 2
 
 [node name="Alfonso2" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( -734.48, -1967.5 )
