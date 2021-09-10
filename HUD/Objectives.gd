@@ -72,6 +72,11 @@ onready var lMelee = $CanvasLayer/Base/VBC/OC5/HBC/LMelee
 onready var lExplosion = $CanvasLayer/Base/VBC/OC6/HBC/LExplosion
 onready var vBoxObjectives = $CanvasLayer/Base/VBC
 onready var animationPlayer = $CanvasLayer/Base/AnimationPlayer
+onready var tween = $CanvasLayer/Base/Tween
+
+var posShown = Vector2(0.0, 0.0)
+var posHidden = Vector2(400.0, 0.0) ## Check if works in different resolutions
+var animationTime = 1.0
 
 signal completedLevel
 
@@ -100,10 +105,12 @@ func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
 #		base.set_visible(not base.is_visible())
 		if showing:
-			animationPlayer.play("Hide")
+			tween.interpolate_property(base, "rect_position", posShown, posHidden, animationTime, Tween.TRANS_CUBIC, Tween.EASE_OUT )
+			tween.start()
 			showing = false
 		else:
-			animationPlayer.play("Show")
+			tween.interpolate_property(base, "rect_position", posHidden, posShown, animationTime, Tween.TRANS_QUINT, Tween.EASE_OUT )
+			tween.start()
 			showing = true
 
 
@@ -126,21 +133,9 @@ func checkCompletion():
 	if zombiesLeft < 1:
 		killAllCompleted = true
 	
-	# Optionals Objectives
-	#refactor later using the dictionaries
-#	if withMelee:
-#		if killedByMelee >= meleeAmount:
-#			withMeleeCompleted = true
-#	if withExplosion:
-#		if killedByExplosion >= explosionAmount:
-#			withExplosionCompleted = true
-#	if killZombies:
-#		if totalKilled >= killAmount:
-#			killAllCompleted = true
-#			pass
 	checkOptional()
 	updateCompletion()
-
+	
 	for i in currentObjectives.size():
 		if currentObjectives[i] == false:
 			return #If any objective not completed it return
@@ -154,25 +149,19 @@ func checkCompletion():
 func checkOptional():
 	var array = objectivesDict.keys()
 	
-	for i in array.size():
+	for i in array.size(): #If the amount needed is reached its completed
 		if get( objectivesDict[array[i]]["value"] ) == true:
 			var current = get( objectivesDict[array[i]]["tracker"] )
 			var needed = get( objectivesDict[array[i]]["amount"] )
 			var completed = str( objectivesDict[array[i]]["completion"] )
 			if current >= needed:
-				set(completed, true)
-				print("ACHIEVED FOR: " + str(objectivesDict[array[i]]["value"]))
-			pass
-		pass
-	pass
+				if get(completed) == false:
+					completedObjective(completed)
 	
 	for i in array.size():
 		if get( objectivesDict[array[i]]["value"] ) == true:
 			if get( objectivesDict[array[i]]["completion"] ) == false:
 				return
-	pass
-	
-# optionalObjectives = [withMelee ,withExplosion]
 	print("OPTIONALS COMPLETED")
 
 func updateCompletion(): # Update content of arrays
@@ -201,6 +190,10 @@ func newObjectives(aCondition, aConditionAmount): # Add new objectives to the li
 	self.set(amountObjective, aConditionAmount)
 	updateDict()
 	updateLabels()
+
+func completedObjective(aCompletion):
+	set(aCompletion, true)
+	#Placeholder for animation
 
 func deleteObjectives(aCondition):
 	var value = str(objectivesDict[aCondition]["value"])

@@ -1,6 +1,6 @@
 extends Area2D
 
-export(String) var targetScene  
+export(Resource) var scene = null
 export var targetSpawn = 0 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,5 +18,10 @@ func _on_LevelChanger_body_entered(_body):
 
 func changeLevel():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene(targetScene) 
-
+	pass
+	if scene != null:
+		var targetScene = scene.get_path()
+		print(targetScene)
+		get_tree().change_scene(targetScene) 
+	else:
+		print("There is no level loaded")

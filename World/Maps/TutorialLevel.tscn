@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://World/Tiles/Floor/grass_seemless.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Tiles/NavigationTile.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/LevelControl/Teleporter.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/Maps/ExteriorTest.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Tiles/Walls/WallsTemplate.tscn" type="PackedScene" id=17]
 [ext_resource path="res://HUD/Objectives.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=19]
@@ -158,7 +159,6 @@ collision_mask = 1
 text = "Pan con dulce de leche "
 playerTrigger = true
 condition = "melee"
-conditionAmount = 2
 
 [node name="Alfonso" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( -1090.46, -1069.08 )
@@ -187,8 +187,8 @@ position = Vector2( -603.446, 496.707 )
 [node name="ControlSpawner" parent="Triggers/Activator" instance=ExtResource( 20 )]
 
 [node name="LevelChanger" parent="Triggers" instance=ExtResource( 22 )]
-position = Vector2( 2095.59, -742.414 )
-targetScene = "res://World/Maps/PrototypeLevel2.tscn"
+position = Vector2( 77.4373, -500.236 )
+scene = ExtResource( 16 )
 
 [node name="Teleporter2" parent="Triggers" instance=ExtResource( 15 )]
 position = Vector2( -45.3572, 624.921 )
