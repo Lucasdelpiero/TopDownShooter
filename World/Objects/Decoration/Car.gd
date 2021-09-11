@@ -20,7 +20,7 @@ func _ready():
 #	pass
 
 
-func _on_Area2D_body_shape_entered(body_id, body, body_shape, local_shape):
+func _on_Area2D_body_shape_entered(_body_id, _body, _body_shape, _local_shape):
 #	print("nice")
 #	print(area.get_overlapping_bodies())
 	pass # Replace with function body.

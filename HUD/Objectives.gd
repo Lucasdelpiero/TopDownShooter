@@ -71,7 +71,6 @@ onready var lOptional = $CanvasLayer/Base/VBC/OC4/HBC/LOptional
 onready var lMelee = $CanvasLayer/Base/VBC/OC5/HBC/LMelee
 onready var lExplosion = $CanvasLayer/Base/VBC/OC6/HBC/LExplosion
 onready var vBoxObjectives = $CanvasLayer/Base/VBC
-onready var animationPlayer = $CanvasLayer/Base/AnimationPlayer
 onready var tween = $CanvasLayer/Base/Tween
 
 var posShown = Vector2(0.0, 0.0)
@@ -151,12 +150,13 @@ func checkOptional():
 	
 	for i in array.size(): #If the amount needed is reached its completed
 		if get( objectivesDict[array[i]]["value"] ) == true:
-			var current = get( objectivesDict[array[i]]["tracker"] )
-			var needed = get( objectivesDict[array[i]]["amount"] )
-			var completed = str( objectivesDict[array[i]]["completion"] )
+			var objective = array[i]
+			var current = get( objectivesDict[objective]["tracker"] )
+			var needed = get( objectivesDict[objective]["amount"] )
+			var completed = str( objectivesDict[objective]["completion"] )
 			if current >= needed:
 				if get(completed) == false:
-					completedObjective(completed)
+					completedObjective(objective)
 	
 	for i in array.size():
 		if get( objectivesDict[array[i]]["value"] ) == true:
@@ -185,18 +185,22 @@ func addObjectives(): # Keep only active objectives
 func newObjectives(aCondition, aConditionAmount): # Add new objectives to the list
 	var value = str(objectivesDict[aCondition]["value"])
 	var amountObjective = str(objectivesDict[aCondition]["amount"])
-
+	var completion = str(objectivesDict[aCondition]["completion"])
+	
 	self.set(value, true)
 	self.set(amountObjective, aConditionAmount)
+	self.set(completion, false)
 	updateDict()
 	updateLabels()
 
-func completedObjective(aCompletion):
-	set(aCompletion, true)
+func completedObjective(aObjective):
+	var value = str(objectivesDict[aObjective]["value"])
+	set(value, true)
 	#Placeholder for animation
+	deleteObjectives(aObjective)
 
-func deleteObjectives(aCondition):
-	var value = str(objectivesDict[aCondition]["value"])
+func deleteObjectives(aObjective):
+	var value = str(objectivesDict[aObjective]["value"])
 	self.set(value, false)
 	updateDict()
 	updateLabels()
@@ -225,7 +229,7 @@ func getDictValues():
 	var array = []
 	for i in keys.size():
 		array.append( get(objectivesDict[keys[i]]["value"]) )
-		print(keys[i]+ ": " + str(array[i]))
+#		print(keys[i]+ ": " + str(array[i]))
 
 func updateLabels():
 	shown(lKillAll, killAll)
