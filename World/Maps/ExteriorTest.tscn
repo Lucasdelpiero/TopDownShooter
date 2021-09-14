@@ -25,9 +25,8 @@ __meta__ = {
 }
 
 [node name="Objectives" parent="." instance=ExtResource( 7 )]
-killAll = false
 survive = true
-timeSurvive = 5.0
+timeSurvive = 10.0
 withMelee = true
 meleeAmount = 7
 withExplosion = true
@@ -56,12 +55,6 @@ margin_bottom = 6375.0
 [node name="DecorationTile" parent="TileMaps" instance=ExtResource( 2 )]
 
 [node name="Zombies" type="Node" parent="."]
-
-[node name="zombi6" parent="Zombies" instance=ExtResource( 9 )]
-position = Vector2( -3387.33, -728.179 )
-
-[node name="zombi7" parent="Zombies" instance=ExtResource( 9 )]
-position = Vector2( -3005.92, -872.266 )
 
 [node name="zombi9" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( -1706.85, -2362.31 )
@@ -152,9 +145,6 @@ position = Vector2( 8154.75, -3562.91 )
 
 [node name="zombi11" parent="Zombies" instance=ExtResource( 9 )]
 position = Vector2( -1548.28, -2928.63 )
-
-[node name="zombi8" parent="Zombies" instance=ExtResource( 9 )]
-position = Vector2( -3260.19, -965.499 )
 
 [node name="Explosives" type="Node" parent="Zombies"]
 

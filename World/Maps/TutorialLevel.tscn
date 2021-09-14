@@ -97,21 +97,6 @@ position = Vector2( 1318.02, -2296.5 )
 [node name="zombi2" parent="Zombies" instance=ExtResource( 13 )]
 position = Vector2( 954.76, -3224.85 )
 
-[node name="zombi3" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 874.034, -3682.3 )
-
-[node name="zombi4" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( -40.8613, -3682.3 )
-
-[node name="zombi5" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 578.039, -4314.65 )
-
-[node name="zombi6" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( -135.042, -4355.01 )
-
-[node name="zombi7" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 1667.84, -4355.01 )
-
 [node name="Props" type="Node" parent="."]
 
 [node name="LightPole3" parent="Props" instance=ExtResource( 9 )]
@@ -150,9 +135,8 @@ position = Vector2( 3857.52, -342.982 )
 rotation = -1.57079
 
 [node name="Objectives" parent="." instance=ExtResource( 18 )]
-killAll = false
 survive = true
-timeSurvive = 10.0
+timeSurvive = 5.0
 withMelee = true
 meleeAmount = 5
 
