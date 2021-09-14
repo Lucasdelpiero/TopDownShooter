@@ -45,6 +45,10 @@ default_bus_layout="res://Audio.tres"
 MusicPlayer="*res://Music/MusicPlayer.tscn"
 GlobalControl="*res://World/GlobalControl.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/always_on_top=true

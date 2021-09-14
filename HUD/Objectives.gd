@@ -1,5 +1,6 @@
 extends Control
 
+# Fix bug with time
 # Required objectives
 var allCompleted = false
 export var finishAtCompletion = true #finish level when objectives are completed
@@ -7,7 +8,37 @@ export var killAll = false
 export var survive = false
 export(float, 2.0, 60.0, 5.0) var timeSurvive = 2.0
 
-var objectivesDict = {
+# Required completion
+var killAllCompleted = false
+var surviveCompleted = false
+
+var objectivesMain = {
+	killAll = {
+		"value" : "killAll",
+		"completion" : "killAllCompleted",
+	},
+	survive = {
+		"value" : "survive",
+		"completion" : "surviveCompleted",
+	}
+}
+
+# Optional objectives
+export var withMelee = false
+export(int, 1, 100, 1) var meleeAmount = 1
+export var withExplosion = false
+export(int, 1, 100, 1) var explosionAmount = 1
+var killZombies = false # Kill certain amount
+export(int, 1, 100, 1) var killAmount = 1
+## Tutorial
+var inTutorial = false
+var optionalText = "Bonus objective:"
+
+# Optional completion
+var withMeleeCompleted = false
+var withExplosionCompleted = false
+
+var objectivesOpt = {
 	kill = {
 		"value" : "killZombies",
 		"amount" : "killAmount",
@@ -27,23 +58,6 @@ var objectivesDict = {
 		"completion" : "withExplosionCompleted"
 	},
 }
-
-# Optional objectives
-export var withMelee = false
-export(int, 1, 100, 1) var meleeAmount = 1
-export var withExplosion = false
-export(int, 1, 100, 1) var explosionAmount = 1
-var killZombies = false # Kill certain amount
-export(int, 1, 100, 1) var killAmount = 1
-
-# Required completion
-var killAllCompleted = false
-var surviveCompleted = false
-
-# Optional completion
-var withMeleeCompleted = false
-var withExplosionCompleted = false
-
 # Lists
 var objectives = [ killAll, survive ]
 var currentObjectives = [killAllCompleted, surviveCompleted]
@@ -81,13 +95,14 @@ signal completedLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$TimerSurvive.start(timeSurvive)
 	zombiesLeft = get_tree().get_nodes_in_group("zombi").size()
 	updateDict()
 	# Updating the arrays with the changes made in editor
 	objectives = [ killAll, survive ] 
 	optionalObjectives = [withMelee ,withExplosion]
-#	addObjectives() # bc if the tutorial
-	
+	addObjectives() # bc if the tutorial
+	print("el ready")
 	updateLabels()
 	#Create List
 	var list = vBoxObjectives.get_children() 
@@ -123,8 +138,9 @@ func updateObjective(_name, byMelee, byExplosion, _pos):
 		killedByExplosion += 1
 	
 	totalKilled += 1
-	yield(get_tree().create_timer(1.0), "timeout")
+	updateLabels()
 	checkCompletion()
+	
 
 func checkCompletion(): 
 	zombiesLeft =  get_tree().get_nodes_in_group("zombi").size()
@@ -132,35 +148,38 @@ func checkCompletion():
 	if zombiesLeft < 1:
 		killAllCompleted = true
 	
+	checkMainObjectives()
 	checkOptional()
 	updateCompletion()
+
+# Refactor the check for objecties to make it just 1 with optional arguments
+func checkMainObjectives():
+	var array = objectivesMain.keys()
 	
-	for i in currentObjectives.size():
-		if currentObjectives[i] == false:
-			return #If any objective not completed it return
-	for i in optionalObjectives.size():
-		if optionalObjectives[i] == false:
-			if i < currentOptional.size(): # Fix bug with i out of range if no current optional objective
-				currentOptional.remove(i)
-	completed() # Win
+	for i in array.size():
+		if get(objectivesMain[array[i]]["value"]) == true:
+			if get(objectivesMain[array[i]]["completion"]) == true:
+				completed()
+			pass
 	
+	pass
 
 func checkOptional():
-	var array = objectivesDict.keys()
+	var array = objectivesOpt.keys()
 	
 	for i in array.size(): #If the amount needed is reached its completed
-		if get( objectivesDict[array[i]]["value"] ) == true:
+		if get( objectivesOpt[array[i]]["value"] ) == true:
 			var objective = array[i]
-			var current = get( objectivesDict[objective]["tracker"] )
-			var needed = get( objectivesDict[objective]["amount"] )
-			var completed = str( objectivesDict[objective]["completion"] )
+			var current = get( objectivesOpt[objective]["tracker"] )
+			var needed = get( objectivesOpt[objective]["amount"] )
+			var completed = str( objectivesOpt[objective]["completion"] )
 			if current >= needed:
 				if get(completed) == false:
 					completedObjective(objective)
 	
 	for i in array.size():
-		if get( objectivesDict[array[i]]["value"] ) == true:
-			if get( objectivesDict[array[i]]["completion"] ) == false:
+		if get( objectivesOpt[array[i]]["value"] ) == true:
+			if get( objectivesOpt[array[i]]["completion"] ) == false:
 				return
 	print("OPTIONALS COMPLETED")
 
@@ -183,9 +202,9 @@ func addObjectives(): # Keep only active objectives
 #	print("objectives" + str(currentOptional))
 
 func newObjectives(aCondition, aConditionAmount): # Add new objectives to the list
-	var value = str(objectivesDict[aCondition]["value"])
-	var amountObjective = str(objectivesDict[aCondition]["amount"])
-	var completion = str(objectivesDict[aCondition]["completion"])
+	var value = str(objectivesOpt[aCondition]["value"])
+	var amountObjective = str(objectivesOpt[aCondition]["amount"])
+	var completion = str(objectivesOpt[aCondition]["completion"])
 	
 	self.set(value, true)
 	self.set(amountObjective, aConditionAmount)
@@ -194,13 +213,13 @@ func newObjectives(aCondition, aConditionAmount): # Add new objectives to the li
 	updateLabels()
 
 func completedObjective(aObjective):
-	var value = str(objectivesDict[aObjective]["value"])
+	var value = str(objectivesOpt[aObjective]["value"])
 	set(value, true)
 	#Placeholder for animation
 	deleteObjectives(aObjective)
 
 func deleteObjectives(aObjective):
-	var value = str(objectivesDict[aObjective]["value"])
+	var value = str(objectivesOpt[aObjective]["value"])
 	self.set(value, false)
 	updateDict()
 	updateLabels()
@@ -212,7 +231,9 @@ func completed():
 		allCompleted = true
 
 func _on_TimerSurvive_timeout():
+	print("pasó el tiempo y es: %s" % str(surviveCompleted))
 	surviveCompleted = true
+	print("y ahora es: %s" % str(surviveCompleted))
 	checkCompletion()
 
 func shown(node, value : bool):
@@ -220,15 +241,15 @@ func shown(node, value : bool):
 
 func updateDict():
 #	optionalObjectives = [withMelee ,withExplosion]
-#	optionalObjectives = [get(objectivesDict[["melee"] )]
+#	optionalObjectives = [get(objectivesOpt[["melee"] )]
 	getDictValues()
 	pass
 
 func getDictValues():
-	var keys = objectivesDict.keys()
+	var keys = objectivesOpt.keys()
 	var array = []
 	for i in keys.size():
-		array.append( get(objectivesDict[keys[i]]["value"]) )
+		array.append( get(objectivesOpt[keys[i]]["value"]) )
 #		print(keys[i]+ ": " + str(array[i]))
 
 func updateLabels():
@@ -239,11 +260,13 @@ func updateLabels():
 	shown(lOptional, withExplosion or withMelee)
 	
 	if survive:
-		$TimerSurvive.start(timeSurvive)
 		lSurvive.text = "Survive for %s seconds" % str(timeSurvive)
 
 	if withMelee:
-		lMelee.text = "Kill %s zombies in melee" % str(meleeAmount)
+		lMelee.text = "Kill %s zombies in melee: %s/%s " % [ str(meleeAmount), str(killedByMelee), meleeAmount ] 
 
 	if withExplosion:
-		lExplosion.text = "Kill %s zombies with an explosion" % str(explosionAmount)
+		lExplosion.text = "Kill %s zombies with an explosion: %s/%s" % [ str(explosionAmount), str(killedByExplosion), explosionAmount ]
+
+func activateTutorial(): #Set optional label to tutorial related
+	$CanvasLayer/Base/VBC/OC4/HBC/LOptional.text = "Tutorial:"

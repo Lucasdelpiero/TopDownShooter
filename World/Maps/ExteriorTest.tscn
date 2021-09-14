@@ -27,7 +27,11 @@ __meta__ = {
 [node name="Objectives" parent="." instance=ExtResource( 7 )]
 killAll = false
 survive = true
-timeSurvive = 45.0
+timeSurvive = 5.0
+withMelee = true
+meleeAmount = 7
+withExplosion = true
+explosionAmount = 5
 
 [node name="TileMaps" type="Node" parent="."]
 

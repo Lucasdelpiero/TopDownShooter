@@ -30,3 +30,4 @@ func _on_area_entered(_area):
 	pass
 #	sendInfo()
 
+

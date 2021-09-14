@@ -92,10 +92,25 @@ __meta__ = {
 [node name="Zombies" type="Node" parent="."]
 
 [node name="zombi" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 1102.75, -2780.86 )
+position = Vector2( 1318.02, -2296.5 )
 
 [node name="zombi2" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 1573.66, -2794.31 )
+position = Vector2( 954.76, -3224.85 )
+
+[node name="zombi3" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 874.034, -3682.3 )
+
+[node name="zombi4" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( -40.8613, -3682.3 )
+
+[node name="zombi5" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 578.039, -4314.65 )
+
+[node name="zombi6" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( -135.042, -4355.01 )
+
+[node name="zombi7" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 1667.84, -4355.01 )
 
 [node name="Props" type="Node" parent="."]
 
@@ -135,9 +150,9 @@ position = Vector2( 3857.52, -342.982 )
 rotation = -1.57079
 
 [node name="Objectives" parent="." instance=ExtResource( 18 )]
-finishAtCompletion = false
 killAll = false
-timeSurvive = 55.0
+survive = true
+timeSurvive = 10.0
 withMelee = true
 meleeAmount = 5
 
@@ -153,7 +168,15 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="Pan" parent="Tutorial" instance=ExtResource( 8 )]
-position = Vector2( -255.913, -1080.6 )
+position = Vector2( -255.913, -1067.15 )
+z_as_relative = false
+collision_mask = 1
+text = "Pan con dulce de leche "
+playerTrigger = true
+condition = "melee"
+
+[node name="Pan2" parent="Tutorial" instance=ExtResource( 8 )]
+position = Vector2( -94.4608, -2049.31 )
 z_as_relative = false
 collision_mask = 1
 text = "Pan con dulce de leche "
@@ -161,18 +184,18 @@ playerTrigger = true
 condition = "melee"
 
 [node name="Alfonso" parent="Tutorial" instance=ExtResource( 8 )]
-position = Vector2( -1090.46, -1069.08 )
+position = Vector2( -1830.45, -1122.9 )
 text = "¡¡ALFONSO!!"
 playerTrigger = true
 condition = "explosion"
 conditionAmount = 2
 
 [node name="Alfonso2" parent="Tutorial" instance=ExtResource( 8 )]
-position = Vector2( -734.48, -1967.5 )
+position = Vector2( -1420.65, -2868.94 )
 text = "¡¡ALFONSO!!"
 playerTrigger = true
-condition = "melee"
-conditionAmount = 10
+condition = "explosion"
+conditionAmount = 6
 
 [node name="Triggers" type="Node" parent="."]
 

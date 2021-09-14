@@ -282,7 +282,6 @@ position = Vector2( -349.704, -482.89 )
 
 [node name="LevelChanger" parent="." instance=ExtResource( 18 )]
 position = Vector2( 993.145, -538.537 )
-targetScene = "res://World/Maps/PrototypeLevel2.tscn"
 
 [node name="Teleporter" parent="." instance=ExtResource( 19 )]
 position = Vector2( 94.9603, -410.238 )
