@@ -95,7 +95,28 @@ __meta__ = {
 position = Vector2( 1318.02, -2296.5 )
 
 [node name="zombi2" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 954.76, -3224.85 )
+position = Vector2( 752.945, -3278.67 )
+
+[node name="zombi3" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 1089.3, -3292.12 )
+
+[node name="zombi4" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 1170.03, -3695.75 )
+
+[node name="zombi5" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 1506.39, -3709.21 )
+
+[node name="zombi6" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 1573.66, -3265.21 )
+
+[node name="zombi7" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 1910.02, -3278.67 )
+
+[node name="zombi8" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 2192.56, -3816.84 )
+
+[node name="zombi9" parent="Zombies" instance=ExtResource( 13 )]
+position = Vector2( 2528.92, -3830.3 )
 
 [node name="Props" type="Node" parent="."]
 
@@ -136,7 +157,7 @@ rotation = -1.57079
 
 [node name="Objectives" parent="." instance=ExtResource( 18 )]
 survive = true
-timeSurvive = 5.0
+timeSurvive = 25.0
 withMelee = true
 meleeAmount = 5
 
@@ -152,10 +173,10 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="Pan" parent="Tutorial" instance=ExtResource( 8 )]
-position = Vector2( -255.913, -1067.15 )
+position = Vector2( -255.913, -1283.04 )
 z_as_relative = false
 collision_mask = 1
-text = "Pan con dulce de leche "
+text = "Press {c}[Right click]{cc} to use a Melee Attack"
 playerTrigger = true
 condition = "melee"
 
@@ -163,13 +184,14 @@ condition = "melee"
 position = Vector2( -94.4608, -2049.31 )
 z_as_relative = false
 collision_mask = 1
-text = "Pan con dulce de leche "
+text = "Pan con {c}dulce de leche{cc} "
 playerTrigger = true
 condition = "melee"
+conditionAmount = 5
 
 [node name="Alfonso" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( -1830.45, -1122.9 )
-text = "¡¡ALFONSO!!"
+text = "¡¡ALFONSO!! {c}VOLVEEE{cc}"
 playerTrigger = true
 condition = "explosion"
 conditionAmount = 2

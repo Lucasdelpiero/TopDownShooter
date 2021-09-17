@@ -1,7 +1,8 @@
 extends Control
 
+export(Color, RGBA) var defaultColor = Color(0.0, 0.0, 1.0, 1.0)
 
-onready var label = $CanvasLayer/Label
+onready var tutoText = $CanvasLayer/TutoText
 
 signal sendObjective(aCondition, aConditionAmount)
 signal tutorialStart()
@@ -13,10 +14,15 @@ func _ready():
 	connect("sendObjective", objectives, "newObjectives")
 	connect("tutorialStart", objectives, "activateTutorial")
 	emit_signal("tutorialStart")
+#	write("Press %0 Right Click %1 aaaa   %0 yes %1 alf ")
 	pass # Replace with function body.
 
 func write( aText : String):
-	label.text = aText
+	var color = "#%s" % str(defaultColor.to_html())
+	var newText = aText.format({"c" : "[color=%s]" % color} )
+	newText = newText.format({"cc" : "[/color]"})
+#	newText = aText.format(["[color=%s]" %color, "[/color]"] , "%_")
+	tutoText.bbcode_text = "[center]%s[/center]" %newText
 
 func sendObjective(aCondition, aContionAmount):
 	emit_signal("sendObjective", aCondition, aContionAmount)
