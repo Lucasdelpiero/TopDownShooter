@@ -1,6 +1,6 @@
 extends Area2D
 
-export var text = ""
+export(String, MULTILINE) var text = ""
 export var playerTrigger = false
 export var zombiTrigger = false
 export var damageTrigger = false
