@@ -100,25 +100,7 @@ position = Vector2( -284.599, -1570.79 )
 position = Vector2( 752.945, -3278.67 )
 
 [node name="zombi3" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 1089.3, -3292.12 )
-
-[node name="zombi4" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 1170.03, -3695.75 )
-
-[node name="zombi5" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 1506.39, -3709.21 )
-
-[node name="zombi6" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 1573.66, -3265.21 )
-
-[node name="zombi7" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 1910.02, -3278.67 )
-
-[node name="zombi8" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 2192.56, -3816.84 )
-
-[node name="zombi9" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( 2528.92, -3830.3 )
+position = Vector2( 2968.78, -3419.11 )
 
 [node name="Props" type="Node" parent="."]
 
@@ -178,7 +160,7 @@ meleeAmount = 5
 [node name="Bullets" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 19 )]
-position = Vector2( -349.704, -482.89 )
+position = Vector2( 958.315, -2794.15 )
 
 [node name="Tutorial" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -193,6 +175,12 @@ collision_mask = 1
 text = "Press {c}[Right click]{cc} to use a Melee Attack"
 playerTrigger = true
 condition = "melee"
+
+[node name="Pan3" parent="Tutorial" instance=ExtResource( 8 )]
+position = Vector2( -245.833, -2311.14 )
+z_as_relative = false
+collision_mask = 1
+playerTrigger = true
 
 [node name="Pan2" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( 1508.16, -2472.64 )

@@ -6,4 +6,4 @@
 type = "Pistol"
 automatic = false
 capacity = 12
-damage = 20
+damage = 50

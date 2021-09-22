@@ -197,13 +197,14 @@ func addObjectives(): # Keep only active objectives
 #	print("objectives" + str(currentOptional))
 
 func newObjectives(aCondition, aConditionAmount): # Add new objectives to the list
-	var value = str(objectivesOpt[aCondition]["value"])
-	var amountObjective = str(objectivesOpt[aCondition]["amount"])
-	var completion = str(objectivesOpt[aCondition]["completion"])
-	
-	self.set(value, true)
-	self.set(amountObjective, aConditionAmount)
-	self.set(completion, false)
+	if aCondition != "none":
+		var value = str(objectivesOpt[aCondition]["value"])
+		var amountObjective = str(objectivesOpt[aCondition]["amount"])
+		var completion = str(objectivesOpt[aCondition]["completion"])
+		
+		self.set(value, true)
+		self.set(amountObjective, aConditionAmount)
+		self.set(completion, false)
 	updateDict()
 	updateLabels()
 

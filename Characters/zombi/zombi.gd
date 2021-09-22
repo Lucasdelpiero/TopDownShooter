@@ -146,6 +146,7 @@ func chase_state(delta):
 		
 	else:
 		if rayCast.is_colliding():
+			print("COllided")
 #		if usePathfinding:
 			if pathTimer.is_stopped():
 				get_path()
@@ -286,7 +287,7 @@ func get_path():
 
 func moveDirect():
 		var playerDirection = get_angle_to(player.get_global_position())
-		direction = lerp_angle(direction, playerDirection, 0.1)
+		direction = lerp_angle(direction, playerDirection, rotationSmooth)
 		velocity.x = lerp(velocity.x, MAX_SPEED * cos(direction), 0.1)
 		velocity.y = lerp(velocity.y, MAX_SPEED * sin(direction), 0.1)
 
