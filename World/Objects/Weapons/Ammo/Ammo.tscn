@@ -83,4 +83,5 @@ anims/Picked = SubResource( 2 )
 stream = ExtResource( 3 )
 volume_db = 15.0
 bus = "SoundEffects"
+
 [connection signal="body_entered" from="." to="." method="_on_Ammo_body_entered"]

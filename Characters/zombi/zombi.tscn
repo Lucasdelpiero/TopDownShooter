@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Characters/zombi/Zombi.gd" type="Script" id=1]
-[ext_resource path="res://HUD/debugger_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Characters/zombi/WanderController.tscn" type="PackedScene" id=19]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Characters/zombi/Zombie Sound.wav" type="AudioStream" id=21]
@@ -180,17 +179,6 @@ FRICTION = 1200
 health = 100
 rotationSmooth = 0.4
 type = "zombi"
-
-[node name="Label" type="Label" parent="."]
-margin_left = 11.4056
-margin_top = -685.567
-margin_right = 230.406
-margin_bottom = -534.567
-theme = ExtResource( 2 )
-text = "text"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 22 )

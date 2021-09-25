@@ -89,7 +89,10 @@ var dir = 14
 func _physics_process(delta):
 	$Position2D.look_at(get_global_mouse_position())
 	move(delta)
-		
+	
+	if Input.is_action_just_pressed("dash"):
+		dash()
+	
 	match state:
 		IDLE:
 			rayCastWallCollision()
@@ -141,8 +144,18 @@ func startReloading():
 	animationPlayer.play(animReload)
 	state = RELOADING
 
+func dash():
+	self.global_position = get_global_mouse_position()
+
 func grabWeapon(path):
 	var weaponPicked = load(path)
+	var currentWeapons = weapons.get_children()
+	for weapon in currentWeapons.size(): #Add ammo if weapon is already in inventory
+		if path ==  str(currentWeapons[weapon].filename):
+			var t = str(currentWeapons[weapon].type)
+			grabAmmo(t, 60)
+			return
+	# If not in inventory add weapon
 	var wp = weaponPicked.instance()
 	weapons.add_child(wp)
 	var paths = str(get_path_to(spawnWeapons)) + "/" + str(wp.type)
@@ -150,7 +163,7 @@ func grabWeapon(path):
 	weapons.updateWeaponsCarried()
 
 func grabAmmo(type, amount):
-	get(type).pickedAmmo(amount) #Add ammo to weapon
+	get_node("Position2D/Weapons/" +type).pickedAmmo(amount)
 
 func updateState():
 	updateAnimations()

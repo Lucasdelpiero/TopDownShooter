@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://World/Tiles/Floor/grass_seemless.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://World/LevelControl/ControlSpawner.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=21]
 [ext_resource path="res://World/LevelControl/LevelChanger.tscn" type="PackedScene" id=22]
+[ext_resource path="res://World/Objects/Weapons/Ammo/RifleAmmo.tscn" type="PackedScene" id=23]
 
 [node name="TutorialLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -94,7 +95,7 @@ __meta__ = {
 [node name="Zombies" type="Node" parent="."]
 
 [node name="zombi" parent="Zombies" instance=ExtResource( 13 )]
-position = Vector2( -284.599, -1570.79 )
+position = Vector2( 1764.5, -3577.38 )
 
 [node name="zombi2" parent="Zombies" instance=ExtResource( 13 )]
 position = Vector2( 752.945, -3278.67 )
@@ -141,15 +142,17 @@ rotation = -1.57079
 
 [node name="PickeableWeapon" parent="Props" instance=ExtResource( 21 )]
 position = Vector2( -282.222, -1995.72 )
-weapon = "pistol"
 
 [node name="PickeableWeapon2" parent="Props" instance=ExtResource( 21 )]
 position = Vector2( -90.7141, -2620.64 )
-weapon = "shotgun"
+weapon = "Pistol"
 
 [node name="PickeableWeapon3" parent="Props" instance=ExtResource( 21 )]
 position = Vector2( -635, -2600.48 )
-weapon = "superRifle"
+weapon = "Shotgun"
+
+[node name="RifleAmmo" parent="Props" instance=ExtResource( 23 )]
+position = Vector2( 153.045, -1657.99 )
 
 [node name="Objectives" parent="." instance=ExtResource( 18 )]
 survive = true
@@ -160,7 +163,7 @@ meleeAmount = 5
 [node name="Bullets" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 19 )]
-position = Vector2( 958.315, -2794.15 )
+position = Vector2( -529.621, -1765.35 )
 
 [node name="Tutorial" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0

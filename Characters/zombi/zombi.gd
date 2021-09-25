@@ -146,7 +146,6 @@ func chase_state(delta):
 		
 	else:
 		if rayCast.is_colliding():
-			print("COllided")
 #		if usePathfinding:
 			if pathTimer.is_stopped():
 				get_path()

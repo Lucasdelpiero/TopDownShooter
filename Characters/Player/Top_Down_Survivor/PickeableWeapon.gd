@@ -1,12 +1,12 @@
 extends Sprite
 
 var weaponList = {
-	"rifle" : "res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn",
-	"shotgun" : "res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn",
-	"pistol" :"res://Characters/Player/Top_Down_Survivor/pistol/Pistol.tscn",
-	"superRifle" : "res://Characters/Player/Top_Down_Survivor/rifle/SuperRifle.tscn",
+	"Rifle" : "res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn",
+	"Shotgun" : "res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn",
+	"Pistol" :"res://Characters/Player/Top_Down_Survivor/pistol/Pistol.tscn",
+	"SuperRifle" : "res://Characters/Player/Top_Down_Survivor/rifle/SuperRifle.tscn",
 }
-export(String, "rifle", "shotgun", "pistol", "superRifle") var weapon = "rifle"
+export(String, "Rifle", "Shotgun", "Pistol", "SuperRifle") var weapon = "Rifle"
 
 var weaponPath 
 

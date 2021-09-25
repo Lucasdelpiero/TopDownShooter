@@ -1,7 +1,7 @@
 extends Area2D
 
 export var amount = 12
-export var type = "rifle"
+export(String, "Rifle", "Pistol", "Shotgun") var type = "Rifle"
 var damage = 0
 
 # Called when the node enters the scene tree for the first time.
