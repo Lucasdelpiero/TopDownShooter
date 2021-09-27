@@ -37,6 +37,7 @@ func _process(_delta):
 func updateWeaponSelected( selected : int):
 	var weaponList = weaponsSlots.get_children()
 	weaponSelected = selected
+	
 	for i in weaponList.size():
 		if i == weaponSelected:
 			weaponList[i].modulate = Color(selectedColor)

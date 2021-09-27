@@ -47,20 +47,25 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 447.981 ]
 }
-maxScoreLPath = NodePath("MaxScoreL")
+PallLevels = NodePath("DiamondParent")
+PlevelLabel = NodePath("PanelContainer/VBoxContainer/LevelLabel")
+PPicture = NodePath("LevelPicture")
+PmaxScoreL = NodePath("MaxScoreL")
 
 [node name="LevelPicture" type="TextureRect" parent="."]
-margin_left = 216.043
-margin_top = 145.749
-margin_right = 675.043
-margin_bottom = 399.749
+anchor_top = -0.000550003
+margin_left = 271.0
+margin_top = 146.33
+margin_right = 646.0
+margin_bottom = 392.0
 texture = ExtResource( 4 )
 expand = true
-stretch_mode = 6
+stretch_mode = 5
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -94,9 +99,11 @@ margin_right = 151.0
 margin_bottom = 38.0
 
 [node name="PreviousButton" parent="." instance=ExtResource( 5 )]
-margin_left = -435.051
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 76.949
 margin_top = 241.83
-margin_right = -270.051
+margin_right = 241.949
 margin_bottom = 281.831
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
@@ -104,16 +111,43 @@ custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
 [node name="NextButton" parent="." instance=ExtResource( 6 )]
-margin_left = 157.505
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 669.505
 margin_top = 247.487
-margin_right = 256.505
+margin_right = 768.505
 margin_bottom = 287.487
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
+[node name="NextButton2" parent="." instance=ExtResource( 6 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 571.342
+margin_top = 460.803
+margin_right = 670.342
+margin_bottom = 500.803
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
 [node name="StartButton" parent="." instance=ExtResource( 8 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 350.981
+margin_top = 460.803
+margin_right = 543.981
+margin_bottom = 500.803
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="StartButton2" parent="." instance=ExtResource( 8 )]
+visible = false
 margin_left = -167.048
 margin_top = 463.773
 margin_right = 25.9521
@@ -127,7 +161,7 @@ text = "  Start Game  "
 [node name="DiamondParent" type="HBoxContainer" parent="."]
 margin_left = 282.0
 margin_top = 408.0
-margin_right = 597.0
+margin_right = 602.0
 margin_bottom = 446.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -168,17 +202,21 @@ margin_left = 288.0
 margin_right = 320.0
 
 [node name="SaveButton" parent="." instance=ExtResource( 11 )]
-margin_left = 160.434
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 672.434
 margin_top = 163.925
-margin_right = 246.434
+margin_right = 758.434
 margin_bottom = 203.925
 custom_styles/pressed = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
 
 [node name="LoadButton" parent="." instance=ExtResource( 10 )]
-margin_left = 263.778
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 775.778
 margin_top = 165.707
-margin_right = 349.778
+margin_right = 861.778
 margin_bottom = 205.707
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 6 )
@@ -199,25 +237,34 @@ margin_top = 391.995
 margin_right = 849.301
 margin_bottom = 429.995
 text = "Prototype2: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TestButton" parent="." instance=ExtResource( 12 )]
-margin_left = 292.287
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 804.287
 margin_top = 245.888
-margin_right = 378.287
+margin_right = 890.287
 margin_bottom = 285.888
 text = "Test"
 
 [node name="BackButton" parent="." instance=ExtResource( 12 )]
-margin_left = -359.005
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 152.995
 margin_top = 465.109
-margin_right = -273.005
+margin_right = 238.995
 margin_bottom = 505.109
 text = "Back"
 transition = ExtResource( 13 )
 
 [connection signal="pressed" from="PreviousButton" to="." method="_on_PreviousButton_pressed"]
 [connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="NextButton2" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="StartButton2" to="." method="_on_StartButton_pressed"]
 [connection signal="diamondChosen" from="DiamondParent/LevelButton" to="." method="_on_diamond_chosen"]
 [connection signal="diamondChosen" from="DiamondParent/LevelButton2" to="." method="_on_diamond_chosen"]
 [connection signal="diamondChosen" from="DiamondParent/LevelButton3" to="." method="_on_diamond_chosen"]

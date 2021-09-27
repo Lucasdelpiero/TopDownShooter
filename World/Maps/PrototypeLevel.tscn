@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/LevelControl/Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/Decoration/LightPole.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Barrel/ExplosiveBarrel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=9]
@@ -285,6 +286,10 @@ rotation = -4.71239
 position = Vector2( 823.599, -2297.26 )
 rotation = 1.57079
 
+[node name="PickeableWeapon" parent="Props" instance=ExtResource( 6 )]
+position = Vector2( -37.594, -1231.32 )
+weapon = "SuperShotgun"
+
 [node name="Objectives" parent="." instance=ExtResource( 11 )]
 finishAtCompletion = false
 timeSurvive = 10.0
@@ -332,6 +337,7 @@ position = Vector2( -603.446, 496.707 )
 [node name="Spawner" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
 position = Vector2( 9.2887, -2471.59 )
 enemy0 = "zombi"
+amount0 = 6
 continuous = true
 autoStart = true
-timerTime = 1.0
+timerTime = 3.0

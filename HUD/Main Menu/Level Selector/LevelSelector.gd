@@ -44,14 +44,26 @@ var levelDiamond = []
 
 var levelSelected = 0
 
-onready var levelLabel = $PanelContainer/VBoxContainer/LevelLabel
-onready var picture = $LevelPicture
-onready var allLevels = $DiamondParent
-export(NodePath) var maxScoreLPath
-onready var maxScoreL = get_node(maxScoreLPath)
+#onready var levelLabel = $PanelContainer/VBoxContainer/LevelLabel
+#onready var picture = $LevelPicture
+#onready var allLevels = $DiamondParent
+export(NodePath) var PallLevels = null
+var allLevels = null
+export(NodePath) var PlevelLabel = null
+var levelLabel = null
+export(NodePath) var PPicture = null
+var picture = null
+export(NodePath) var PmaxScoreL
+var maxScoreL = null
+#onready var maxScoreL = get_node(maxScoreLPath)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	allLevels = get_node(PallLevels)
+	levelLabel = get_node(PlevelLabel)
+	picture = get_node(PPicture)
+	maxScoreL = get_node(PmaxScoreL)
+	
 	maxScoreL.text = "Max Score: "
 	levelDiamond = allLevels.get_children()
 	updateInfo()

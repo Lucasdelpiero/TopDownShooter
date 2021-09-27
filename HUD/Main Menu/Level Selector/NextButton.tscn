@@ -3,4 +3,6 @@
 [ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=1]
 
 [node name="NextButton" instance=ExtResource( 1 )]
+margin_left = -47.1453
+margin_right = 51.8547
 text = "  Next  "

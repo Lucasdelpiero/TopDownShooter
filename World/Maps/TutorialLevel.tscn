@@ -145,7 +145,7 @@ position = Vector2( -282.222, -1995.72 )
 
 [node name="PickeableWeapon2" parent="Props" instance=ExtResource( 21 )]
 position = Vector2( -90.7141, -2620.64 )
-weapon = "Pistol"
+weapon = "SuperRifle"
 
 [node name="PickeableWeapon3" parent="Props" instance=ExtResource( 21 )]
 position = Vector2( -635, -2600.48 )

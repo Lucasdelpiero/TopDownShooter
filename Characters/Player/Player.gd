@@ -150,9 +150,9 @@ func dash():
 func grabWeapon(path):
 	var weaponPicked = load(path)
 	var currentWeapons = weapons.get_children()
-	for weapon in currentWeapons.size(): #Add ammo if weapon is already in inventory
-		if path ==  str(currentWeapons[weapon].filename):
-			var t = str(currentWeapons[weapon].type)
+	for weapon in currentWeapons:
+		if path == str(weapon.filename):
+			var t = str(weapon.type)
 			grabAmmo(t, 60)
 			return
 	# If not in inventory add weapon

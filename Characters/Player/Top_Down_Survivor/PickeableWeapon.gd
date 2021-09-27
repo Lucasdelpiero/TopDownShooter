@@ -5,8 +5,9 @@ var weaponList = {
 	"Shotgun" : "res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn",
 	"Pistol" :"res://Characters/Player/Top_Down_Survivor/pistol/Pistol.tscn",
 	"SuperRifle" : "res://Characters/Player/Top_Down_Survivor/rifle/SuperRifle.tscn",
+	"SuperShotgun" : "res://Characters/Player/Top_Down_Survivor/shotgun/SuperShotgun.tscn",
 }
-export(String, "Rifle", "Shotgun", "Pistol", "SuperRifle") var weapon = "Rifle"
+export(String, "Rifle", "Shotgun", "Pistol", "SuperRifle", "SuperShotgun") var weapon = "Rifle"
 
 var weaponPath 
 
