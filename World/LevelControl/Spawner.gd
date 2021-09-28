@@ -1,6 +1,9 @@
 extends Node2D
 
-var zombiCap = 60
+var zombiCap : int = 60
+export var limitSpawnTimes: bool = false
+export(int,1, 10) var roundsLimit = 1
+var roundsSpawned : int = 0
 export(String, "none","zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy0 = "none"
 export(int,1, 50) var amount0 = 1 #Godot bug if not specified the default vallue
 export(String, "none" ,"zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy1 = "none"
@@ -22,8 +25,8 @@ var enemiesDir = {
 
 var enemies : Array 
 var enemiesAmount : Array
-var spawning = false
-var randomRange = 128
+var spawning : bool = false
+var randomRange : float = 128.0
 
 onready var timer = $Timer
 
@@ -40,22 +43,6 @@ func _ready():
 		timer.wait_time = timerTime + 0.1
 	if autoStart:
 		timer.start()
-
-
-#func spawn():
-#	var totalZombies = getEnemyAmount()
-#	for i in enemies.size():
-#		var enemy = enemies[i]
-#		if (enemy != null):
-#			for o in enemiesAmount[i]:
-#				totalZombies += 1
-#				if totalZombies > zombiCap:
-#					return
-#				var Zombi = load( enemies[i].get_path() )
-#				var zombi = Zombi.instance()
-#				get_parent().call_deferred("add_child", zombi)
-#				var randomness = Vector2(rand_range(-randomRange, randomRange), rand_range(-randomRange, randomRange))
-#				zombi.global_position = global_position + randomness
 
 func spawn():
 	var totalZombies = getEnemyAmount()
@@ -77,11 +64,21 @@ func getEnemyAmount():
 
 func _on_Timer_timeout():
 	if turnOnAllDied and getEnemyAmount() == 0:
-		spawn()
+		activate()
+#		spawn()
 #		if continuous:
 #			timer.start()
 	elif not turnOnAllDied:
-		spawn()
+		activate()
+#		spawn()
 
 func activate():
-	spawn()
+	if limitSpawnTimes == false:
+		spawn()
+	else:
+		if roundsSpawned < roundsLimit:
+			spawn()
+			roundsSpawned += 1
+			print(roundsSpawned)
+	if continuous:
+		timer.start()

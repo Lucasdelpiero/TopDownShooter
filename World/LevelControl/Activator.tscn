@@ -16,4 +16,5 @@ script = ExtResource( 1 )
 "ignore",
 ]]
 shape = SubResource( 1 )
+
 [connection signal="body_exited" from="." to="." method="_on_Activator_body_exited"]

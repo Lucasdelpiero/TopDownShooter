@@ -12,33 +12,11 @@ var levelList = [
 	"PrototypeLevel2",
 	"PrototypeLevel2",
 ] 
-var levelName = [
-	"Tutorial",
-	"Nice",
-	"Yeah",
-	"Haha",
-	"nnffn",
-	"hhffh",
-	"hh",
-	"hffhh",
-	"Yes",
-	"No",
-]
+export(Array, PackedScene) var levelsList = []
 
-var levelPic = [
-	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
-	"res://HUD/Weapons/ak47_icon.png",
-	"res://World/Objects/128x72.png",
-	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
-	"res://HUD/Weapons/ak47_icon.png",
-	"res://World/Objects/128x72.png",
-	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
-	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
-	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
-	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
-	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
-	"res://HUD/Main Menu/Images Levels/testLevelPic.png",
-]
+export(Array, String) var levelNames = []
+
+export(Array, Texture) var textures = []
 
 var levelDiamond = []
 
@@ -73,20 +51,28 @@ func _ready():
 func startGame():
 	var map = "res://World/Maps/" +  levelList[levelSelected] + ".tscn"
 	print(map)
+	print(levelNames[levelSelected])
+	get_tree().change_scene_to(levelsList[levelSelected])
 # warning-ignore:return_value_discarded
-	get_tree().change_scene(map)
+#	get_tree().change_scene(map)
 	pass
 
 func updateInfo():
-	levelLabel.text = "Level: " + levelName[levelSelected]
-	picture.set_texture(load(levelPic[levelSelected])) 
+#	levelLabel.text = "Level: " + levelName[levelSelected]
+#	picture.set_texture(load(levelPic[levelSelected])) 
+	levelLabel.text = "Level: " + levelNames[levelSelected]
+	picture.set_texture(textures[levelSelected])
 	for i in levelDiamond.size():
 		levelDiamond[i].pressed = false
 	levelDiamond[levelSelected].pressed = true
 	updateScoreLabel()
 
 func updateScoreLabel():
-	var scoreLevel = GlobalControl.giveScore(levelList[levelSelected])
+	##################################################################
+	# REFACTOR
+	##########################################################################
+	var scoreLevel = GlobalControl.giveScore(levelList[levelSelected]) 
+	######################################################################
 	maxScoreL.text = "Max Score: " + str(scoreLevel)
 
 func _on_PreviousButton_pressed():

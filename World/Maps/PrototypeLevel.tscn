@@ -330,14 +330,15 @@ rotation = -1.57079
 spawn = NodePath("../Teleporter")
 
 [node name="Activator" parent="." instance=ExtResource( 20 )]
-position = Vector2( -603.446, 496.707 )
+position = Vector2( -37.594, -957 )
 
 [node name="ControlSpawner" parent="Activator" instance=ExtResource( 16 )]
 
 [node name="Spawner" parent="Activator/ControlSpawner" instance=ExtResource( 3 )]
 position = Vector2( 9.2887, -2471.59 )
+limitSpawnTimes = true
+roundsLimit = 3
 enemy0 = "zombi"
 amount0 = 6
 continuous = true
-autoStart = true
 timerTime = 3.0

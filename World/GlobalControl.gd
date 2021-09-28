@@ -42,6 +42,9 @@ func update_max_score(results : Dictionary):
 	if not max_score.has("name"): #If the directory to the level scores doesnt exits, it creates one
 		max_score[ results["name"] ] = {}
 	
+	#################
+	# This can be done better (inser the dictionary maybe? or copy)
+	################
 	max_score[ results["name"] ].score = results["score"]
 	max_score[ results["name"] ].combo = results["maxCombo"]
 	max_score[ results["name"] ].time = results["time"]
