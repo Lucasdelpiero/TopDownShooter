@@ -6,6 +6,10 @@ onready var audioHover = $AudioHover
 onready var audioPressed = $AudioPressed
 export(PackedScene) var transition = null
 
+func _ready():
+	var labelText = tr(text)
+	text = "  %s   " %labelText
+
 func _on_mouse_entered():
 	audioHover.play()
 

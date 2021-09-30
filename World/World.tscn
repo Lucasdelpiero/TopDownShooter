@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Tiles/Walls/WallsTemplate.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://World/Tiles/Walls/Walls.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/Main Menu/Options.tscn" type="PackedScene" id=11]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=12]
-[ext_resource path="res://HUD/PauseScreen.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Tiles/Floor/Grass.tscn" type="PackedScene" id=14]
 
 [sub_resource type="TileSet" id=1]
@@ -36,17 +35,11 @@ __meta__ = {
 }
 
 [node name="HUD" parent="." instance=ExtResource( 12 )]
-layer = 10
-
-[node name="PauseScreen" parent="." instance=ExtResource( 13 )]
 
 [node name="Darkness" parent="." instance=ExtResource( 6 )]
 
 [node name="OptionsLayer" parent="." instance=ExtResource( 11 )]
 layer = 10
-
-[node name="ScreenResolution" parent="OptionsLayer/Options/VBoxContainer/HBoxScreen" index="3"]
-items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false

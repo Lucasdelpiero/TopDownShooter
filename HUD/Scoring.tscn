@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://HUD/Scoring.gd" type="Script" id=1]
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=2]
-[ext_resource path="res://HUD/VSO.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/WhiteContainer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/Multiplicator.gd" type="Script" id=5]
 
@@ -153,22 +152,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 12
 alignment = 1
 
-[node name="VSO" parent="Multiplicator/VBC/WC/HBC" instance=ExtResource( 3 )]
-margin_left = 16.0
-margin_right = 46.0
-margin_bottom = 38.0
-
 [node name="Label" type="Label" parent="Multiplicator/VBC/WC/HBC"]
 margin_left = 50.0
 margin_right = 86.0
 margin_bottom = 38.0
 text = "14"
 align = 1
-
-[node name="VSO2" parent="Multiplicator/VBC/WC/HBC" instance=ExtResource( 3 )]
-margin_left = 90.0
-margin_right = 120.0
-margin_bottom = 38.0
 
 [node name="ShakeTimer" type="Timer" parent="Multiplicator"]
 wait_time = 0.01

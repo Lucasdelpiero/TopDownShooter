@@ -41,38 +41,43 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 12.0001
+margin_bottom = -0.000396729
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxScreen" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_right = 721.0
+margin_right = 734.0
 margin_bottom = 46.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxScreen"]
 margin_top = 4.0
-margin_right = 149.0
+margin_right = 192.0
 margin_bottom = 42.0
-text = "Fullscreen"
+text = "FULLSCREEN"
 
 [node name="CheckBox" type="CheckBox" parent="Options/VBoxContainer/HBoxScreen"]
-margin_left = 153.0
-margin_right = 177.0
+margin_left = 196.0
+margin_right = 220.0
 margin_bottom = 46.0
 focus_mode = 0
 enabled_focus_mode = 0
 expand_icon = true
 
 [node name="Label2" type="Label" parent="Options/VBoxContainer/HBoxScreen"]
-margin_left = 181.0
+margin_left = 224.0
 margin_top = 4.0
-margin_right = 487.0
+margin_right = 559.0
 margin_bottom = 42.0
-text = "   Window resolution: "
+rect_min_size = Vector2( 120, 0 )
+text = "WINDOW_RESOLUTION"
 
 [node name="ScreenResolution" type="OptionButton" parent="Options/VBoxContainer/HBoxScreen"]
-margin_left = 491.0
-margin_right = 662.0
+margin_left = 563.0
+margin_right = 734.0
 margin_bottom = 44.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -80,13 +85,58 @@ text = "1024x600"
 items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
 selected = 0
 
-[node name="BoxMaster" type="Control" parent="Options/VBoxContainer"]
+[node name="BoxMaster" type="HBoxContainer" parent="Options/VBoxContainer"]
 margin_top = 50.0
-margin_right = 721.0
-margin_bottom = 90.0
+margin_right = 734.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 420, 40 )
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/BoxMaster"]
+margin_top = 4.0
+margin_right = 117.0
+margin_bottom = 42.0
+text = "Master :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SliderMaster" parent="Options/VBoxContainer/BoxMaster" instance=ExtResource( 3 )]
+margin_left = 121.0
+margin_top = 0.0
+margin_right = 321.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 200, 46 )
+
+[node name="LabelMute" type="Label" parent="Options/VBoxContainer/BoxMaster"]
+margin_left = 325.0
+margin_top = 4.0
+margin_right = 411.0
+margin_bottom = 42.0
+text = "MUTE"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MuteMaster" type="CheckBox" parent="Options/VBoxContainer/BoxMaster"]
+margin_left = 415.0
+margin_right = 439.0
+margin_bottom = 46.0
+focus_mode = 0
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="BoxMaster2" type="Control" parent="Options/VBoxContainer"]
+visible = false
+margin_top = 94.0
+margin_right = 734.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 420, 40 )
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/BoxMaster2"]
 margin_right = 40.0
 margin_bottom = 38.0
 text = "Master :"
@@ -94,22 +144,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SliderMaster" parent="Options/VBoxContainer/BoxMaster" instance=ExtResource( 3 )]
+[node name="SliderMaster" parent="Options/VBoxContainer/BoxMaster2" instance=ExtResource( 3 )]
 margin_left = 140.0
 margin_right = 340.0
 margin_bottom = 26.0
 
-[node name="LabelMute" type="Label" parent="Options/VBoxContainer/BoxMaster"]
+[node name="LabelMute" type="Label" parent="Options/VBoxContainer/BoxMaster2"]
 margin_left = 360.0
 margin_right = 434.0
 margin_bottom = 38.0
-text = "Mute:"
+text = "MUTE"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
-[node name="MuteMaster" type="CheckBox" parent="Options/VBoxContainer/BoxMaster"]
+[node name="MuteMaster" type="CheckBox" parent="Options/VBoxContainer/BoxMaster2"]
 margin_left = 450.0
 margin_top = -2.71038
 margin_right = 474.0
@@ -121,76 +171,89 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="BoxSFX" type="Control" parent="Options/VBoxContainer"]
-margin_top = 94.0
-margin_right = 721.0
-margin_bottom = 134.0
+[node name="BoxSFX" type="HBoxContainer" parent="Options/VBoxContainer"]
+margin_top = 100.0
+margin_right = 734.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 420, 40 )
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/BoxSFX"]
-margin_right = 209.0
-margin_bottom = 38.0
+margin_top = 4.0
+margin_right = 120.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 120, 0 )
 text = "SFX:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SliderSFX" parent="Options/VBoxContainer/BoxSFX" instance=ExtResource( 3 )]
-margin_left = 140.0
-margin_right = 340.0
-margin_bottom = 26.0
+margin_left = 124.0
+margin_top = 0.0
+margin_right = 324.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 200, 46 )
 
 [node name="LabelMute" type="Label" parent="Options/VBoxContainer/BoxSFX"]
-margin_left = 360.0
-margin_right = 434.0
-margin_bottom = 38.0
-text = "Mute:"
+margin_left = 328.0
+margin_top = 4.0
+margin_right = 414.0
+margin_bottom = 42.0
+text = "MUTE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MuteSFX" type="CheckBox" parent="Options/VBoxContainer/BoxSFX"]
-margin_left = 450.0
-margin_top = -4.20869
-margin_right = 474.0
-margin_bottom = 41.7913
+margin_left = 418.0
+margin_right = 442.0
+margin_bottom = 46.0
 focus_mode = 0
 enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BoxMusic" type="Control" parent="Options/VBoxContainer"]
-margin_top = 138.0
-margin_right = 721.0
-margin_bottom = 178.0
+[node name="BoxMusic" type="HBoxContainer" parent="Options/VBoxContainer"]
+margin_top = 150.0
+margin_right = 734.0
+margin_bottom = 196.0
 rect_min_size = Vector2( 420, 40 )
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/BoxMusic"]
-margin_right = 40.0
-margin_bottom = 38.0
-text = "Music :"
+margin_top = 4.0
+margin_right = 120.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 120, 0 )
+text = "MUSIC"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SliderMusic" parent="Options/VBoxContainer/BoxMusic" instance=ExtResource( 3 )]
-margin_left = 140.0
-margin_right = 340.0
-margin_bottom = 26.0
+margin_left = 124.0
+margin_top = 0.0
+margin_right = 324.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 200, 46 )
 
 [node name="LabelMute" type="Label" parent="Options/VBoxContainer/BoxMusic"]
-margin_left = 360.0
-margin_right = 434.0
-margin_bottom = 38.0
-text = "Mute:"
+margin_left = 328.0
+margin_top = 4.0
+margin_right = 414.0
+margin_bottom = 42.0
+text = "MUTE"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
 [node name="MuteMusic" type="CheckBox" parent="Options/VBoxContainer/BoxMusic"]
-margin_left = 450.0
-margin_top = -4.20869
-margin_right = 474.0
-margin_bottom = 41.7913
+margin_left = 418.0
+margin_right = 442.0
+margin_bottom = 46.0
 focus_mode = 0
 enabled_focus_mode = 0
 __meta__ = {
@@ -198,25 +261,26 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="BoxMusic2" type="Control" parent="Options/VBoxContainer"]
-margin_top = 182.0
-margin_right = 721.0
-margin_bottom = 222.0
+[node name="BoxMusic2" type="HBoxContainer" parent="Options/VBoxContainer"]
+margin_top = 200.0
+margin_right = 734.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 420, 40 )
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/BoxMusic2"]
-margin_right = 40.0
-margin_bottom = 38.0
-text = "Song Playing :"
+margin_top = 3.0
+margin_right = 232.0
+margin_bottom = 41.0
+text = "SONG_PLAYING"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OptionMusic" type="OptionButton" parent="Options/VBoxContainer/BoxMusic2"]
-margin_left = 252.0
-margin_top = -3.0
-margin_right = 645.0
-margin_bottom = 41.0
+margin_left = 236.0
+margin_right = 636.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 400, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -232,21 +296,45 @@ margin_left = 0.0
 margin_top = -44.0
 margin_right = 64.0
 margin_bottom = 0.0
-text = "Back"
+text = "BACK"
 
 [node name="Timer" type="Timer" parent="Options"]
 wait_time = 4.0
 autostart = true
 
+[node name="English" type="Button" parent="Options"]
+margin_left = 34.9229
+margin_top = 303.194
+margin_right = 177.923
+margin_bottom = 347.194
+text = "ENGLISH"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spanish" type="Button" parent="Options"]
+margin_left = 222.236
+margin_top = 298.431
+margin_right = 374.236
+margin_bottom = 342.431
+text = "ESPAÑOL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="toggled" from="Options/VBoxContainer/HBoxScreen/CheckBox" to="Options" method="_on_CheckBox_toggled"]
 [connection signal="item_selected" from="Options/VBoxContainer/HBoxScreen/ScreenResolution" to="Options" method="_on_ScreenResolution_item_selected"]
 [connection signal="value_changed" from="Options/VBoxContainer/BoxMaster/SliderMaster" to="Options" method="_on_SliderMaster_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/BoxMaster/MuteMaster" to="Options" method="_on_MuteMaster_toggled"]
+[connection signal="value_changed" from="Options/VBoxContainer/BoxMaster2/SliderMaster" to="Options" method="_on_SliderMaster_value_changed"]
+[connection signal="toggled" from="Options/VBoxContainer/BoxMaster2/MuteMaster" to="Options" method="_on_MuteMaster_toggled"]
 [connection signal="value_changed" from="Options/VBoxContainer/BoxSFX/SliderSFX" to="Options" method="_on_SliderSFX_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/BoxSFX/MuteSFX" to="Options" method="_on_MuteSFX_toggled"]
 [connection signal="value_changed" from="Options/VBoxContainer/BoxMusic/SliderMusic" to="Options" method="_on_SliderMusic_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/BoxMusic/MuteMusic" to="Options" method="_on_MuteMusic_toggled"]
 [connection signal="item_selected" from="Options/VBoxContainer/BoxMusic2/OptionMusic" to="Options" method="_on_OptionMusic_item_selected"]
 [connection signal="pressed" from="Options/BackButton" to="Options" method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Options/English" to="Options" method="_on_English_pressed"]
+[connection signal="pressed" from="Options/Spanish" to="Options" method="_on_Spanish_pressed"]
 
 [editable path="Options/BackButton"]

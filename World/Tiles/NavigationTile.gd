@@ -16,14 +16,9 @@ func _ready():
 	pass # Replace with function body.
 
 func deleteTiles(position : Vector2, extents : Vector2):
-	print("position: " + str(position) + " extents: " + str(extents))
-	print("positionx: " + str(position.x - extents.x / 2))
-	print("positiony: " + str(position.y - extents.y / 2))
 	var positionObject = Vector2(position.x - extents.y , position.y - extents.x  )
 	var width = floor(extents.y / 128 * 2) # Width and Height are inverted in the collision shape
 	var height = floor(extents.x / 128 * 2)
-#	width = 6
-	print("w: " + str(width) + " h:" + str(height) ) 
 	positionObject /= 128
 	for i in height:
 		for o in width:

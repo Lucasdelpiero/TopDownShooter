@@ -3,8 +3,8 @@
 [node name="SliderSound" type="HSlider"]
 margin_left = 250.0
 margin_top = 10.0
-margin_right = 413.0
-margin_bottom = 16.0
+margin_right = 450.0
+margin_bottom = 56.0
 rect_min_size = Vector2( 200, 0 )
 min_value = 0.01
 max_value = 1.0

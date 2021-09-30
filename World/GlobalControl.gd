@@ -1,7 +1,6 @@
 extends Node
 
 var world = null
-var pausable = false
 
 #var crosshair = preload("res://HUD/Sprites/crosshair.png")
 var offset = 16
@@ -30,6 +29,12 @@ func _input(_event):
 		else:
 			Engine.time_scale = 1.0
 			timeSlow = false
+	
+#func _input(event):
+#	if event.is_action_pressed("paused"):
+#		var new_pause_state = not get_tree().paused
+#		get_tree().paused = new_pause_state
+#		showMouse(new_pause_state)
 
 func showMouse(value : bool):
 	if value == true:

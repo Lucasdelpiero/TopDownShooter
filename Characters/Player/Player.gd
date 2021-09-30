@@ -146,6 +146,7 @@ func startReloading():
 
 func dash():
 	self.global_position = get_global_mouse_position()
+#	get_viewport().warp_mouse(get_viewport().size / 2)
 
 func grabWeapon(path):
 	var weaponPicked = load(path)

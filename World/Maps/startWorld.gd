@@ -1,10 +1,8 @@
 extends Node2D
 
 var HUD = preload("res://HUD/HUD.tscn")
-var PauseScreen = preload("res://HUD/PauseScreen.tscn")
 var Darkness = preload("res://HUD/Darkness.tscn")
 var OptionsLayer = preload("res://HUD/Main Menu/Options.tscn")
-
 
 
 onready var zombies = []
@@ -14,14 +12,12 @@ onready var navPolygon = "res://Characters/zombi/zombiNavigationPolygon.tres"
 func _ready():
 	GlobalControl.showMouse(false)
 	create(HUD)
-	create(PauseScreen)
 	create(Darkness)
 	create(OptionsLayer)
 	var scoring = find_node("Scoring", true , false)
 	scoring.levelName = name
 	
 	GlobalControl.world = self
-	GlobalControl.pausable = true
 	
 
 func create(resource):

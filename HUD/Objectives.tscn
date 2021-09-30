@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://HUD/Objectives.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Fonts/objectives_big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://HUD/Objectives.tres" type="Theme" id=3]
 [ext_resource path="res://HUD/ObjectivesContainer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://HUD/VSO.tscn" type="PackedScene" id=5]
 
 [node name="Objectives" type="Control"]
 anchor_right = 1.0
@@ -65,19 +64,8 @@ __meta__ = {
 margin_right = 261.0
 margin_bottom = 29.0
 
-[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC"]
+[node name="LObjectives" type="Label" parent="CanvasLayer/Base/VBC/OC"]
 margin_right = 261.0
-margin_bottom = 29.0
-alignment = 2
-
-[node name="VSO" parent="CanvasLayer/Base/VBC/OC/HBC" instance=ExtResource( 5 )]
-margin_left = 55.0
-margin_right = 85.0
-margin_bottom = 29.0
-
-[node name="LObjectives" type="Label" parent="CanvasLayer/Base/VBC/OC/HBC"]
-margin_left = 89.0
-margin_right = 227.0
 margin_bottom = 29.0
 grow_horizontal = 0
 custom_fonts/font = ExtResource( 2 )
@@ -87,68 +75,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VSO2" parent="CanvasLayer/Base/VBC/OC/HBC" instance=ExtResource( 5 )]
-margin_left = 231.0
-margin_right = 261.0
-margin_bottom = 29.0
-
 [node name="OC2" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
 margin_top = 33.0
 margin_right = 261.0
 margin_bottom = 52.0
 
-[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC2"]
+[node name="LKillAll" type="Label" parent="CanvasLayer/Base/VBC/OC2"]
 margin_right = 261.0
 margin_bottom = 19.0
-alignment = 2
-
-[node name="VSO" parent="CanvasLayer/Base/VBC/OC2/HBC" instance=ExtResource( 5 )]
-margin_left = 81.0
-margin_right = 111.0
-margin_bottom = 19.0
-
-[node name="LKillAll" type="Label" parent="CanvasLayer/Base/VBC/OC2/HBC"]
-margin_left = 115.0
-margin_right = 227.0
-margin_bottom = 19.0
-text = "Kill all zombies "
-align = 1
-
-[node name="VSO2" parent="CanvasLayer/Base/VBC/OC2/HBC" instance=ExtResource( 5 )]
-margin_left = 231.0
-margin_right = 261.0
-margin_bottom = 19.0
+text = "Kill all zombies"
+align = 2
 
 [node name="OC3" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
 margin_top = 56.0
 margin_right = 261.0
 margin_bottom = 75.0
 
-[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC3"]
+[node name="LSurvive" type="Label" parent="CanvasLayer/Base/VBC/OC3"]
 margin_right = 261.0
-margin_bottom = 19.0
-alignment = 2
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="VSO" parent="CanvasLayer/Base/VBC/OC3/HBC" instance=ExtResource( 5 )]
-margin_left = 28.0
-margin_right = 58.0
-margin_bottom = 19.0
-
-[node name="LSurvive" type="Label" parent="CanvasLayer/Base/VBC/OC3/HBC"]
-margin_left = 62.0
-margin_right = 227.0
 margin_bottom = 19.0
 text = "Survive for 60 seconds"
-align = 1
+align = 2
 valign = 1
-
-[node name="VSO2" parent="CanvasLayer/Base/VBC/OC3/HBC" instance=ExtResource( 5 )]
-margin_left = 231.0
-margin_right = 261.0
-margin_bottom = 19.0
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Base/VBC"]
 modulate = Color( 1, 1, 1, 0 )
@@ -162,89 +110,34 @@ margin_top = 103.0
 margin_right = 261.0
 margin_bottom = 132.0
 
-[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC4"]
+[node name="LOptional" type="Label" parent="CanvasLayer/Base/VBC/OC4"]
 margin_right = 261.0
-margin_bottom = 29.0
-alignment = 2
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="VSO" parent="CanvasLayer/Base/VBC/OC4/HBC" instance=ExtResource( 5 )]
-margin_bottom = 29.0
-
-[node name="LOptional" type="Label" parent="CanvasLayer/Base/VBC/OC4/HBC"]
-margin_left = 34.0
-margin_right = 227.0
 margin_bottom = 29.0
 custom_fonts/font = ExtResource( 2 )
 text = "Bonus Objectives:"
 align = 1
-
-[node name="VSO2" parent="CanvasLayer/Base/VBC/OC4/HBC" instance=ExtResource( 5 )]
-margin_left = 231.0
-margin_right = 261.0
-margin_bottom = 29.0
 
 [node name="OC5" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
 margin_top = 136.0
 margin_right = 261.0
 margin_bottom = 155.0
 
-[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC5"]
+[node name="LMelee" type="Label" parent="CanvasLayer/Base/VBC/OC5"]
 margin_right = 261.0
-margin_bottom = 19.0
-alignment = 2
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="VSO" parent="CanvasLayer/Base/VBC/OC5/HBC" instance=ExtResource( 5 )]
-margin_left = 148.0
-margin_right = 178.0
-margin_bottom = 19.0
-
-[node name="LMelee" type="Label" parent="CanvasLayer/Base/VBC/OC5/HBC"]
-margin_left = 182.0
-margin_right = 227.0
 margin_bottom = 19.0
 text = "Melee"
-align = 1
-
-[node name="VSO2" parent="CanvasLayer/Base/VBC/OC5/HBC" instance=ExtResource( 5 )]
-margin_left = 231.0
-margin_right = 261.0
-margin_bottom = 19.0
+align = 2
 
 [node name="OC6" parent="CanvasLayer/Base/VBC" instance=ExtResource( 4 )]
 margin_top = 159.0
 margin_right = 261.0
 margin_bottom = 178.0
 
-[node name="HBC" type="HBoxContainer" parent="CanvasLayer/Base/VBC/OC6"]
+[node name="LExplosion" type="Label" parent="CanvasLayer/Base/VBC/OC6"]
 margin_right = 261.0
-margin_bottom = 19.0
-alignment = 2
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="VSO" parent="CanvasLayer/Base/VBC/OC6/HBC" instance=ExtResource( 5 )]
-margin_left = 124.0
-margin_right = 154.0
-margin_bottom = 19.0
-
-[node name="LExplosion" type="Label" parent="CanvasLayer/Base/VBC/OC6/HBC"]
-margin_left = 158.0
-margin_right = 227.0
 margin_bottom = 19.0
 text = "Explosion"
-align = 1
-
-[node name="VSO2" parent="CanvasLayer/Base/VBC/OC6/HBC" instance=ExtResource( 5 )]
-margin_left = 231.0
-margin_right = 261.0
-margin_bottom = 19.0
+align = 2
 
 [node name="Tween" type="Tween" parent="CanvasLayer/Base"]
 

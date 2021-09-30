@@ -19,6 +19,8 @@ var dynamicVolume = 0.0
 export var dynamicAccel = 0.02
 var targetMusicVolume = 0.5
 
+var pausable = true
+
 func _ready():
 	randomize()
 	getVolume("Master", sliderMaster)
@@ -45,6 +47,14 @@ func _input(event):
 
 	if event.is_action_pressed("jump"):
 		dynamicActive = false
+	
+	if pausable:
+		if event.is_action_pressed("paused"):
+			var new_pause_state = not get_tree().paused
+			get_tree().paused = new_pause_state
+			GlobalControl.showMouse(new_pause_state)
+
+
 
 func _on_BackButton_pressed():
 	visible = false
@@ -137,3 +147,11 @@ func activateMusic(value):
 	dynamicActive = value
 #dynamicVolume = dynamicVolume.lerp( dynamicVolume, 0.2)
 
+
+
+func _on_English_pressed():
+	TranslationServer.set_locale("en")
+
+
+func _on_Spanish_pressed():
+	TranslationServer.set_locale("es")

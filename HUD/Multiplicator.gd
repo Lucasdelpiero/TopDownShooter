@@ -41,7 +41,7 @@ func _ready():
 #	pass
 
 func updateMultiplicator(value):
-	lMultiplier.text = "x " + str(value)
+	lMultiplier.text = "  x%s   " %str(value)
 	multiplierColor(value)
 	shake(VBC)
 	if value in comments:

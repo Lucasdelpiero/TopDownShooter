@@ -40,8 +40,8 @@ var Sfx = preload("res://HUD/Sounds/Sfx.tscn")
 func _ready():
 	get_tree().paused = true
 	GlobalControl.showMouse(true)
-	var pauseScreen = get_tree().get_root().find_node("Pause", true, false)
-	pauseScreen.pausable = false
+	var options = get_tree().get_root().find_node("Options", true, false)
+	options.pausable = false
 	yield(get_tree().create_timer(0.1), "timeout")
 #	addScoresToDict()
 	

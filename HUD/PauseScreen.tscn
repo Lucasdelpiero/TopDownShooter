@@ -1,6 +1,19 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://HUD/Pause.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var pausable = true
+
+#func _input(event):
+#	if event.is_action_pressed(\"paused\"):
+#		if pausable:
+#			var new_pause_state = not get_tree().paused
+#			get_tree().paused = new_pause_state
+#			GlobalControl.showMouse(new_pause_state)
+			
+#			visible = new_pause_state
+"
 
 [node name="PauseScreen" type="CanvasLayer"]
 layer = 2
@@ -10,7 +23,7 @@ pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

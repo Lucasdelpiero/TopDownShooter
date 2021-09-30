@@ -159,6 +159,7 @@ survive = true
 timeSurvive = 25.0
 withMelee = true
 meleeAmount = 5
+withExplosion = true
 
 [node name="Bullets" type="Node" parent="."]
 

@@ -79,6 +79,5 @@ func activate():
 		if roundsSpawned < roundsLimit:
 			spawn()
 			roundsSpawned += 1
-			print(roundsSpawned)
 	if continuous:
 		timer.start()

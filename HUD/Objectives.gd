@@ -80,11 +80,11 @@ var showing = true
 
 onready var base = $CanvasLayer/Base
 onready var label = $CanvasLayer/Base/Label
-onready var lKillAll = $CanvasLayer/Base/VBC/OC2/HBC/LKillAll
-onready var lSurvive = $CanvasLayer/Base/VBC/OC3/HBC/LSurvive
-onready var lOptional = $CanvasLayer/Base/VBC/OC4/HBC/LOptional
-onready var lMelee = $CanvasLayer/Base/VBC/OC5/HBC/LMelee
-onready var lExplosion = $CanvasLayer/Base/VBC/OC6/HBC/LExplosion
+onready var lKillAll = $CanvasLayer/Base/VBC/OC2/LKillAll
+onready var lSurvive = $CanvasLayer/Base/VBC/OC3/LSurvive
+onready var lOptional = $CanvasLayer/Base/VBC/OC4/LOptional
+onready var lMelee = $CanvasLayer/Base/VBC/OC5/LMelee
+onready var lExplosion = $CanvasLayer/Base/VBC/OC6/LExplosion
 onready var vBoxObjectives = $CanvasLayer/Base/VBC
 onready var tween = $CanvasLayer/Base/Tween
 
@@ -103,7 +103,6 @@ func _ready():
 	objectives = [ killAll, survive ] 
 	optionalObjectives = [withMelee ,withExplosion]
 	addObjectives() # bc if the tutorial
-	print("el ready")
 	updateLabels()
 	#Create List
 	var list = vBoxObjectives.get_children() 
@@ -256,13 +255,14 @@ func updateLabels():
 	shown(lOptional, withExplosion or withMelee)
 	
 	if survive:
-		lSurvive.text = "Survive for %s seconds: " % str(timeSurvive)
+		# Create label Class that automaticly padd for the sides 
+		lSurvive.text = tr("SURVIVE_X_SECONDS") % str(timeSurvive)
 
 	if withMelee:
-		lMelee.text = "Kill %s zombies in melee: %s/%s " % [ str(meleeAmount), str(killedByMelee), meleeAmount ] 
+		lMelee.text = tr("KILL_IN_MELEE")  % [ str(meleeAmount), str(killedByMelee), meleeAmount ] + "    "
 
 	if withExplosion:
-		lExplosion.text = "Kill %s zombies with an explosion: %s/%s" % [ str(explosionAmount), str(killedByExplosion), explosionAmount ]
+		lExplosion.text = tr("KILL_WITH_EXPLOSION") % [ str(explosionAmount), str(killedByExplosion), explosionAmount ]
 
 func activateTutorial(): #Set optional label to tutorial related
-	$CanvasLayer/Base/VBC/OC4/HBC/LOptional.text = "Tutorial:"
+	$CanvasLayer/Base/VBC/OC4/LOptional.text = "Tutorial:"
