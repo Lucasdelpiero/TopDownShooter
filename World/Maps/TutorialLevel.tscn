@@ -183,6 +183,7 @@ condition = "melee"
 position = Vector2( -245.833, -2311.14 )
 z_as_relative = false
 collision_mask = 1
+text = "BREAD"
 playerTrigger = true
 
 [node name="Pan2" parent="Tutorial" instance=ExtResource( 8 )]

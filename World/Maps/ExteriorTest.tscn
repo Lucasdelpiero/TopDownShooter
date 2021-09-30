@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://World/Tiles/Decoration/bench.png" type="Texture" id=14]
 [ext_resource path="res://World/Objects/Decoration/Car.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/SuperShotgun.tscn" type="PackedScene" id=17]
 
 [node name="ExteriorTest" type="Node2D"]
 script = ExtResource( 5 )
@@ -254,7 +253,8 @@ position = Vector2( 41.4414, -6.78967 )
 
 [node name="PickeableWeapon" parent="." instance=ExtResource( 16 )]
 position = Vector2( 131.214, -622.807 )
+weapon = "SuperRifle"
 
 [node name="PickeableWeapon2" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1152.28, -18.3969 )
-Weapon = ExtResource( 17 )
+weapon = "SuperShotgun"

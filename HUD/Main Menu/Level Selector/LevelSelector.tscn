@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -20,6 +20,10 @@
 [ext_resource path="res://World/Maps/TestLevel.tscn" type="PackedScene" id=18]
 [ext_resource path="res://World/Maps/PrototypeLevel2.tscn" type="PackedScene" id=19]
 [ext_resource path="res://World/Maps/ExteriorTest.tscn" type="PackedScene" id=20]
+[ext_resource path="res://HUD/Weapons/pistol_icon.png" type="Texture" id=21]
+[ext_resource path="res://HUD/Weapons/rifle_icon.png" type="Texture" id=22]
+[ext_resource path="res://World/Objects/128x72.png" type="Texture" id=23]
+[ext_resource path="res://World/Tiles/Floor/5sqtunnelroad 128x128.png" type="Texture" id=24]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -59,7 +63,7 @@ __meta__ = {
 }
 levelsList = [ ExtResource( 16 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 20 ), ExtResource( 20 ), ExtResource( 20 ) ]
 levelNames = [ "Level 1", "Re loco el chabon", "Re perseguido", "333", "Mala suerte", "V", "666", "777", "Nya" ]
-textures = [ ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 14 ) ]
+textures = [ ExtResource( 14 ), ExtResource( 21 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 15 ), ExtResource( 24 ), ExtResource( 14 ), ExtResource( 14 ) ]
 PallLevels = NodePath("DiamondParent")
 PlevelLabel = NodePath("PanelContainer/VBoxContainer/LevelLabel")
 PPicture = NodePath("LevelPicture")

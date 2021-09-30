@@ -215,6 +215,13 @@ dash={
 2d_render/layer_10="Navigation"
 2d_physics/layer_10="Navigation"
 
+[locale]
+
+test="en"
+translations=PoolStringArray( "res://HUD/translation.en.translation", "res://HUD/translation.es.translation" )
+translation_remaps={
+}
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

@@ -20,6 +20,7 @@ func _ready():
 		set_collision_mask_bit(3,damageTrigger)
 
 func sendInfo():
+	text = tr(text)
 	get_parent().write(text)
 	get_parent().sendObjective(condition, conditionAmount)
 
