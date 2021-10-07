@@ -1,5 +1,7 @@
 extends Node2D
 
+var Zombi = preload("res://Characters/zombi/zombi.tscn")
+
 var zombiCap : int = 60
 export var limitSpawnTimes: bool = false
 export(int,1, 10) var roundsLimit = 1
@@ -11,17 +13,17 @@ export(int,1, 50) var amount1 = 1
 export(String,"none" ,"zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy2 = "none"
 export(int,1, 50) var amount2 = 1
 
+var zombiType = {
+	"zombi" : preload("res://Characters/zombi/zombi.tscn"),
+	"zombiBig" : preload("res://Characters/zombi/zombiBig.tscn"),
+	"zombiFast" : preload("res://Characters/zombi/zombiFast.tscn"),
+	"zombiExplosive" : preload("res://Characters/zombi/zombiExplosive.tscn"),
+}
+
 export(bool) var continuous = false
 export(bool) var turnOnAllDied = false
 export(bool) var autoStart = false
 export(float, 1.0, 60.0, 1.0) var timerTime 
-
-var enemiesDir = {
-	"zombi" :  "res://Characters/zombi/zombi.tscn",
-	"zombiBig" : "res://Characters/zombi/zombiBig.tscn",
-	"zombiFast" : "res://Characters/zombi/zombiFast.tscn",
-	"zombiExplosive" : "res://Characters/zombi/zombiExplosive.tscn",
-}
 
 var enemies : Array 
 var enemiesAmount : Array
@@ -50,10 +52,13 @@ func spawn():
 		var enemy = enemies[i]
 		if (enemy != "none"):
 			for o in enemiesAmount[i]:
+				var delay = rand_range(0.1, 0.3)
+				yield(get_tree().create_timer(delay),"timeout")
 				totalZombies += 1
 				if totalZombies > zombiCap:
 					return
-				var Zombi = load( enemiesDir[enemies[i]] )
+#				var Zombi = load( enemiesDir[enemies[i]] )
+				var Zombi = zombiType[enemies[i]]
 				var zombi = Zombi.instance()
 				get_parent().call_deferred("add_child", zombi)
 				var randomness = Vector2(rand_range(-randomRange, randomRange), rand_range(-randomRange, randomRange))

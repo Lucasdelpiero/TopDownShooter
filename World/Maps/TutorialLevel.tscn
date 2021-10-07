@@ -116,7 +116,7 @@ rotation = 3.14159
 [node name="Barrels" type="Node" parent="Props"]
 
 [node name="ExplosiveBarrel" parent="Props/Barrels" instance=ExtResource( 10 )]
-position = Vector2( 2737.61, 81.6908 )
+position = Vector2( -99.0112, -1942.43 )
 rotation = -1.83259
 
 [node name="ExplosiveBarrel2" parent="Props/Barrels" instance=ExtResource( 10 )]
@@ -158,7 +158,6 @@ position = Vector2( 153.045, -1657.99 )
 survive = true
 timeSurvive = 25.0
 withMelee = true
-meleeAmount = 5
 withExplosion = true
 
 [node name="Bullets" type="Node" parent="."]
