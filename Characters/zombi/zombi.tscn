@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Characters/zombi/Zombi.gd" type="Script" id=1]
+[ext_resource path="res://Characters/zombi/zombi.gd" type="Script" id=1]
 [ext_resource path="res://Characters/zombi/WanderController.tscn" type="PackedScene" id=19]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Characters/zombi/Zombie Sound.wav" type="AudioStream" id=21]
