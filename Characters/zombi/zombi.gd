@@ -1,4 +1,24 @@
 extends KinematicBody2D
+#NOT USED ANYMORE
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
 
 const Blood = preload("res://Characters/zombi/blood.tscn")
 const bullet = preload("res://Characters/Player/Top_Down_Survivor/bullet.png")
@@ -7,8 +27,6 @@ const BloodParticle = preload("res://Characters/zombi/Blood/BloodParticles.tscn"
 const BloodStain = preload("res://Characters/zombi/Blood/BloodStain.tscn")
 const Corpse = preload("res://Characters/zombi/Animations/ZombiCorpse.tscn")
 const ScoreBubble = preload("res://Effects/ScoreBubble.tscn")
-
-
 
 onready var wanderController = $WanderController
 onready var audioStreamPlayer = $AudioStreamPlayer
@@ -28,11 +46,19 @@ signal fillPlayerAmmo()
 signal healPlayer(time)
 
 
+#const soundsHitted = [
+#	"bullet_hit_body_0",
+#	"bullet_hit_body_1",
+#	"bullet_hit_body_2",
+#	"bullet_hit_body_3",
+#]
 const soundsHitted = [
-	"bullet_hit_body_0",
-	"bullet_hit_body_1",
-	"bullet_hit_body_2",
-	"bullet_hit_body_3",
+	preload("res://Characters/zombi/Audio/bullet_hit_body_0.wav"),
+	preload("res://Characters/zombi/Audio/bullet_hit_body_1.wav"),
+	preload("res://Characters/zombi/Audio/bullet_hit_body_2.ogg"),
+	preload("res://Characters/zombi/Audio/bullet_hit_body_2.wav"),
+	preload("res://Characters/zombi/Audio/bullet_hit_body_3.wav"),
+	preload("res://Characters/zombi/Audio/bullet_hit_body_4.wav"),
 ]
 
 enum{
@@ -243,7 +269,8 @@ func death(area):
 		corpse.push()
 
 func soundHitted():
-	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
+#	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
+	audioHitted.stream = soundsHitted[randi() % soundsHitted.size()]
 	audioHitted.play()
 
 # Path Finding

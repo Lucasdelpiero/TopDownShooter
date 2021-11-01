@@ -96,6 +96,7 @@ __meta__ = {
 
 [node name="zombi" parent="Zombies" instance=ExtResource( 13 )]
 position = Vector2( 1764.5, -3577.38 )
+collision_layer = 2147483652
 
 [node name="zombi2" parent="Zombies" instance=ExtResource( 13 )]
 position = Vector2( 752.945, -3278.67 )

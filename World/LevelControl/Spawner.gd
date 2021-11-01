@@ -58,8 +58,8 @@ func spawn():
 				if totalZombies > zombiCap:
 					return
 #				var Zombi = load( enemiesDir[enemies[i]] )
-				var Zombi = zombiType[enemies[i]]
-				var zombi = Zombi.instance()
+				var ZombiNew = zombiType[enemies[i]]
+				var zombi = ZombiNew.instance()
 				get_parent().call_deferred("add_child", zombi)
 				var randomness = Vector2(rand_range(-randomRange, randomRange), rand_range(-randomRange, randomRange))
 				zombi.global_position = global_position + randomness
