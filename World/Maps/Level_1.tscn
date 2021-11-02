@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=2]
+
+[node name="BaseLevel" instance=ExtResource( 1 )]
+
+[node name="PickeableWeapon" parent="Props" index="0" instance=ExtResource( 2 )]
+position = Vector2( 517.992, -264.382 )
+
+[node name="PickeableWeapon2" parent="Props" index="1" instance=ExtResource( 2 )]
+position = Vector2( -713.08, -674.739 )
+weapon = "Pistol"
+
+[node name="PickeableWeapon3" parent="Props" index="2" instance=ExtResource( 2 )]
+position = Vector2( 256, -883.282 )
+weapon = "Shotgun"
+
+[node name="Player" parent="." index="5"]
+position = Vector2( 8, 436 )

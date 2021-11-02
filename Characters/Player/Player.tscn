@@ -1284,10 +1284,8 @@ radius = 61.606
 [sub_resource type="CircleShape2D" id=19]
 radius = 60.4062
 
-[node name="Player" type="KinematicBody2D" groups=[
-"Player",
-]]
-z_index = 10
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
+z_index = 20
 z_as_relative = false
 collision_layer = 65
 collision_mask = 260
@@ -1304,7 +1302,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
 position = Vector2( 62, -16 )
-z_index = 10
+z_index = 20
 z_as_relative = false
 texture = ExtResource( 26 )
 hframes = 20
@@ -1316,9 +1314,7 @@ exclude_parent = false
 cast_to = Vector2( 150, 0 )
 collision_mask = 4
 
-[node name="Weapons" type="Node2D" parent="Position2D" groups=[
-"Weapons",
-]]
+[node name="Weapons" type="Node2D" parent="Position2D" groups=["Weapons"]]
 script = ExtResource( 27 )
 mainP = NodePath("../..")
 rayCastWallP = NodePath("../RayCastWall")
@@ -1336,9 +1332,7 @@ missDegree = 0
 [node name="Shotgun" parent="Position2D/Weapons" instance=ExtResource( 23 )]
 damage = 65
 
-[node name="Knife" parent="Position2D" groups=[
-"Melee",
-] instance=ExtResource( 9 )]
+[node name="Knife" parent="Position2D" groups=["Melee"] instance=ExtResource( 9 )]
 visible = false
 
 [node name="Hitbox" parent="Position2D/Knife" index="0"]
