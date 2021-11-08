@@ -10,6 +10,14 @@ var image = { #Images for the weapons
 	"default": "res://World/Objects/Weapons/256rifle.png",
 }
 
+var path = {
+	"Rifle" : "res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn",
+	"Shotgun" : "res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn",
+	"Pistol" :"res://Characters/Player/Top_Down_Survivor/pistol/Pistol.tscn",
+	"SuperRifle" : "res://Characters/Player/Top_Down_Survivor/rifle/SuperRifle.tscn",
+	"SuperShotgun" : "res://Characters/Player/Top_Down_Survivor/shotgun/SuperShotgun.tscn",
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var weapons = get_children()

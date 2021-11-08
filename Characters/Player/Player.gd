@@ -19,6 +19,7 @@ var minBulletSpdBonus = 0.3
 var maxBulletSpdBonus = 1000
 
 signal updateHealthHUD(health)
+signal grabAmmoSignal(amount)
 
 onready var animationPlayer = $Position2D/AnimationPlayer
 onready var position2D = $Position2D
@@ -153,8 +154,8 @@ func grabWeapon(path):
 	var currentWeapons = weapons.get_children()
 	for weapon in currentWeapons:
 		if path == str(weapon.filename):
-			var t = str(weapon.type)
-			grabAmmo(t, 60)
+			var t = str(weapon.name)
+			grabAmmo(t, 60)  #If has the weapon give more ammo
 			return
 	# If not in inventory add weapon
 	var wp = weaponPicked.instance()
@@ -163,8 +164,14 @@ func grabWeapon(path):
 	wp.global_position = get_node(paths).global_position
 	weapons.updateWeaponsCarried()
 
-func grabAmmo(type, amount):
-	get_node("Position2D/Weapons/" +type).pickedAmmo(amount)
+func grabAmmo(type, amount): 
+	var wp = find_node(type, true, false)
+	var currentWeapons = weapons.get_children()
+	for weapon in currentWeapons:
+		if weapon.name == type:
+			wp.pickedAmmo(amount)
+
+#	wp.pickedAmmo(amount)
 
 func updateState():
 	updateAnimations()

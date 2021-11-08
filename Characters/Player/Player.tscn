@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -22,8 +22,6 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/knife/knife_move.png" type="Texture" id=20]
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_melee.png" type="Texture" id=22]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/Shotgun.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/Rifle.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=26]
 [ext_resource path="res://Characters/Player/Weapons.gd" type="Script" id=27]
@@ -1322,15 +1320,7 @@ animationPlayerP = NodePath("../AnimationPlayer")
 position2DP = NodePath("..")
 audioGunsP = NodePath("../../AudioGuns")
 
-[node name="Rifle" parent="Position2D/Weapons" instance=ExtResource( 24 )]
-
 [node name="Pistol" parent="Position2D/Weapons" instance=ExtResource( 8 )]
-visible = true
-position = Vector2( 149.142, 44.0266 )
-missDegree = 0
-
-[node name="Shotgun" parent="Position2D/Weapons" instance=ExtResource( 23 )]
-damage = 65
 
 [node name="Knife" parent="Position2D" groups=["Melee"] instance=ExtResource( 9 )]
 visible = false
