@@ -10,13 +10,11 @@ radius = 80.0
 resource_local_to_scene = true
 radius = 3292.98
 
-[node name="zombiExplosive" groups=[
-"zombiExplosive",
-] instance=ExtResource( 1 )]
+[node name="zombiExplosive" groups=["zombiExplosive"] instance=ExtResource( 1 )]
 modulate = Color( 0.917647, 0.290196, 0.290196, 1 )
 health = 1
 explosive = true
-type = "zombiExplosive"
+type = " zombiExplosive"
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 1 )

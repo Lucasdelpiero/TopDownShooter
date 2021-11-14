@@ -177,7 +177,6 @@ position = Vector2( -265.992, -1182.25 )
 z_as_relative = false
 collision_mask = 1
 text = "Press {c}[Right click]{cc} to use a Melee Attack"
-playerTrigger = true
 condition = "melee"
 
 [node name="Pan3" parent="Tutorial" instance=ExtResource( 8 )]
@@ -185,28 +184,24 @@ position = Vector2( -245.833, -2311.14 )
 z_as_relative = false
 collision_mask = 1
 text = "BREAD"
-playerTrigger = true
 
 [node name="Pan2" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( 1508.16, -2472.64 )
 z_as_relative = false
 collision_mask = 1
 text = "Pan con {c}dulce de leche{cc} ess {c} RICOLINO {cc}"
-playerTrigger = true
 condition = "melee"
 conditionAmount = 5
 
 [node name="Alfonso" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( -1830.45, -1122.9 )
 text = "¡¡ALFONSO!! {c}VOLVEEE{cc}"
-playerTrigger = true
 condition = "explosion"
 conditionAmount = 2
 
 [node name="Alfonso2" parent="Tutorial" instance=ExtResource( 8 )]
 position = Vector2( -1420.65, -2868.94 )
 text = "¡¡ALFONSO!!"
-playerTrigger = true
 condition = "explosion"
 conditionAmount = 6
 

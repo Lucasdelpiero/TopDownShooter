@@ -1,24 +1,4 @@
 extends KinematicBody2D
-#NOT USED ANYMORE
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-
 
 const Blood = preload("res://Characters/zombi/blood.tscn")
 const bullet = preload("res://Characters/Player/Top_Down_Survivor/bullet.png")
@@ -80,10 +60,13 @@ export var explosive = false
 export var rotationSmooth = 0.125
 var usePathfinding = false
 var timeToPathfind : float = 1.0
-export var type : String = ""
+export(String, "zombi, zombiBig, zombiFast, zombiExplosive") var type = "zombi"
 var attacking = false
 var staggered = false
 var bleeding = false
+
+export var customDamage = false
+export var damage = 10
 
 export var path : = PoolVector2Array() setget set_path
 
@@ -104,6 +87,8 @@ func _ready():
 	sprite.rotation_degrees = rand_range(-180, 180)
 	sprite.frame = rand_range(0, 8)
 	zombiSoundTimer.start(rand_range(4,40))
+	if customDamage:
+		$Hitbox.damage = damage
 
 
 func _physics_process(delta):
@@ -203,7 +188,6 @@ func _on_HurtBox_area_entered(area):
 # warning-ignore:return_value_discarded
 				connect("healPlayer", player, "bonusHeal")
 				emit_signal("fillPlayerAmmo")
-				emit_signal("healPlayer", 0.5)
 			death(area)
 
 func bleed(area):

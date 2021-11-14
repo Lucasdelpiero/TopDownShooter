@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Characters/zombi/zombi.gd" type="Script" id=1]
+[ext_resource path="res://Characters/zombi/Zombi.gd" type="Script" id=1]
 [ext_resource path="res://Characters/zombi/WanderController.tscn" type="PackedScene" id=19]
 [ext_resource path="res://World/Objects/Hitbox.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Characters/zombi/Zombie Sound.wav" type="AudioStream" id=21]
@@ -171,12 +171,6 @@ z_as_relative = false
 collision_layer = 2147483650
 collision_mask = 2147483651
 script = ExtResource( 1 )
-MAX_SPEED = 1200
-ACCELERATION = 400
-FRICTION = 1200
-health = 100
-rotationSmooth = 0.4
-type = "zombi"
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 22 )

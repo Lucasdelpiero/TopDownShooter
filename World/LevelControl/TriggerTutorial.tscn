@@ -7,10 +7,11 @@
 extents = Vector2( 322.561, 222.742 )
 
 [node name="TriggerTutorial" type="Area2D"]
-monitorable = false
 collision_layer = 0
 collision_mask = 0
+monitorable = false
 script = ExtResource( 1 )
+playerTrigger = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 500

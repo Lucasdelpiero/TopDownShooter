@@ -7,11 +7,11 @@ func _ready():
 	yield(get_tree().create_timer(0.1), "timeout")
 	obstacles = get_tree().get_nodes_in_group("obstacles")
 	var tiles = get_used_cells()
-#	for i in obstacles.size():
-#		var localTiles = map_to_world(tiles[i])
-#		var globalTiles = to_global(localTiles)
-#		print("tiles: " + str(globalTiles))
-#		print("position car: " + str((obstacles[i].global_position)))
+	for i in obstacles.size():
+		var localTiles = map_to_world(tiles[i])
+		var globalTiles = to_global(localTiles)
+		print("tiles: " + str(globalTiles))
+		print("position car: " + str((obstacles[i].global_position)))
 
 	pass # Replace with function body.
 

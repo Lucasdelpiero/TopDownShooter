@@ -67,6 +67,7 @@ func _process(_delta):
 	pass
 
 func updateScore(name, byMelee, byExplosion, pos):
+
 	var base = dictionary[name] 
 	individualScore = base + base * int(byMelee) * bonusByMelee + base * int(byExplosion) * bonusByExplosion
 	comboScore += individualScore
