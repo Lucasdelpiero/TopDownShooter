@@ -11,9 +11,9 @@ resource_local_to_scene = true
 radius = 3292.98
 
 [node name="zombiFast" groups=["zombiFast"] instance=ExtResource( 1 )]
-MAX_SPEED = 850
+MAX_SPEED = 1600
 ACCELERATION = 600
-type = " zombiFast"
+type = "zombiFast"
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0, 0, 0, 1 )

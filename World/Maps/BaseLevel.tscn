@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Objectives.tscn" type="PackedScene" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=8]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 1
+octaves = 6
+
+[sub_resource type="NoiseTexture" id=2]
+seamless = true
+noise = SubResource( 1 )
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,6 +30,20 @@ margin_bottom = 3423.0
 texture = ExtResource( 5 )
 stretch_mode = 2
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DarkBackground" type="TextureRect" parent="TileMaps"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+margin_left = -7277.79
+margin_top = -6212.94
+margin_right = 8621.21
+margin_bottom = 6699.06
+texture = SubResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

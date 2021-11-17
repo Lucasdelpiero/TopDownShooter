@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://World/Objects/Destructible.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Decoration/door.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 127.491, 23.0464 )
+extents = Vector2( 126.583, 7.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 127.5, 22.25 )
 
 [node name="Door" type="StaticBody2D"]
 z_index = 20
@@ -15,7 +18,7 @@ script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( 0, 92.6022 )
+position = Vector2( 0.75, 92 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -27,6 +30,7 @@ collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
-position = Vector2( 0, 92.6022 )
-shape = SubResource( 1 )
+position = Vector2( -3.8147e-06, 91.75 )
+shape = SubResource( 2 )
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

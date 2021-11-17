@@ -32,9 +32,6 @@ onready var remoteTransform = $RemoteTransform2D
 onready var spawnWeapons = $Position2D/SpawnWeapons
 
 onready var weapons = $Position2D/Weapons
-onready var rifle = get_node("Position2D/Weapons/Rifle")
-onready var pistol = get_node("Position2D/Weapons/Pistol")
-onready var shotgun = get_node("Position2D/Weapons/Shotgun")
 onready var knife = $Position2D/Knife
 onready var knifeCollision = $Position2D/Knife/Hitbox/CollisionShape2D
 onready var rayCastWall = $Position2D/RayCastWall

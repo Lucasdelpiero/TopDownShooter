@@ -20,8 +20,9 @@ defaultColor = Color( 0.898039, 0.901961, 0.184314, 1 )
 layer = 5
 
 [node name="TutoText" parent="CanvasLayer" instance=ExtResource( 3 )]
+anchor_top = 1.0
 margin_left = 26.4726
-margin_top = 426.035
+margin_top = -173.965
 margin_right = -23.5274
 margin_bottom = -49.965
 size_flags_horizontal = 1
