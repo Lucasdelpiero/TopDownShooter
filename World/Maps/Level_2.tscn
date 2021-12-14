@@ -86,14 +86,17 @@ position = Vector2( 560.309, -6876.9 )
 [node name="zombi9" parent="Zombies" index="15" instance=ExtResource( 5 )]
 position = Vector2( 50.75, -5149.71 )
 
-[node name="zombiFast" parent="Zombies" index="16" instance=ExtResource( 7 )]
+[node name="zombi17" parent="Zombies" index="16" instance=ExtResource( 5 )]
+position = Vector2( 161.266, -6867.9 )
+
+[node name="zombiFast" parent="Zombies" index="17" instance=ExtResource( 7 )]
 position = Vector2( -1663.6, -4120.45 )
 MAX_SPEED = 1200
 
-[node name="zombiFast3" parent="Zombies" index="17" instance=ExtResource( 7 )]
+[node name="zombiFast3" parent="Zombies" index="18" instance=ExtResource( 7 )]
 position = Vector2( -557.785, -3886.31 )
 
-[node name="zombiFast2" parent="Zombies" index="18" instance=ExtResource( 7 )]
+[node name="zombiFast2" parent="Zombies" index="19" instance=ExtResource( 7 )]
 position = Vector2( -2752.17, -5012.71 )
 
 [node name="PickeableWeapon" parent="Props" index="0" instance=ExtResource( 2 )]
