@@ -11,3 +11,9 @@ SURVIVE_X_SECONDS,Survive for %s seconds,Sobrevive por %s segundos
 KILL_ALL_ZOMBIES,Kill All Zombies,Mata a todos los zombis
 KILL_IN_MELEE,Kill %s zombies in melee: %s/%s ,Mata %s zombis a melee: %s/%s
 KILL_WITH_EXPLOSION,Kill %s zombies with an explosion: %s/%s,Mata %s zombis usando explosiones %s/%s
+,,
+T_SHOOT,Press {c}LEFT CLICK{cc} to shoot.,Presiona {c}CLICK IZQUIERDO{cc} para disparar.
+T_RELOAD,{c}RELOAD{cc} by pressing {c}R{cc}\nor {c}SHOOT{cc} when you have {c}0 bullets{cc}.,{c}RECARGA{cc} presionando {c}R{cc}\n o {c}DISPARA{cc} cuando te queden {c}0 balas{cc}.
+T_MELEE,{c}RIGHT CLICK{cc} to {c}MELEE{cc} attack an enemy.,{c}CLICK DERECHO{cc} para atacar {c}CUERPO A CUERPO{cc}
+T_MELEE_BONUS,Killing by {c}MELEE{cc} will {c}HEAL{cc} you \nand {c}reload{cc} your current weapon.,Matando {c}CUERPO A CUERPO{cc} te {c}CURARÁ{cc} y\n{c}RECARGARÁ{cc} tu arma.
+T_DOOR,To break doors hit it by {c}MELEE{cc} or \n{c}SHOOT{cc} at it.,Rompe puertas golpeandolas {c}CUERPO A CUERPO{cc} o \n{c}DISPARALE{cc}.

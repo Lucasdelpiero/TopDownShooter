@@ -59,11 +59,11 @@ tile_data = PoolIntArray( -2490434, 0, 0, -2490433, 0, 0, -2490432, 0, 0, -24904
 
 [node name="DecorationTile" parent="TileMaps" instance=ExtResource( 6 )]
 
-[node name="Doors" type="Node" parent="TileMaps"]
+[node name="Doors" type="Node2D" parent="TileMaps"]
 
-[node name="Zombies" type="Node" parent="."]
+[node name="Zombies" type="Node2D" parent="."]
 
-[node name="Props" type="Node" parent="."]
+[node name="Props" type="Node2D" parent="."]
 
 [node name="Control" type="Node" parent="."]
 

@@ -17,7 +17,6 @@ margin_top = -8707.0
 margin_right = 11923.0
 
 [node name="DarkBackground" parent="TileMaps" index="1"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 margin_left = -4738.0
 margin_top = -8707.0
 margin_right = 11923.0
@@ -66,29 +65,27 @@ rotation = -1.57079
 [node name="TriggerTutorial" parent="Control/Tutorial" index="1" instance=ExtResource( 4 )]
 position = Vector2( 832, 317 )
 scale = Vector2( 1, 1.949 )
-text = "Press {c}LEFT CLICK{cc} to shoot."
+text = "T_SHOOT"
 
 [node name="TriggerTutorial2" parent="Control/Tutorial" index="2" instance=ExtResource( 4 )]
 position = Vector2( 3254.58, -1412.77 )
 scale = Vector2( 1.763, 1 )
-text = "{c}RELOAD{cc} by pressing {c}R{cc} 
-or {c}SHOOT{cc} when you have {c}0 bullets{cc}"
+text = "T_RELOAD"
 
 [node name="TriggerTutorial3" parent="Control/Tutorial" index="3" instance=ExtResource( 4 )]
 position = Vector2( 4419.9, -3358.54 )
 scale = Vector2( 1.763, 2.694 )
-text = "{c}RIGHT CLICK{cc} to {c}MELEE{cc} attack an enemy."
+text = "T_MELEE"
 
 [node name="TriggerTutorial4" parent="Control/Tutorial" index="4" instance=ExtResource( 4 )]
 position = Vector2( 5977.64, -4575.85 )
 scale = Vector2( 2.57, 1 )
-text = "Killing by {c}MELEE{cc} will {c}HEAL{cc} you 
-and {c}reload{cc} your current. weapon"
+text = "T_MELEE_BONUS"
 
 [node name="TriggerTutorial5" parent="Control/Tutorial" index="5" instance=ExtResource( 4 )]
 position = Vector2( 5992, -6640 )
 scale = Vector2( 3.11953, -3.2468 )
-text = "To break doors, hit it by {c}MELEE{cc} or {c}SHOOT{cc} at it."
+text = "T_DOOR"
 
 [node name="Objectives" parent="." index="4"]
 finishAtCompletion = false

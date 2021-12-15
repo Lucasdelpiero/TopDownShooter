@@ -16,7 +16,7 @@ export var weaponRange = 2000
 
 export var bulletsxFrame = 3
 
-var distanceToBendBullet = 400
+var distanceToBendBullet = 100
 var minBulletSpdBonus = 0.3
 var maxBulletSpdBonus = 1000
 
@@ -48,7 +48,7 @@ func shoot(vel : Vector2, rot):
 		var miss = deg2rad(missDegree)
 #		var shotDirection = position2D.rotation + rand_range(- miss, miss)
 		var baseDirection = rot
-		if global_position.distance_to(get_global_mouse_position()) > distanceToBendBullet :
+		if global_position.distance_to(get_global_mouse_position()) > distanceToBendBullet : #Corrects the angle to shoot to the enemy
 			baseDirection = bullet.get_angle_to(get_global_mouse_position() + velocity / 10 ) + rand_range(- miss, miss)
 		var shotDirection = baseDirection + rand_range(- miss, miss)
 		bullet.direction = shotDirection

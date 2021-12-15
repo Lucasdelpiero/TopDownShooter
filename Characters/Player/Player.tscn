@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/PlayerRifleWalk.tres" type="Animation" id=2]
@@ -23,7 +23,6 @@
 [ext_resource path="res://World/Objects/HurtBox.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_melee.png" type="Texture" id=22]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/shotgun/shotgun_melee.png" type="Texture" id=25]
-[ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/rifle_move.png" type="Texture" id=26]
 [ext_resource path="res://Characters/Player/Weapons.gd" type="Script" id=27]
 
 [sub_resource type="Animation" id=1]
@@ -1299,11 +1298,11 @@ __meta__ = {
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 62, -16 )
+position = Vector2( 28.4204, -11.4204 )
 z_index = 20
 z_as_relative = false
-texture = ExtResource( 26 )
-hframes = 20
+texture = ExtResource( 5 )
+hframes = 3
 
 [node name="RayCastWall" type="RayCast2D" parent="Position2D"]
 position = Vector2( 0, 22.92 )
@@ -1321,6 +1320,8 @@ position2DP = NodePath("..")
 audioGunsP = NodePath("../../AudioGuns")
 
 [node name="Pistol" parent="Position2D/Weapons" instance=ExtResource( 8 )]
+visible = true
+position = Vector2( 142.528, 42.7249 )
 
 [node name="Knife" parent="Position2D" groups=["Melee"] instance=ExtResource( 9 )]
 visible = false
@@ -1330,7 +1331,6 @@ collision_mask = 262
 damage = 100
 
 [node name="SpawnWeapons" type="Position2D" parent="Position2D"]
-visible = false
 
 [node name="Rifle" type="Position2D" parent="Position2D/SpawnWeapons"]
 visible = false
@@ -1338,7 +1338,7 @@ position = Vector2( 201.045, 30.204 )
 
 [node name="Pistol" type="Position2D" parent="Position2D/SpawnWeapons"]
 visible = false
-position = Vector2( 149.132, 45.306 )
+position = Vector2( 139.618, 43.8195 )
 
 [node name="Shotgun" type="Position2D" parent="Position2D/SpawnWeapons"]
 visible = false
@@ -1348,7 +1348,6 @@ position = Vector2( 197, 31 )
 root_node = NodePath("../..")
 autoplay = "RifleMove"
 playback_process_mode = 0
-playback_speed = 4.0
 anims/KnifeIdle = SubResource( 1 )
 anims/KnifeMelee = SubResource( 2 )
 anims/KnifeMove = SubResource( 3 )
