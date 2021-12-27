@@ -161,6 +161,7 @@ func grabWeapon(path):
 	var paths = str(get_path_to(spawnWeapons)) + "/" + str(wp.type)
 	wp.global_position = get_node(paths).global_position
 	weapons.updateWeaponsCarried()
+	weapons.selectWeapon(weapons.weaponsCarried.size() - 1)
 
 func grabAmmo(type, amount): 
 	var wp = find_node(type, true, false)

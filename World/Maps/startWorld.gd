@@ -8,7 +8,7 @@ var OptionsLayer = preload("res://HUD/Main Menu/Options.tscn")
 onready var zombies = []
 onready var player = find_node("Player")
 onready var navPolygon = "res://Characters/zombi/zombiNavigationPolygon.tres"
-onready var background = $TileMaps/DarkBackground
+#onready var background = $TileMaps/DarkBackground
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalControl.showMouse(false)

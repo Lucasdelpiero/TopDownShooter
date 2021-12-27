@@ -17,3 +17,7 @@ T_RELOAD,{c}RELOAD{cc} by pressing {c}R{cc}\nor {c}SHOOT{cc} when you have {c}0 
 T_MELEE,{c}RIGHT CLICK{cc} to {c}MELEE{cc} attack an enemy.,{c}CLICK DERECHO{cc} para atacar {c}CUERPO A CUERPO{cc}
 T_MELEE_BONUS,Killing by {c}MELEE{cc} will {c}HEAL{cc} you \nand {c}reload{cc} your current weapon.,Matando {c}CUERPO A CUERPO{cc} te {c}CURARÁ{cc} y\n{c}RECARGARÁ{cc} tu arma.
 T_DOOR,To break doors hit it by {c}MELEE{cc} or \n{c}SHOOT{cc} at it.,Rompe puertas golpeandolas {c}CUERPO A CUERPO{cc} o \n{c}DISPARALE{cc}.
+T_BARREL_PUSH,Press {c}RIGHT CLICK{cc} to push an explosive barrel.,Presiona {c}CLICK DERECHO{cc} para empujar un barril explosivo.
+T_BARREL_SHOOT,{c}SHOOT{cc} at the barrels to explode them.,{c}DISPARA{cc} a los barriles para hacerlos explotar.
+T_BARREL_COLLISION,"When a barrel {c}COLLIDE{cc} with a surface\ncan create a chain reaction.
+",Cuando un barril {c}CHOCA{cc} con alguna superficie\npuede crear una reacción en cadena.
