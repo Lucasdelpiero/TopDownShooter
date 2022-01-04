@@ -3,6 +3,8 @@
 [ext_resource path="res://Characters/zombi/Animations/zombi_dead.png" type="Texture" id=1]
 
 [node name="ZombiDead" type="Position2D"]
+z_index = 10
+z_as_relative = false
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 26.9087 )

@@ -20,4 +20,4 @@ T_DOOR,To break doors hit it by {c}MELEE{cc} or \n{c}SHOOT{cc} at it.,Rompe puer
 T_BARREL_PUSH,Press {c}RIGHT CLICK{cc} to push an explosive barrel.,Presiona {c}CLICK DERECHO{cc} para empujar un barril explosivo.
 T_BARREL_SHOOT,{c}SHOOT{cc} at the barrels to explode them.,{c}DISPARA{cc} a los barriles para hacerlos explotar.
 T_BARREL_COLLISION,"When a barrel {c}COLLIDE{cc} with a surface\ncan create a chain reaction.
-",Cuando un barril {c}CHOCA{cc} con alguna superficie\npuede crear una reacción en cadena.
+",Cuando un barril {c}CHOCA{cc} con alguna superficie\puede crear una reacción en cadena.
