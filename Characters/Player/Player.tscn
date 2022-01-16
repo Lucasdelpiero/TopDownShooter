@@ -1287,8 +1287,8 @@ z_as_relative = false
 collision_layer = 65
 collision_mask = 260
 script = ExtResource( 1 )
-speed = 1800
-acceleration = 5000
+speed = 1600
+acceleration = 9000
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 __meta__ = {
