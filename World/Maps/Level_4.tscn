@@ -85,9 +85,17 @@ position = Vector2( -3720, -3072 )
 
 [node name="zombiBig" parent="Zombies" index="15" instance=ExtResource( 8 )]
 position = Vector2( -712, 3512 )
+z_index = 5
+MAX_SPEED = 800
+ACCELERATION = 400
+rotationSmooth = 0.125
 
 [node name="zombiBig2" parent="Zombies" index="16" instance=ExtResource( 8 )]
 position = Vector2( -312, 4248 )
+z_index = 5
+MAX_SPEED = 800
+ACCELERATION = 400
+rotationSmooth = 0.125
 
 [node name="PickeableWeapon" parent="Props" index="0" instance=ExtResource( 4 )]
 position = Vector2( 488, -1448 )

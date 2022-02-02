@@ -2,6 +2,7 @@ extends Node2D
 
 var Zombi = preload("res://Characters/zombi/zombi.tscn")
 
+export var spawnFrenzy : bool = false
 var zombiCap : int = 60
 export var limitSpawnTimes: bool = false
 export(int,1, 10) var roundsLimit = 1
@@ -60,9 +61,17 @@ func spawn():
 #				var Zombi = load( enemiesDir[enemies[i]] )
 				var ZombiNew = zombiType[enemies[i]]
 				var zombi = ZombiNew.instance()
-				get_parent().call_deferred("add_child", zombi)
+				getSpawnDirection().call_deferred("add_child", zombi)
 				var randomness = Vector2(rand_range(-randomRange, randomRange), rand_range(-randomRange, randomRange))
 				zombi.global_position = global_position + randomness
+				zombi.unfreeze()
+				zombi.frenzy = spawnFrenzy
+
+func getSpawnDirection(): 
+	var temp = get_tree().get_root().find_node("Zombies", true, false)
+	if (temp != null):
+		return temp
+	return get_parent()
 
 func getEnemyAmount():
 	return get_tree().get_nodes_in_group("zombi").size()

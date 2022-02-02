@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Top Down Shooter Project"
-run/main_scene="res://World/Maps/Level_4.tscn"
+run/main_scene="res://World/Maps/Level_5.tscn"
 config/icon="res://icon.png"
 
 [audio]

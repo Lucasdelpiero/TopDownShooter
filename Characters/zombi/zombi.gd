@@ -64,6 +64,7 @@ export(String, "zombi", "zombiBig", "zombiFast", "zombiExplosive") var type = "z
 var attacking = false
 var staggered = false
 var bleeding = false
+var frenzy = false # will chase player even outside sight
 
 export var customDamage = false
 export var damage = 10
@@ -92,6 +93,7 @@ func _ready():
 
 
 func _physics_process(delta):
+
 	match state:
 		IDLE:
 			seek_player()
@@ -114,6 +116,8 @@ func _physics_process(delta):
 		rayCast.set_cast_to( global_position.distance_to(player.global_position) * global_position.direction_to(player.global_position) )
 	
 func _process(delta):
+	if frenzy:
+		state = CHASE
 	match state:
 		CHASE:
 			chase_state(delta)
@@ -148,7 +152,6 @@ func seek_player():
 			state = CHASE
 #			wallCollide(false) ## activated so they dont stuck in walls
 
-
 func chase_state(delta):
 	player = playerDetectionZone.player
 	if player == null:
@@ -156,7 +159,7 @@ func chase_state(delta):
 		wallCollide(true) 
 		
 	else:
-		if rayCast.is_colliding():
+		if rayCast.is_colliding() and !frenzy:
 #		if usePathfinding:
 			if pathTimer.is_stopped():
 				get_path()
@@ -169,6 +172,9 @@ func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
 
+func unfreeze(): # If they spawn outside the screen they will not freeze
+	$VisibilityEnabler2D.process_parent = false
+	$VisibilityEnabler2D.physics_process_parent = false
 
 func _on_ZombiSound_timeout():
 	audioStreamPlayer.playing = true

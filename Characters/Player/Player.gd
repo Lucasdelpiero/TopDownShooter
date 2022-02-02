@@ -5,8 +5,8 @@ var Muzzle = preload("res://World/Objects/Muzzle.tscn")
 var PlayerCamera = preload("res://World/Camera.tscn")
 
 
-export var speed = 1200
-export var acceleration = 2500
+export var speed = 1600 #1200
+export var acceleration = 9000 #2500
 export(float, 0.01, 0.5) var idle_time = 0.1
 var canShoot = true
 var automatic = false
