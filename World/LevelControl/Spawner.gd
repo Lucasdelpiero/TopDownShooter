@@ -64,8 +64,8 @@ func spawn():
 				getSpawnDirection().call_deferred("add_child", zombi)
 				var randomness = Vector2(rand_range(-randomRange, randomRange), rand_range(-randomRange, randomRange))
 				zombi.global_position = global_position + randomness
-				zombi.unfreeze()
 				zombi.frenzy = spawnFrenzy
+				zombi.unfreeze()
 
 func getSpawnDirection(): 
 	var temp = get_tree().get_root().find_node("Zombies", true, false)

@@ -154,12 +154,12 @@ func seek_player():
 
 func chase_state(delta):
 	player = playerDetectionZone.player
-	if player == null:
+	if player == null and !frenzy:
 		state = IDLE
 		wallCollide(true) 
 		
 	else:
-		if rayCast.is_colliding() and !frenzy:
+		if rayCast.is_colliding():
 #		if usePathfinding:
 			if pathTimer.is_stopped():
 				get_path()
@@ -291,23 +291,23 @@ func set_path(value : PoolVector2Array) -> void :
 	set_process(true)
 
 func get_path():
-	if player != null:
-		if rayCast.is_colliding():
-			usePathfinding = true
+	var playerPos = getPlayer()
+	if rayCast.is_colliding():
+		usePathfinding = true
 #			path = navigation.get_simple_path(global_position, player.global_position, true)
-			path = navigation.get_simple_path(global_position, player.global_position, false)
-			pathTimer.start(timeToPathfind) #0.2 originally
-		else:
-			usePathfinding = false
-			
+		path = navigation.get_simple_path(global_position, playerPos.global_position, false)
+		pathTimer.start(timeToPathfind) #0.2 originally
+	else:
+		usePathfinding = false
 
 func moveDirect():
-		var playerDirection = get_angle_to(player.get_global_position())
-		direction = lerp_angle(direction, playerDirection, rotationSmooth)
-		velocity.x = lerp(velocity.x, MAX_SPEED * cos(direction), 0.1)
-		velocity.y = lerp(velocity.y, MAX_SPEED * sin(direction), 0.1)
+	var playerPos = getPlayer()
+	var playerDirection = get_angle_to(playerPos.get_global_position())
+	direction = lerp_angle(direction, playerDirection, rotationSmooth)
+	velocity.x = lerp(velocity.x, MAX_SPEED * cos(direction), 0.1)
+	velocity.y = lerp(velocity.y, MAX_SPEED * sin(direction), 0.1)
 
-		velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity)
 
 func _on_PathFindTimer_timeout():
 	get_path()
@@ -323,5 +323,7 @@ func notAttacking():
 	attacking = false
 	animationPlayer.play("Move")
 
-
-
+func getPlayer(): # Only returns the player position if it is in the detection zone or if it is frenzy
+	if frenzy:
+		return get_tree().get_root().find_node("Player", true, false)
+	return player

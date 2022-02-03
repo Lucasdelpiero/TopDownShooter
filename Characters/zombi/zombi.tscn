@@ -173,7 +173,6 @@ collision_mask = 2147483651
 script = ExtResource( 1 )
 MAX_SPEED = 1400
 ACCELERATION = 600
-rotationSmooth = 0.325
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 22 )
@@ -212,7 +211,6 @@ shape = SubResource( 5 )
 disabled = true
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 23 )]
-visible = false
 collision_mask = 1
 monitorable = false
 
