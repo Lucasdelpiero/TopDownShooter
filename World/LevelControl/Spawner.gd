@@ -41,7 +41,8 @@ func _ready():
 	enemiesAmount = [amount0, amount1, amount2]
 	
 	timer.one_shot = not continuous
-
+	
+	
 	if not turnOnAllDied:
 		timer.wait_time = timerTime + 0.1
 	if autoStart:

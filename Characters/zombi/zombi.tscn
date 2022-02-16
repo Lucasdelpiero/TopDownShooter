@@ -169,7 +169,7 @@ polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.0
 z_index = 12
 z_as_relative = false
 collision_layer = 2147483650
-collision_mask = 2147483651
+collision_mask = 2147483649
 script = ExtResource( 1 )
 MAX_SPEED = 1400
 ACCELERATION = 600
@@ -195,6 +195,7 @@ shape = SubResource( 4 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 20 )]
 visible = false
+collision_layer = 2
 collision_mask = 1
 damage = 10
 

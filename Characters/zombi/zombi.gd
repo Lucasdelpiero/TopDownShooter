@@ -152,14 +152,15 @@ func seek_player():
 			state = CHASE
 #			wallCollide(false) ## activated so they dont stuck in walls
 
+var transitionToPath = false # If goes from going in a line to using a pathfinding
 func chase_state(delta):
 	player = playerDetectionZone.player
 	if player == null and !frenzy:
 		state = IDLE
 		wallCollide(true) 
-		
 	else:
 		if rayCast.is_colliding():
+
 #		if usePathfinding:
 			if pathTimer.is_stopped():
 				get_path()
@@ -167,6 +168,7 @@ func chase_state(delta):
 			move_along_path(moveDistance)
 		else:
 			moveDirect()
+#			transitionToPath = false
 
 func pick_random_state(state_list):
 	state_list.shuffle()
@@ -281,6 +283,9 @@ func move_along_path(distance : float) -> void:
 		startPoint = path[0]
 		path.remove(0)
 #	move_and_slide( Vector2(0.0, 0.0) )
+	if (velocity.x < 50 and velocity.y < 50):
+		print("trabado")
+		unStuck()
 	velocity = move_and_slide(velocity)
 
 
@@ -294,7 +299,7 @@ func get_path():
 	var playerPos = getPlayer()
 	if rayCast.is_colliding():
 		usePathfinding = true
-#			path = navigation.get_simple_path(global_position, player.global_position, true)
+#		path = navigation.get_simple_path(global_position, playerPos.global_position, true)
 		path = navigation.get_simple_path(global_position, playerPos.global_position, false)
 		pathTimer.start(timeToPathfind) #0.2 originally
 	else:
@@ -327,3 +332,14 @@ func getPlayer(): # Only returns the player position if it is in the detection z
 	if frenzy:
 		return get_tree().get_root().find_node("Player", true, false)
 	return player
+
+var unstucking = false
+func unStuck():
+	if !unstucking:
+		unstucking = true
+		$Collision.disabled = true
+#		softCollision.set_collision_mask_bit(5, false)
+		yield(get_tree().create_timer(1.0), "timeout")
+		$Collision.disabled = false
+#		softCollision.set_collision_mask_bit(5, true)
+		unstucking = false
