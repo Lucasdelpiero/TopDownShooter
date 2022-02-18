@@ -117,9 +117,7 @@ tracks/4/keys = {
 "values": [ true, false, true ]
 }
 
-[node name="Explosion" type="Node2D" groups=[
-"Explosion",
-]]
+[node name="Explosion" type="Node2D" groups=["Explosion"]]
 z_index = 20
 z_as_relative = false
 script = ExtResource( 1 )
@@ -150,6 +148,7 @@ __meta__ = {
 }
 
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
+collision_layer = 1024
 collision_mask = 7
 damage = 200
 

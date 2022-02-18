@@ -205,6 +205,7 @@ dash={
 2d_render/layer_8="Ammo"
 2d_render/layer_9="WallShootable"
 2d_render/layer_10="Navigation"
+2d_render/layer_11="Explosions"
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Walls"
@@ -215,6 +216,7 @@ dash={
 2d_physics/layer_8="Ammo"
 2d_physics/layer_9="WallShootable"
 2d_physics/layer_10="Navigation"
+2d_physics/layer_11="Explosions"
 
 [locale]
 

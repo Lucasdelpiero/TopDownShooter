@@ -12,7 +12,7 @@ func _ready():
 		var globalTiles = to_global(localTiles)
 		print("tiles: " + str(globalTiles))
 		print("position car: " + str((obstacles[i].global_position)))
-
+	
 	pass # Replace with function body.
 
 func deleteTiles(position : Vector2, extents : Vector2):
