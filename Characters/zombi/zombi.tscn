@@ -212,6 +212,7 @@ shape = SubResource( 5 )
 disabled = true
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 23 )]
+visible = false
 collision_mask = 1
 monitorable = false
 

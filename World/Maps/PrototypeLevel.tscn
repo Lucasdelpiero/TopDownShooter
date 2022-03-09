@@ -351,6 +351,39 @@ position = Vector2( 2933.15, -18700.7 )
 [node name="ExplosiveBarrel3" parent="Zombies/Group1" instance=ExtResource( 8 )]
 position = Vector2( 1874, -18954.7 )
 
+[node name="zombi7" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 3008, -11233.3 )
+
+[node name="zombi8" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 5109.72, -11201.6 )
+
+[node name="zombi36" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 5077.97, -10642.8 )
+
+[node name="zombi37" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 3065.14, -11614.3 )
+
+[node name="zombi38" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 2976.25, -10680.9 )
+
+[node name="zombi39" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 2017.46, -10858.7 )
+
+[node name="zombi40" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 4265.22, -10909.5 )
+
+[node name="zombi41" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 3732.74, -11087.3 )
+
+[node name="zombi42" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 3363.58, -10903.1 )
+
+[node name="zombi43" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 2017.46, -11334.9 )
+
+[node name="zombi44" parent="Zombies" instance=ExtResource( 5 )]
+position = Vector2( 2477.04, -11481.3 )
+
 [node name="zombi" parent="Zombies" instance=ExtResource( 5 )]
 position = Vector2( 1160, -1920 )
 
@@ -581,36 +614,3 @@ enemy0 = "zombi"
 amount0 = 6
 continuous = true
 timerTime = 3.0
-
-[node name="zombi" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3008, -11233.3 )
-
-[node name="zombi2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3732.74, -11087.3 )
-
-[node name="zombi" parent="zombi2" instance=ExtResource( 5 )]
-position = Vector2( 532.479, 177.789 )
-
-[node name="zombi2" parent="zombi2" instance=ExtResource( 5 )]
-position = Vector2( -1255.7, -394.034 )
-
-[node name="zombi" parent="zombi2/zombi2" instance=ExtResource( 5 )]
-position = Vector2( -459.581, 146.399 )
-
-[node name="zombi2" parent="zombi2/zombi2" instance=ExtResource( 5 )]
-position = Vector2( -459.581, 622.62 )
-
-[node name="zombi" parent="zombi2/zombi2/zombi2" instance=ExtResource( 5 )]
-position = Vector2( 3092.26, -342.879 )
-
-[node name="zombi2" parent="zombi2/zombi2/zombi2" instance=ExtResource( 5 )]
-position = Vector2( 3060.51, 215.887 )
-
-[node name="zombi3" parent="zombi2/zombi2/zombi2" instance=ExtResource( 5 )]
-position = Vector2( 1047.68, -755.603 )
-
-[node name="zombi4" parent="zombi2/zombi2/zombi2" instance=ExtResource( 5 )]
-position = Vector2( 958.79, 177.789 )
-
-[node name="zombi3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3363.58, -10903.1 )
