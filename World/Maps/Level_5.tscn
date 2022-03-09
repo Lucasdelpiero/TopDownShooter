@@ -229,7 +229,6 @@ weapon = "Shotgun"
 [node name="Objectives" parent="." index="4"]
 survive = true
 withMelee = true
-withExplosion = true
 
 [node name="Player" parent="." index="5"]
 position = Vector2( 152, 96 )

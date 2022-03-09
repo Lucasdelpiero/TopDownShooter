@@ -232,7 +232,7 @@ func _on_TimerSurvive_timeout():
 	checkCompletion()
 
 func shown(node, value : bool):
-	node.get_parent().get_parent().visible = value
+	node.get_parent().visible = value
 
 func updateDict():
 #	optionalObjectives = [withMelee ,withExplosion]

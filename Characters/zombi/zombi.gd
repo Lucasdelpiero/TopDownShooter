@@ -284,7 +284,7 @@ func move_along_path(distance : float) -> void:
 		path.remove(0)
 #	move_and_slide( Vector2(0.0, 0.0) )
 	if (velocity.x < 50 and velocity.y < 50):
-		print("trabado")
+#		print("trabado")
 		unStuck()
 	velocity = move_and_slide(velocity)
 
