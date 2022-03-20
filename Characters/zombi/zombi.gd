@@ -306,6 +306,7 @@ func get_path():
 		usePathfinding = false
 
 func moveDirect():
+	wallCollide(true) # what
 	var playerPos = getPlayer()
 	var playerDirection = get_angle_to(playerPos.get_global_position())
 	direction = lerp_angle(direction, playerDirection, rotationSmooth)
@@ -318,7 +319,8 @@ func _on_PathFindTimer_timeout():
 	get_path()
 
 func wallCollide(value : bool):
-	set_collision_mask_bit(2, value)
+	#set_collision_mask_bit(2, value)
+	pass
 
 func _on_Hitbox_body_entered(_body):
 	attacking = true
