@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://World/Objects/Destructible.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Decoration/door.png" type="Texture" id=2]
+[ext_resource path="res://World/LevelControl/NavToggle.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 126.583, 3.36359 )
@@ -31,5 +32,14 @@ collision_mask = 24
 visible = false
 position = Vector2( -3.8147e-06, 91.6588 )
 shape = SubResource( 2 )
+
+[node name="NavToggle" parent="." instance=ExtResource( 3 )]
+position = Vector2( -99, 91.6588 )
+
+[node name="NavToggle2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 88 )
+
+[node name="NavToggle3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96, 88 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

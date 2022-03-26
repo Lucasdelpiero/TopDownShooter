@@ -20,3 +20,6 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2( -0.394482, 91.7077 )
 shape = SubResource( 2 )
+
+[node name="NavToggle3" parent="." index="5"]
+position = Vector2( 96, 91.7077 )
