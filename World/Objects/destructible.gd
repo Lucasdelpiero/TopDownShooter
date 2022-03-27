@@ -20,7 +20,7 @@ func _on_Area2D_area_entered(_area):
 	queue_free()
 
 func _ready():
-	addToGroup()
+	navToggle = getNavGroup()
 	initialize()
 	if flipped:
 		$Sprite.scale.x = -1 * $Sprite.scale.x
@@ -46,11 +46,13 @@ func replaceWithNav():
 	
 	queue_free()
 
-func addToGroup():
+func getNavGroup():
 	var temp = get_children()
+	var newArr = []
 	for el in temp:
 		if(el.is_in_group("navToggle")):
-			navToggle.push_back(el)
+			newArr.push_back(el)
+	return newArr
 
 func getPos(object : Object):
 	return Vector2(int(object.global_position.x / GRID_SIZE), int(object.global_position.y / GRID_SIZE))

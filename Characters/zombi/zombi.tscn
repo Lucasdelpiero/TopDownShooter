@@ -260,7 +260,6 @@ cast_to = Vector2( 3500, 0 )
 collision_mask = 260
 
 [node name="PathFindTimer" type="Timer" parent="."]
-wait_time = 0.2
 one_shot = true
 
 [node name="StaggerTimer" type="Timer" parent="."]
@@ -269,6 +268,11 @@ one_shot = true
 
 [node name="BleedTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Node"]
+points = PoolVector2Array( 0, 0, 50, 50, 0, 0, 0, 0, 221.529, -350.505, 504.087, -440.987, 304.074, -585.441 )
 
 [connection signal="tree_entered" from="." to="." method="_on_zombi_tree_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

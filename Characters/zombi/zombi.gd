@@ -47,6 +47,8 @@ enum{
 	CHASE,
 	STAGGERED,
 }
+var GRID_SIZE = 128
+var DISTANCE_TO_REPATH = 800
 export var MAX_SPEED = 200
 export var ACCELERATION = 300
 export var FRICTION = 200
@@ -301,7 +303,11 @@ func get_path():
 		usePathfinding = true
 #		path = navigation.get_simple_path(global_position, playerPos.global_position, true)
 		path = navigation.get_simple_path(global_position, playerPos.global_position, false)
-		pathTimer.start(timeToPathfind) #0.2 originally
+		
+#		print(path.size())
+#		path = navToCell(path)
+		$Node/Line2D.points = path
+		pathTimer.start(timeToPathfind + rand_range(0.1, 0.5)) #0.2 originally
 	else:
 		usePathfinding = false
 
@@ -316,7 +322,22 @@ func moveDirect():
 	velocity = move_and_slide(velocity)
 
 func _on_PathFindTimer_timeout():
-	get_path()
+	if recalculatePath():
+		get_path()
+
+func recalculatePath():
+	if path.empty():
+		return true
+	var lastPoint = path[path.size() - 1]
+	print(path.size())
+	print(lastPoint)
+	var playerPos = getPlayer()
+	if playerPos == null:
+		return false
+	if playerPos.global_position.distance_to(lastPoint) > DISTANCE_TO_REPATH:
+#		print("REPATH")
+		return true
+	return false
 
 func wallCollide(value : bool):
 	#set_collision_mask_bit(2, value)
@@ -333,7 +354,9 @@ func notAttacking():
 func getPlayer(): # Only returns the player position if it is in the detection zone or if it is frenzy
 	if frenzy:
 		return get_tree().get_root().find_node("Player", true, false)
-	return player
+	if player != null:
+		return player
+	return get_tree().get_root().find_node("Player", true, false)
 
 var unstucking = false
 func unStuck():
@@ -345,3 +368,18 @@ func unStuck():
 		$Collision.disabled = false
 #		softCollision.set_collision_mask_bit(5, true)
 		unstucking = false
+
+# Makes the navigation paths go to the grids
+func navToCell(ppath):
+	var oldPath = ppath
+	var newPath = []
+	var offset = GRID_SIZE / 2 
+	for el in path:
+#		print("old: "+ str(el))
+		var new = Vector2(int(el.x / GRID_SIZE) * GRID_SIZE , int(el.y / GRID_SIZE) * GRID_SIZE )
+		newPath.push_back(new)
+#		print("new " + str(new) )
+		pass
+#	print(path)
+#	print(newPath)
+	return newPath
