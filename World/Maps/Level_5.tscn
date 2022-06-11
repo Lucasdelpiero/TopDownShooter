@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/LevelControl/Trigger.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://World/Objects/Decoration/Breakable Wall.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Characters/zombi/Animations/ZombiDead.tscn" type="PackedScene" id=9]
-[ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=10]
 
 [node name="Level_5" instance=ExtResource( 1 )]
 
@@ -32,25 +31,13 @@ tile_data = PoolIntArray( -3080165, 0, 131076, -3080164, 0, 196609, -3080163, 0,
 visible = false
 
 [node name="DoorLarge" parent="TileMaps/Doors" index="0" instance=ExtResource( 4 )]
-position = Vector2( 6362.32, 5755.68 )
+position = Vector2( 6368, 5755.68 )
 rotation = 3.14159
 flipped = true
 
 [node name="DoorLarge2" parent="TileMaps/Doors" index="1" instance=ExtResource( 4 )]
-position = Vector2( 6043.52, 5755.68 )
+position = Vector2( 6048, 5755.68 )
 rotation = -3.14159
-
-[node name="Door" parent="TileMaps/Doors" index="2" instance=ExtResource( 10 )]
-position = Vector2( 5864, 5344 )
-
-[node name="Door2" parent="TileMaps/Doors" index="3" instance=ExtResource( 10 )]
-position = Vector2( 6072, 5344 )
-
-[node name="Door3" parent="TileMaps/Doors" index="4" instance=ExtResource( 10 )]
-position = Vector2( 6288, 5344 )
-
-[node name="Door4" parent="TileMaps/Doors" index="5" instance=ExtResource( 10 )]
-position = Vector2( 6512, 5344 )
 
 [node name="Trigger" parent="Zombies" index="0" instance=ExtResource( 2 )]
 position = Vector2( 4361.64, 3089.11 )

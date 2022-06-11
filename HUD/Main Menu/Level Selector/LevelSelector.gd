@@ -12,6 +12,7 @@ var levelList = [
 	"PrototypeLevel2",
 	"PrototypeLevel2",
 ] 
+
 export(Array, PackedScene) var levelsList = []
 
 export(Array, String) var levelNames = []
@@ -33,6 +34,8 @@ export(NodePath) var PPicture = null
 var picture = null
 export(NodePath) var PmaxScoreL
 var maxScoreL = null
+
+onready var LevelList = $LevelList
 #onready var maxScoreL = get_node(maxScoreLPath)
 
 # Called when the node enters the scene tree for the first time.
@@ -109,5 +112,7 @@ func test():
 	pass
 	
 
+func pull_data_from_levels():
+	pass
 
 

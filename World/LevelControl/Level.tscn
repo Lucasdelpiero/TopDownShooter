@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://World/Maps/Level.gd" type="Script" id=1]
+[ext_resource path="res://World/Maps/PrototypeLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[node name="Level" type="Node"]
+script = ExtResource( 1 )
+nameTag = "Unnamed"
+levelPath = ExtResource( 2 )
+texture = ExtResource( 3 )
