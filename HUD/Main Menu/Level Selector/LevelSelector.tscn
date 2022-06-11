@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -13,18 +13,13 @@
 [ext_resource path="res://HUD/Main Menu/SaveButton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=12]
 [ext_resource path="res://HUD/Main Menu/TitleScreen.tscn" type="PackedScene" id=13]
-[ext_resource path="res://icon.png" type="Texture" id=14]
-[ext_resource path="res://Tileable2g.png" type="Texture" id=15]
-[ext_resource path="res://World/Maps/PrototypeLevel.tscn" type="PackedScene" id=16]
-[ext_resource path="res://World/Maps/TutorialLevel.tscn" type="PackedScene" id=17]
-[ext_resource path="res://World/Maps/TestLevel.tscn" type="PackedScene" id=18]
-[ext_resource path="res://World/Maps/PrototypeLevel2.tscn" type="PackedScene" id=19]
-[ext_resource path="res://World/Maps/ExteriorTest.tscn" type="PackedScene" id=20]
+[ext_resource path="res://World/LevelControl/LevelGroup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://World/Maps/Level_4.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/Maps/Level_5.tscn" type="PackedScene" id=16]
+[ext_resource path="res://World/Maps/Level_1.tscn" type="PackedScene" id=17]
+[ext_resource path="res://World/Maps/Level_2.tscn" type="PackedScene" id=18]
+[ext_resource path="res://World/Maps/Level_3.tscn" type="PackedScene" id=19]
 [ext_resource path="res://HUD/Weapons/pistol_icon.png" type="Texture" id=21]
-[ext_resource path="res://HUD/Weapons/rifle_icon.png" type="Texture" id=22]
-[ext_resource path="res://World/Objects/128x72.png" type="Texture" id=23]
-[ext_resource path="res://World/Tiles/Floor/5sqtunnelroad 128x128.png" type="Texture" id=24]
-[ext_resource path="res://World/LevelControl/LevelList.tscn" type="PackedScene" id=25]
 [ext_resource path="res://World/LevelControl/Level.tscn" type="PackedScene" id=26]
 [ext_resource path="res://HUD/Weapons/ak47_icon.png" type="Texture" id=27]
 [ext_resource path="res://HUD/Weapons/shotgun_icon.png" type="Texture" id=28]
@@ -65,40 +60,43 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 447.981 ]
 }
-levelsList = [ ExtResource( 16 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 20 ), ExtResource( 20 ), ExtResource( 20 ) ]
-levelNames = [ "Level 1", "Re loco el chabon", "Re perseguido", "333", "Mala suerte", "V", "666", "777", "Nya" ]
-textures = [ ExtResource( 14 ), ExtResource( 21 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 15 ), ExtResource( 24 ), ExtResource( 14 ), ExtResource( 14 ) ]
 PallLevels = NodePath("DiamondParent")
 PlevelLabel = NodePath("PanelContainer/VBoxContainer/LevelLabel")
 PPicture = NodePath("LevelPicture")
 PmaxScoreL = NodePath("MaxScoreL")
 
-[node name="LevelList" parent="." instance=ExtResource( 25 )]
+[node name="LevelGroup" parent="." instance=ExtResource( 14 )]
 
-[node name="Level" parent="LevelList" instance=ExtResource( 26 )]
-nameTag = "Level 1"
+[node name="Level" parent="LevelGroup" instance=ExtResource( 26 )]
+nameTag = "The start of the worst"
+levelPath = ExtResource( 17 )
 
-[node name="Level2" parent="LevelList" instance=ExtResource( 26 )]
-nameTag = "Level 2"
+[node name="Level2" parent="LevelGroup" instance=ExtResource( 26 )]
+nameTag = "Calming down"
+levelPath = ExtResource( 18 )
 texture = ExtResource( 27 )
 
-[node name="Level3" parent="LevelList" instance=ExtResource( 26 )]
-nameTag = "Level"
+[node name="Level3" parent="LevelGroup" instance=ExtResource( 26 )]
+nameTag = "Seriously?"
+levelPath = ExtResource( 19 )
 texture = ExtResource( 21 )
 
-[node name="Level4" parent="LevelList" instance=ExtResource( 26 )]
-nameTag = "3"
+[node name="Level4" parent="LevelGroup" instance=ExtResource( 26 )]
+nameTag = "Nanananan"
+levelPath = ExtResource( 15 )
 texture = ExtResource( 28 )
 
-[node name="Level5" parent="LevelList" instance=ExtResource( 26 )]
+[node name="Level5" parent="LevelGroup" instance=ExtResource( 26 )]
+nameTag = "BATMAAAAN"
+levelPath = ExtResource( 16 )
 
-[node name="Level6" parent="LevelList" instance=ExtResource( 26 )]
+[node name="Level6" parent="LevelGroup" instance=ExtResource( 26 )]
 
-[node name="Level7" parent="LevelList" instance=ExtResource( 26 )]
+[node name="Level7" parent="LevelGroup" instance=ExtResource( 26 )]
 
-[node name="Level8" parent="LevelList" instance=ExtResource( 26 )]
+[node name="Level8" parent="LevelGroup" instance=ExtResource( 26 )]
 
-[node name="Level9" parent="LevelList" instance=ExtResource( 26 )]
+[node name="Level9" parent="LevelGroup" instance=ExtResource( 26 )]
 
 [node name="LevelPicture" type="TextureRect" parent="."]
 anchor_top = -0.000550003

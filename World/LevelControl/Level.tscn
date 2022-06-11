@@ -6,6 +6,5 @@
 
 [node name="Level" type="Node"]
 script = ExtResource( 1 )
-nameTag = "Unnamed"
 levelPath = ExtResource( 2 )
 texture = ExtResource( 3 )

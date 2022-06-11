@@ -1,7 +1,7 @@
 extends Control
 
 
-var levelList = [
+var levelPaths = [
 	"PrototypeLevel",
 	"PrototypeLevel2",
 	"ExteriorTest",
@@ -13,11 +13,9 @@ var levelList = [
 	"PrototypeLevel2",
 ] 
 
-export(Array, PackedScene) var levelsList = []
-
-export(Array, String) var levelNames = []
-
-export(Array, Texture) var textures = []
+var levelsList = []
+var levelNames = []
+var levelTextures = []
 
 var levelDiamond = []
 
@@ -35,7 +33,7 @@ var picture = null
 export(NodePath) var PmaxScoreL
 var maxScoreL = null
 
-onready var LevelList = $LevelList
+onready var levelGroup = $LevelGroup
 #onready var maxScoreL = get_node(maxScoreLPath)
 
 # Called when the node enters the scene tree for the first time.
@@ -47,24 +45,20 @@ func _ready():
 	
 	maxScoreL.text = "Max Score: "
 	levelDiamond = allLevels.get_children()
-	updateInfo()
+	pull_data_from_levels()
 	test()
+	updateInfo()
 
 
 func startGame():
-	var map = "res://World/Maps/" +  levelList[levelSelected] + ".tscn"
-	print(map)
-	print(levelNames[levelSelected])
-	get_tree().change_scene_to(levelsList[levelSelected])
-# warning-ignore:return_value_discarded
-#	get_tree().change_scene(map)
-	pass
+	var map = "res://World/Maps/" +  levelPaths[levelSelected] + ".tscn"
+	get_tree().change_scene(map)
 
 func updateInfo():
 #	levelLabel.text = "Level: " + levelName[levelSelected]
 #	picture.set_texture(load(levelPic[levelSelected])) 
 	levelLabel.text = "Level: " + levelNames[levelSelected]
-	picture.set_texture(textures[levelSelected])
+	picture.set_texture(levelTextures[levelSelected])
 	for i in levelDiamond.size():
 		levelDiamond[i].pressed = false
 	levelDiamond[levelSelected].pressed = true
@@ -74,7 +68,7 @@ func updateScoreLabel():
 	##################################################################
 	# REFACTOR
 	##########################################################################
-	var scoreLevel = GlobalControl.giveScore(levelList[levelSelected]) 
+	var scoreLevel = GlobalControl.giveScore(levelPaths[levelSelected]) 
 	######################################################################
 	maxScoreL.text = "Max Score: " + str(scoreLevel)
 
@@ -82,11 +76,11 @@ func _on_PreviousButton_pressed():
 	if levelSelected > 0:
 		levelSelected -= 1
 	else:
-		levelSelected = levelList.size() - 1
+		levelSelected = levelPaths.size() - 1
 	updateInfo()
 
 func _on_NextButton_pressed():
-	if levelSelected < (levelList.size() - 1):
+	if levelSelected < (levelPaths.size() - 1):
 		levelSelected += 1
 	else:
 		levelSelected = 0
@@ -113,6 +107,7 @@ func test():
 	
 
 func pull_data_from_levels():
-	pass
-
+	levelNames = levelGroup.nameTags
+	levelPaths = levelGroup.paths
+	levelTextures = levelGroup.textures
 
