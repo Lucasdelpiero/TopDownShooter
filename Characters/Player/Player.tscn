@@ -1310,6 +1310,7 @@ cast_to = Vector2( 150, 0 )
 collision_mask = 4
 
 [node name="Weapons" type="Node2D" parent="Position2D" groups=["Weapons"]]
+pause_mode = 2
 script = ExtResource( 27 )
 mainP = NodePath("../..")
 rayCastWallP = NodePath("../RayCastWall")

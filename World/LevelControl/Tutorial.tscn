@@ -4,7 +4,7 @@
 [ext_resource path="res://World/LevelControl/Tutorial.gd" type="Script" id=2]
 [ext_resource path="res://World/LevelControl/TutoText.tscn" type="PackedScene" id=3]
 
-[node name="Tutorial" type="Control"]
+[node name="Tutorial" type="Control" groups=["hasText"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1024.0

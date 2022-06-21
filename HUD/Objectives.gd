@@ -266,3 +266,6 @@ func updateLabels():
 
 func activateTutorial(): #Set optional label to tutorial related
 	$CanvasLayer/Base/VBC/OC4/LOptional.text = "Tutorial:"
+
+func updateText():
+	updateLabels()

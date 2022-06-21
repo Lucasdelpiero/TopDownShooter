@@ -13,7 +13,6 @@ layer = 15
 
 [node name="Options" type="Control" parent="."]
 pause_mode = 2
-visible = false
 anchor_left = 0.147461
 anchor_top = 0.138333
 anchor_right = 0.852539
@@ -324,6 +323,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Change Scene" type="Button" parent="Options"]
+margin_left = 418.607
+margin_top = 301.227
+margin_right = 635.607
+margin_bottom = 345.227
+text = "Change Scene"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cheats" type="Button" parent="Options"]
+margin_left = 453.08
+margin_top = 366.284
+margin_right = 594.08
+margin_bottom = 410.284
+text = "Cheats"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="toggled" from="Options/VBoxContainer/HBoxScreen/CheckBox" to="Options" method="_on_CheckBox_toggled"]
 [connection signal="item_selected" from="Options/VBoxContainer/HBoxScreen/ScreenResolution" to="Options" method="_on_ScreenResolution_item_selected"]
 [connection signal="value_changed" from="Options/VBoxContainer/BoxMaster/SliderMaster" to="Options" method="_on_SliderMaster_value_changed"]
@@ -338,5 +357,7 @@ __meta__ = {
 [connection signal="pressed" from="Options/BackButton" to="Options" method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Options/English" to="Options" method="_on_English_pressed"]
 [connection signal="pressed" from="Options/Spanish" to="Options" method="_on_Spanish_pressed"]
+[connection signal="pressed" from="Options/Change Scene" to="Options" method="_on_Change_Scene_pressed"]
+[connection signal="pressed" from="Options/Cheats" to="Options" method="_on_Cheats_pressed"]
 
 [editable path="Options/BackButton"]

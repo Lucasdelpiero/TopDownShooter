@@ -67,7 +67,7 @@ func shoot(vel : Vector2, rot):
 	
 
 #	canShoot = false  #
-	
+
 	self.ammo -= 1 #
 
 func muzzle(rot):

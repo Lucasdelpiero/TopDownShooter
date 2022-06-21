@@ -5,7 +5,7 @@
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/minigun.wav" type="AudioStream" id=3]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/rifle/assaultriflereload1.wav" type="AudioStream" id=4]
 
-[node name="WeaponBase" type="Position2D"]
+[node name="WeaponBase" type="Position2D" groups=["firearm"]]
 visible = false
 position = Vector2( 200.799, 31.4274 )
 script = ExtResource( 2 )

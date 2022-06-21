@@ -9,6 +9,7 @@
 [ext_resource path="res://HUD/Transition.tscn" type="PackedScene" id=7]
 
 [node name="TitleScreen" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.561218
@@ -56,9 +57,6 @@ margin_right = 249.0
 margin_bottom = 144.0
 
 [node name="OptionsLayer" parent="." instance=ExtResource( 2 )]
-
-[node name="ScreenResolution" parent="OptionsLayer/Options/VBoxContainer/HBoxScreen" index="3"]
-items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
 
 [node name="Title" type="Label" parent="."]
 anchor_right = 1.0

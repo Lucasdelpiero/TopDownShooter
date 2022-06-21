@@ -21,11 +21,15 @@ var targetMusicVolume = 0.5
 
 var pausable = true
 
+signal updateLanguage(lang)
+
 func _ready():
+	visible = false
 	randomize()
 	getVolume("Master", sliderMaster)
 	getVolume("Music", sliderMusic)
 	getVolume("SoundEffects", sliderSFX)
+	connectToText()
 
 	
 	for i in musicList.tracks.size():
@@ -151,7 +155,28 @@ func activateMusic(value):
 
 func _on_English_pressed():
 	TranslationServer.set_locale("en")
+	emit_signal("updateLanguage")
 
 
 func _on_Spanish_pressed():
 	TranslationServer.set_locale("es")
+	emit_signal("updateLanguage")
+
+func connectToText():
+	var hasText = get_tree().get_nodes_in_group("hasText")
+	for el in hasText:
+		connect("updateLanguage", el, "updateText")
+
+func _on_Change_Scene_pressed():
+	get_tree().paused = false
+	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
+	pass # Replace with function body.
+
+
+func _on_Cheats_pressed():
+	var firearm = get_tree().get_nodes_in_group("firearm")
+	for el in firearm:
+		print(el)
+		el.reserveAmmo = el.capacity * 100
+		el.ammo = el.capacity
+	pass # Replace with function body.

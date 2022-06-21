@@ -5,7 +5,7 @@
 [ext_resource path="res://HUD/Objectives.tres" type="Theme" id=3]
 [ext_resource path="res://HUD/ObjectivesContainer.tscn" type="PackedScene" id=4]
 
-[node name="Objectives" type="Control"]
+[node name="Objectives" type="Control" groups=["hasText"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1024.0

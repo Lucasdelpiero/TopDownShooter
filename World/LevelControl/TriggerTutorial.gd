@@ -20,8 +20,8 @@ func _ready():
 		set_collision_mask_bit(3,damageTrigger)
 
 func sendInfo():
-	var newText = tr(text) #To get the translation
-	get_parent().write(newText)
+#	var newText = tr(text) #To get the translation
+	get_parent().useTextKey(text)
 	get_parent().sendObjective(condition, conditionAmount)
 
 func _on_body_entered(_body):
