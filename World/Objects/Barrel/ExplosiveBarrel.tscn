@@ -20,7 +20,7 @@ z_as_relative = false
 collision_layer = 64
 collision_mask = 71
 script = ExtResource( 2 )
-speed = 900
+speed = 1500
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )

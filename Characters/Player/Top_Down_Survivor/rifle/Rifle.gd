@@ -41,7 +41,8 @@ func shoot(vel : Vector2, rot):
 		
 		var velocity = vel
 		var bullet = AmmoShot.instance()
-		get_tree().get_root().add_child(bullet)
+#		get_tree().get_root().add_child(bullet)
+		get_tree().get_nodes_in_group("world")[0].add_child(bullet)
 		bullet.global_position = global_position
 #		bullet.damage = weaponSelected.damage
 		bullet.hitbox.damage = damage
@@ -72,7 +73,7 @@ func shoot(vel : Vector2, rot):
 
 func muzzle(rot):
 	var muzzle = Muzzle.instance()
-	get_tree().get_root().add_child(muzzle)
+	get_tree().get_nodes_in_group("world")[0].add_child(muzzle)
 	muzzle.global_position = global_position
 	muzzle.rotation_degrees = rot
 

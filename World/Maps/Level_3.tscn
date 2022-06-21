@@ -136,7 +136,7 @@ position = Vector2( -7490.17, 2195.25 )
 position = Vector2( -5442.14, 2537.04 )
 
 [node name="ExplosiveBarrel34" parent="Props" index="21" instance=ExtResource( 4 )]
-position = Vector2( -5442.14, 2537.04 )
+position = Vector2( -5298.67, 2409.04 )
 
 [node name="ExplosiveBarrel24" parent="Props" index="22" instance=ExtResource( 4 )]
 position = Vector2( -6527.64, 2537.04 )
@@ -177,17 +177,14 @@ position = Vector2( -6793.55, 536 )
 [node name="ZombiDead" parent="Props" index="34" instance=ExtResource( 3 )]
 position = Vector2( -657.031, 128 )
 rotation = -3.09773
-z_as_relative = false
 
 [node name="ZombiDead2" parent="Props" index="35" instance=ExtResource( 3 )]
 position = Vector2( -736.401, -53.9716 )
 rotation = -5.14551
-z_as_relative = false
 
 [node name="ZombiDead3" parent="Props" index="36" instance=ExtResource( 3 )]
 position = Vector2( -1488.83, -44.4473 )
 rotation = -2.09959
-z_as_relative = false
 
 [node name="PickeableWeapon" parent="Props" index="37" instance=ExtResource( 7 )]
 position = Vector2( -3103.63, -415.31 )
