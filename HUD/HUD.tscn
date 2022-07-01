@@ -174,11 +174,11 @@ margin_right = 118.622
 margin_bottom = 25.0816
 
 [node name="LastCombo" parent="Scoring/ComboLabels" index="3"]
-margin_left = -64.2675
-margin_top = -48.832
-margin_right = 91.7325
-margin_bottom = -8.83203
-text = "asda"
+margin_left = -67.4459
+margin_top = -27.6427
+margin_right = 88.5541
+margin_bottom = 12.3572
+text = ""
 
 [node name="Crosshair" parent="." instance=ExtResource( 11 )]
 mouse_filter = 1

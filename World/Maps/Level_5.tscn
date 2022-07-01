@@ -237,4 +237,4 @@ survive = true
 withMelee = true
 
 [node name="Player" parent="." index="5"]
-position = Vector2( 6184, 5040 )
+position = Vector2( 352, 64 )

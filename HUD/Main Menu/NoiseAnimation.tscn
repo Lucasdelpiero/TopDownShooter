@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://HUD/Main Menu/NoiseAnimation.gd" type="Script" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 4
+octaves = 4
+period = 95.1
+
+[sub_resource type="NoiseTexture" id=2]
+noise = SubResource( 1 )
+
+[node name="NoiseAnimation" type="TextureRect"]
+modulate = Color( 0.184314, 0.176471, 0.176471, 1 )
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = SubResource( 2 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+offset_speed = 25.0
+max_change_in_angle = 120
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
