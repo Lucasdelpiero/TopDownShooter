@@ -23,9 +23,21 @@ var maxBulletSpdBonus = 1000
 export(Resource) var shotSound 
 export(Resource) var reloadSound
 
+var world = null # node where the bullets will spawn
 
 func _ready():
 	reserveAmmo = capacity * 2
+	yield(get_tree().create_timer(0.01),"timeout")
+	world = getWorld()
+
+func getWorld():
+	var node : Array = get_tree().get_nodes_in_group("world")
+	if node.size() == 0:
+		node = [ get_tree().get_root() ]
+	print(node[0])
+	return node[0]
+
+	pass
 
 func pickedAmmo(amount):
 	reserveAmmo += amount
@@ -42,7 +54,8 @@ func shoot(vel : Vector2, rot):
 		var velocity = vel
 		var bullet = AmmoShot.instance()
 #		get_tree().get_root().add_child(bullet)
-		get_tree().get_nodes_in_group("world")[0].add_child(bullet)
+#		get_tree().get_nodes_in_group("world")[0].add_child(bullet)
+		world.add_child(bullet)
 		bullet.global_position = global_position
 #		bullet.damage = weaponSelected.damage
 		bullet.hitbox.damage = damage
@@ -73,9 +86,10 @@ func shoot(vel : Vector2, rot):
 
 func muzzle(rot):
 	var muzzle = Muzzle.instance()
-	get_tree().get_nodes_in_group("world")[0].add_child(muzzle)
+	world.add_child(muzzle)
 	muzzle.global_position = global_position
-	muzzle.rotation_degrees = rot
+#	muzzle.rotation_degrees = rot
+	muzzle.rotation_degrees = rad2deg(rot)
 
 func sound():
 	get_parent().playSound(shotSound)

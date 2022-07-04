@@ -1,5 +1,8 @@
 extends Area2D
 
+# Node that send signals to their children so that they perform 
+# a default action (activate)
+
 var childrens : Array
 var used = false
 

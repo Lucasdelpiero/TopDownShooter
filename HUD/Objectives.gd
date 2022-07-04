@@ -6,6 +6,7 @@ var allCompleted = false
 export var finishAtCompletion = true #finish level when objectives are completed
 export var killAll = false
 export var survive = false
+export var hasToReachFinish = false
 export(float, 2.0, 60.0, 5.0) var timeSurvive = 2.0
 
 # Required completion
@@ -85,6 +86,7 @@ onready var lSurvive = $CanvasLayer/Base/VBC/OC3/LSurvive
 onready var lOptional = $CanvasLayer/Base/VBC/OC4/LOptional
 onready var lMelee = $CanvasLayer/Base/VBC/OC5/LMelee
 onready var lExplosion = $CanvasLayer/Base/VBC/OC6/LExplosion
+onready var lReachFinish = $CanvasLayer/Base/VBC/OC7/LReachFinish
 onready var vBoxObjectives = $CanvasLayer/Base/VBC
 onready var tween = $CanvasLayer/Base/Tween
 
@@ -158,7 +160,7 @@ func checkObjectives(dict : Dictionary):
 	var complete = true
 	
 	for i in array.size(): #If the amount needed is reached its completed
-		if get( dict[array[i]]["value"] ) == true:
+		if get( dict[array[i]]["value"]) == true:
 			var objective = dict[array[i]] # Ex. survive, kill 5
 			var completed = str( objective["completion"] )
 			
@@ -224,8 +226,11 @@ func deleteObjectives(aObjective):
 func completed():
 	if not allCompleted and finishAtCompletion:
 		label.visible = true
-		emit_signal("completedLevel")
+		finishLevel()
 		allCompleted = true
+
+func finishLevel():
+	emit_signal("completedLevel")
 
 func _on_TimerSurvive_timeout():
 	surviveCompleted = true
@@ -253,6 +258,7 @@ func updateLabels():
 	shown(lMelee, withMelee) 
 	shown(lExplosion, withExplosion)  
 	shown(lOptional, withExplosion or withMelee)
+	shown(lReachFinish, hasToReachFinish)
 	
 	if survive:
 		# Create label Class that automaticly padd for the sides 

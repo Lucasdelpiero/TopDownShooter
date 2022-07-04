@@ -50,7 +50,6 @@ func update_max_score(results : Dictionary):
 		res.erase("name")
 		max_score = { results["name"] : res}
 	
-	print(max_score)
 
 func giveScore(key):
 	if max_score.has(key):

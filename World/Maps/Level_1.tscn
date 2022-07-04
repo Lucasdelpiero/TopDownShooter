@@ -5,7 +5,7 @@
 [ext_resource path="res://Characters/zombi/zombiCrippled.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/LevelControl/TriggerTutorial.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/LevelControl/Tutorial.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Characters/zombi/Zombi.gd" type="Script" id=6]
+[ext_resource path="res://World/LevelControl/TriggerFinishLevel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Tiles/Walls/Test/wall_base_new.png" type="Texture" id=8]
 [ext_resource path="res://World/Tiles/Walls/Test/wall_base_new3.png" type="Texture" id=9]
@@ -58,14 +58,12 @@ __meta__ = {
 
 [node name="zombiCrippled" parent="Zombies" index="0" instance=ExtResource( 3 )]
 position = Vector2( 5984.64, -3358.54 )
-script = ExtResource( 6 )
 FRICTION = 1200
 health = 100
 rotationSmooth = 0.4
 
 [node name="zombiCrippled2" parent="Zombies" index="1" instance=ExtResource( 3 )]
 position = Vector2( 1630.08, -643.239 )
-script = ExtResource( 6 )
 FRICTION = 1200
 health = 100
 rotationSmooth = 0.4
@@ -112,8 +110,11 @@ position = Vector2( 5992, -6640 )
 scale = Vector2( 3.11953, -3.2468 )
 text = "T_DOOR"
 
+[node name="TriggerFinishLevel" parent="Control" index="1" instance=ExtResource( 6 )]
+position = Vector2( 1352, 328 )
+
 [node name="Objectives" parent="." index="4"]
-finishAtCompletion = false
+hasToReachFinish = true
 
 [node name="Player" parent="." index="5"]
 position = Vector2( 8, 436 )

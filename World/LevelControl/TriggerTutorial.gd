@@ -1,6 +1,10 @@
 extends Area2D
 
-export(String, MULTILINE) var text = ""
+# Node used in tutorial to activate a message to show what to do
+
+export(String, MULTILINE) var text = "" # KEY used to get the text to show
+
+# Who can trigger the node
 export var playerTrigger = false
 export var zombiTrigger = false
 export var damageTrigger = false
