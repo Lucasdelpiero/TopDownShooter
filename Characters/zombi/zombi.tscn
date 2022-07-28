@@ -237,10 +237,6 @@ bus = "SoundEffects"
 [node name="AudioHitted" type="AudioStreamPlayer" parent="."]
 bus = "SoundEffects"
 
-[node name="ZombiSoundTimer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
 [node name="Position2D" type="Position2D" parent="."]
 visible = false
 
@@ -259,14 +255,23 @@ enabled = true
 cast_to = Vector2( 3500, 0 )
 collision_mask = 260
 
-[node name="PathFindTimer" type="Timer" parent="."]
-one_shot = true
+[node name="Timers" type="Node" parent="."]
 
-[node name="StaggerTimer" type="Timer" parent="."]
+[node name="StaggerTimer" type="Timer" parent="Timers"]
 wait_time = 0.2
 one_shot = true
 
-[node name="BleedTimer" type="Timer" parent="."]
+[node name="ZombiSoundTimer" type="Timer" parent="Timers"]
+one_shot = true
+autostart = true
+
+[node name="PathFindTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="BleedTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="UnstuckTimer" type="Timer" parent="Timers"]
 one_shot = true
 
 [node name="Node" type="Node" parent="."]
@@ -278,9 +283,9 @@ points = PoolVector2Array( 0, 0, 50, 50, 0, 0, 0, 0, 221.529, -350.505, 504.087,
 [connection signal="tree_entered" from="." to="." method="_on_zombi_tree_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
-[connection signal="timeout" from="ZombiSoundTimer" to="." method="_on_ZombiSound_timeout"]
-[connection signal="timeout" from="PathFindTimer" to="." method="_on_PathFindTimer_timeout"]
-[connection signal="timeout" from="StaggerTimer" to="." method="_on_StaggerTimer_timeout"]
+[connection signal="timeout" from="Timers/StaggerTimer" to="." method="_on_StaggerTimer_timeout"]
+[connection signal="timeout" from="Timers/ZombiSoundTimer" to="." method="_on_ZombiSound_timeout"]
+[connection signal="timeout" from="Timers/PathFindTimer" to="." method="_on_PathFindTimer_timeout"]
 
 [editable path="HurtBox"]
 [editable path="Hitbox"]

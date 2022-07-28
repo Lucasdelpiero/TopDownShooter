@@ -11,15 +11,17 @@ const ScoreBubble = preload("res://Effects/ScoreBubble.tscn")
 onready var wanderController = $WanderController
 onready var audioStreamPlayer = $AudioStreamPlayer
 onready var audioHitted = $AudioHitted
-onready var zombiSoundTimer = $ZombiSoundTimer
+onready var zombiSoundTimer = $Timers/ZombiSoundTimer
 onready var position2d = $Position2D
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
 onready var navigation = get_tree().get_root().find_node("Navigation2D", true, false)
 onready var rayCast = $RayCast2D
-onready var pathTimer = $PathFindTimer
+onready var pathTimer = $Timers/PathFindTimer
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
+onready var bleedTimer = $Timers/BleedTimer
+onready var staggerTimer = $Timers/StaggerTimer
 
 signal killed(type, byMelee, byExplosion, pos)
 signal fillPlayerAmmo()
@@ -203,7 +205,7 @@ func _on_HurtBox_area_entered(area):
 func bleed(area):
 	if bleeding == false:
 		bleeding = true
-		$BleedTimer.start()
+		bleedTimer.start()
 		var bloodParticle = BloodParticle.instance()
 		get_parent().add_child(bloodParticle)
 		bloodParticle.global_position = global_position
@@ -219,7 +221,7 @@ func stagger():
 	var staggerTime = 0.1
 	velocity = lerp(velocity, velocity / 2 , staggerTime)
 	if staggered:
-		$StaggerTimer.start()
+		staggerTimer.start()
 		staggered = false
 
 func _on_StaggerTimer_timeout():
@@ -364,7 +366,8 @@ func unStuck():
 		unstucking = true
 		$Collision.disabled = true
 #		softCollision.set_collision_mask_bit(5, false)
-		yield(get_tree().create_timer(1.0), "timeout")
+#		yield(get_tree().create_timer(1.0), "timeout") #changed because it could crash
+		$Timers/UnstuckTimer.start()
 		$Collision.disabled = false
 #		softCollision.set_collision_mask_bit(5, true)
 		unstucking = false

@@ -38,7 +38,6 @@ var dictionary = {
 #STATS
 onready var Stats = preload("res://HUD/Stats.tscn")
 onready var timeLabel = $TimeLabel
-onready var statsFinished = $Stats
 var timeNow = 0
 var maxCombo = 0
 var totalKilled = 0
