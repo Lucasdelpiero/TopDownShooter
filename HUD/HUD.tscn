@@ -151,7 +151,6 @@ align = 1
 [node name="Scoring" parent="." instance=ExtResource( 1 )]
 margin_left = -0.558713
 margin_right = 8.44128
-mouse_filter = 1
 
 [node name="Score" parent="Scoring/ComboLabels" index="0"]
 margin_left = 1.18921
@@ -181,6 +180,5 @@ margin_bottom = 12.3572
 text = ""
 
 [node name="Crosshair" parent="." instance=ExtResource( 11 )]
-mouse_filter = 1
 
 [editable path="Scoring"]

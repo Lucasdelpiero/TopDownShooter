@@ -38,15 +38,15 @@ var Sfx = preload("res://HUD/Sounds/Sfx.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().paused = true
-	GlobalControl.showMouse(true)
+	get_tree().paused = true 
+	GlobalControl.showMouse(true) 
 	var options = get_tree().get_root().find_node("Options", true, false)
 	options.pausable = false
 	yield(get_tree().create_timer(0.1), "timeout")
 #	addScoresToDict()
 	
 	for i in scoresList.size():
-		updateScore(scoresList[i], i)
+		updateScore(scoresList[i], i) 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -105,6 +105,5 @@ func _on_ContinueButton_pressed():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
 	pass 
-
 
 

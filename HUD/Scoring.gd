@@ -38,6 +38,7 @@ var dictionary = {
 #STATS
 onready var Stats = preload("res://HUD/Stats.tscn")
 onready var timeLabel = $TimeLabel
+onready var statsFinished = $Stats
 var timeNow = 0
 var maxCombo = 0
 var totalKilled = 0
@@ -151,11 +152,12 @@ func _on_Timer_timeout():
 
 func statsResult():
 	var time = timeNow #To fix the time delay
-	yield(get_tree().create_timer(timeStats), "timeout")
+#	yield(get_tree().create_timer(timeStats), "timeout") # Bugged as fuck
+
 	
 	endCombo()
 	sendResults( levelName )
-	
+
 	var stats = Stats.instance()
 	get_parent().add_child(stats)
 	stats.totalScore = totalScore

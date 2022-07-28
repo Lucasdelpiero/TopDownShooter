@@ -13,6 +13,7 @@ margin_top = 7.56726
 margin_right = 7.31885
 margin_bottom = 7.36725
 rect_pivot_offset = Vector2( 1499.63, 293 )
+mouse_filter = 1
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -58,6 +59,7 @@ anchor_bottom = 1.0
 margin_left = -20.0
 margin_top = -80.0
 margin_right = 20.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -109,6 +111,7 @@ margin_left = 4.0
 margin_top = 0.194992
 margin_right = 44.0
 margin_bottom = 40.195
+mouse_filter = 1
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
