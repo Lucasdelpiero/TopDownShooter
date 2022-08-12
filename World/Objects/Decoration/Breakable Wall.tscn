@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://World/Tiles/Walls/seamless_brick-008-128x128.png" type="Texture" id=1]
 [ext_resource path="res://World/Objects/Decoration/Breakable Wall.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.0143229, 0.00920248 ), 0.0, 0.0, 0, 0, Vector2( 0.352865, 0.47546 ), 0.0, 0.0, 0, 0, Vector2( 0.571615, 0.352761 ), 0.673094, 0.673094, 0, 0, Vector2( 0.748698, 0.659509 ), 0.0, 0.0, 0, 0, Vector2( 0.894531, 0.48773 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0582821 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.0143229, 0.00920248 ), 0.0, 0.0, 0, 0, Vector2( 0.352865, 0.47546 ), 0.0, 0.0, 0, 0, Vector2( 0.561198, 0.0705521 ), 0.673094, 0.673094, 0, 0, Vector2( 0.733073, 0.5 ), 2.19877, 2.19877, 0, 0, Vector2( 0.894531, 0.48773 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0582821 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Breakable Wall" type="StaticBody2D" groups=["breakableWall"]]
 script = ExtResource( 2 )
@@ -24,5 +30,35 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="Breaches" type="Position2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Breaches"]
+z_index = 5
+z_as_relative = false
+points = PoolVector2Array( -12.2489, -45.3575, -26.2648, -24.6675, -13.5838, -8.64938, -6.24217, 0.694489, -9.77806, 18.3712, -34.7907, 36.7767 )
+width = 15.0
+width_curve = SubResource( 2 )
+default_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+
+[node name="Line2D2" type="Line2D" parent="Breaches"]
+position = Vector2( 30.6759, 0 )
+rotation = -0.785397
+z_index = 5
+z_as_relative = false
+points = PoolVector2Array( -11.7329, -29.6774, -18.1248, -25.0274, -26.2648, -24.6675, -16.8967, -13.9547, -6.24217, 0.694489, -9.77806, 18.3712, -34.7907, 36.7767 )
+width = 15.0
+width_curve = SubResource( 2 )
+default_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+
+[node name="Line2D3" type="Line2D" parent="Breaches"]
+position = Vector2( 13.4324, -38.0546 )
+rotation = -2.35619
+z_index = 5
+z_as_relative = false
+points = PoolVector2Array( -14.5822, -41.003, -24.2904, -21.965, -7.51111, -20.1433, -30.4196, -0.30859, -7.15745, 9.9087, 4.50979, 4.60536 )
+width = 15.0
+width_curve = SubResource( 3 )
+default_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

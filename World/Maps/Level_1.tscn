@@ -62,21 +62,15 @@ FRICTION = 1200
 health = 100
 rotationSmooth = 0.4
 
-[node name="zombiCrippled2" parent="Zombies" index="1" instance=ExtResource( 3 )]
-position = Vector2( 1630.08, -643.239 )
-FRICTION = 1200
-health = 100
-rotationSmooth = 0.4
-
-[node name="zombi" parent="Zombies" index="2" instance=ExtResource( 2 )]
+[node name="zombi" parent="Zombies" index="1" instance=ExtResource( 2 )]
 position = Vector2( 3253.67, 326 )
 customDamage = true
 damage = 3
 
-[node name="zombi2" parent="Zombies" index="3" instance=ExtResource( 2 )]
+[node name="zombi2" parent="Zombies" index="2" instance=ExtResource( 2 )]
 position = Vector2( 3119.67, -1071.78 )
 
-[node name="zombi3" parent="Zombies" index="4" instance=ExtResource( 2 )]
+[node name="zombi3" parent="Zombies" index="3" instance=ExtResource( 2 )]
 position = Vector2( 3437.67, -1414.23 )
 
 [node name="Door" parent="Props" index="0" instance=ExtResource( 7 )]
@@ -114,6 +108,7 @@ text = "T_DOOR"
 position = Vector2( 4472, -7424 )
 
 [node name="Objectives" parent="." index="4"]
+finishAtCompletion = false
 hasToReachFinish = true
 
 [node name="Player" parent="." index="5"]

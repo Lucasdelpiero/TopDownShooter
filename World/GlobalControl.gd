@@ -5,6 +5,8 @@ var world = null
 #var crosshair = preload("res://HUD/Sprites/crosshair.png")
 var offset = 16
 
+var levelSelected = 0
+
 var max_score = {
 #	"PrototypeLevel" : {"score" : 0},
 #	"PrototypeLevel2" : {"score" : 0},

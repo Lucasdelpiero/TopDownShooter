@@ -46,8 +46,15 @@ func _ready():
 	maxScoreL.text = "Max Score: "
 	levelDiamond = allLevels.get_children()
 	pull_data_from_levels()
+	readyLevel() # Select a level at the start of the game
 	test()
 	updateInfo()
+
+func readyLevel():
+	# An animation could be made here
+	var targetLevel = GlobalControl.levelSelected
+	if targetLevel < levelNames.size():
+		levelSelected = targetLevel
 
 
 func startGame():
