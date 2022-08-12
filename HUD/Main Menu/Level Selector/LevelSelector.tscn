@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -19,10 +19,20 @@
 [ext_resource path="res://World/Maps/Level_1.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Maps/Level_2.tscn" type="PackedScene" id=18]
 [ext_resource path="res://World/Maps/Level_3.tscn" type="PackedScene" id=19]
+[ext_resource path="res://HUD/Main Menu/NoiseAnimation.tscn" type="PackedScene" id=20]
 [ext_resource path="res://HUD/Weapons/pistol_icon.png" type="Texture" id=21]
 [ext_resource path="res://World/LevelControl/Level.tscn" type="PackedScene" id=26]
 [ext_resource path="res://HUD/Weapons/ak47_icon.png" type="Texture" id=27]
 [ext_resource path="res://HUD/Weapons/shotgun_icon.png" type="Texture" id=28]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.247059, 0.239216, 0.239216, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.145098, 0.137255, 0.137255, 1 )
+border_blend = true
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -63,8 +73,31 @@ __meta__ = {
 }
 PallLevels = NodePath("DiamondParent")
 PlevelLabel = NodePath("PanelContainer/VBoxContainer/LevelLabel")
-PPicture = NodePath("LevelPicture")
-PmaxScoreL = NodePath("MaxScoreL")
+PPicture = NodePath("CenterContainer/LevelPicture")
+PmaxScoreL = NodePath("Panel/MaxScoreL")
+
+[node name="NoiseAnimation" parent="." instance=ExtResource( 20 )]
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 56.0
+margin_top = 60.0
+margin_right = 967.0
+margin_bottom = 517.0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxScoreL" type="Label" parent="Panel"]
+margin_left = 622.441
+margin_top = 116.698
+margin_right = 789.441
+margin_bottom = 154.698
+text = "Max Score: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LevelGroup" parent="." instance=ExtResource( 14 )]
 
@@ -99,15 +132,25 @@ levelPath = ExtResource( 16 )
 
 [node name="Level9" parent="LevelGroup" instance=ExtResource( 26 )]
 
-[node name="LevelPicture" type="TextureRect" parent="."]
-anchor_top = -0.000550003
-margin_left = 271.0
-margin_top = 146.33
-margin_right = 646.0
-margin_bottom = 392.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 342.879
+margin_top = 177.789
+margin_right = 602.879
+margin_bottom = 377.789
+rect_min_size = Vector2( 260, 200 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelPicture" type="TextureRect" parent="CenterContainer"]
+margin_right = 260.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 260, 200 )
+size_flags_horizontal = 5
+size_flags_vertical = 3
 texture = ExtResource( 4 )
 expand = true
-stretch_mode = 5
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -166,18 +209,6 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
-[node name="NextButton2" parent="." instance=ExtResource( 6 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 571.342
-margin_top = 460.0
-margin_right = 670.342
-margin_bottom = 500.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-
 [node name="StartButton" parent="." instance=ExtResource( 8 )]
 anchor_left = 0.0
 anchor_right = 0.0
@@ -189,18 +220,6 @@ custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-
-[node name="StartButton2" parent="." instance=ExtResource( 8 )]
-visible = false
-margin_left = -167.048
-margin_top = 463.773
-margin_right = 25.9521
-margin_bottom = 503.773
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "  Start Game  "
 
 [node name="DiamondParent" type="HBoxContainer" parent="."]
 margin_left = 282.0
@@ -248,50 +267,30 @@ margin_right = 320.0
 [node name="SaveButton" parent="." instance=ExtResource( 11 )]
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 672.434
-margin_top = 163.925
-margin_right = 758.434
-margin_bottom = 203.925
+margin_left = 341.508
+margin_top = 534.449
+margin_right = 427.508
+margin_bottom = 574.449
 custom_styles/pressed = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
 
 [node name="LoadButton" parent="." instance=ExtResource( 10 )]
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 775.778
-margin_top = 165.707
-margin_right = 861.778
-margin_bottom = 205.707
+margin_left = 524.048
+margin_top = 536.231
+margin_right = 610.048
+margin_bottom = 576.231
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 6 )
-
-[node name="MaxScoreL" type="Label" parent="."]
-margin_left = 669.956
-margin_top = 349.232
-margin_right = 836.956
-margin_bottom = 387.232
-text = "Max Score: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 675.301
-margin_top = 391.995
-margin_right = 849.301
-margin_bottom = 429.995
-text = "Prototype2: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TestButton" parent="." instance=ExtResource( 12 )]
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 804.287
-margin_top = 245.888
-margin_right = 890.287
-margin_bottom = 285.888
+margin_left = 667.941
+margin_top = 532.065
+margin_right = 753.941
+margin_bottom = 572.065
 text = "Test"
 
 [node name="BackButton" parent="." instance=ExtResource( 12 )]
@@ -306,9 +305,7 @@ transition = ExtResource( 13 )
 
 [connection signal="pressed" from="PreviousButton" to="." method="_on_PreviousButton_pressed"]
 [connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="NextButton2" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="StartButton2" to="." method="_on_StartButton_pressed"]
 [connection signal="diamondChosen" from="DiamondParent/LevelButton" to="." method="_on_diamond_chosen"]
 [connection signal="diamondChosen" from="DiamondParent/LevelButton2" to="." method="_on_diamond_chosen"]
 [connection signal="diamondChosen" from="DiamondParent/LevelButton3" to="." method="_on_diamond_chosen"]
