@@ -8,10 +8,11 @@ var offset = 16
 var levelSelected = 0
 
 var max_score = {
-#	"PrototypeLevel" : {"score" : 0},
-#	"PrototypeLevel2" : {"score" : 0},
-#	"ExteriorTest" : {"score" : 0},
+#	{Level_1:{completed:True, maxCombo:3, score:300, time:8,
+#    totalExplosion:0, totalKilled:3, totalMelee:2}} example
+
 }
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,9 +49,14 @@ func showMouse(value : bool):
 func update_max_score(results : Dictionary):
 	if not max_score.has("name"): #If the directory to the level scores doesnt exits, it creates one
 		max_score[ results["name"] ] = {}
+#		print("before")
+#		print(max_score)
 		var res = results.duplicate(true)
-		res.erase("name")
-		max_score = { results["name"] : res}
+#		res.erase("name")
+#		max_score = { results["name"] : res} # replaced everything
+		max_score[results["name"]] =  res 
+#		print("after")
+#		print(max_score)
 	
 
 func giveScore(key):

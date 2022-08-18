@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://World/Objects/Decoration/DoorLarge.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/zombi/zombiFast.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/LevelControl/TriggerFinishLevel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/LevelControl/Tutorial.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/LevelControl/TriggerTutorial.tscn" type="PackedScene" id=10]
 
 [node name="Level_2" instance=ExtResource( 1 )]
 
@@ -111,6 +113,17 @@ rotation = 1.38593
 
 [node name="TriggerFinishLevel" parent="Control" index="0" instance=ExtResource( 8 )]
 position = Vector2( -3261.73, -3826.45 )
+
+[node name="Tutorial" parent="Control" index="1" instance=ExtResource( 9 )]
+
+[node name="TriggerTutorial" parent="Control/Tutorial" index="1" instance=ExtResource( 10 )]
+position = Vector2( -10, -949.342 )
+text = "T_CHANGE_WEAPON"
+
+[node name="TriggerTutorial2" parent="Control/Tutorial" index="2" instance=ExtResource( 10 )]
+position = Vector2( 105.267, -3293.01 )
+text = "
+"
 
 [node name="Objectives" parent="." index="4"]
 finishAtCompletion = false

@@ -175,6 +175,7 @@ func sendResults(aName):
 		"totalKilled" : totalKilled,
 		"totalMelee" : totalMelee,
 		"totalExplosion" : totalExplosion,
+		"completed" : true,
 	}
 	
 	GlobalControl.update_max_score(results)

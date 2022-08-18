@@ -34,7 +34,7 @@ func getWorld():
 	var node : Array = get_tree().get_nodes_in_group("world")
 	if node.size() == 0:
 		node = [ get_tree().get_root() ]
-	print(node[0])
+#	print(node[0])
 	return node[0]
 
 	pass

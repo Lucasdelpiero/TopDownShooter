@@ -77,12 +77,18 @@ PPicture = NodePath("CenterContainer/LevelPicture")
 PmaxScoreL = NodePath("Panel/MaxScoreL")
 
 [node name="NoiseAnimation" parent="." instance=ExtResource( 20 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
 
 [node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 56.0
 margin_top = 60.0
-margin_right = 967.0
-margin_bottom = 517.0
+margin_right = -57.0
+margin_bottom = -83.0
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
@@ -90,10 +96,14 @@ __meta__ = {
 }
 
 [node name="MaxScoreL" type="Label" parent="Panel"]
-margin_left = 622.441
-margin_top = 116.698
-margin_right = 789.441
-margin_bottom = 154.698
+anchor_left = 0.683
+anchor_top = 0.255
+anchor_right = 0.867
+anchor_bottom = 0.339
+margin_left = 0.227966
+margin_top = 0.162987
+margin_right = -0.396057
+margin_bottom = -0.225006
 text = "Max Score: "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -133,10 +143,14 @@ levelPath = ExtResource( 16 )
 [node name="Level9" parent="LevelGroup" instance=ExtResource( 26 )]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_left = 342.879
-margin_top = 177.789
-margin_right = 602.879
-margin_bottom = 377.789
+anchor_left = 0.335
+anchor_top = 0.296
+anchor_right = 0.589
+anchor_bottom = 0.63
+margin_left = -0.161011
+margin_top = 0.188995
+margin_right = -0.257019
+margin_bottom = -0.211029
 rect_min_size = Vector2( 260, 200 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -156,10 +170,14 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-margin_left = 261.0
-margin_top = 86.0
-margin_right = 650.0
-margin_bottom = 124.0
+anchor_left = 0.255
+anchor_top = 0.143
+anchor_right = 0.635
+anchor_bottom = 0.207
+margin_left = -0.120026
+margin_top = 0.199997
+margin_right = -0.240051
+margin_bottom = -0.200012
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -186,46 +204,55 @@ margin_right = 151.0
 margin_bottom = 38.0
 
 [node name="PreviousButton" parent="." instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 76.949
-margin_top = 241.83
-margin_right = 241.949
-margin_bottom = 281.831
+anchor_left = 0.075
+anchor_top = 0.436
+anchor_right = 0.236
+anchor_bottom = 0.47
+margin_left = 0.148994
+margin_top = -19.77
+margin_right = 0.284988
+margin_bottom = -0.169037
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
 [node name="NextButton" parent="." instance=ExtResource( 6 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 669.505
-margin_top = 247.487
-margin_right = 768.505
-margin_bottom = 287.487
+anchor_left = 0.654
+anchor_top = 0.412
+anchor_right = 0.75
+anchor_bottom = 0.5
+margin_left = -0.19104
+margin_top = 0.286987
+margin_right = 0.504944
+margin_bottom = -12.513
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
 [node name="StartButton" parent="." instance=ExtResource( 8 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 350.981
-margin_top = 460.0
-margin_right = 543.981
-margin_bottom = 500.0
+anchor_left = 0.359
+anchor_top = 0.767
+anchor_right = 0.548
+anchor_bottom = 0.833
+margin_left = 0.316376
+margin_top = -0.200012
+margin_right = -0.219604
+margin_bottom = 0.199951
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
 [node name="DiamondParent" type="HBoxContainer" parent="."]
-margin_left = 282.0
-margin_top = 408.0
-margin_right = 602.0
-margin_bottom = 446.0
+anchor_left = 0.298
+anchor_top = 0.68
+anchor_right = 0.611
+anchor_bottom = 0.743
+margin_left = 0.156097
+margin_right = -0.355896
+margin_bottom = 0.199982
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -294,12 +321,14 @@ margin_bottom = 572.065
 text = "Test"
 
 [node name="BackButton" parent="." instance=ExtResource( 12 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 152.995
-margin_top = 460.0
-margin_right = 238.995
-margin_bottom = 500.0
+anchor_left = 0.149
+anchor_top = 0.767
+anchor_right = 0.233
+anchor_bottom = 0.833
+margin_left = 0.418991
+margin_top = -0.200012
+margin_right = 0.402985
+margin_bottom = 0.199951
 text = "Back"
 transition = ExtResource( 13 )
 
