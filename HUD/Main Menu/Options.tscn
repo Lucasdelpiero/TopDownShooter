@@ -47,37 +47,35 @@ __meta__ = {
 }
 
 [node name="HBoxScreen" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_right = 734.0
-margin_bottom = 46.0
+margin_right = 711.0
+margin_bottom = 38.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxScreen"]
-margin_top = 4.0
 margin_right = 192.0
-margin_bottom = 42.0
+margin_bottom = 38.0
 text = "FULLSCREEN"
 
 [node name="CheckBox" type="CheckBox" parent="Options/VBoxContainer/HBoxScreen"]
 margin_left = 196.0
-margin_right = 220.0
-margin_bottom = 46.0
+margin_right = 212.0
+margin_bottom = 38.0
 focus_mode = 0
 enabled_focus_mode = 0
 expand_icon = true
 
 [node name="Label2" type="Label" parent="Options/VBoxContainer/HBoxScreen"]
-margin_left = 224.0
-margin_top = 4.0
-margin_right = 559.0
-margin_bottom = 42.0
+margin_left = 216.0
+margin_right = 551.0
+margin_bottom = 38.0
 rect_min_size = Vector2( 120, 0 )
 text = "WINDOW_RESOLUTION"
 
 [node name="ScreenResolution" type="OptionButton" parent="Options/VBoxContainer/HBoxScreen"]
-margin_left = 563.0
-margin_right = 734.0
-margin_bottom = 44.0
+margin_left = 555.0
+margin_right = 711.0
+margin_bottom = 38.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "1024x600"
@@ -85,9 +83,9 @@ items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "
 selected = 0
 
 [node name="BoxMaster" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_top = 50.0
+margin_top = 42.0
 margin_right = 734.0
-margin_bottom = 96.0
+margin_bottom = 88.0
 rect_min_size = Vector2( 420, 40 )
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/BoxMaster"]
@@ -121,7 +119,7 @@ __meta__ = {
 
 [node name="MuteMaster" type="CheckBox" parent="Options/VBoxContainer/BoxMaster"]
 margin_left = 418.0
-margin_right = 442.0
+margin_right = 434.0
 margin_bottom = 46.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -173,9 +171,9 @@ __meta__ = {
 }
 
 [node name="BoxSFX" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_top = 100.0
+margin_top = 92.0
 margin_right = 734.0
-margin_bottom = 146.0
+margin_bottom = 138.0
 rect_min_size = Vector2( 420, 40 )
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/BoxSFX"]
@@ -208,7 +206,7 @@ __meta__ = {
 
 [node name="MuteSFX" type="CheckBox" parent="Options/VBoxContainer/BoxSFX"]
 margin_left = 418.0
-margin_right = 442.0
+margin_right = 434.0
 margin_bottom = 46.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -217,9 +215,9 @@ __meta__ = {
 }
 
 [node name="BoxMusic" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_top = 150.0
+margin_top = 142.0
 margin_right = 734.0
-margin_bottom = 196.0
+margin_bottom = 188.0
 rect_min_size = Vector2( 420, 40 )
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/BoxMusic"]
@@ -253,7 +251,7 @@ __meta__ = {
 
 [node name="MuteMusic" type="CheckBox" parent="Options/VBoxContainer/BoxMusic"]
 margin_left = 418.0
-margin_right = 442.0
+margin_right = 434.0
 margin_bottom = 46.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -263,15 +261,15 @@ __meta__ = {
 }
 
 [node name="BoxMusic2" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_top = 200.0
+margin_top = 192.0
 margin_right = 734.0
-margin_bottom = 244.0
+margin_bottom = 232.0
 rect_min_size = Vector2( 420, 40 )
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/BoxMusic2"]
-margin_top = 3.0
+margin_top = 1.0
 margin_right = 232.0
-margin_bottom = 41.0
+margin_bottom = 39.0
 text = "SONG_PLAYING"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -280,7 +278,7 @@ __meta__ = {
 [node name="OptionMusic" type="OptionButton" parent="Options/VBoxContainer/BoxMusic2"]
 margin_left = 236.0
 margin_right = 636.0
-margin_bottom = 44.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 400, 0 )
 __meta__ = {
 "_edit_use_anchors_": false

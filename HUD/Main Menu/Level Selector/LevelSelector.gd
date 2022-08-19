@@ -96,7 +96,8 @@ func updateLevelLocking():
 	# Start button lock
 	$StartButton.disabled = false
 	if levelSelected > 0:
-		if !GlobalControl.max_score.has(levels[levelSelected]):
+		if !GlobalControl.max_score.has(levels[levelSelected - 1].levelName):
+			print(GlobalControl.max_score)
 			$StartButton.disabled = true
 
 
@@ -155,11 +156,4 @@ func pull_data_from_levels():
 	levelNames = levelGroup.nameTags
 	levelPaths = levelGroup.paths
 	levelTextures = levelGroup.textures
-	for i in levels.size():
-#		print(GlobalControl.max_score[levelPaths[i]])
-#		levels[i].completed = GlobalControl.giveScore(levelPaths[i]).completed
-		pass
-#	for i in levelGroup.children:
-#		levelGroup[i].completed = GlobalControl.giveScore(levelPaths[i]).completed
 
-	

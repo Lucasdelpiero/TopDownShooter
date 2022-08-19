@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -21,9 +21,14 @@
 [ext_resource path="res://World/Maps/Level_3.tscn" type="PackedScene" id=19]
 [ext_resource path="res://HUD/Main Menu/NoiseAnimation.tscn" type="PackedScene" id=20]
 [ext_resource path="res://HUD/Weapons/pistol_icon.png" type="Texture" id=21]
+[ext_resource path="res://HUD/Main Menu/Buttons/focus.tres" type="StyleBox" id=22]
+[ext_resource path="res://HUD/Main Menu/Buttons/hover.tres" type="StyleBox" id=23]
+[ext_resource path="res://HUD/Main Menu/Buttons/pressed.tres" type="StyleBox" id=24]
+[ext_resource path="res://HUD/Main Menu/Buttons/disabled.tres" type="StyleBox" id=25]
 [ext_resource path="res://World/LevelControl/Level.tscn" type="PackedScene" id=26]
 [ext_resource path="res://HUD/Weapons/ak47_icon.png" type="Texture" id=27]
 [ext_resource path="res://HUD/Weapons/shotgun_icon.png" type="Texture" id=28]
+[ext_resource path="res://HUD/Main Menu/Buttons/normal.tres" type="StyleBox" id=29]
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.247059, 0.239216, 0.239216, 1 )
@@ -52,10 +57,6 @@ region_rect = Rect2( 0, 0, 256, 88 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 256, 88 )
 modulate_color = Color( 0.117647, 0.117647, 0.117647, 0.686275 )
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 256, 88 )
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 2 )
@@ -240,10 +241,11 @@ margin_left = 0.316376
 margin_top = -0.200012
 margin_right = -0.219604
 margin_bottom = 0.199951
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = ExtResource( 23 )
+custom_styles/pressed = ExtResource( 24 )
+custom_styles/focus = ExtResource( 22 )
+custom_styles/disabled = ExtResource( 25 )
+custom_styles/normal = ExtResource( 29 )
 
 [node name="DiamondParent" type="HBoxContainer" parent="."]
 anchor_left = 0.298
@@ -298,8 +300,6 @@ margin_left = 341.508
 margin_top = 534.449
 margin_right = 427.508
 margin_bottom = 574.449
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 5 )
 
 [node name="LoadButton" parent="." instance=ExtResource( 10 )]
 anchor_left = 0.0
