@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
@@ -21,42 +21,22 @@
 [ext_resource path="res://World/Maps/Level_3.tscn" type="PackedScene" id=19]
 [ext_resource path="res://HUD/Main Menu/NoiseAnimation.tscn" type="PackedScene" id=20]
 [ext_resource path="res://HUD/Weapons/pistol_icon.png" type="Texture" id=21]
-[ext_resource path="res://HUD/Main Menu/Buttons/focus.tres" type="StyleBox" id=22]
-[ext_resource path="res://HUD/Main Menu/Buttons/hover.tres" type="StyleBox" id=23]
-[ext_resource path="res://HUD/Main Menu/Buttons/pressed.tres" type="StyleBox" id=24]
-[ext_resource path="res://HUD/Main Menu/Buttons/disabled.tres" type="StyleBox" id=25]
+[ext_resource path="res://HUD/theme_rounded.tres" type="Theme" id=22]
 [ext_resource path="res://World/LevelControl/Level.tscn" type="PackedScene" id=26]
 [ext_resource path="res://HUD/Weapons/ak47_icon.png" type="Texture" id=27]
 [ext_resource path="res://HUD/Weapons/shotgun_icon.png" type="Texture" id=28]
-[ext_resource path="res://HUD/Main Menu/Buttons/normal.tres" type="StyleBox" id=29]
 
 [sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.247059, 0.239216, 0.239216, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.145098, 0.137255, 0.137255, 1 )
-border_blend = true
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 256, 88 )
-modulate_color = Color( 0.117647, 0.117647, 0.117647, 0.686275 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 256, 88 )
-modulate_color = Color( 1, 1, 1, 0.686275 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 256, 88 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 256, 88 )
-modulate_color = Color( 0.117647, 0.117647, 0.117647, 0.686275 )
+bg_color = Color( 0.219608, 0.211765, 0.211765, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 2 )
@@ -90,8 +70,7 @@ margin_left = 56.0
 margin_top = 60.0
 margin_right = -57.0
 margin_bottom = -83.0
-theme = ExtResource( 1 )
-custom_styles/panel = SubResource( 7 )
+theme = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -179,15 +158,18 @@ margin_left = -0.120026
 margin_top = 0.199997
 margin_right = -0.240051
 margin_bottom = -0.200012
-custom_styles/panel = SubResource( 1 )
+theme = ExtResource( 22 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer"]
-margin_right = 389.0
-margin_bottom = 38.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 387.0
+margin_bottom = 40.0
 
 [node name="VSO" parent="PanelContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_bottom = 38.0
@@ -213,10 +195,6 @@ margin_left = 0.148994
 margin_top = -19.77
 margin_right = 0.284988
 margin_bottom = -0.169037
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
 
 [node name="NextButton" parent="." instance=ExtResource( 6 )]
 anchor_left = 0.654
@@ -227,10 +205,6 @@ margin_left = -0.19104
 margin_top = 0.286987
 margin_right = 0.504944
 margin_bottom = -12.513
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
 
 [node name="StartButton" parent="." instance=ExtResource( 8 )]
 anchor_left = 0.359
@@ -241,11 +215,6 @@ margin_left = 0.316376
 margin_top = -0.200012
 margin_right = -0.219604
 margin_bottom = 0.199951
-custom_styles/hover = ExtResource( 23 )
-custom_styles/pressed = ExtResource( 24 )
-custom_styles/focus = ExtResource( 22 )
-custom_styles/disabled = ExtResource( 25 )
-custom_styles/normal = ExtResource( 29 )
 
 [node name="DiamondParent" type="HBoxContainer" parent="."]
 anchor_left = 0.298
