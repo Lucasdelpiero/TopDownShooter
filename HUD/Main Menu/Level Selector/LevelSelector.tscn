@@ -195,6 +195,8 @@ margin_left = 0.148994
 margin_top = -19.77
 margin_right = 0.284988
 margin_bottom = -0.169037
+rect_pivot_offset = Vector2( 82, 20 )
+anim_time = 0.25
 
 [node name="NextButton" parent="." instance=ExtResource( 6 )]
 anchor_left = 0.654
@@ -205,6 +207,8 @@ margin_left = -0.19104
 margin_top = 0.286987
 margin_right = 0.504944
 margin_bottom = -12.513
+rect_pivot_offset = Vector2( 50, 20 )
+anim_time = 0.25
 
 [node name="StartButton" parent="." instance=ExtResource( 8 )]
 anchor_left = 0.359
@@ -215,6 +219,8 @@ margin_left = 0.316376
 margin_top = -0.200012
 margin_right = -0.219604
 margin_bottom = 0.199951
+rect_pivot_offset = Vector2( 97, 20 )
+anim_time = 0.25
 
 [node name="DiamondParent" type="HBoxContainer" parent="."]
 anchor_left = 0.298
@@ -269,6 +275,8 @@ margin_left = 341.508
 margin_top = 534.449
 margin_right = 427.508
 margin_bottom = 574.449
+rect_pivot_offset = Vector2( 0, 0 )
+anim_time = 0.12
 
 [node name="LoadButton" parent="." instance=ExtResource( 10 )]
 anchor_left = 0.0
@@ -277,8 +285,10 @@ margin_left = 524.048
 margin_top = 536.231
 margin_right = 610.048
 margin_bottom = 576.231
+rect_pivot_offset = Vector2( 0, 0 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 6 )
+anim_time = 0.12
 
 [node name="TestButton" parent="." instance=ExtResource( 12 )]
 anchor_left = 0.0

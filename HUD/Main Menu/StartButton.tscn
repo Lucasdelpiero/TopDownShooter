@@ -5,4 +5,5 @@
 [node name="StartButton" instance=ExtResource( 1 )]
 margin_left = -76.8984
 margin_right = 84.1016
+rect_pivot_offset = Vector2( 80, 20 )
 text = "Start Game"
