@@ -47,5 +47,8 @@ __meta__ = {
 
 [node name="AudioPressed" parent="." instance=ExtResource( 3 )]
 
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="mouse_entered" from="." to="." method="_on_LevelButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_LevelButton_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_LevelButton_pressed"]
