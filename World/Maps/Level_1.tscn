@@ -60,7 +60,6 @@ __meta__ = {
 position = Vector2( 5984.64, -3358.54 )
 FRICTION = 1200
 health = 100
-rotationSmooth = 0.4
 
 [node name="zombi" parent="Zombies" index="1" instance=ExtResource( 2 )]
 position = Vector2( 3253.67, 326 )

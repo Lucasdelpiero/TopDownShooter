@@ -150,7 +150,9 @@ align = 1
 
 [node name="Scoring" parent="." instance=ExtResource( 1 )]
 margin_left = -0.558713
+margin_top = 193.896
 margin_right = 8.44128
+margin_bottom = 193.696
 
 [node name="Score" parent="Scoring/ComboLabels" index="0"]
 margin_left = 1.18921

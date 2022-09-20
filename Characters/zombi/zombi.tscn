@@ -173,6 +173,7 @@ collision_mask = 2147483653
 script = ExtResource( 1 )
 MAX_SPEED = 1400
 ACCELERATION = 600
+rotationSmooth = 0.4
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 22 )

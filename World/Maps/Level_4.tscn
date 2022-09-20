@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://World/LevelControl/Teleporter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/zombi/zombiBig.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/Decoration/Bed.tscn" type="PackedScene" id=9]
 
 [node name="Level_4" instance=ExtResource( 1 )]
 
@@ -89,12 +90,14 @@ position = Vector2( -712, 3512 )
 z_index = 5
 MAX_SPEED = 800
 ACCELERATION = 400
+rotationSmooth = 0.75
 
 [node name="zombiBig2" parent="Zombies" index="16" instance=ExtResource( 8 )]
 position = Vector2( -312, 4248 )
 z_index = 5
 MAX_SPEED = 800
 ACCELERATION = 400
+rotationSmooth = 0.75
 
 [node name="PickeableWeapon" parent="Props" index="0" instance=ExtResource( 4 )]
 position = Vector2( 488, -1448 )
@@ -113,3 +116,43 @@ spawn = NodePath("../Teleporter2")
 position = Vector2( -1192, 5176 )
 rotation = 3.09969
 spawn = NodePath("../Teleporter")
+
+[node name="Bed" parent="Props" index="4" instance=ExtResource( 9 )]
+position = Vector2( -3968, -4589 )
+rotation = -1.57079
+
+[node name="Bed2" parent="Props" index="5" instance=ExtResource( 9 )]
+position = Vector2( -3968, -3967 )
+rotation = -1.57079
+
+[node name="Bed3" parent="Props" index="6" instance=ExtResource( 9 )]
+position = Vector2( -3968, -3328 )
+rotation = -1.57079
+
+[node name="Bed4" parent="Props" index="7" instance=ExtResource( 9 )]
+position = Vector2( -3968, -2688 )
+rotation = -1.57079
+
+[node name="Bed5" parent="Props" index="8" instance=ExtResource( 9 )]
+position = Vector2( -3968, -2048 )
+rotation = -1.57079
+
+[node name="Bed6" parent="Props" index="9" instance=ExtResource( 9 )]
+position = Vector2( -3968, 2560 )
+rotation = -1.57079
+
+[node name="Bed7" parent="Props" index="10" instance=ExtResource( 9 )]
+position = Vector2( -3968, 3200 )
+rotation = -1.57079
+
+[node name="Bed8" parent="Props" index="11" instance=ExtResource( 9 )]
+position = Vector2( -3968, 3840 )
+rotation = -1.57079
+
+[node name="Bed9" parent="Props" index="12" instance=ExtResource( 9 )]
+position = Vector2( -3968, 4480 )
+rotation = -1.57079
+
+[node name="Bed10" parent="Props" index="13" instance=ExtResource( 9 )]
+position = Vector2( -3968, 5120 )
+rotation = -1.57079
