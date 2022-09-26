@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Tiles/Walls/Test/wall_base_new.png" type="Texture" id=8]
 [ext_resource path="res://World/Tiles/Walls/Test/wall_base_new3.png" type="Texture" id=9]
+[ext_resource path="res://World/Objects/Decoration/box4.png" type="Texture" id=10]
+[ext_resource path="res://World/Objects/Decoration/trash can fallen.png" type="Texture" id=11]
+[ext_resource path="res://World/Objects/Decoration/trash can.png" type="Texture" id=12]
+[ext_resource path="res://World/Objects/Decoration/trash can fallen 2.png" type="Texture" id=13]
+[ext_resource path="res://World/Objects/Decoration/plant.png" type="Texture" id=14]
 
 [node name="Level_1" instance=ExtResource( 1 )]
 
@@ -76,6 +81,94 @@ position = Vector2( 3437.67, -1414.23 )
 position = Vector2( 4960, -6656 )
 rotation = -1.57079
 
+[node name="Box4" type="Sprite" parent="Props" index="1"]
+position = Vector2( 219, -54 )
+rotation = 3.14159
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 10 )
+
+[node name="Box5" type="Sprite" parent="Props" index="2"]
+position = Vector2( 66, -54 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 10 )
+
+[node name="Box6" type="Sprite" parent="Props" index="3"]
+position = Vector2( -70, -54 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 10 )
+
+[node name="Box10" type="Sprite" parent="Props" index="4"]
+position = Vector2( 5, -60 )
+rotation = 1.57079
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 10 )
+
+[node name="Box7" type="Sprite" parent="Props" index="5"]
+position = Vector2( 379, -54 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 10 )
+
+[node name="Box11" type="Sprite" parent="Props" index="6"]
+position = Vector2( 315, 678 )
+rotation = -1.57079
+z_index = 3
+z_as_relative = false
+texture = ExtResource( 10 )
+
+[node name="Box8" type="Sprite" parent="Props" index="7"]
+position = Vector2( 397, 684 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 10 )
+
+[node name="Box9" type="Sprite" parent="Props" index="8"]
+position = Vector2( 247, 684 )
+rotation = 1.57079
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 10 )
+
+[node name="TrashCan" type="Sprite" parent="Props" index="9"]
+position = Vector2( 1263, -53 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 12 )
+
+[node name="TrashCanFallen2" type="Sprite" parent="Props" index="10"]
+position = Vector2( 1731, -42 )
+texture = ExtResource( 13 )
+
+[node name="Plant" type="Sprite" parent="Props" index="11"]
+position = Vector2( 1719, -43 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 14 )
+
+[node name="Plant2" type="Sprite" parent="Props" index="12"]
+position = Vector2( 1938, -41 )
+rotation = -0.785397
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 14 )
+
+[node name="Plant3" type="Sprite" parent="Props" index="13"]
+position = Vector2( 2193, -46.9999 )
+rotation = -2.09439
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 14 )
+
+[node name="TrashCanFallen" type="Sprite" parent="Props" index="14"]
+position = Vector2( 1479, -51 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 11 )
+
 [node name="Tutorial" parent="Control" index="0" instance=ExtResource( 5 )]
 
 [node name="TriggerTutorial" parent="Control/Tutorial" index="1" instance=ExtResource( 4 )]
@@ -107,6 +200,10 @@ text = "T_DOOR"
 position = Vector2( 4472, -7424 )
 
 [node name="Objectives" parent="." index="4"]
+margin_left = 962.0
+margin_top = 243.0
+margin_right = 962.0
+margin_bottom = 243.0
 finishAtCompletion = false
 hasToReachFinish = true
 

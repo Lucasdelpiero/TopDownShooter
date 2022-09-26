@@ -133,11 +133,13 @@ func changeVisibility(value):
 
 func fadeLastCombo():
 	tweenLastCombo.interpolate_property(lastCombo, "modulate", initialAlpha, fadedAlpha, 1, Tween.TRANS_LINEAR,Tween.EASE_IN, 2)
-	tweenLastCombo.start()
+	if is_inside_tree(): # Just to remove anoying erorr
+		tweenLastCombo.start()
 
 func unFadeLastCombo():
 	tweenLastCombo.interpolate_property(lastCombo, "modulate", fadedAlpha, initialAlpha, 0, Tween.TRANS_LINEAR)
-	tweenLastCombo.start()
+	if is_inside_tree(): # Just to remove anoying erorr
+		tweenLastCombo.start()
 
 func fadeMusic():
 	emit_signal("updateMusic", false)

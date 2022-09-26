@@ -181,6 +181,14 @@ margin_right = 88.5541
 margin_bottom = 12.3572
 text = ""
 
+[node name="Multiplicator" parent="Scoring" index="3"]
+anchor_top = -0.142
+anchor_bottom = -0.142
+margin_left = 6.37842
+margin_top = -0.0324707
+margin_right = 46.3784
+margin_bottom = 39.9675
+
 [node name="Crosshair" parent="." instance=ExtResource( 11 )]
 
 [editable path="Scoring"]
