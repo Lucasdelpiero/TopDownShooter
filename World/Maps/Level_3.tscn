@@ -25,7 +25,7 @@ tile_data = PoolIntArray( -1179690, 1, 0, -1179689, 1, 0, -1179688, 1, 0, -11796
 
 [node name="WallsTemplate" parent="TileMaps" index="4"]
 modulate = Color( 0.596078, 0.592157, 0.592157, 1 )
-tile_data = PoolIntArray( -1179690, 4, 0, -1179689, 4, 0, -1179688, 4, 0, -1179687, 4, 0, -1179686, 4, 0, -1179685, 4, 0, -1179684, 4, 0, -1179683, 4, 0, -1179682, 4, 0, -1179681, 4, 0, -1179680, 4, 0, -1179679, 4, 0, -1179671, 4, 0, -1179670, 4, 0, -1179669, 4, 0, -1179668, 4, 0, -1179667, 4, 0, -1179666, 4, 0, -1179665, 4, 0, -1179664, 4, 0, -1179663, 4, 0, -1179662, 4, 0, -1179661, 4, 0, -1179660, 4, 0, -1179659, 4, 0, -1114154, 4, 0, -1114143, 4, 0, -1114135, 4, 0, -1114123, 4, 0, -1048618, 4, 0, -1048607, 4, 0, -1048606, 4, 0, -1048605, 4, 0, -1048604, 4, 0, -1048603, 4, 0, -1048602, 4, 0, -1048601, 4, 0, -1048600, 4, 0, -1048599, 4, 0, -1048587, 4, 0, -983082, 4, 0, -983051, 4, 0, -917546, 4, 0, -917515, 4, 0, -852010, 4, 0, -851999, 4, 0, -851998, 4, 0, -851997, 4, 0, -851996, 4, 0, -851995, 4, 0, -851994, 4, 0, -851993, 4, 0, -851992, 4, 0, -851991, 4, 0, -851979, 4, 0, -786474, 4, 0, -786463, 4, 0, -786455, 4, 0, -786443, 4, 0, -720938, 4, 0, -720937, 4, 0, -720936, 4, 0, -720935, 4, 0, -720934, 4, 0, -720930, 4, 0, -720929, 4, 0, -720928, 4, 0, -720927, 4, 0, -720919, 4, 0, -720918, 4, 0, -720917, 4, 0, -720916, 4, 0, -720915, 4, 0, -720908, 4, 0, -720907, 4, 0, -655398, 4, 0, -655394, 4, 0, -655379, 4, 0, -655372, 4, 0, -589862, 4, 0, -589858, 4, 0, -589843, 4, 0, -589836, 4, 0, -524326, 4, 0, -524322, 4, 0, -524307, 4, 0, -524300, 4, 0, -458790, 4, 0, -458786, 4, 0, -458771, 4, 0, -458764, 4, 0, -393264, 4, 0, -393263, 4, 0, -393262, 4, 0, -393261, 4, 0, -393260, 4, 0, -393259, 4, 0, -393258, 4, 0, -393257, 4, 0, -393256, 4, 0, -393255, 4, 0, -393254, 4, 0, -393250, 4, 0, -393249, 4, 0, -393248, 4, 0, -393247, 4, 0, -393246, 4, 0, -393245, 4, 0, -393244, 4, 0, -393235, 4, 0, -393228, 4, 0, -458746, 4, 0, -327728, 4, 0, -327708, 4, 0, -327707, 4, 0, -327706, 4, 0, -327705, 4, 0, -327704, 4, 0, -327703, 4, 0, -327702, 4, 0, -327699, 4, 0, -327692, 4, 0, -393210, 4, 0, -262192, 4, 0, -262166, 4, 0, -262163, 4, 0, -262156, 4, 0, -262155, 4, 0, -262154, 4, 0, -262153, 4, 0, -262152, 4, 0, -262151, 4, 0, -262150, 4, 0, -262149, 4, 0, -262148, 4, 0, -262147, 4, 0, -262146, 4, 0, -262145, 4, 0, -327680, 4, 0, -327679, 4, 0, -327678, 4, 0, -327674, 4, 0, -196656, 4, 0, -196630, 4, 0, -196627, 4, 0, -262142, 4, 0, -262141, 4, 0, -262140, 4, 0, -262139, 4, 0, -262138, 4, 0, -131120, 4, 0, -131094, 4, 0, -131091, 4, 0, -196606, 4, 0, -65584, 4, 0, -65583, 4, 0, -65582, 4, 0, -65581, 4, 0, -65580, 4, 0, -65579, 4, 0, -65578, 4, 0, -65577, 4, 0, -65576, 4, 0, -65575, 4, 0, -65574, 4, 0, -65570, 4, 0, -65569, 4, 0, -65568, 4, 0, -65567, 4, 0, -65566, 4, 0, -65558, 4, 0, -65555, 4, 0, -65549, 1, 0, -38, 4, 0, -34, 4, 0, -30, 4, 0, -29, 4, 0, -28, 4, 0, -27, 4, 0, -26, 4, 0, -25, 4, 0, -24, 4, 0, -23, 4, 0, -22, 4, 0, -19, 4, 0, 65498, 4, 0, 65502, 4, 0, 65517, 4, 0, 131034, 4, 0, 131038, 4, 0, 131053, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 4, 0, 65541, 4, 0, 65542, 4, 0, 196545, 4, 0, 196546, 4, 0, 196547, 4, 0, 196548, 4, 0, 196549, 4, 0, 196552, 4, 0, 196553, 4, 0, 196554, 4, 0, 196555, 4, 0, 196556, 4, 0, 196557, 4, 0, 196558, 4, 0, 196559, 4, 0, 196560, 4, 0, 196561, 4, 0, 196562, 4, 0, 196563, 4, 0, 196564, 4, 0, 196565, 4, 0, 196566, 4, 0, 196567, 4, 0, 196568, 4, 0, 196569, 4, 0, 196570, 4, 0, 196574, 4, 0, 196589, 4, 0, 196590, 4, 0, 196591, 4, 0, 196592, 4, 0, 196593, 4, 0, 196594, 4, 0, 196595, 4, 0, 196596, 4, 0, 196597, 4, 0, 196598, 4, 0, 196599, 4, 0, 196600, 4, 0, 196601, 4, 0, 196602, 4, 0, 196603, 4, 0, 196604, 4, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 262081, 4, 0, 262110, 4, 0, 262111, 4, 0, 262112, 4, 0, 262113, 4, 0, 262114, 4, 0, 262115, 4, 0, 262116, 4, 0, 327617, 4, 0, 327652, 4, 0, 393153, 4, 0, 393188, 4, 0, 458689, 4, 0, 458724, 4, 0, 524225, 4, 0, 524260, 4, 0, 589761, 4, 0, 589796, 4, 0, 655297, 4, 0, 655332, 4, 0, 720833, 4, 0, 720868, 4, 0, 786369, 4, 0, 786404, 4, 0, 851905, 4, 0, 851940, 4, 0, 917441, 4, 0, 917476, 4, 0, 982977, 4, 0, 983012, 4, 0, 1048513, 4, 0, 1048548, 4, 0, 1114049, 4, 0, 1114084, 4, 0, 1179585, 4, 0, 1179620, 4, 0, 1245121, 4, 0, 1245156, 4, 0, 1310657, 4, 0, 1310692, 4, 0, 1376193, 4, 0, 1376228, 4, 0, 1441729, 4, 0, 1441764, 4, 0, 1507265, 4, 0, 1507300, 4, 0, 1572801, 4, 0, 1572802, 4, 0, 1572803, 4, 0, 1572804, 4, 0, 1572805, 4, 0, 1572806, 4, 0, 1572807, 4, 0, 1572808, 4, 0, 1572809, 4, 0, 1572810, 4, 0, 1572811, 4, 0, 1572812, 4, 0, 1572813, 4, 0, 1572814, 4, 0, 1572815, 4, 0, 1572816, 4, 0, 1572817, 4, 0, 1572818, 4, 0, 1572819, 4, 0, 1572820, 4, 0, 1572821, 4, 0, 1572822, 4, 0, 1572823, 4, 0, 1572824, 4, 0, 1572825, 4, 0, 1572826, 4, 0, 1572827, 4, 0, 1572828, 4, 0, 1572829, 4, 0, 1572830, 4, 0, 1572831, 4, 0, 1572832, 4, 0, 1572833, 4, 0, 1572834, 4, 0, 1572835, 4, 0, 1572836, 4, 0 )
+tile_data = PoolIntArray( -1179690, 4, 0, -1179689, 4, 0, -1179688, 4, 0, -1179687, 4, 0, -1179686, 4, 0, -1179685, 4, 0, -1179684, 4, 0, -1179683, 4, 0, -1179682, 4, 0, -1179681, 4, 0, -1179680, 4, 0, -1179679, 4, 0, -1179671, 4, 0, -1179670, 4, 0, -1179669, 4, 0, -1179668, 4, 0, -1179667, 4, 0, -1179666, 4, 0, -1179665, 4, 0, -1179664, 4, 0, -1179663, 4, 0, -1179662, 4, 0, -1179661, 4, 0, -1179660, 4, 0, -1179659, 4, 0, -1114154, 4, 0, -1114143, 4, 0, -1114135, 4, 0, -1114123, 4, 0, -1048618, 4, 0, -1048607, 4, 0, -1048606, 4, 0, -1048605, 4, 0, -1048604, 4, 0, -1048603, 4, 0, -1048602, 4, 0, -1048601, 4, 0, -1048600, 4, 0, -1048599, 4, 0, -1048587, 4, 0, -983082, 4, 0, -983051, 4, 0, -917546, 4, 0, -917515, 4, 0, -852010, 4, 0, -851999, 4, 0, -851998, 4, 0, -851997, 4, 0, -851996, 4, 0, -851995, 4, 0, -851994, 4, 0, -851993, 4, 0, -851992, 4, 0, -851991, 4, 0, -851979, 4, 0, -786474, 4, 0, -786463, 4, 0, -786455, 4, 0, -786443, 4, 0, -720938, 4, 0, -720937, 4, 0, -720936, 4, 0, -720935, 4, 0, -720934, 4, 0, -720930, 4, 0, -720929, 4, 0, -720928, 4, 0, -720927, 4, 0, -720919, 4, 0, -720918, 4, 0, -720917, 4, 0, -720916, 4, 0, -720915, 4, 0, -720908, 4, 0, -720907, 4, 0, -655398, 4, 0, -655394, 4, 0, -655379, 4, 0, -655372, 4, 0, -589862, 4, 0, -589858, 4, 0, -589843, 4, 0, -589836, 4, 0, -524326, 4, 0, -524322, 4, 0, -524307, 4, 0, -524300, 4, 0, -458790, 4, 0, -458786, 4, 0, -458771, 4, 0, -458764, 4, 0, -393264, 4, 0, -393263, 4, 0, -393262, 4, 0, -393261, 4, 0, -393260, 4, 0, -393259, 4, 0, -393258, 4, 0, -393257, 4, 0, -393256, 4, 0, -393255, 4, 0, -393254, 4, 0, -393250, 4, 0, -393249, 4, 0, -393248, 4, 0, -393247, 4, 0, -393246, 4, 0, -393245, 4, 0, -393244, 4, 0, -393235, 4, 0, -393228, 4, 0, -327728, 4, 0, -327708, 4, 0, -327707, 4, 0, -327706, 4, 0, -327705, 4, 0, -327704, 4, 0, -327703, 4, 0, -327702, 4, 0, -327699, 4, 0, -327692, 4, 0, -262192, 4, 0, -262166, 4, 0, -262163, 4, 0, -262156, 4, 0, -262155, 4, 0, -262154, 4, 0, -262153, 4, 0, -262152, 4, 0, -262151, 4, 0, -262150, 4, 0, -262149, 4, 0, -262148, 4, 0, -262147, 4, 0, -262146, 4, 0, -262145, 4, 0, -327680, 4, 0, -327679, 4, 0, -327678, 4, 0, -196656, 4, 0, -196630, 4, 0, -196627, 4, 0, -262142, 4, 0, -131120, 4, 0, -131094, 4, 0, -131091, 4, 0, -196606, 4, 0, -65584, 4, 0, -65583, 4, 0, -65582, 4, 0, -65581, 4, 0, -65580, 4, 0, -65579, 4, 0, -65578, 4, 0, -65577, 4, 0, -65576, 4, 0, -65575, 4, 0, -65574, 4, 0, -65570, 4, 0, -65569, 4, 0, -65568, 4, 0, -65567, 4, 0, -65566, 4, 0, -65558, 4, 0, -65555, 4, 0, -65549, 1, 0, -131070, 4, 0, -38, 4, 0, -34, 4, 0, -30, 4, 0, -29, 4, 0, -28, 4, 0, -27, 4, 0, -26, 4, 0, -25, 4, 0, -24, 4, 0, -23, 4, 0, -22, 4, 0, -19, 4, 0, -65534, 4, 0, 65498, 4, 0, 65502, 4, 0, 65517, 4, 0, 2, 4, 0, 131034, 4, 0, 131038, 4, 0, 131053, 4, 0, 65538, 4, 0, 196545, 4, 0, 196546, 4, 0, 196547, 4, 0, 196548, 4, 0, 196549, 4, 0, 196552, 4, 0, 196553, 4, 0, 196554, 4, 0, 196555, 4, 0, 196556, 4, 0, 196557, 4, 0, 196558, 4, 0, 196559, 4, 0, 196560, 4, 0, 196561, 4, 0, 196562, 4, 0, 196563, 4, 0, 196564, 4, 0, 196565, 4, 0, 196566, 4, 0, 196567, 4, 0, 196568, 4, 0, 196569, 4, 0, 196570, 4, 0, 196574, 4, 0, 196589, 4, 0, 196590, 4, 0, 196591, 4, 0, 196592, 4, 0, 196593, 4, 0, 196594, 4, 0, 196595, 4, 0, 196596, 4, 0, 196597, 4, 0, 196598, 4, 0, 196599, 4, 0, 196600, 4, 0, 196601, 4, 0, 196602, 4, 0, 196603, 4, 0, 196604, 4, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 262081, 4, 0, 262110, 4, 0, 262111, 4, 0, 262112, 4, 0, 262113, 4, 0, 262114, 4, 0, 262115, 4, 0, 262116, 4, 0, 327617, 4, 0, 327652, 4, 0, 393153, 4, 0, 393188, 4, 0, 458689, 4, 0, 458724, 4, 0, 524225, 4, 0, 524260, 4, 0, 589761, 4, 0, 589796, 4, 0, 655297, 4, 0, 655332, 4, 0, 720833, 4, 0, 720868, 4, 0, 786369, 4, 0, 786404, 4, 0, 851905, 4, 0, 851940, 4, 0, 917441, 4, 0, 917476, 4, 0, 982977, 4, 0, 983012, 4, 0, 1048513, 4, 0, 1048548, 4, 0, 1114049, 4, 0, 1114084, 4, 0, 1179585, 4, 0, 1179620, 4, 0, 1245121, 4, 0, 1245156, 4, 0, 1310657, 4, 0, 1310692, 4, 0, 1376193, 4, 0, 1376228, 4, 0, 1441729, 4, 0, 1441764, 4, 0, 1507265, 4, 0, 1507300, 4, 0, 1572801, 4, 0, 1572802, 4, 0, 1572803, 4, 0, 1572804, 4, 0, 1572805, 4, 0, 1572806, 4, 0, 1572807, 4, 0, 1572808, 4, 0, 1572809, 4, 0, 1572810, 4, 0, 1572811, 4, 0, 1572812, 4, 0, 1572813, 4, 0, 1572814, 4, 0, 1572815, 4, 0, 1572816, 4, 0, 1572817, 4, 0, 1572818, 4, 0, 1572819, 4, 0, 1572820, 4, 0, 1572821, 4, 0, 1572822, 4, 0, 1572823, 4, 0, 1572824, 4, 0, 1572825, 4, 0, 1572826, 4, 0, 1572827, 4, 0, 1572828, 4, 0, 1572829, 4, 0, 1572830, 4, 0, 1572831, 4, 0, 1572832, 4, 0, 1572833, 4, 0, 1572834, 4, 0, 1572835, 4, 0, 1572836, 4, 0 )
 
 [node name="Door" parent="TileMaps/Doors" index="0" instance=ExtResource( 10 )]
 position = Vector2( -7297.12, 239 )
@@ -92,103 +92,106 @@ position = Vector2( -1834.98, -1716.47 )
 [node name="ExplosiveBarrel5" parent="Props" index="5" instance=ExtResource( 4 )]
 position = Vector2( -1651.89, -1716.47 )
 
-[node name="ExplosiveBarrel6" parent="Props" index="6" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel35" parent="Props" index="6" instance=ExtResource( 4 )]
+position = Vector2( -1508.05, -1780.47 )
+
+[node name="ExplosiveBarrel6" parent="Props" index="7" instance=ExtResource( 4 )]
 position = Vector2( -1715.89, -1868.87 )
 
-[node name="ExplosiveBarrel7" parent="Props" index="7" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel7" parent="Props" index="8" instance=ExtResource( 4 )]
 position = Vector2( -2215.48, -2192.7 )
 
-[node name="ExplosiveBarrel8" parent="Props" index="8" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel8" parent="Props" index="9" instance=ExtResource( 4 )]
 position = Vector2( -4025.09, -1932.87 )
 
-[node name="ExplosiveBarrel9" parent="Props" index="9" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel9" parent="Props" index="10" instance=ExtResource( 4 )]
 position = Vector2( -4703.15, -2128.7 )
 
-[node name="ExplosiveBarrel10" parent="Props" index="10" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel10" parent="Props" index="11" instance=ExtResource( 4 )]
 position = Vector2( -4767.15, -1932.87 )
 
-[node name="ExplosiveBarrel11" parent="Props" index="11" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel11" parent="Props" index="12" instance=ExtResource( 4 )]
 position = Vector2( -4831.15, -2064.7 )
 
-[node name="ExplosiveBarrel12" parent="Props" index="12" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel12" parent="Props" index="13" instance=ExtResource( 4 )]
 position = Vector2( -4767.15, -1804.87 )
 
-[node name="ExplosiveBarrel13" parent="Props" index="13" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel13" parent="Props" index="14" instance=ExtResource( 4 )]
 position = Vector2( -4711.15, -1652.47 )
 
-[node name="ExplosiveBarrel15" parent="Props" index="14" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel15" parent="Props" index="15" instance=ExtResource( 4 )]
 position = Vector2( -4767.15, -645.08 )
 
-[node name="ExplosiveBarrel16" parent="Props" index="15" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel16" parent="Props" index="16" instance=ExtResource( 4 )]
 position = Vector2( -5172, 536 )
 
-[node name="ExplosiveBarrel17" parent="Props" index="16" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel17" parent="Props" index="17" instance=ExtResource( 4 )]
 position = Vector2( -4958.24, 664 )
 
-[node name="ExplosiveBarrel18" parent="Props" index="17" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel18" parent="Props" index="18" instance=ExtResource( 4 )]
 position = Vector2( -4639.15, 2195.25 )
 
-[node name="ExplosiveBarrel19" parent="Props" index="18" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel19" parent="Props" index="19" instance=ExtResource( 4 )]
 position = Vector2( -5893.24, 1256 )
 
-[node name="ExplosiveBarrel23" parent="Props" index="19" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel23" parent="Props" index="20" instance=ExtResource( 4 )]
 position = Vector2( -7490.17, 2195.25 )
 
-[node name="ExplosiveBarrel33" parent="Props" index="20" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel33" parent="Props" index="21" instance=ExtResource( 4 )]
 position = Vector2( -5442.14, 2537.04 )
 
-[node name="ExplosiveBarrel34" parent="Props" index="21" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel34" parent="Props" index="22" instance=ExtResource( 4 )]
 position = Vector2( -5298.67, 2409.04 )
 
-[node name="ExplosiveBarrel24" parent="Props" index="22" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel24" parent="Props" index="23" instance=ExtResource( 4 )]
 position = Vector2( -6527.64, 2537.04 )
 
-[node name="ExplosiveBarrel25" parent="Props" index="23" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel25" parent="Props" index="24" instance=ExtResource( 4 )]
 position = Vector2( -6857.55, 2473.04 )
 
-[node name="ExplosiveBarrel26" parent="Props" index="24" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel26" parent="Props" index="25" instance=ExtResource( 4 )]
 position = Vector2( -7199.27, 1447.89 )
 
-[node name="ExplosiveBarrel27" parent="Props" index="25" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel27" parent="Props" index="26" instance=ExtResource( 4 )]
 position = Vector2( -6921.55, 988.7 )
 
-[node name="ExplosiveBarrel28" parent="Props" index="26" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel28" parent="Props" index="27" instance=ExtResource( 4 )]
 position = Vector2( -6857.55, 1256 )
 
-[node name="ExplosiveBarrel29" parent="Props" index="27" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel29" parent="Props" index="28" instance=ExtResource( 4 )]
 position = Vector2( -4025.09, 2751.02 )
 
-[node name="ExplosiveBarrel30" parent="Props" index="28" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel30" parent="Props" index="29" instance=ExtResource( 4 )]
 position = Vector2( -4302.66, 1383.89 )
 
-[node name="ExplosiveBarrel31" parent="Props" index="29" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel31" parent="Props" index="30" instance=ExtResource( 4 )]
 position = Vector2( -4089.09, 1575.89 )
 
-[node name="ExplosiveBarrel32" parent="Props" index="30" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel32" parent="Props" index="31" instance=ExtResource( 4 )]
 position = Vector2( -4025.09, 1319.89 )
 
-[node name="ExplosiveBarrel20" parent="Props" index="31" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel20" parent="Props" index="32" instance=ExtResource( 4 )]
 position = Vector2( -6316.55, 728 )
 
-[node name="ExplosiveBarrel21" parent="Props" index="32" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel21" parent="Props" index="33" instance=ExtResource( 4 )]
 position = Vector2( -6591.64, 600 )
 
-[node name="ExplosiveBarrel22" parent="Props" index="33" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel22" parent="Props" index="34" instance=ExtResource( 4 )]
 position = Vector2( -6793.55, 536 )
 
-[node name="ZombiDead" parent="Props" index="34" instance=ExtResource( 3 )]
+[node name="ZombiDead" parent="Props" index="35" instance=ExtResource( 3 )]
 position = Vector2( -657.031, 128 )
 rotation = -3.09773
 
-[node name="ZombiDead2" parent="Props" index="35" instance=ExtResource( 3 )]
+[node name="ZombiDead2" parent="Props" index="36" instance=ExtResource( 3 )]
 position = Vector2( -736.401, -53.9716 )
 rotation = -5.14551
 
-[node name="ZombiDead3" parent="Props" index="36" instance=ExtResource( 3 )]
+[node name="ZombiDead3" parent="Props" index="37" instance=ExtResource( 3 )]
 position = Vector2( -1488.83, -44.4473 )
 rotation = -2.09959
 
-[node name="PickeableWeapon" parent="Props" index="37" instance=ExtResource( 7 )]
+[node name="PickeableWeapon" parent="Props" index="38" instance=ExtResource( 7 )]
 position = Vector2( -3103.63, -415.31 )
 
 [node name="Tutorial" parent="Control" index="0" instance=ExtResource( 12 )]

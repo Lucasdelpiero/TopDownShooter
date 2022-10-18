@@ -9,11 +9,11 @@
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Tiles/Walls/Test/wall_base_new.png" type="Texture" id=8]
 [ext_resource path="res://World/Tiles/Walls/Test/wall_base_new3.png" type="Texture" id=9]
-[ext_resource path="res://World/Objects/Decoration/box4.png" type="Texture" id=10]
 [ext_resource path="res://World/Objects/Decoration/trash can fallen.png" type="Texture" id=11]
 [ext_resource path="res://World/Objects/Decoration/trash can.png" type="Texture" id=12]
 [ext_resource path="res://World/Objects/Decoration/trash can fallen 2.png" type="Texture" id=13]
 [ext_resource path="res://World/Objects/Decoration/plant.png" type="Texture" id=14]
+[ext_resource path="res://World/Objects/Decoration/Box.tscn" type="PackedScene" id=15]
 
 [node name="Level_1" instance=ExtResource( 1 )]
 
@@ -64,7 +64,6 @@ __meta__ = {
 [node name="zombiCrippled" parent="Zombies" index="0" instance=ExtResource( 3 )]
 position = Vector2( 5984.64, -3358.54 )
 FRICTION = 1200
-health = 100
 
 [node name="zombi" parent="Zombies" index="1" instance=ExtResource( 2 )]
 position = Vector2( 3253.67, 326 )
@@ -81,93 +80,99 @@ position = Vector2( 3437.67, -1414.23 )
 position = Vector2( 4960, -6656 )
 rotation = -1.57079
 
-[node name="Box4" type="Sprite" parent="Props" index="1"]
-position = Vector2( 219, -54 )
-rotation = 3.14159
-z_index = 2
-z_as_relative = false
-texture = ExtResource( 10 )
-
-[node name="Box5" type="Sprite" parent="Props" index="2"]
-position = Vector2( 66, -54 )
-z_index = 2
-z_as_relative = false
-texture = ExtResource( 10 )
-
-[node name="Box6" type="Sprite" parent="Props" index="3"]
-position = Vector2( -70, -54 )
-z_index = 2
-z_as_relative = false
-texture = ExtResource( 10 )
-
-[node name="Box10" type="Sprite" parent="Props" index="4"]
-position = Vector2( 5, -60 )
-rotation = 1.57079
-z_index = 2
-z_as_relative = false
-texture = ExtResource( 10 )
-
-[node name="Box7" type="Sprite" parent="Props" index="5"]
-position = Vector2( 379, -54 )
-z_index = 2
-z_as_relative = false
-texture = ExtResource( 10 )
-
-[node name="Box11" type="Sprite" parent="Props" index="6"]
-position = Vector2( 315, 678 )
-rotation = -1.57079
-z_index = 3
-z_as_relative = false
-texture = ExtResource( 10 )
-
-[node name="Box8" type="Sprite" parent="Props" index="7"]
-position = Vector2( 397, 684 )
-z_index = 2
-z_as_relative = false
-texture = ExtResource( 10 )
-
-[node name="Box9" type="Sprite" parent="Props" index="8"]
-position = Vector2( 247, 684 )
-rotation = 1.57079
-z_index = 2
-z_as_relative = false
-texture = ExtResource( 10 )
-
-[node name="TrashCan" type="Sprite" parent="Props" index="9"]
+[node name="TrashCan" type="Sprite" parent="Props" index="1"]
 position = Vector2( 1263, -53 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 12 )
 
-[node name="TrashCanFallen2" type="Sprite" parent="Props" index="10"]
+[node name="TrashCanFallen2" type="Sprite" parent="Props" index="2"]
 position = Vector2( 1731, -42 )
 texture = ExtResource( 13 )
 
-[node name="Plant" type="Sprite" parent="Props" index="11"]
+[node name="Plant" type="Sprite" parent="Props" index="3"]
 position = Vector2( 1719, -43 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 14 )
 
-[node name="Plant2" type="Sprite" parent="Props" index="12"]
+[node name="Plant2" type="Sprite" parent="Props" index="4"]
 position = Vector2( 1938, -41 )
 rotation = -0.785397
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 14 )
 
-[node name="Plant3" type="Sprite" parent="Props" index="13"]
+[node name="Plant3" type="Sprite" parent="Props" index="5"]
 position = Vector2( 2193, -46.9999 )
 rotation = -2.09439
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 14 )
 
-[node name="TrashCanFallen" type="Sprite" parent="Props" index="14"]
+[node name="TrashCanFallen" type="Sprite" parent="Props" index="6"]
 position = Vector2( 1479, -51 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
+
+[node name="Box" parent="Props" index="7" instance=ExtResource( 15 )]
+position = Vector2( 3763, 676 )
+
+[node name="Box2" parent="Props" index="8" instance=ExtResource( 15 )]
+position = Vector2( 3625, 666 )
+rotation = -0.0185902
+
+[node name="Box3" parent="Props" index="9" instance=ExtResource( 15 )]
+position = Vector2( 3770, 553 )
+
+[node name="Box12" parent="Props" index="10" instance=ExtResource( 15 )]
+position = Vector2( 3634, 542 )
+rotation = -0.0102914
+
+[node name="Box13" parent="Props" index="11" instance=ExtResource( 15 )]
+position = Vector2( 3680, 539 )
+rotation = -0.151477
+
+[node name="Box14" parent="Props" index="12" instance=ExtResource( 15 )]
+position = Vector2( 3689, 662 )
+rotation = -0.0581982
+
+[node name="Box4" parent="Props" index="13" instance=ExtResource( 15 )]
+position = Vector2( 88, 680 )
+
+[node name="Box5" parent="Props" index="14" instance=ExtResource( 15 )]
+position = Vector2( 222, 684 )
+rotation = 0.0788421
+
+[node name="Box6" parent="Props" index="15" instance=ExtResource( 15 )]
+position = Vector2( 143, 683 )
+rotation = 0.0647129
+
+[node name="Box7" parent="Props" index="16" instance=ExtResource( 15 )]
+position = Vector2( -107, -53 )
+rotation = -0.261799
+
+[node name="Box8" parent="Props" index="17" instance=ExtResource( 15 )]
+position = Vector2( 32, -58 )
+
+[node name="Box9" parent="Props" index="18" instance=ExtResource( 15 )]
+position = Vector2( 154, -55 )
+
+[node name="Box10" parent="Props" index="19" instance=ExtResource( 15 )]
+position = Vector2( 278, -58 )
+rotation = 0.0817902
+
+[node name="Box11" parent="Props" index="20" instance=ExtResource( 15 )]
+position = Vector2( 196, -61 )
+rotation = -0.0509909
+
+[node name="Box15" parent="Props" index="21" instance=ExtResource( 15 )]
+position = Vector2( 79, -52 )
+
+[node name="Box16" parent="Props" index="22" instance=ExtResource( 15 )]
+position = Vector2( 144, -47 )
+rotation = -0.000142657
 
 [node name="Tutorial" parent="Control" index="0" instance=ExtResource( 5 )]
 

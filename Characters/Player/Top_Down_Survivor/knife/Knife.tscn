@@ -16,19 +16,15 @@ export var bulletsShot = 1
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 137.135, 116.344 )
 
-[node name="Knife" type="Position2D" groups=[
-"Knife",
-]]
+[node name="Knife" type="Position2D" groups=["Knife"]]
 position = Vector2( 176.749, 40.2214 )
 script = SubResource( 1 )
 capacity = 0
 bulletsShot = 0
 
-[node name="Hitbox" parent="." groups=[
-"Melee",
-] instance=ExtResource( 1 )]
+[node name="Hitbox" parent="." groups=["Melee"] instance=ExtResource( 1 )]
 collision_mask = 6
-damage = 50
+damage = 100
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( -36.1105, -27.932 )

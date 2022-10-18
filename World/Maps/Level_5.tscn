@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/LevelControl/Trigger.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://World/Tiles/Walls/Test/wall_base4.png" type="Texture" id=10]
 [ext_resource path="res://World/Objects/Decoration/plastic_chair.png" type="Texture" id=11]
 [ext_resource path="res://World/Objects/Decoration/table.png" type="Texture" id=12]
+[ext_resource path="res://World/Objects/Decoration/Trashcan.tscn" type="PackedScene" id=13]
 
 [node name="Level_5" instance=ExtResource( 1 )]
 
@@ -244,59 +245,83 @@ z_index = 2
 z_as_relative = false
 texture = ExtResource( 12 )
 
-[node name="PlasticChair" type="Sprite" parent="Props" index="23"]
+[node name="Table2" type="Sprite" parent="Props" index="23"]
+position = Vector2( 7296, 5920 )
+rotation = -3.13924
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 12 )
+
+[node name="Table3" type="Sprite" parent="Props" index="24"]
+position = Vector2( 6816, 5920 )
+rotation = -3.13924
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 12 )
+
+[node name="PlasticChair" type="Sprite" parent="Props" index="25"]
 position = Vector2( 4000, -32 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
 
-[node name="PlasticChair2" type="Sprite" parent="Props" index="24"]
+[node name="PlasticChair2" type="Sprite" parent="Props" index="26"]
 position = Vector2( 4192, -32 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
 
-[node name="PlasticChair3" type="Sprite" parent="Props" index="25"]
+[node name="PlasticChair3" type="Sprite" parent="Props" index="27"]
 position = Vector2( 4000, 256 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
 
-[node name="PlasticChair4" type="Sprite" parent="Props" index="26"]
+[node name="PlasticChair4" type="Sprite" parent="Props" index="28"]
 position = Vector2( 4192, 256 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
 
-[node name="PlasticChair5" type="Sprite" parent="Props" index="27"]
+[node name="PlasticChair5" type="Sprite" parent="Props" index="29"]
 position = Vector2( 4384, -32 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
 
-[node name="PlasticChair6" type="Sprite" parent="Props" index="28"]
+[node name="PlasticChair6" type="Sprite" parent="Props" index="30"]
 position = Vector2( 4576, -32 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
 
-[node name="PlasticChair7" type="Sprite" parent="Props" index="29"]
+[node name="PlasticChair7" type="Sprite" parent="Props" index="31"]
 position = Vector2( 4384, 256 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
 
-[node name="PlasticChair8" type="Sprite" parent="Props" index="30"]
+[node name="PlasticChair8" type="Sprite" parent="Props" index="32"]
 position = Vector2( 4576, 256 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 11 )
+
+[node name="Trashcan" parent="Props" index="33" instance=ExtResource( 13 )]
+position = Vector2( 7456, 6144 )
+
+[node name="Trashcan2" parent="Props" index="34" instance=ExtResource( 13 )]
+position = Vector2( 7456, 6688 )
 
 [node name="PickeableWeapon" parent="Control" index="0" instance=ExtResource( 5 )]
 position = Vector2( 3392, 1504 )
 
 [node name="PickeableWeapon2" parent="Control" index="1" instance=ExtResource( 5 )]
 position = Vector2( 6136, -3128 )
+weapon = "Shotgun"
+
+[node name="PickeableWeapon3" parent="Control" index="2" instance=ExtResource( 5 )]
+position = Vector2( 1376, 32 )
 weapon = "Shotgun"
 
 [node name="Objectives" parent="." index="4"]
