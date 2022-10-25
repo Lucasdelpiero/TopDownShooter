@@ -182,12 +182,12 @@ margin_bottom = 12.3572
 text = ""
 
 [node name="Multiplicator" parent="Scoring" index="3"]
-anchor_top = -0.142
-anchor_bottom = -0.142
-margin_left = 6.37842
-margin_top = -0.0324707
-margin_right = 46.3784
-margin_bottom = 39.9675
+anchor_top = 0.229
+anchor_bottom = 0.229
+margin_left = 0.715181
+margin_top = -39.9901
+margin_right = 40.7152
+margin_bottom = 0.00985718
 
 [node name="Crosshair" parent="." instance=ExtResource( 11 )]
 

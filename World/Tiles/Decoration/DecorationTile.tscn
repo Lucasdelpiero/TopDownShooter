@@ -109,7 +109,7 @@ points = PoolVector2Array( 17.3716, 228.378, 62.1614, 79.079, 226.391, 49.2191, 
 4/z_index = 0
 
 [node name="DecorationTile" type="TileMap"]
-z_index = 2
+z_index = 6
 z_as_relative = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 128, 128 )
