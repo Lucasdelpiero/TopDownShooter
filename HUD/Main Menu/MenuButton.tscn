@@ -21,8 +21,10 @@ __meta__ = {
 anim_time = 0.05
 
 [node name="AudioHover" parent="." instance=ExtResource( 5 )]
+bus = "SoundEffects"
 
 [node name="AudioPressed" parent="." instance=ExtResource( 4 )]
+bus = "SoundEffects"
 
 [node name="Tween" type="Tween" parent="."]
 

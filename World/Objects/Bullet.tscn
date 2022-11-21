@@ -38,6 +38,7 @@ shape = SubResource( 1 )
 volume_db = -10.0
 max_distance = 4000.0
 attenuation = 0.366022
+bus = "SoundEffects"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

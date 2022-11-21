@@ -3,7 +3,7 @@
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tres" type="TileSet" id=1]
 
 [node name="DecorationTile" type="TileMap"]
-z_index = 6
+z_index = 10
 z_as_relative = false
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 128 )

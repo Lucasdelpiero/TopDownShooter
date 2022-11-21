@@ -4,3 +4,4 @@
 
 [node name="AudioPressed" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
+bus = "SoundEffects"

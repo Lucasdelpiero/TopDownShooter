@@ -91,6 +91,12 @@ visible = false
 [node name="ScreenResolution" parent="OptionsLayer/Options/VBoxContainer/HBoxScreen" index="3"]
 items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
 
+[node name="AudioHover" parent="OptionsLayer/Options/BackButton" index="0"]
+bus = "SoundEffects"
+
+[node name="AudioPressed" parent="OptionsLayer/Options/BackButton" index="1"]
+bus = "SoundEffects"
+
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.336
 anchor_top = 0.173
