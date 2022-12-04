@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buildings_new.png-532bc7f0a27c721fc62f1761737fe5b7.stex"
+path="res://.import/buildings_beige.png-b4ff0fa6239b6f88b46fbd6a9549bd73.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Tiles/Walls/buildings_new.png"
-dest_files=[ "res://.import/buildings_new.png-532bc7f0a27c721fc62f1761737fe5b7.stex" ]
+source_file="res://World/Tiles/Walls/buildings_beige.png"
+dest_files=[ "res://.import/buildings_beige.png-b4ff0fa6239b6f88b46fbd6a9549bd73.stex" ]
 
 [params]
 
