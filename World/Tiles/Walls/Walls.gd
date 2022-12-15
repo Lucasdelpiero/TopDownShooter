@@ -7,10 +7,14 @@ var buildings = []
 
 export(Color, RGBA) var grey = Color(0.364706, 0.352941, 0.352941)
 export(Color, RGBA) var beige = Color(0.937255, 0.945098, 0.647059)
-export(Color, RGBA) var blue = Color(0.258824, 0.290196, 0.545098)
+export(Color, RGBA) var brown = Color(0.258824, 0.290196, 0.545098)
+export(Color, RGBA) var orange = Color(0.956863, 0.772549, 0.560784)
+export(Color, RGBA) var blue = Color(0.160784, 0.164706, 0.258824)
 onready var colors = {
 	"grey" : grey,
+	"brown" : brown,
 	"beige" : beige,
+	"orange" : orange,
 	"blue" : blue,
 }
 
@@ -18,8 +22,9 @@ onready var colors = {
 func _ready():
 	wallTiles = get_used_cells() # Get an array of the cells of wall tiles
 	navFloor = get_tree().get_root().find_node("NavigationTile", true, false) #Get tiles inside navigation2D
-	for wall in wallTiles:     # Iterate in all the wall tiles
-		navFloor.set_cellv(wall, -1)  # Deletes all the nav2D tiles that is in the same position of the walls
+	if navFloor != null:
+		for wall in wallTiles:     # Iterate in all the wall tiles
+			navFloor.set_cellv(wall, -1)  # Deletes all the nav2D tiles that is in the same position of the walls
 	
 	## Get buildings tiles ids and do stuff
 	var tiles_ids = tile_set.get_tiles_ids()
@@ -34,10 +39,8 @@ func _ready():
 
 func change_color(tile, name):
 	var color = "grey"
-	var new_name = name.replace("buildings_","")
-#	print(name)
-#	print(new_name)
-	if colors.has(new_name):
+	var new_name = name.replace("buildings_","") # Not very usefull really
+	if colors.has(new_name): 
 		color = new_name
 
 	tile_set.tile_set_modulate(tile, colors[color] )
@@ -55,9 +58,8 @@ func create_shape_and_bitmask(tile, name):
 	var shapes = tile_set.tile_get_shapes(base)
 	var bitmask_mode = tile_set.autotile_get_bitmask_mode(base)
 	var bitmask = tile_set.autotile_get_bitmask(base, Vector2(0.0, 0.0))
-#	var all_bitmask = get_bitmask(region, subtile_size.x, base)
 	
-	if (name.begins_with("buildings_test")):
+	if (name.begins_with("buildings_")):
 		print("nice")
 		tile_set.autotile_set_size(tile, subtile_size)
 		tile_set.tile_set_tile_mode(tile, tile_mode)
@@ -69,10 +71,12 @@ func create_shape_and_bitmask(tile, name):
 	
 	pass
 
-func get_bitmask(rect : Rect2, subtile_size, base):
+## The bitmask can only be obtained one by one so the tiles have to be
+## iterated and stored in an array
+func get_bitmask(region : Rect2, subtile_size, base):
 	var bitmasks = []
-	var columns = (rect.size.x  / subtile_size)
-	var rows = (rect.size.y / subtile_size)
+	var columns = (region.size.x  / subtile_size)
+	var rows = (region.size.y / subtile_size)
 	
 	for y in rows:
 		for x in columns:
@@ -81,6 +85,7 @@ func get_bitmask(rect : Rect2, subtile_size, base):
 #	print(bitmasks)
 	return bitmasks
 
+## The bitmask can only be setted one by one so iteration is needed again
 func set_bitmask(tile, array, rect, subtile_size):
 	var columns = (rect.size.x  / subtile_size)
 	var rows = (rect.size.y / subtile_size)
@@ -92,10 +97,7 @@ func set_bitmask(tile, array, rect, subtile_size):
 		var flag = array[i]
 		
 		tile_set.autotile_set_bitmask(tile, Vector2(x, y), flag)
-#		print("y : " + str(floor(i / columns)))
-#		print("x : " +str(i - columns * floor(i / columns)))
-		pass
-	pass
+
 
 func _process(delta):
 #	if Engine.editor_hint:
