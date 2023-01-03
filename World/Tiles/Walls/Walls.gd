@@ -34,8 +34,9 @@ func _ready():
 		# As will be only used with buildings tiles, the others get filtered
 		if name.begins_with("buildings"):
 			tile_names.append(name)
-			change_color(tile, name)
-			create_shape_and_bitmask(tile, name)
+			## Activate or desactivate copying data from tileset
+#			change_color(tile, name)
+#			create_shape_and_bitmask(tile, name)
 
 func change_color(tile, name):
 	var color = "grey"

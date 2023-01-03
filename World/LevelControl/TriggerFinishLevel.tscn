@@ -5,6 +5,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=3]
 
 [node name="TriggerFinishLevel" instance=ExtResource( 2 )]
+visible = false
 
 [node name="FinishLevel" type="Node" parent="." index="1"]
 script = ExtResource( 1 )
