@@ -33,7 +33,7 @@ func _input(_event):
 			Engine.time_scale = 1.0
 			timeSlow = false
 	if Input.is_action_just_pressed("jump"):
-		print(levels)
+		goto_next_level()
 	
 #func _input(event):
 #	if event.is_action_pressed("paused"):
@@ -71,3 +71,19 @@ func giveScore(key):
 #func addCrosshair():
 #	var crosshair = CrossHair.instance
 #	add_child(crosshair)
+func goto_next_level():
+	var levels = GlobalControl.levels
+	var currentWorld = get_tree().get_nodes_in_group("world")[0]
+	var worldName = currentWorld.name
+	print(worldName)
+	for i in levels.size():
+		print(i)
+		if i == levels.size() - 1: # Safeguard
+			get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
+			break
+
+		if worldName == levels[i]:
+			var nextLevel = "res://World/Maps/" + levels[i + 1] + ".tscn"
+			get_tree().change_scene(nextLevel)
+			break
+		pass
