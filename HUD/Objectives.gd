@@ -89,6 +89,7 @@ onready var lExplosion = $CanvasLayer/Base/VBC/OC6/LExplosion
 onready var lReachFinish = $CanvasLayer/Base/VBC/OC7/LReachFinish
 onready var vBoxObjectives = $CanvasLayer/Base/VBC
 onready var tween = $CanvasLayer/Base/Tween
+onready var autoHideTimer = $AutoHide
 
 var posShown = Vector2(0.0, 0.0)
 var posHidden = Vector2(400.0, 0.0) ## Check if works in different resolutions
@@ -120,17 +121,20 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
 #		base.set_visible(not base.is_visible())
-		if showing:
+		objectives_visible(!showing) # show or hide objectives 
+
+##########################################################################################################
+
+func objectives_visible(isVisible):
+	if (!isVisible):
+		if (showing):
 			tween.interpolate_property(base, "rect_position", posShown, posHidden, animationTime, Tween.TRANS_CUBIC, Tween.EASE_OUT )
 			tween.start()
 			showing = false
-		else:
-			tween.interpolate_property(base, "rect_position", posHidden, posShown, animationTime, Tween.TRANS_QUINT, Tween.EASE_OUT )
-			tween.start()
-			showing = true
-
-
-##########################################################################################################
+	else:
+		tween.interpolate_property(base, "rect_position", posHidden, posShown, animationTime, Tween.TRANS_QUINT, Tween.EASE_OUT )
+		tween.start()
+		showing = true
 
 func updateObjective(_name, byMelee, byExplosion, _pos):
 	
@@ -275,3 +279,7 @@ func activateTutorial(): #Set optional label to tutorial related
 
 func updateText():
 	updateLabels()
+
+
+func _on_AutoHide_timeout():
+	objectives_visible(false)

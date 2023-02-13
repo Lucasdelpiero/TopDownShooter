@@ -11,6 +11,7 @@ onready var navPolygon = "res://Characters/zombi/zombiNavigationPolygon.tres"
 #onready var background = $TileMaps/DarkBackground
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	GlobalControl.showMouse(false)
 	create(HUD)
 	create(Darkness)

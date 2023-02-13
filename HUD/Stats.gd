@@ -108,3 +108,23 @@ func _on_ContinueButton_pressed():
 	pass 
 
 
+
+
+func _on_NextLevelButton_pressed():
+	goto_next_level()
+
+func goto_next_level():
+	var levels = GlobalControl.levels
+	var currentWorld = get_tree().get_nodes_in_group("world")[0]
+	var worldName = currentWorld.name
+	print(worldName)
+	for i in levels.size():
+		if i == levels.size(): # Safeguard
+			print("alf")
+			get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
+			break
+
+		if worldName == levels[i]:
+			var nextLevel = "res://World/Maps/" + levels[i + 1] + ".tscn"
+			get_tree().change_scene(nextLevel)
+		pass

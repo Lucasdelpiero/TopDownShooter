@@ -78,11 +78,21 @@ margin_bottom = 248.0
 text = "Total Explosion: "
 
 [node name="ContinueButton" type="Button" parent="Panel"]
-margin_left = 123.817
-margin_top = 307.463
-margin_right = 264.817
-margin_bottom = 351.463
-text = "Continue"
+margin_left = 81.0722
+margin_top = 351.536
+margin_right = 312.072
+margin_bottom = 395.536
+text = "  Level selector  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextLevelButton" type="Button" parent="Panel"]
+margin_left = 93.2864
+margin_top = 284.059
+margin_right = 299.286
+margin_bottom = 339.059
+text = "  Next Level  "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -94,4 +104,5 @@ autostart = true
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="pressed" from="Panel/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="Panel/NextLevelButton" to="." method="_on_NextLevelButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

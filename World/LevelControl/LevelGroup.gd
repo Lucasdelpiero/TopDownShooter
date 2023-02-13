@@ -10,5 +10,6 @@ func _ready():
 		nameTags.append(i.nameTag)
 		paths.append(levelName)
 		textures.append(i.texture)
+		GlobalControl.levels.append(levelName)
 
 

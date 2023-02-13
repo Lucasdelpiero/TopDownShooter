@@ -4,7 +4,7 @@ var world = null
 
 #var crosshair = preload("res://HUD/Sprites/crosshair.png")
 var offset = 16
-
+var levels = []
 var levelSelected = 0
 
 var max_score = {
@@ -32,6 +32,8 @@ func _input(_event):
 		else:
 			Engine.time_scale = 1.0
 			timeSlow = false
+	if Input.is_action_just_pressed("jump"):
+		print(levels)
 	
 #func _input(event):
 #	if event.is_action_pressed("paused"):
