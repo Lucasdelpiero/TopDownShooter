@@ -196,6 +196,7 @@ margin_top = -19.77
 margin_right = 0.284988
 margin_bottom = -0.169037
 rect_pivot_offset = Vector2( 82, 20 )
+text = "PREVIOUS"
 anim_time = 0.25
 
 [node name="NextButton" parent="." instance=ExtResource( 6 )]
@@ -208,6 +209,7 @@ margin_top = 0.286987
 margin_right = 0.504944
 margin_bottom = -12.513
 rect_pivot_offset = Vector2( 50, 20 )
+text = "NEXT"
 anim_time = 0.25
 
 [node name="StartButton" parent="." instance=ExtResource( 8 )]
@@ -220,6 +222,7 @@ margin_top = -0.200012
 margin_right = -0.219604
 margin_bottom = 0.199951
 rect_pivot_offset = Vector2( 97, 20 )
+text = "START_GAME"
 anim_time = 0.25
 
 [node name="DiamondParent" type="HBoxContainer" parent="."]
@@ -308,7 +311,7 @@ margin_left = 0.418991
 margin_top = -0.200012
 margin_right = 0.402985
 margin_bottom = 0.199951
-text = "Back"
+text = "BACK"
 transition = ExtResource( 13 )
 
 [connection signal="pressed" from="PreviousButton" to="." method="_on_PreviousButton_pressed"]

@@ -61,6 +61,7 @@ anchor_right = 0.0
 margin_left = 0.0
 margin_right = 249.0
 rect_pivot_offset = Vector2( 125, 20 )
+text = "START_GAME"
 anim_time = 0.25
 
 [node name="OptionsButton" parent="VBoxContainer" instance=ExtResource( 6 )]
@@ -71,6 +72,7 @@ margin_top = 52.0
 margin_right = 249.0
 margin_bottom = 92.0
 rect_pivot_offset = Vector2( 125, 20 )
+text = "OPTIONS"
 anim_time = 0.25
 
 [node name="ExitButton" parent="VBoxContainer" instance=ExtResource( 4 )]
@@ -81,6 +83,7 @@ margin_top = 104.0
 margin_right = 249.0
 margin_bottom = 144.0
 rect_pivot_offset = Vector2( 125, 20 )
+text = "EXIT_GAME"
 anim_time = 0.25
 
 [node name="OptionsLayer" parent="." instance=ExtResource( 2 )]

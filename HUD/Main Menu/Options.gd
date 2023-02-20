@@ -30,7 +30,6 @@ func _ready():
 	getVolume("Music", sliderMusic)
 	getVolume("SoundEffects", sliderSFX)
 	connectToText()
-
 	
 	for i in musicList.tracks.size():
 		optionMusic.add_item(musicList.tracks[i])

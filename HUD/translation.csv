@@ -4,8 +4,15 @@ WINDOW_RESOLUTION,Resolution:,Resolución:
 MUSIC,Music:,Música:
 SONG_PLAYING,Song Playing:,Reproduciendo tema:
 MUTE,Mute:,Silenciar:
-BACK,Back,Volver
+BACK,Back, Volver 
+PREVIOUS, Previous , Anterior 
+NEXT, Next, Siguiente 
 ,,
+,,
+,,
+START_GAME,Start Game, Comenzar Juego 
+OPTIONS,Options,Opciones
+EXIT_GAME,Exit Game,Salir
 ,,
 SURVIVE_X_SECONDS,Survive for %s seconds,Sobrevive por %s segundos
 KILL_ALL_ZOMBIES,Kill All Zombies,Mata a todos los zombis
@@ -22,3 +29,12 @@ T_BARREL_SHOOT,{c}SHOOT{cc} at the barrels to explode them.,{c}DISPARA{cc} a los
 T_BARREL_COLLISION,"When a barrel {c}COLLIDE{cc} with a surface\ncan create a chain reaction.
 ",Cuando un barril {c}CHOCA{cc} con alguna superficie\npuede crear una reacción en cadena.
 T_CHANGE_WEAPON,"Pressing {c}[1]{cc}, {c}[2]{cc}, {c}[...]{cc} to change to the respective  weapon.","Presiona {c}[1]{cc}, {c}[2]{cc}, {c}[...]{cc} para cambiar respectivamente a tal arma."
+,,
+#SCORE COMMENTS,,
+SC1,Good,Bien
+SC2,Better,Mejor
+SC3,Nice,Genial
+SC4,Bloodthisthy,Sangriento
+SC5,Massacre,Masacre
+SC6,ULTRAKILLER,ULTRAKILLER
+SCD,INFINITUM,INFINITUM

@@ -5,7 +5,7 @@
 [ext_resource path="res://HUD/Sounds/AudioPressed.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/Sounds/AudioHover.tscn" type="PackedScene" id=5]
 
-[node name="MenuButton" type="Button"]
+[node name="MenuButton" type="Button" groups=["hasText"]]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -32.0
@@ -21,10 +21,8 @@ __meta__ = {
 anim_time = 0.05
 
 [node name="AudioHover" parent="." instance=ExtResource( 5 )]
-bus = "SoundEffects"
 
 [node name="AudioPressed" parent="." instance=ExtResource( 4 )]
-bus = "SoundEffects"
 
 [node name="Tween" type="Tween" parent="."]
 

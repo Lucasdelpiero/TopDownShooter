@@ -19,16 +19,15 @@ export var offset = 2.0
 var Colors = []
 
 var comments = {
-	3 : "Good",
-	5 : "Better",
-	10 : "Nice",
-	20 :"Bloodthisthy",
-	30 : "Massacre",
-	12 : "Nice",
-	14 : "Nice",
-	16 : "Nice",
-	1 : "Nice",
+	3 : "SC1",
+	5 : "SC2",
+	10 : "SC3",
+	20 :"SC4",
+	30 : "SC5",
+	40 : "SC6",
+	1 : "SC1",
 }
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,7 +45,7 @@ func updateMultiplicator(value):
 	shake(VBC)
 	if value in comments:
 #		shake(lMessage)
-		displayMessage(comments[value])
+		displayMessage(tr(comments[value]))
 
 func multiplierColor(value):
 	if value < 3:
