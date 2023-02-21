@@ -19,7 +19,7 @@ func save_game():
 			max_score = global.max_score
 		}
 	}
-	print(save_dict.global.max_score)
+#	print(save_dict.global.max_score)
 	
 	file.store_line(to_json(save_dict))
 
@@ -34,7 +34,7 @@ func load_game():
 	
 	global.max_score = save_dict.global.max_score
 	
-	print(save_dict.global.max_score)
+#	print(save_dict.global.max_score)
 	get_parent().updateInfo()
 	
 	

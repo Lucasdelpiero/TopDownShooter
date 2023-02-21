@@ -97,7 +97,7 @@ func updateLevelLocking():
 	$StartButton.disabled = false
 	if levelSelected > 0:
 		if !GlobalControl.max_score.has(levels[levelSelected - 1].levelName):
-			print(GlobalControl.max_score)
+#			print(GlobalControl.max_score)
 			$StartButton.disabled = true
 
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
-[ext_resource path="res://HUD/Sprites/rectangle_white.png" type="Texture" id=2]
 [ext_resource path="res://HUD/VSO.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/Main Menu/Images Levels/testLevelPic.png" type="Texture" id=4]
 [ext_resource path="res://HUD/Main Menu/Level Selector/PreviousButton.tscn" type="PackedScene" id=5]
@@ -37,10 +36,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 256, 88 )
 
 [node name="LevelSelector" type="Control" groups=["level_selector"]]
 pause_mode = 2
@@ -289,8 +284,6 @@ margin_top = 536.231
 margin_right = 610.048
 margin_bottom = 576.231
 rect_pivot_offset = Vector2( 0, 0 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 6 )
 anim_time = 0.12
 
 [node name="TestButton" parent="." instance=ExtResource( 12 )]

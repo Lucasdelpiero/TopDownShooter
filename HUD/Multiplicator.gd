@@ -19,6 +19,9 @@ export var offset = 2.0
 var Colors = []
 
 var comments = {
+# SC = Score Comments, the next are the keys to the comments themselves, save in
+# the localization file
+	
 	3 : "SC1",
 	5 : "SC2",
 	10 : "SC3",

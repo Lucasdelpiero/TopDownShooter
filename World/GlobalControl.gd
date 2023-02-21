@@ -72,12 +72,10 @@ func giveScore(key):
 #	var crosshair = CrossHair.instance
 #	add_child(crosshair)
 func goto_next_level():
-	var levels = GlobalControl.levels
+	var _levels = GlobalControl.levels
 	var currentWorld = get_tree().get_nodes_in_group("world")[0]
 	var worldName = currentWorld.name
-	print(worldName)
 	for i in levels.size():
-		print(i)
 		if i == levels.size() - 1: # Safeguard
 			get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
 			break
