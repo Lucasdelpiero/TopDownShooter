@@ -1,21 +1,27 @@
 extends Control
 
 onready var totalScoreL = $Panel/VBoxContainer/TotalScore
+onready var totalScoreKey = totalScoreL.text
 var totalScore = 0
 var totalScoreTw = 0 # Value to be tweened from 0 to the real value
 onready var maxComboL = $Panel/VBoxContainer/MaxCombo
+onready var maxComboKey = maxComboL.text
 var maxCombo = 0
 var maxComboTw = 0
 onready var timeL = $Panel/VBoxContainer/Time
+onready var timeKey = timeL.text
 var time = 0
 var timeTw = 0
 onready var totalKilledL = $Panel/VBoxContainer/TotalKilled
+onready var totalKilledKey = totalKilledL.text
 var totalKilled = 0
 var totalKilledTw = 0
 onready var totalMeleeL = $Panel/VBoxContainer/TotalMelee
+onready var totalMeleeKey = totalMeleeL.text
 var totalMelee = 0
 var totalMeleeTw = 0
 onready var totalExplosionL = $Panel/VBoxContainer/TotalExposion
+onready var totalExplosionKey = totalExplosionL.text
 var totalExplosion = 0
 var totalExplosionTw = 0
 onready var tween = $Tween
@@ -64,12 +70,20 @@ func updateScore(property, _delay):
 	tween.start()
 
 func updateLabels():
-	totalScoreL.text = "Total Score: " + str( int( totalScoreTw ) )
-	maxComboL.text = "Max Combo: " + str( int( maxComboTw ))
-	timeL.text = "Time: " + str( int( timeTw ) )
-	totalKilledL.text = "Total Killed: " + str( int( totalKilledTw ) )
-	totalMeleeL.text = "Total Melee: " + str( int( totalMeleeTw ) )
-	totalExplosionL.text = "Total Explosion: " + str( int( totalExplosionTw ) )
+	totalScoreL.text = "%s: %d" % [tr(totalScoreKey), totalScoreTw]
+	
+	maxComboL.text = "%s: %d" % [tr(maxComboKey), maxComboTw]
+	timeL.text = "%s: %d" % [tr(timeKey), timeTw]
+	totalKilledL.text = "%s: %d" % [tr(totalKilledKey), totalKilledTw]
+	totalMeleeL.text = "%s: %d" % [tr(totalMeleeKey) , totalMeleeTw]
+	totalExplosionL.text = "%s: %d" % [tr(totalExplosionKey), totalExplosionTw]
+	
+#	totalScoreL.text = "Total Score: " + str( int( totalScoreTw ) )
+#	maxComboL.text = "Max Combo: " + str( int( maxComboTw ))
+#	timeL.text = "Time: " + str( int( timeTw ) )
+#	totalKilledL.text = "Total Killed: " + str( int( totalKilledTw ) )
+#	totalMeleeL.text = "Total Melee: " + str( int( totalMeleeTw ) )
+#	totalExplosionL.text = "Total Explosion: " + str( int( totalExplosionTw ) )
 
 
 func skipAnimation():

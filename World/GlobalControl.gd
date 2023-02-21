@@ -33,7 +33,8 @@ func _input(_event):
 			Engine.time_scale = 1.0
 			timeSlow = false
 	if Input.is_action_just_pressed("jump"):
-		goto_next_level()
+#		goto_next_level()
+		pass
 	
 #func _input(event):
 #	if event.is_action_pressed("paused"):

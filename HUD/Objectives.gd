@@ -83,6 +83,8 @@ onready var base = $CanvasLayer/Base
 onready var label = $CanvasLayer/Base/Label
 onready var lKillAll = $CanvasLayer/Base/VBC/OC2/LKillAll
 onready var lSurvive = $CanvasLayer/Base/VBC/OC3/LSurvive
+onready var lObjectives = $CanvasLayer/Base/VBC/OC/LObjectives
+onready var lObjectives_key = lObjectives.text
 onready var lOptional = $CanvasLayer/Base/VBC/OC4/LOptional
 onready var lMelee = $CanvasLayer/Base/VBC/OC5/LMelee
 onready var lExplosion = $CanvasLayer/Base/VBC/OC6/LExplosion
@@ -263,6 +265,8 @@ func updateLabels():
 	shown(lExplosion, withExplosion)  
 	shown(lOptional, withExplosion or withMelee)
 	shown(lReachFinish, hasToReachFinish)
+	
+	lObjectives.text = tr(lObjectives_key)
 	
 	if survive:
 		# Create label Class that automaticly padd for the sides 

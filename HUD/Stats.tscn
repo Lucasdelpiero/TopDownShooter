@@ -21,10 +21,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -192.0
-margin_top = -204.0
-margin_right = 193.0
-margin_bottom = 205.0
+margin_left = -195.0
+margin_top = -196.0
+margin_right = 196.0
+margin_bottom = 197.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -43,56 +43,63 @@ __meta__ = {
 }
 
 [node name="TotalScore" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
-margin_right = 236.0
+margin_right = 282.0
 margin_bottom = 38.0
-text = "Total Score: "
+text = "TOTAL_SCORE"
 
 [node name="MaxCombo" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 42.0
-margin_right = 236.0
+margin_right = 282.0
 margin_bottom = 80.0
-text = "Max Combo: "
+text = "MAX_COMBO"
 
 [node name="Time" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 84.0
-margin_right = 236.0
+margin_right = 282.0
 margin_bottom = 122.0
-text = "Time: "
+text = "TIME"
 
 [node name="TotalKilled" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 126.0
-margin_right = 236.0
+margin_right = 282.0
 margin_bottom = 164.0
-text = "Total Killed: "
+text = "TOTAL_KILLED"
 
 [node name="TotalMelee" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 168.0
-margin_right = 236.0
+margin_right = 282.0
 margin_bottom = 206.0
-text = "Total Melee: "
+text = "TOTAL_MELEE"
 
 [node name="TotalExposion" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 210.0
-margin_right = 236.0
+margin_right = 282.0
 margin_bottom = 248.0
-text = "Total Explosion: "
+text = "TOTAL_EXPLOSION"
 
 [node name="ContinueButton" type="Button" parent="Panel"]
-margin_left = 81.0722
-margin_top = 351.536
-margin_right = 312.072
-margin_bottom = 395.536
-text = "  Level selector  "
+anchor_left = 0.211
+anchor_top = 0.085
+anchor_right = 0.883
+anchor_bottom = 1.0
+margin_left = 1.42461
+margin_top = 307.247
+margin_right = -2.32742
+margin_bottom = -14.3484
+text = "LEVEL_SELECTOR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NextLevelButton" type="Button" parent="Panel"]
-margin_left = 93.2864
-margin_top = 284.059
-margin_right = 299.286
-margin_bottom = 339.059
-text = "  Next Level  "
+anchor_left = 0.186
+anchor_right = 0.868
+anchor_bottom = 1.0
+margin_left = 37.5504
+margin_top = 285.646
+margin_right = -44.1116
+margin_bottom = -68.3536
+text = "NEXT_LEVEL"
 __meta__ = {
 "_edit_use_anchors_": false
 }

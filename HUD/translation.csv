@@ -18,6 +18,9 @@ SURVIVE_X_SECONDS,Survive for %s seconds,Sobrevive por %s segundos
 KILL_ALL_ZOMBIES,Kill All Zombies,Mata a todos los zombis
 KILL_IN_MELEE,Kill %s zombies in melee: %s/%s ,Mata %s zombis a melee: %s/%s
 KILL_WITH_EXPLOSION,Kill %s zombies with an explosion: %s/%s,Mata %s zombis usando explosiones %s/%s
+OBJECTIVES   ,Objectives:,Objetivos:
+OBJ_KILL_ALL,Kill All Zombies,Mata a todos los zombis
+REACH_END,Reach the finish line,Llega al final del nivel
 ,,
 T_SHOOT,Press {c}LEFT CLICK{cc} to shoot.,Presiona {c}CLICK IZQUIERDO{cc} para disparar.
 T_RELOAD,{c}RELOAD{cc} by pressing {c}R{cc}\nor {c}SHOOT{cc} when you have {c}0 bullets{cc}.,{c}RECARGA{cc} presionando {c}R{cc}\n o {c}DISPARA{cc} cuando te queden {c}0 balas{cc}.
@@ -38,3 +41,12 @@ SC4,Bloodthisthy,Sangriento
 SC5,Massacre,Masacre
 SC6,ULTRAKILLER,ULTRAKILLER
 SCD,INFINITUM,INFINITUM
+,,
+TOTAL_SCORE,Total score,Puntaje total
+MAX_COMBO,Max combo,Combo máximo
+TIME,Time,Tiempo
+TOTAL_KILLED,Total killed,Total matados
+TOTAL_MELEE,Total melee,Muertos a melee
+TOTAL_EXPLOSION,Total explosion,Muertos con explosiones
+NEXT_LEVEL, Next Level , Siguiente Nivel
+LEVEL_SELECTOR, Level Selector , Selector de Nivel 
