@@ -36,7 +36,7 @@ var dictionary = {
 }
 
 #STATS
-onready var Stats = preload("res://HUD/Stats.tscn")
+onready var Stats = preload("res://HUD/StatsLarge.tscn")
 onready var timeLabel = $TimeLabel
 var timeNow = 0
 var maxCombo = 0

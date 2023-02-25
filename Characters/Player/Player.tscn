@@ -1327,7 +1327,6 @@ visible = false
 
 [node name="Hitbox" parent="Position2D/Knife" index="0"]
 collision_mask = 262
-damage = 100
 
 [node name="SpawnWeapons" type="Position2D" parent="Position2D"]
 
