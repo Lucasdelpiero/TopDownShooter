@@ -1,51 +1,31 @@
 extends Control
 
-onready var totalScoreL = $Panel/VBoxContainer/TotalScore
-export(NodePath) var totalScoreP
-var totalScoreCounter 
-onready var totalScoreKey = totalScoreL.text
 var totalScore = 0
 var totalScoreTw = 0 # Value to be tweened from 0 to the real value
 
-onready var maxComboL = $Panel/VBoxContainer/MaxCombo
-export(NodePath) var maxComboP 
-var maxComboCounter 
-onready var maxComboKey = maxComboL.text
 var maxCombo = 0
 var maxComboTw = 0
 
-onready var timeL = $Panel/VBoxContainer/Time
-export(NodePath) var timeP
-var timeCounter 
-onready var timeKey = timeL.text
 var time = 0
 var timeTw = 0
 
-onready var totalKilledL = $Panel/VBoxContainer/TotalKilled
-export(NodePath) var totalKilledP
-var totalKilledCounter 
-onready var totalKilledKey = totalKilledL.text
 var totalKilled = 0
 var totalKilledTw = 0
 
-onready var totalMeleeL = $Panel/VBoxContainer/TotalMelee
-export(NodePath) var totalMeleeCounter
-onready var totalMeleeKey = totalMeleeL.text
 var totalMelee = 0
 var totalMeleeTw = 0
-onready var totalExplosionL = $Panel/VBoxContainer/TotalExposion
-export(NodePath) var totalExplosionCounter
-onready var totalExplosionKey = totalExplosionL.text
+
 var totalExplosion = 0
 var totalExplosionTw = 0
+
 onready var tween = $Tween
 export(float, 0.1, 5.0, 0.1) var countDuration = 1.5
 
 onready var timer = $Timer
 
-var labels := []
-var keys := []
-var counters := []
+var labels := [] # labels of the category
+var keys := [] # used for localization of the label
+var counters := [] # label displaying score of the corresponding label
 
 var scoresList = [
 	"totalScore",
@@ -76,6 +56,7 @@ func _ready():
 	for i in scoresList.size():
 		updateScore(scoresList[i], i) 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	for i in lastInt.size():
@@ -91,22 +72,14 @@ func updateScore(property, _delay):
 	tween.interpolate_property(self , property + "Tw" , 0 , get(property), countDuration  , Tween.TRANS_LINEAR, Tween.TRANS_LINEAR, 0)
 	tween.start()
 
+
 func updateLabels():
-#	totalScoreL.text = "%s: %d" % [tr(totalScoreKey), totalScoreTw]
-#	maxComboL.text = "%s: %d" % [tr(maxComboKey), maxComboTw]
-#	timeL.text = "%s: %d" % [tr(timeKey), timeTw]
-#	totalKilledL.text = "%s: %d" % [tr(totalKilledKey), totalKilledTw]
-#	totalMeleeL.text = "%s: %d" % [tr(totalMeleeKey) , totalMeleeTw]
-#	totalExplosionL.text = "%s: %d" % [tr(totalExplosionKey), totalExplosionTw]
 	for i in labels.size():
 		labels[i].text = "%s:" % tr(keys[i])
 		
-		var baseName = nameToVar(counters[i].name)
-		counters[i].text = str(int(get(baseName + "Tw")))
-#		counters[i].text = self.get(baseName + "Tw")
-#		print(counters[i].name)
-#		counters[i].text = self.get(counters[i].name + "Tw")
-	pass
+		var baseName = nameToVar(counters[i].name) 
+		counters[i].text = str(int(get(baseName + "Tw"))) #int used to round the float value obtained and then converted to string to avoid error 
+
 
 # Converts the name of the node to the base of the variables, which are 
 # in lower case in the first letter
@@ -117,25 +90,12 @@ func nameToVar(arg):
 	var newWord = firstLetter + oldName
 	return newWord
 
-func updateLabelsLarge():
-	totalScoreL.text = "%s :" % tr(totalScoreKey)
-	totalScoreCounter.text = str(totalScoreTw)
-	maxComboL.text = "%s :" % tr(maxComboKey)
-	maxComboCounter.text = maxComboTw
-	timeL.text = "%s: " % tr(timeKey)
-	timeCounter.text = timeTw
-	totalKilledL.text = "%s:" % tr(totalKilledKey)
-	totalKilledCounter.text = totalKilledTw
-	totalMeleeL.text = "%s:" % tr(totalMeleeKey)
-	totalMeleeCounter.text = totalMeleeTw
-	totalExplosionL.text = "%s:" % tr(totalExplosionKey)
-	totalExplosionCounter.text = totalExplosionTw
-
 
 func skipAnimation():
 	tween.stop_all()
 	for i in scoresList.size():
 		set( scoresList[i] + "Tw", get(scoresList[i]) ) 
+
 
 func soundPoints():
 	var sfx = Sfx.instance()
@@ -159,6 +119,7 @@ func _on_Timer_timeout():
 #	queue_free()
 	pass
 
+
 func _on_ContinueButton_pressed():
 	get_tree().paused = false
 	GlobalControl.showMouse(true)
@@ -166,8 +127,6 @@ func _on_ContinueButton_pressed():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
 	pass 
-
-
 
 
 func _on_NextLevelButton_pressed():
