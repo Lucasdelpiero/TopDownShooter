@@ -21,8 +21,12 @@ onready var ScoreBubble = preload("res://Effects/ScoreBubble.tscn")
 onready var comboLabel = $ComboLabels/Score
 onready var multiplicatorLabel = $ComboLabels/Multiplicator
 onready var totalLabel = $TotalScoreLabel
-onready var comboBar = $ComboLabels/ComboBar
-onready var tweenComboBar = $ComboLabels/ComboBar/Tween
+export(NodePath) var comboBarP
+export(NodePath) var tweenComboBarP
+onready var comboBar = get_node(comboBarP)
+onready var tweenComboBar = get_node(tweenComboBarP)
+#onready var comboBar = $Multiplicator/VBC/ComboBar
+#onready var tweenComboBar = $Multiplicator/VBC/ComboBar/Tween
 onready var lastCombo = $ComboLabels/LastCombo
 onready var tweenLastCombo = $ComboLabels/LastCombo/Tween
 onready var multiplicatorC = $Multiplicator

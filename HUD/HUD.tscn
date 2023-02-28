@@ -31,20 +31,22 @@ __meta__ = {
 anchor_top = 0.248
 anchor_right = 0.583
 anchor_bottom = 1.0
-margin_left = 48.0
-margin_top = 27.88
-margin_right = -26.467
-margin_bottom = -41.0
+margin_left = 12.0406
+margin_top = 54.8495
+margin_right = -62.4263
+margin_bottom = -14.0305
 grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
-margin_right = 206.0
-margin_bottom = 38.0
+margin_top = 36.0
+margin_right = 129.0
+margin_bottom = 74.0
 
 [node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
 margin_right = 28.0
@@ -68,6 +70,7 @@ __meta__ = {
 }
 
 [node name="LifeBar" type="TextureProgress" parent="Control/VBoxContainer"]
+visible = false
 margin_top = 42.0
 margin_right = 206.0
 margin_bottom = 70.0
@@ -154,6 +157,12 @@ margin_top = 5.0
 margin_right = 11.0
 margin_bottom = 4.79999
 
+[node name="TimeLabel" parent="Scoring" index="1"]
+visible = false
+
+[node name="ComboLabels" parent="Scoring" index="2"]
+visible = false
+
 [node name="Score" parent="Scoring/ComboLabels" index="0"]
 margin_left = 1.18921
 margin_top = 41.433
@@ -167,14 +176,7 @@ margin_top = 41.433
 margin_right = 5.18921
 margin_bottom = 79.433
 
-[node name="ComboBar" parent="Scoring/ComboLabels" index="2"]
-visible = true
-margin_left = -96.3784
-margin_top = 13.0816
-margin_right = 118.622
-margin_bottom = 25.0816
-
-[node name="LastCombo" parent="Scoring/ComboLabels" index="3"]
+[node name="LastCombo" parent="Scoring/ComboLabels" index="2"]
 margin_left = -67.4459
 margin_top = -27.6427
 margin_right = 88.5541
@@ -188,6 +190,15 @@ margin_left = 0.715181
 margin_top = -39.9901
 margin_right = 40.7152
 margin_bottom = 0.00985718
+
+[node name="HBCCombo" parent="Scoring/Multiplicator/VBC" index="2"]
+margin_bottom = 87.0
+
+[node name="VSO" parent="Scoring/Multiplicator/VBC/HBCCombo" index="0"]
+margin_bottom = 3.0
+
+[node name="ComboBar" parent="Scoring/Multiplicator/VBC/HBCCombo" index="1"]
+visible = false
 
 [node name="Crosshair" parent="." instance=ExtResource( 11 )]
 

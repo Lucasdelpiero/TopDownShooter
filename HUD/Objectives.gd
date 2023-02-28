@@ -130,11 +130,11 @@ func _process(_delta):
 func objectives_visible(isVisible):
 	if (!isVisible):
 		if (showing):
-			tween.interpolate_property(base, "rect_position", posShown, posHidden, animationTime, Tween.TRANS_CUBIC, Tween.EASE_OUT )
+			tween.interpolate_property(base, "rect_position", base.rect_position, posHidden, animationTime, Tween.TRANS_CUBIC, Tween.EASE_OUT )
 			tween.start()
 			showing = false
 	else:
-		tween.interpolate_property(base, "rect_position", posHidden, posShown, animationTime, Tween.TRANS_QUINT, Tween.EASE_OUT )
+		tween.interpolate_property(base, "rect_position", base.rect_position, posShown, animationTime, Tween.TRANS_QUINT, Tween.EASE_OUT )
 		tween.start()
 		showing = true
 

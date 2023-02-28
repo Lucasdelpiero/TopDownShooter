@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD/Scoring.gd" type="Script" id=1]
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=2]
+[ext_resource path="res://HUD/VSO.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/WhiteContainer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/Multiplicator.gd" type="Script" id=5]
 
@@ -21,6 +22,8 @@ __meta__ = {
 }
 comboTime = 4.0
 Colors = [ Color( 1, 0.964706, 0.964706, 1 ), Color( 0.964706, 0.905882, 0.435294, 1 ), Color( 0.960784, 0.878431, 0.192157, 1 ), Color( 0.921569, 0.592157, 0.121569, 1 ), Color( 1, 0.101961, 0.164706, 1 ) ]
+comboBarP = NodePath("Multiplicator/VBC/HBCCombo/ComboBar")
+tweenComboBarP = NodePath("Multiplicator/VBC/HBCCombo/ComboBar/Tween")
 
 [node name="TotalScoreLabel" type="Label" parent="."]
 anchor_left = 1.0
@@ -76,18 +79,6 @@ margin_left = 4.0
 margin_top = 1.0
 margin_right = 4.0
 margin_bottom = 39.0
-
-[node name="ComboBar" type="ProgressBar" parent="ComboLabels"]
-visible = false
-margin_left = -94.0
-margin_top = -22.0
-margin_right = 121.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tween" type="Tween" parent="ComboLabels/ComboBar"]
 
 [node name="LastCombo" type="Label" parent="ComboLabels"]
 margin_top = 40.0
@@ -162,6 +153,29 @@ margin_bottom = 38.0
 text = "14"
 align = 1
 
+[node name="HBCCombo" type="HBoxContainer" parent="Multiplicator/VBC"]
+margin_top = 84.0
+margin_right = 137.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+
+[node name="VSO" parent="Multiplicator/VBC/HBCCombo" instance=ExtResource( 3 )]
+margin_right = 10.0
+margin_bottom = 4.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="ComboBar" type="ProgressBar" parent="Multiplicator/VBC/HBCCombo"]
+margin_left = 14.0
+margin_right = 137.0
+margin_bottom = 4.0
+size_flags_horizontal = 3
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Multiplicator/VBC/HBCCombo/ComboBar"]
+
 [node name="ShakeTimer" type="Timer" parent="Multiplicator"]
 wait_time = 0.01
 
@@ -173,7 +187,7 @@ one_shot = true
 autostart = true
 
 [connection signal="tree_entered" from="." to="." method="_on_Scoring_tree_entered"]
-[connection signal="tween_all_completed" from="ComboLabels/ComboBar/Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Multiplicator/VBC/HBCCombo/ComboBar/Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="timeout" from="Multiplicator/ShakeTimer" to="Multiplicator" method="_on_ShakeTimer_timeout"]
 [connection signal="timeout" from="Multiplicator/StopShakeTimer" to="Multiplicator" method="_on_StopShakeTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

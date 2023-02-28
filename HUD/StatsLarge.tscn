@@ -127,28 +127,30 @@ margin_bottom = 248.0
 text = "0"
 
 [node name="ContinueButton" type="Button" parent="Panel"]
-anchor_left = 0.653
-anchor_top = 0.677
-anchor_right = 0.653
-anchor_bottom = 0.677
-margin_left = -129.706
-margin_top = -18.8409
-margin_right = 129.294
-margin_bottom = 19.1591
+anchor_left = 0.481
+anchor_top = 0.854
+anchor_right = 0.481
+anchor_bottom = 0.854
+margin_left = -129.173
+margin_top = -19.2071
+margin_right = 129.827
+margin_bottom = 18.7929
+grow_horizontal = 2
 text = "LEVEL_SELECTOR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NextLevelButton" type="Button" parent="Panel"]
-anchor_left = 0.18
+anchor_left = 0.478
 anchor_top = 0.681
-anchor_right = 0.18
+anchor_right = 0.478
 anchor_bottom = 0.681
-margin_left = -92.8288
+margin_left = -92.3702
 margin_top = -19.7014
-margin_right = 92.1712
+margin_right = 92.6298
 margin_bottom = 19.299
+grow_horizontal = 2
 text = "NEXT_LEVEL"
 __meta__ = {
 "_edit_use_anchors_": false
