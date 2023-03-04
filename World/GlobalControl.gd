@@ -85,4 +85,6 @@ func goto_next_level():
 			var nextLevel = "res://World/Maps/" + levels[i + 1] + ".tscn"
 			get_tree().change_scene(nextLevel)
 			break
-		pass
+	if levels.size() == 0: # Used only when a level is loaded without going through the level selector, as the list is loaded in that scene
+		get_tree().change_scene("res://HUD/Main Menu/Level Selector/LevelSelector.tscn")
+	

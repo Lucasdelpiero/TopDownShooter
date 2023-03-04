@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Main Menu/Options.tscn" type="PackedScene" id=2]
@@ -6,10 +6,112 @@
 [ext_resource path="res://HUD/Main Menu/ExitButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/Main Menu/TitleScreen.gd" type="Script" id=5]
 [ext_resource path="res://HUD/Main Menu/OptionsButton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://HUD/Transition.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HUD/Main Menu/NoiseAnimation.tscn" type="PackedScene" id=8]
+[ext_resource path="res://HUD/Main Menu/LanguageSelector.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade Out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Title:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../VBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../LanguageSelector:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Show Title"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../VBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Title:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../LanguageSelector:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="TitleScreen" type="Control"]
 pause_mode = 2
@@ -39,7 +141,25 @@ stretch_mode = 1
 offset_speed = 35.0
 offset_angle = 110.0
 
+[node name="Title" type="Label" parent="."]
+visible = false
+anchor_left = 0.336
+anchor_top = 0.173
+anchor_right = 0.641
+anchor_bottom = 0.227
+margin_left = -0.0640259
+margin_top = -7.8
+margin_right = 1.61609
+margin_bottom = -2.2
+theme = ExtResource( 1 )
+text = "TOP DOWN SHOOTER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.378
 anchor_top = 0.307
 anchor_right = 0.621
@@ -51,9 +171,6 @@ margin_bottom = 0.799988
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 12
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StartButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -94,27 +211,29 @@ visible = false
 [node name="ScreenResolution" parent="OptionsLayer/Options/VBoxContainer/HBoxScreen" index="3"]
 items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
 
-[node name="Title" type="Label" parent="."]
-anchor_left = 0.336
-anchor_top = 0.173
-anchor_right = 0.641
-anchor_bottom = 0.227
-margin_left = -0.0640259
-margin_top = -7.8
-margin_right = 1.61609
-margin_bottom = -2.20001
-theme = ExtResource( 1 )
-text = "TOP DOWN SHOOTER"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": true
-}
+[node name="LanguageSelector" parent="." instance=ExtResource( 9 )]
+margin_left = -32.0
+margin_top = -8.0
+margin_right = -8.00012
+margin_bottom = -8.0
+titleSceenP = NodePath("..")
 
-[node name="Transition" parent="." instance=ExtResource( 7 )]
+[node name="Transition" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.991
+anchor_bottom = 1.02
 margin_left = -40.0
 margin_top = -64.0
 margin_right = 139.216
 margin_bottom = 20.9999
+mouse_filter = 2
+color = Color( 0.0705882, 0.0588235, 0.0588235, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+reset_on_save = false
+"anims/Fade Out" = SubResource( 2 )
+anims/RESET = SubResource( 5 )
+"anims/Show Title" = SubResource( 4 )
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]

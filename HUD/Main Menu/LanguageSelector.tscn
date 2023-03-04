@@ -1,23 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD/Sprites/spain.png" type="Texture" id=2]
 [ext_resource path="res://HUD/Sprites/united-kingdom.png" type="Texture" id=3]
 [ext_resource path="res://HUD/Main Menu/LanguageSelector.gd" type="Script" id=4]
-[ext_resource path="res://HUD/Transition.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/theme_rounded.tres" type="Theme" id=6]
-[ext_resource path="res://HUD/Main Menu/NoiseAnimation.tscn" type="PackedScene" id=7]
 
 [node name="LanguageSelector" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NoiseAnimation" parent="." instance=ExtResource( 7 )]
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -79,12 +72,6 @@ margin_top = 310.189
 margin_right = -331.0
 margin_bottom = -225.811
 text = " English "
-
-[node name="Transition" parent="." instance=ExtResource( 5 )]
-anchor_left = -0.089
-anchor_top = -0.083
-margin_left = 0.136002
-margin_top = -0.199997
 
 [connection signal="pressed" from="BtnSpanish" to="." method="_on_BtnSpanish_pressed"]
 [connection signal="pressed" from="BtnEnglish" to="." method="_on_BtnEnglish_pressed"]
