@@ -123,9 +123,6 @@ margin_right = 16.0001
 margin_bottom = 8.0
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NoiseAnimation" parent="." instance=ExtResource( 8 )]
 modulate = Color( 0.356863, 0.345098, 0.345098, 1 )
