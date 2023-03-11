@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://World/LevelControl/TriggerFinishLevel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/LevelControl/Tutorial.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/LevelControl/TriggerTutorial.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Tiles/Decoration/locker.png" type="Texture" id=11]
 
 [node name="Level_2" instance=ExtResource( 1 )]
 
@@ -117,6 +118,42 @@ weapon = "Shotgun"
 [node name="ZombiDead" parent="Props" index="1" instance=ExtResource( 3 )]
 position = Vector2( -224.777, -913.281 )
 rotation = 1.38593
+
+[node name="TextureRect" type="Sprite" parent="Props" index="2"]
+position = Vector2( 1024, -5169.71 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 11 )
+
+[node name="TextureRect2" type="Sprite" parent="Props" index="3"]
+position = Vector2( 1280, -5169.71 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 11 )
+
+[node name="TextureRect3" type="Sprite" parent="Props" index="4"]
+position = Vector2( 1540.31, -5169.71 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 11 )
+
+[node name="TextureRect4" type="Sprite" parent="Props" index="5"]
+position = Vector2( 1536, -5169.71 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 11 )
+
+[node name="TextureRect5" type="Sprite" parent="Props" index="6"]
+position = Vector2( 1792, -5169.71 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 11 )
+
+[node name="TextureRect6" type="Sprite" parent="Props" index="7"]
+position = Vector2( 2048, -5169.71 )
+z_index = 2
+z_as_relative = false
+texture = ExtResource( 11 )
 
 [node name="TriggerFinishLevel" parent="Control" index="0" instance=ExtResource( 8 )]
 position = Vector2( -3261.73, -3826.45 )
