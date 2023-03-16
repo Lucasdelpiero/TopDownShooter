@@ -78,14 +78,14 @@ shape = SubResource( 1 )
 [node name="PoleBase" type="Sprite" parent="."]
 light_mask = 0
 position = Vector2( 192, 0 )
-z_index = 1
+z_index = 30
 z_as_relative = false
 texture = ExtResource( 3 )
 
 [node name="PoleBody" type="Sprite" parent="."]
 light_mask = 0
 position = Vector2( 200, 0 )
-z_index = 20
+z_index = 60
 z_as_relative = false
 texture = ExtResource( 2 )
 
