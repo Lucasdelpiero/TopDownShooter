@@ -2,7 +2,7 @@
 
 [node name="Cable" type="Line2D"]
 position = Vector2( 1, 0 )
-z_index = 23
+z_index = 90
 z_as_relative = false
 width = 4.0
 default_color = Color( 0.0941176, 0.0941176, 0.0980392, 1 )

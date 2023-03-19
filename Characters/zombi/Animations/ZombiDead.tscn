@@ -8,4 +8,6 @@ z_as_relative = false
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 26.9087 )
+z_index = 20
+z_as_relative = false
 texture = ExtResource( 1 )

@@ -18,7 +18,7 @@ animations = [ {
 extents = Vector2( 59.5, 58.5 )
 
 [node name="Box" type="StaticBody2D"]
-z_index = 4
+z_index = 10
 z_as_relative = false
 script = ExtResource( 3 )
 

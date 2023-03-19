@@ -99,7 +99,7 @@ points = PoolVector2Array( 192, 128, 0, 128, 0, 0, 192, 0 )
 "shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-3/z_index = 0
+3/z_index = -5
 4/name = "car.png 4"
 4/texture = ExtResource( 1 )
 4/tex_offset = Vector2( 0, 0 )
