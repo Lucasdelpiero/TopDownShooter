@@ -120,7 +120,6 @@ weapon = "Shotgun"
 [node name="ZombiDead" parent="Props" index="2" instance=ExtResource( 3 )]
 position = Vector2( 448, -1456 )
 rotation = 1.86698
-scale = Vector2( 1, 1 )
 
 [node name="Magazines" type="Sprite" parent="Props" index="3"]
 position = Vector2( -468.892, -1468.53 )

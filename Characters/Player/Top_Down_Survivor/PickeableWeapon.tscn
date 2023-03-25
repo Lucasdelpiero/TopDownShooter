@@ -8,7 +8,7 @@ extents = Vector2( 128, 128 )
 
 [node name="PickeableWeapon" type="Sprite"]
 position = Vector2( 0, 139.985 )
-z_index = 15
+z_index = 35
 z_as_relative = false
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
