@@ -4,7 +4,7 @@
 offsets = PoolRealArray( 0.615385, 1 )
 colors = PoolColorArray( 0.34902, 0.247059, 0.00392157, 1, 0.34902, 0.247059, 0.00392157, 0 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 2 )
 
 [sub_resource type="ParticlesMaterial" id=1]
@@ -18,7 +18,7 @@ angle = 45.0
 angle_random = 0.54
 scale = 25.0
 scale_random = 0.53
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 5 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "DoorParticles"

@@ -29,10 +29,11 @@ func _on_Weapons_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 # warning-ignore:return_value_discarded
-	connect("updateHUDAmmo", HUD, "_on_Update_Ammo")
-	connect("getHUDWeapons", HUD, "updateHUDWeapons")
-	connect("getSelectedWeapon", HUD, "updateWeaponSelected")
-	emit_signal("updateHUDAmmo", "0", "44", "55")
+	if HUD != null:
+		connect("updateHUDAmmo", HUD, "_on_Update_Ammo")
+		connect("getHUDWeapons", HUD, "updateHUDWeapons")
+		connect("getSelectedWeapon", HUD, "updateWeaponSelected")
+		emit_signal("updateHUDAmmo", "0", "44", "55")
 	ammoSelected = weaponSelected.ammo 
 
 # Called when the node enters the scene tree for the first time.

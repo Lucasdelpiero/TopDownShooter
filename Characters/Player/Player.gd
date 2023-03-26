@@ -69,7 +69,8 @@ func _on_Player_tree_entered():
 	yield(get_tree().create_timer(0.01), "timeout")
 	var HUD = get_tree().get_root().find_node("HUD", true, false)
 # warning-ignore:return_value_discarded
-	connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
+	if HUD != null:
+		connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
 	randomize()
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true
