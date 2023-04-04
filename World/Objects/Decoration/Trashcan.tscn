@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 64.0
 
-[node name="Trashcan" type="RigidBody2D"]
+[node name="Trashcan" type="StaticBody2D"]
 z_index = 4
 z_as_relative = false
 collision_layer = 4

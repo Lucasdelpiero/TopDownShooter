@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://World/Objects/Decoration/JailDoor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Decoration/Carpet.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Objects/Decoration/Table.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/Objects/Decoration/Locker.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Tiles/Decoration/magazines.png" type="Texture" id=14]
 [ext_resource path="res://World/Tiles/Decoration/magazines2.png" type="Texture" id=15]
 [ext_resource path="res://World/Objects/Decoration/Toilet.tscn" type="PackedScene" id=16]
@@ -82,29 +83,23 @@ position = Vector2( -3904, -2616 )
 [node name="zombi11" parent="Zombies" index="9" instance=ExtResource( 7 )]
 position = Vector2( -3648, -1992 )
 
-[node name="zombi12" parent="Zombies" index="10" instance=ExtResource( 7 )]
-position = Vector2( -2544, 5176 )
-
-[node name="zombi13" parent="Zombies" index="11" instance=ExtResource( 7 )]
-position = Vector2( -2984, 4752 )
-
-[node name="zombi14" parent="Zombies" index="12" instance=ExtResource( 7 )]
+[node name="zombi14" parent="Zombies" index="10" instance=ExtResource( 7 )]
 position = Vector2( -3984, 4528 )
 
-[node name="zombi15" parent="Zombies" index="13" instance=ExtResource( 7 )]
+[node name="zombi15" parent="Zombies" index="11" instance=ExtResource( 7 )]
 position = Vector2( -3592, 4024 )
 
-[node name="zombi9" parent="Zombies" index="14" instance=ExtResource( 7 )]
+[node name="zombi9" parent="Zombies" index="12" instance=ExtResource( 7 )]
 position = Vector2( -3720, -3072 )
 
-[node name="zombiBig" parent="Zombies" index="15" instance=ExtResource( 8 )]
+[node name="zombiBig" parent="Zombies" index="13" instance=ExtResource( 8 )]
 position = Vector2( -712, 3512 )
 z_index = 5
 MAX_SPEED = 800
 ACCELERATION = 400
 rotationSmooth = 0.75
 
-[node name="zombiBig2" parent="Zombies" index="16" instance=ExtResource( 8 )]
+[node name="zombiBig2" parent="Zombies" index="14" instance=ExtResource( 8 )]
 position = Vector2( -312, 4248 )
 z_index = 5
 MAX_SPEED = 800
@@ -286,6 +281,28 @@ rotation = 4.71238
 [node name="Table5" parent="Props/Tables" index="4" instance=ExtResource( 12 )]
 position = Vector2( 2143.37, -2716.82 )
 rotation = 4.71238
+
+[node name="Lockers" type="Node" parent="Props" index="11"]
+
+[node name="Locker" parent="Props/Lockers" index="0" instance=ExtResource( 13 )]
+position = Vector2( -1568, -2944 )
+rotation = -1.57079
+
+[node name="Locker2" parent="Props/Lockers" index="1" instance=ExtResource( 13 )]
+position = Vector2( -1568, -3200 )
+rotation = -1.57079
+
+[node name="Locker3" parent="Props/Lockers" index="2" instance=ExtResource( 13 )]
+position = Vector2( -1568, -3458.45 )
+rotation = -1.57079
+
+[node name="Locker4" parent="Props/Lockers" index="3" instance=ExtResource( 13 )]
+position = Vector2( -1568, -3712 )
+rotation = -1.57079
+
+[node name="Locker5" parent="Props/Lockers" index="4" instance=ExtResource( 13 )]
+position = Vector2( -1568, -3968 )
+rotation = -1.57079
 
 [node name="Teleporter" parent="Control" index="0" instance=ExtResource( 6 )]
 position = Vector2( -1285.34, -2186.68 )

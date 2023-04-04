@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128, 80 )
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="Locker" type="StaticBody2D"]
 
 [node name="Locker" type="Sprite" parent="."]
 z_index = 60

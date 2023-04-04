@@ -53,6 +53,8 @@ tracks/1/keys = {
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 0, 100 )
+z_index = 30
+z_as_relative = false
 amount = 64
 lifetime = 0.6
 explosiveness = 0.9
