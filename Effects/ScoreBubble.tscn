@@ -74,7 +74,7 @@ tracks/2/keys = {
 }
 
 [node name="ScoreBubble" type="Node2D"]
-z_index = 50
+z_index = 1000
 z_as_relative = false
 script = ExtResource( 1 )
 lScoreP = NodePath("VBoxContainer/LScore")
@@ -87,9 +87,6 @@ margin_right = 437.0
 margin_bottom = -85.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LScore" type="Label" parent="VBoxContainer"]
 margin_right = 219.0

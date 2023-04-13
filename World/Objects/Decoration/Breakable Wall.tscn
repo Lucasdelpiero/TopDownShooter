@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World/Tiles/Walls/seamless_brick-008-128x128.png" type="Texture" id=1]
 [ext_resource path="res://World/Objects/Decoration/Breakable Wall.gd" type="Script" id=2]
+[ext_resource path="res://World/LevelControl/NavToggle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Objects/Decoration/Obstruction Points.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -13,6 +15,7 @@ _data = [ Vector2( 0.0143229, 0.00920248 ), 0.0, 0.0, 0, 0, Vector2( 0.352865, 0
 _data = [ Vector2( 0.0143229, 0.00920248 ), 0.0, 0.0, 0, 0, Vector2( 0.352865, 0.47546 ), 0.0, 0.0, 0, 0, Vector2( 0.561198, 0.0705521 ), 0.673094, 0.673094, 0, 0, Vector2( 0.733073, 0.5 ), 2.19877, 2.19877, 0, 0, Vector2( 0.894531, 0.48773 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0582821 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Breakable Wall" type="StaticBody2D" groups=["breakableWall"]]
+collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -60,5 +63,9 @@ points = PoolVector2Array( -14.5822, -41.003, -24.2904, -21.965, -7.51111, -20.1
 width = 15.0
 width_curve = SubResource( 3 )
 default_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+
+[node name="Obstruction Points" parent="." instance=ExtResource( 4 )]
+
+[node name="NavToggle" parent="Obstruction Points" instance=ExtResource( 3 )]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

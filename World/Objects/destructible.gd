@@ -55,4 +55,4 @@ func getNavGroup():
 	return newArr
 
 func getPos(object : Object):
-	return Vector2(int(object.global_position.x / GRID_SIZE), int(object.global_position.y / GRID_SIZE))
+	return Vector2(floor(floor(object.global_position.x) / GRID_SIZE), floor(floor(object.global_position.y) / GRID_SIZE))

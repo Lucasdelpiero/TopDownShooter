@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://World/Objects/Decoration/bed.png" type="Texture" id=1]
+[ext_resource path="res://World/LevelControl/NavToggle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Objects/Decoration/Obstruction Points.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 custom_solver_bias = 0.009
@@ -8,8 +10,10 @@ radius = 103.45
 height = 246.945
 
 [node name="Bed" type="StaticBody2D"]
+collision_layer = 4
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 z_index = 30
 z_as_relative = false
 texture = ExtResource( 1 )
@@ -18,3 +22,29 @@ texture = ExtResource( 1 )
 visible = false
 position = Vector2( -0.412186, -6.03841 )
 shape = SubResource( 1 )
+
+[node name="Obstruction Points" parent="." instance=ExtResource( 3 )]
+
+[node name="NavToggle" parent="Obstruction Points" instance=ExtResource( 2 )]
+position = Vector2( 72.5008, -175.09 )
+
+[node name="NavToggle2" parent="Obstruction Points" instance=ExtResource( 2 )]
+position = Vector2( 62.4101, -45.4084 )
+
+[node name="NavToggle3" parent="Obstruction Points" instance=ExtResource( 2 )]
+position = Vector2( 62.4101, 70.819 )
+
+[node name="NavToggle4" parent="Obstruction Points" instance=ExtResource( 2 )]
+position = Vector2( 50.6375, 172.751 )
+
+[node name="NavToggle5" parent="Obstruction Points" instance=ExtResource( 2 )]
+position = Vector2( -42.8857, 156.774 )
+
+[node name="NavToggle6" parent="Obstruction Points" instance=ExtResource( 2 )]
+position = Vector2( -42.0448, 73.3418 )
+
+[node name="NavToggle7" parent="Obstruction Points" instance=ExtResource( 2 )]
+position = Vector2( -53.8174, -55.4992 )
+
+[node name="NavToggle8" parent="Obstruction Points" instance=ExtResource( 2 )]
+position = Vector2( -57.181, -176.772 )
