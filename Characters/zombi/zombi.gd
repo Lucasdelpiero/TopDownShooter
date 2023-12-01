@@ -105,13 +105,15 @@ func _physics_process(delta):
 			if wanderController.get_time_left() == 0:
 				update_wander()
 			idle_state(delta)
-			animationPlayer.play("Idle")
+			if type != "zombiBig":
+				animationPlayer.play("Idle")
 			
 		WANDER:
 			seek_player()
 			wander_state()
 			sprite.rotation_degrees = rad2deg(direction)
-			animationPlayer.play("Move")
+			if type != "zombiBig":
+				animationPlayer.play("Move")
 		STAGGERED:
 			stagger()
 			velocity = move_and_slide(velocity)
@@ -127,7 +129,8 @@ func _process(delta):
 			chase_state(delta)
 			sprite.rotation = lerp_angle(sprite.rotation, direction, rotationSmooth)
 			if attacking == false:
-				animationPlayer.play("Move")
+				if type != "zombiBig":
+					animationPlayer.play("Move")
 	
 #STATE MACHINE
 func idle_state(delta):
@@ -347,11 +350,13 @@ func wallCollide(value : bool):
 
 func _on_Hitbox_body_entered(_body):
 	attacking = true
-	animationPlayer.play("Attack")
+	if type != "zombiBig":
+		animationPlayer.play("Attack")
 
 func notAttacking():
 	attacking = false
-	animationPlayer.play("Move")
+	if type != "zombiBig":
+		animationPlayer.play("Move")
 
 func getPlayer(): # Only returns the player position if it is in the detection zone or if it is frenzy
 	if frenzy:

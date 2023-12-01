@@ -13,7 +13,6 @@ height = 246.945
 collision_layer = 4
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 z_index = 30
 z_as_relative = false
 texture = ExtResource( 1 )

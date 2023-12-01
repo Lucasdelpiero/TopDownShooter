@@ -8,7 +8,6 @@ func _on_StartButton_pressed():
 	transition.play("Fade Out")
 	yield(transition, "animation_finished")
 	get_tree().change_scene_to(levelSelector)
-
 func _on_ExitButton_pressed():
 	get_tree().quit()
 
