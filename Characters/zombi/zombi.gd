@@ -90,7 +90,8 @@ func _on_zombi_tree_entered():
 func _ready():
 	timeToPathfind += randf()
 	sprite.rotation_degrees = rand_range(-180, 180)
-	sprite.frame = rand_range(0, 8)
+	if sprite.vframes > 1 or sprite.hframes > 1:
+		sprite.frame = rand_range(0, 8)
 	zombiSoundTimer.start(rand_range(4,40))
 	if customDamage:
 		$Hitbox.damage = damage
@@ -391,3 +392,4 @@ func navToCell(ppath):
 #	print(path)
 #	print(newPath)
 	return newPath
+
