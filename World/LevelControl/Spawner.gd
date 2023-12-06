@@ -7,16 +7,16 @@ var zombiCap : int = 60
 export var limitSpawnTimes: bool = false
 export(int,1, 10) var roundsLimit = 1
 var roundsSpawned : int = 0
-export(String, "none","zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy0 = "none"
+export(String, "none","zombi", "zombiFat", "zombiFast", "zombiExplosive") var enemy0 = "none"
 export(int,1, 50) var amount0 = 1 #Godot bug if not specified the default vallue
-export(String, "none" ,"zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy1 = "none"
+export(String, "none" ,"zombi", "zombiFat", "zombiFast", "zombiExplosive") var enemy1 = "none"
 export(int,1, 50) var amount1 = 1
 export(String,"none" ,"zombi", "zombiBig", "zombiFast", "zombiExplosive") var enemy2 = "none"
 export(int,1, 50) var amount2 = 1
 
 var zombiType = {
 	"zombi" : preload("res://Characters/zombi/zombi.tscn"),
-	"zombiBig" : preload("res://Characters/zombi/zombiBig.tscn"),
+	"zombiBig" : preload("res://Characters/zombi/zombiFat.tscn"),
 	"zombiFast" : preload("res://Characters/zombi/zombiFast.tscn"),
 	"zombiExplosive" : preload("res://Characters/zombi/zombiExplosive.tscn"),
 }

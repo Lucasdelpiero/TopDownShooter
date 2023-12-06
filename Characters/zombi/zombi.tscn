@@ -176,6 +176,8 @@ ACCELERATION = 600
 health = 100
 rotationSmooth = 0.4
 
+[node name="PivotSprites" type="Position2D" parent="."]
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 22 )
 offset = Vector2( 25, -10 )
@@ -215,8 +217,6 @@ disabled = true
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 23 )]
 visible = false
-collision_mask = 1
-monitorable = false
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.415686 )

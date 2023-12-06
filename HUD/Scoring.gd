@@ -35,6 +35,7 @@ var optionsControl
 var dictionary = {
 	"zombi" : 20,
 	"zombiBig" : 100,
+	"zombiFat" : 100,
 	"zombiFast" : 40,
 	"zombiExplosive" : 25,
 }

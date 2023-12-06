@@ -20,6 +20,7 @@ onready var rayCast = $RayCast2D
 onready var pathTimer = $Timers/PathFindTimer
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
+onready var pivotSprites = $PivotSprites
 onready var bleedTimer = $Timers/BleedTimer
 onready var staggerTimer = $Timers/StaggerTimer
 
@@ -64,7 +65,7 @@ export var explosive = false
 export var rotationSmooth = 0.125
 var usePathfinding = false
 var timeToPathfind : float = 1.0
-export(String, "zombi", "zombiBig", "zombiFast", "zombiExplosive") var type = "zombi"
+export(String, "zombi", "zombiFat", "zombiFast", "zombiExplosive") var type = "zombi"
 var attacking = false
 var staggered = false
 var bleeding = false
@@ -105,16 +106,18 @@ func _physics_process(delta):
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			if wanderController.get_time_left() == 0:
 				update_wander()
-			idle_state(delta)
-			if type != "zombiBig":
-				animationPlayer.play("Idle")
+#			idle_state(delta)
+#			if type != "zombiBig":
+			animationPlayer.play("Idle")
 			
 		WANDER:
 			seek_player()
 			wander_state()
 			sprite.rotation_degrees = rad2deg(direction)
-			if type != "zombiBig":
-				animationPlayer.play("Move")
+			pivotSprites.rotation = sprite.rotation
+#			if type != "zombiBig":
+			animationPlayer.play("Move")
+
 		STAGGERED:
 			stagger()
 			velocity = move_and_slide(velocity)
@@ -129,9 +132,9 @@ func _process(delta):
 		CHASE:
 			chase_state(delta)
 			sprite.rotation = lerp_angle(sprite.rotation, direction, rotationSmooth)
+			pivotSprites.rotation = sprite.rotation
 			if attacking == false:
-				if type != "zombiBig":
-					animationPlayer.play("Move")
+				animationPlayer.play("Move")
 	
 #STATE MACHINE
 func idle_state(delta):
@@ -191,7 +194,7 @@ func _on_ZombiSound_timeout():
 
 func _on_HurtBox_area_entered(area):
 	bleed(area)
-	
+	print("damaged")
 	staggered = true
 	state = STAGGERED
 	
@@ -312,7 +315,7 @@ func get_path():
 		
 #		print(path.size())
 #		path = navToCell(path)
-		$Node/Line2D.points = path
+#		$Node/Line2D.points = path
 		pathTimer.start(timeToPathfind + rand_range(0.1, 0.5)) #0.2 originally
 	else:
 		usePathfinding = false
@@ -392,4 +395,5 @@ func navToCell(ppath):
 #	print(path)
 #	print(newPath)
 	return newPath
+
 

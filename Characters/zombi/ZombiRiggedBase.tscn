@@ -314,7 +314,7 @@ polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.0
 collision_layer = 2
 collision_mask = 5
 MAX_SPEED = 800
-type = "zombiFat"
+type = "zombiBig"
 
 [node name="PivotSprites" type="Position2D" parent="." index="0"]
 

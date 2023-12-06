@@ -25,9 +25,6 @@ layer = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="CanvasLayer/Base"]
 visible = false
@@ -64,12 +61,17 @@ __meta__ = {
 margin_right = 261.0
 margin_bottom = 29.0
 
-[node name="LObjectives" type="Label" parent="CanvasLayer/Base/VBC/OC"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Base/VBC/OC"]
 margin_right = 261.0
+margin_bottom = 29.0
+
+[node name="LObjectives" type="Label" parent="CanvasLayer/Base/VBC/OC/MarginContainer"]
+margin_left = 30.0
+margin_right = 231.0
 margin_bottom = 29.0
 grow_horizontal = 0
 custom_fonts/font = ExtResource( 2 )
-text = "OBJECTIVES   "
+text = "OBJECTIVES"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,8 +82,13 @@ margin_top = 33.0
 margin_right = 261.0
 margin_bottom = 52.0
 
-[node name="LKillAll" type="Label" parent="CanvasLayer/Base/VBC/OC2"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Base/VBC/OC2"]
 margin_right = 261.0
+margin_bottom = 19.0
+
+[node name="LKillAll" type="Label" parent="CanvasLayer/Base/VBC/OC2/MarginContainer"]
+margin_left = 30.0
+margin_right = 231.0
 margin_bottom = 19.0
 text = "OBJ_KILL_ALL"
 align = 2
@@ -91,8 +98,13 @@ margin_top = 56.0
 margin_right = 261.0
 margin_bottom = 75.0
 
-[node name="LSurvive" type="Label" parent="CanvasLayer/Base/VBC/OC3"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Base/VBC/OC3"]
 margin_right = 261.0
+margin_bottom = 19.0
+
+[node name="LSurvive" type="Label" parent="CanvasLayer/Base/VBC/OC3/MarginContainer"]
+margin_left = 30.0
+margin_right = 231.0
 margin_bottom = 19.0
 text = "Survive for 60 seconds"
 align = 2
@@ -103,8 +115,13 @@ margin_top = 79.0
 margin_right = 261.0
 margin_bottom = 98.0
 
-[node name="LReachFinish" type="Label" parent="CanvasLayer/Base/VBC/OC7"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Base/VBC/OC7"]
 margin_right = 261.0
+margin_bottom = 19.0
+
+[node name="LReachFinish" type="Label" parent="CanvasLayer/Base/VBC/OC7/MarginContainer"]
+margin_left = 30.0
+margin_right = 231.0
 margin_bottom = 19.0
 text = "REACH_END"
 align = 2
@@ -122,8 +139,13 @@ margin_top = 126.0
 margin_right = 261.0
 margin_bottom = 155.0
 
-[node name="LOptional" type="Label" parent="CanvasLayer/Base/VBC/OC4"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Base/VBC/OC4"]
 margin_right = 261.0
+margin_bottom = 29.0
+
+[node name="LOptional" type="Label" parent="CanvasLayer/Base/VBC/OC4/MarginContainer"]
+margin_left = 30.0
+margin_right = 231.0
 margin_bottom = 29.0
 custom_fonts/font = ExtResource( 2 )
 text = "Bonus Objectives:"
@@ -134,8 +156,13 @@ margin_top = 159.0
 margin_right = 261.0
 margin_bottom = 178.0
 
-[node name="LMelee" type="Label" parent="CanvasLayer/Base/VBC/OC5"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Base/VBC/OC5"]
 margin_right = 261.0
+margin_bottom = 19.0
+
+[node name="LMelee" type="Label" parent="CanvasLayer/Base/VBC/OC5/MarginContainer"]
+margin_left = 30.0
+margin_right = 231.0
 margin_bottom = 19.0
 text = "Melee"
 align = 2
@@ -145,8 +172,13 @@ margin_top = 182.0
 margin_right = 261.0
 margin_bottom = 201.0
 
-[node name="LExplosion" type="Label" parent="CanvasLayer/Base/VBC/OC6"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Base/VBC/OC6"]
 margin_right = 261.0
+margin_bottom = 19.0
+
+[node name="LExplosion" type="Label" parent="CanvasLayer/Base/VBC/OC6/MarginContainer"]
+margin_left = 30.0
+margin_right = 231.0
 margin_bottom = 19.0
 text = "Explosion"
 align = 2

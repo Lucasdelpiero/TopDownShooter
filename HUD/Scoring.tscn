@@ -17,9 +17,6 @@ rect_pivot_offset = Vector2( 1499.63, 293 )
 mouse_filter = 1
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 comboTime = 4.0
 Colors = [ Color( 1, 0.964706, 0.964706, 1 ), Color( 0.964706, 0.905882, 0.435294, 1 ), Color( 0.960784, 0.878431, 0.192157, 1 ), Color( 0.921569, 0.592157, 0.121569, 1 ), Color( 1, 0.101961, 0.164706, 1 ) ]
 comboBarP = NodePath("Multiplicator/VBC/HBCCombo/ComboBar")
@@ -36,9 +33,6 @@ text = "69.400"
 align = 2
 valign = 1
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TimeLabel" type="Label" parent="."]
 anchor_left = 1.0
@@ -108,19 +102,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 containerP = NodePath("VBC/WC")
-lMultiplierP = NodePath("VBC/WC/HBC/Label")
+lMultiplierP = NodePath("VBC/WC/HBC/MarginContainer/Label")
 lMessageP = NodePath("VBC/LMessage")
 offset = 3.0
 
 [node name="VBC" type="VBoxContainer" parent="Multiplicator"]
 margin_right = 137.0
 margin_bottom = 80.0
-grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LMessage" type="Label" parent="Multiplicator/VBC"]
 margin_right = 137.0
@@ -141,14 +131,20 @@ rect_min_size = Vector2( 64, 0 )
 [node name="HBC" type="HBoxContainer" parent="Multiplicator/VBC/WC"]
 margin_right = 137.0
 margin_bottom = 38.0
-grow_horizontal = 0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 12
 alignment = 1
 
-[node name="Label" type="Label" parent="Multiplicator/VBC/WC/HBC"]
-margin_left = 50.0
-margin_right = 86.0
+[node name="MarginContainer" type="MarginContainer" parent="Multiplicator/VBC/WC/HBC"]
+margin_right = 137.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_constants/margin_left = 20
+
+[node name="Label" type="Label" parent="Multiplicator/VBC/WC/HBC/MarginContainer"]
+margin_left = 20.0
+margin_right = 117.0
 margin_bottom = 38.0
 text = "14"
 align = 1
