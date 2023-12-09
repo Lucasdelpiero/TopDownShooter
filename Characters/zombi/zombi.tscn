@@ -159,7 +159,7 @@ resource_local_to_scene = true
 radius = 3200.0
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 64.0
+radius = 80.0
 
 [sub_resource type="OccluderPolygon2D" id=8]
 cull_mode = 1
@@ -198,22 +198,20 @@ position = Vector2( -7, 9 )
 shape = SubResource( 4 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 20 )]
-visible = false
 collision_layer = 2
 collision_mask = 1
 damage = 10
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+visible = false
 position = Vector2( -7, 9 )
 shape = SubResource( 4 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 24 )]
-visible = false
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 visible = false
 shape = SubResource( 5 )
-disabled = true
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 23 )]
 visible = false
@@ -223,7 +221,6 @@ modulate = Color( 1, 1, 1, 0.415686 )
 shape = SubResource( 6 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -7, 9 )
 shape = SubResource( 7 )
 __meta__ = {
 "_editor_description_": ""

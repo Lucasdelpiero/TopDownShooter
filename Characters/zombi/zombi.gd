@@ -151,6 +151,7 @@ func wander_state():
 	velocity = move_and_slide(velocity)
 	if global_position.distance_to(wanderController.target_position) < MAX_SPEED or get_slide_count() > 0 :
 		state = IDLE
+	
 
 func update_wander():
 	state = pick_random_state([IDLE, WANDER]) # si se ponen los [ ] se convierte en array
@@ -297,7 +298,9 @@ func move_along_path(distance : float) -> void:
 	if (velocity.x < 50 and velocity.y < 50):
 #		print("trabado")
 		unStuck()
-	velocity = move_and_slide(velocity)
+	
+	#test to see if it doest get stuck
+	velocity = move_and_slide(velocity) 
 
 
 func set_path(value : PoolVector2Array) -> void :
@@ -327,7 +330,9 @@ func moveDirect():
 	direction = lerp_angle(direction, playerDirection, rotationSmooth)
 	velocity.x = lerp(velocity.x, MAX_SPEED * cos(direction), 0.1)
 	velocity.y = lerp(velocity.y, MAX_SPEED * sin(direction), 0.1)
-
+	var push = softCollision.get_push_vector()
+	print(push)
+	velocity += push * MAX_SPEED / 64
 	velocity = move_and_slide(velocity)
 
 func _on_PathFindTimer_timeout():

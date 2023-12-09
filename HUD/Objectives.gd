@@ -81,14 +81,14 @@ var showing = true
 
 onready var base = $CanvasLayer/Base
 onready var label = $CanvasLayer/Base/Label
-onready var lKillAll = $CanvasLayer/Base/VBC/OC2/LKillAll
-onready var lSurvive = $CanvasLayer/Base/VBC/OC3/LSurvive
-onready var lObjectives = $CanvasLayer/Base/VBC/OC/LObjectives
-onready var lObjectives_key = lObjectives.text
-onready var lOptional = $CanvasLayer/Base/VBC/OC4/LOptional
-onready var lMelee = $CanvasLayer/Base/VBC/OC5/LMelee
-onready var lExplosion = $CanvasLayer/Base/VBC/OC6/LExplosion
-onready var lReachFinish = $CanvasLayer/Base/VBC/OC7/LReachFinish
+onready var lKillAll = $CanvasLayer/Base/VBC/OC2/MarginContainer/LKillAll
+onready var lSurvive = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lObjectives = $CanvasLayer/Base/VBC/OC/MarginContainer/LObjectives
+onready var lObjectives_key = $CanvasLayer/Base/VBC/OC/MarginContainer/LObjectives.text
+onready var lOptional = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lMelee = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lExplosion = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lReachFinish = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
 onready var vBoxObjectives = $CanvasLayer/Base/VBC
 onready var tween = $CanvasLayer/Base/Tween
 onready var autoHideTimer = $AutoHide
@@ -279,7 +279,7 @@ func updateLabels():
 		lExplosion.text = tr("KILL_WITH_EXPLOSION") % [ str(explosionAmount), str(killedByExplosion), explosionAmount ]
 
 func activateTutorial(): #Set optional label to tutorial related
-	$CanvasLayer/Base/VBC/OC4/LOptional.text = "Tutorial:"
+	$CanvasLayer/Base/VBC/OC4/MarginContainer/LOptional.text = "Tutorial:"
 
 func updateText():
 	updateLabels()
