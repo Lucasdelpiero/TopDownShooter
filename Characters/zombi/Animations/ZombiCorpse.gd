@@ -1,14 +1,18 @@
 extends RigidBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
+export var default_sprite : Texture
+export var fat_sprite : Texture
+export(String, "zombi", "zombiFat", "zombiFast", "zombiExplosive") var type = "zombi"
 export var speed = 100
+onready var sprite = $ZombiDead/Sprite
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_bounce(0)
+	if type == "zombiFat" and fat_sprite != null:
+		sprite.texture = fat_sprite
+		
 	pass # Replace with function body.
 
 

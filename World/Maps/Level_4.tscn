@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://World/LevelControl/Note.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/LevelControl/Teleporter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/zombi/Animations/zombi_fat_dead.png" type="Texture" id=8]
 [ext_resource path="res://World/Objects/Decoration/Bed.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Objects/Decoration/JailDoor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Decoration/Carpet.tscn" type="PackedScene" id=11]
@@ -316,3 +317,38 @@ __meta__ = {
 "_edit_group_": true
 }
 spawn = NodePath("../Teleporter")
+
+[node name="ZombiFatDead" type="Sprite" parent="." index="6"]
+position = Vector2( -800, 3904 )
+rotation = -2.95342
+z_index = 10
+z_as_relative = false
+texture = ExtResource( 8 )
+
+[node name="ZombiFatDead2" type="Sprite" parent="." index="7"]
+position = Vector2( -1397.97, 4448 )
+rotation = -2.25878
+z_index = 10
+z_as_relative = false
+texture = ExtResource( 8 )
+
+[node name="ZombiFatDead3" type="Sprite" parent="." index="8"]
+position = Vector2( -46.1816, 3488 )
+rotation = -3.20238
+z_index = 10
+z_as_relative = false
+texture = ExtResource( 8 )
+
+[node name="ZombiFatDead4" type="Sprite" parent="." index="9"]
+position = Vector2( -64, 3968 )
+rotation = -5.25611
+z_index = 10
+z_as_relative = false
+texture = ExtResource( 8 )
+
+[node name="ZombiFatDead5" type="Sprite" parent="." index="10"]
+position = Vector2( -19.0463, 5056 )
+rotation = -2.40006
+z_index = 10
+z_as_relative = false
+texture = ExtResource( 8 )

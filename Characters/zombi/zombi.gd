@@ -269,6 +269,7 @@ func death(area):
 	corpse.global_position = global_position
 #	corpse.rotation = sprite.rotation
 	corpse.rotation = get_angle_to(area.global_position)
+	corpse.type = type
 	if byMelee or byExplosion:
 		corpse.push()
 
@@ -331,7 +332,6 @@ func moveDirect():
 	velocity.x = lerp(velocity.x, MAX_SPEED * cos(direction), 0.1)
 	velocity.y = lerp(velocity.y, MAX_SPEED * sin(direction), 0.1)
 	var push = softCollision.get_push_vector()
-	print(push)
 	velocity += push * MAX_SPEED / 64
 	velocity = move_and_slide(velocity)
 
@@ -343,8 +343,8 @@ func recalculatePath():
 	if path.empty():
 		return true
 	var lastPoint = path[path.size() - 1]
-	print(path.size())
-	print(lastPoint)
+#	print(path.size())
+#	print(lastPoint)
 	var playerPos = getPlayer()
 	if playerPos == null:
 		return false
