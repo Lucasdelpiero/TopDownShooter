@@ -23,6 +23,7 @@ onready var sprite = $Sprite
 onready var pivotSprites = $PivotSprites
 onready var bleedTimer = $Timers/BleedTimer
 onready var staggerTimer = $Timers/StaggerTimer
+onready var collision = $Collision
 
 signal killed(type, byMelee, byExplosion, pos)
 signal fillPlayerAmmo()
@@ -77,6 +78,7 @@ export var damage = 10
 export var path : = PoolVector2Array() setget set_path
 
 func _on_zombi_tree_entered():
+	z_index = GlobalControl.Z_INDEX["ZOMBI"]
 	set_process(false)
 	wallCollide(true) 
 	randomize()
@@ -138,16 +140,19 @@ func _process(delta):
 	
 #STATE MACHINE
 func idle_state(delta):
+	wallCollide(true)
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	if wanderController.get_time_left() == 0:
 		update_wander()
 
 func wander_state():
+	wallCollide(true)
 	if wanderController.get_time_left() == 0:
 		wanderController.start_position = global_position
 		update_wander()
 	direction = get_angle_to(wanderController.target_position)
 	velocity = Vector2(cos(direction) * MAX_SPEED, sin(direction) * MAX_SPEED)
+
 	velocity = move_and_slide(velocity)
 	if global_position.distance_to(wanderController.target_position) < MAX_SPEED or get_slide_count() > 0 :
 		state = IDLE
@@ -167,9 +172,11 @@ func seek_player():
 var transitionToPath = false # If goes from going in a line to using a pathfinding
 func chase_state(delta):
 	player = playerDetectionZone.player
+	wallCollide(false)
+#	collision.disabled = true # used so that the zombies dont get stuck in the walls
 	if player == null and !frenzy:
 		state = IDLE
-		wallCollide(true) 
+		wallCollide(false) 
 	else:
 		if rayCast.is_colliding():
 
@@ -298,10 +305,12 @@ func move_along_path(distance : float) -> void:
 #	move_and_slide( Vector2(0.0, 0.0) )
 	if (velocity.x < 50 and velocity.y < 50):
 #		print("trabado")
-		unStuck()
+#		unStuck() # temporarely
+		pass
 	
 	#test to see if it doest get stuck
-	velocity = move_and_slide(velocity) 
+#	move_and_slide(velocity, Vector2.UP, false, 16, PI, true)
+	velocity = move_and_slide(velocity)  # MAYBE commenting this it wont get changed
 
 
 func set_path(value : PoolVector2Array) -> void :
@@ -354,7 +363,7 @@ func recalculatePath():
 	return false
 
 func wallCollide(value : bool):
-	#set_collision_mask_bit(2, value)
+#	set_collision_mask_bit(2, value)
 	pass
 
 func _on_Hitbox_body_entered(_body):

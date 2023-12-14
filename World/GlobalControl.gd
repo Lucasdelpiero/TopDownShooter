@@ -7,6 +7,16 @@ var offset = 16
 var levels = []
 var levelSelected = 0
 
+var Z_INDEX = {
+	"GROUND": 0,
+	"FLOOR_DECORATION" : 10,
+	"MID_DECORATION" : 8,
+	"CORPSE" : 20,
+	"ZOMBI" : 40,
+	"CHARACTER" : 50,
+	"WALL" : 80,
+}
+
 var max_score = {
 #	{Level_1:{completed:True, maxCombo:3, score:300, time:8,
 #    totalExplosion:0, totalKilled:3, totalMelee:2}} example

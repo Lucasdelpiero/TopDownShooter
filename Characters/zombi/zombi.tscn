@@ -168,8 +168,8 @@ polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.0
 [node name="zombi" type="KinematicBody2D" groups=["zombi"]]
 z_index = 40
 z_as_relative = false
-collision_layer = 2147483650
-collision_mask = 2147483713
+collision_layer = 2
+collision_mask = 2147483717
 script = ExtResource( 1 )
 MAX_SPEED = 1400
 ACCELERATION = 600
@@ -190,10 +190,10 @@ anims/Idle = SubResource( 2 )
 anims/Move = SubResource( 3 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 25 )]
-visible = false
 collision_layer = 2147483650
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
+visible = false
 position = Vector2( -7, 9 )
 shape = SubResource( 4 )
 

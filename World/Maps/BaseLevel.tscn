@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World/Maps/startWorld.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Objectives.tscn" type="PackedScene" id=2]
@@ -8,14 +8,57 @@
 [ext_resource path="res://World/Tiles/Decoration/DecorationTile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Tiles/FloorLevelTile.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Maps/DarkBackground.gd" type="Script" id=9]
+[ext_resource path="res://World/Maps/noise_2.tres" type="Texture" id=10]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+uniform sampler2D noise_1;
+uniform sampler2D noise_2;
+
+
+void fragment(){
+//	COLOR = vec4(1.0 * abs(sin(TIME)), 0.3, 1.0 * abs(cos(TIME * 5.0)), 1.0);
+	vec4 col1 = texture(noise_1, UV);
+	vec4 col2 = texture(noise_2, UV);
+	vec4 new_col = vec4(0.0, 0.0, 0.0, 1.0);
+	new_col.r += col1.r;
+	new_col.g += col1.g;
+	new_col.b += col1.b;
+	new_col.r += col2.r;
+	new_col.g += col2.g;
+	new_col.b += col2.b;
+	new_col.r = new_col.r / 2.0;
+	new_col.g = new_col.g / 2.0;
+	new_col.b = new_col.b / 2.0;
+	new_col = col1 + col2;
+//	new_col.r = min(new_col.r, 1.0);
+//	new_col.g = min(new_col.g, 1.0);
+//	new_col.b = min(new_col.b, 1.0);
+	new_col.a = 1.0;
+	
+	COLOR = new_col;
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	
+
+}"
 
 [sub_resource type="OpenSimplexNoise" id=1]
-seed = 1
+seed = 2
 octaves = 6
+period = 14.4
+persistence = 0.622
 
-[sub_resource type="NoiseTexture" id=2]
+[sub_resource type="NoiseTexture" id=5]
 seamless = true
 noise = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/noise_1 = SubResource( 5 )
+shader_param/noise_2 = ExtResource( 10 )
+
+[sub_resource type="GradientTexture" id=8]
 
 [node name="BaseLevel" type="Node2D" groups=["world"]]
 script = ExtResource( 1 )
@@ -36,16 +79,19 @@ __meta__ = {
 
 [node name="DarkBackground" type="TextureRect" parent="TileMaps"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+material = SubResource( 4 )
 margin_left = -7277.79
 margin_top = -6212.94
 margin_right = 8621.21
 margin_bottom = 6699.06
-texture = SubResource( 2 )
+texture = SubResource( 8 )
 expand = true
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+noise_2 = ExtResource( 10 )
 
 [node name="Navigation2D" type="Navigation2D" parent="TileMaps"]
 

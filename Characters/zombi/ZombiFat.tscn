@@ -411,7 +411,6 @@ shape = SubResource( 4 )
 [node name="Collision" type="CollisionShape2D" parent="." index="7"]
 visible = false
 shape = SubResource( 5 )
-disabled = true
 
 [node name="WanderController" parent="." index="8" instance=ExtResource( 4 )]
 
