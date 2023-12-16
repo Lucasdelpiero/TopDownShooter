@@ -10,8 +10,8 @@ func _ready():
 	for i in obstacles.size():
 		var localTiles = map_to_world(tiles[i])
 		var globalTiles = to_global(localTiles)
-		print("tiles: " + str(globalTiles))
-		print("position car: " + str((obstacles[i].global_position)))
+#		print("tiles: " + str(globalTiles))
+#		print("position car: " + str((obstacles[i].global_position)))
 	
 	pass # Replace with function body.
 

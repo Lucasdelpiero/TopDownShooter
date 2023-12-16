@@ -8,27 +8,43 @@ const BloodStain = preload("res://Characters/zombi/Blood/BloodStain.tscn")
 const Corpse = preload("res://Characters/zombi/Animations/ZombiCorpse.tscn")
 const ScoreBubble = preload("res://Effects/ScoreBubble.tscn")
 
-onready var wanderController = $WanderController
-onready var audioStreamPlayer = $AudioStreamPlayer
-onready var audioHitted = $AudioHitted
-onready var zombiSoundTimer = $Timers/ZombiSoundTimer
-onready var position2d = $Position2D
-onready var playerDetectionZone = $PlayerDetectionZone
-onready var softCollision = $SoftCollision
+onready var wanderController = get_node(path_wanderController)
+export var path_wanderController : NodePath
+onready var audioStreamPlayer : AudioStreamPlayer = get_node(path_audioStreamPlayer)
+export var path_audioStreamPlayer : NodePath
+onready var audioHitted : AudioStreamPlayer = get_node(path_audioHitted)
+export var path_audioHitted : NodePath
+onready var zombiSoundTimer : Timer = get_node(path_zombiSoundTimer)
+export var path_zombiSoundTimer : NodePath
+onready var position2d : Position2D = get_node(path_position2d)
+export var path_position2d : NodePath
+onready var playerDetectionZone = get_node(path_playerDetectionZone)
+export var path_playerDetectionZone : NodePath
+onready var softCollision = get_node(path_softCollision)
+export var path_softCollision : NodePath
 onready var navigation = get_tree().get_root().find_node("Navigation2D", true, false)
-onready var rayCast = $RayCast2D
-onready var pathTimer = $Timers/PathFindTimer
-onready var animationPlayer = $AnimationPlayer
-onready var sprite = $Sprite
-onready var pivotSprites = $PivotSprites
-onready var bleedTimer = $Timers/BleedTimer
-onready var staggerTimer = $Timers/StaggerTimer
-onready var collision = $Collision
+onready var rayCast = get_node(path_rayCast)
+export var path_rayCast : NodePath
+onready var pathTimer = get_node(path_Timer)
+export var path_Timer : NodePath
+onready var animationPlayer = get_node(path_animationPlayer)
+export var path_animationPlayer : NodePath
+onready var sprite = get_node(path_sprite)
+export var path_sprite : NodePath
+onready var pivotSprites = get_node(path_pivotSprites)
+export var path_pivotSprites : NodePath
+onready var bleedTimer = get_node(path_bleedTimer)
+export var path_bleedTimer : NodePath
+onready var staggerTimer = get_node(path_staggerTimer)
+export var path_staggerTimer : NodePath
+onready var collision = get_node(path_collision)
+export var path_collision : NodePath 
+export var path_navAgent : NodePath
+var navAgent : NavigationAgent2D
 
 signal killed(type, byMelee, byExplosion, pos)
 signal fillPlayerAmmo()
 signal healPlayer(time)
-
 
 #const soundsHitted = [
 #	"bullet_hit_body_0",
@@ -36,6 +52,7 @@ signal healPlayer(time)
 #	"bullet_hit_body_2",
 #	"bullet_hit_body_3",
 #]
+
 const soundsHitted = [
 	preload("res://Characters/zombi/Audio/bullet_hit_body_0.wav"),
 	preload("res://Characters/zombi/Audio/bullet_hit_body_1.wav"),
@@ -98,7 +115,6 @@ func _ready():
 	zombiSoundTimer.start(rand_range(4,40))
 	if customDamage:
 		$Hitbox.damage = damage
-
 
 func _physics_process(delta):
 
@@ -332,6 +348,13 @@ func get_path():
 		pathTimer.start(timeToPathfind + rand_range(0.1, 0.5)) #0.2 originally
 	else:
 		usePathfinding = false
+
+func nav_agent_get_path():
+	if navAgent == null:
+		return []
+	if navAgent is NavigationAgent2D:
+		return []
+	pass
 
 func moveDirect():
 	wallCollide(true) # what
