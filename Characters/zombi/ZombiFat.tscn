@@ -313,6 +313,24 @@ polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.0
 [node name="ZombiFat" groups=["zombi", "zombiBig"] instance=ExtResource( 1 )]
 collision_layer = 2
 collision_mask = 5
+path_wanderController = NodePath("WanderController")
+path_audioStreamPlayer = NodePath("AudioStreamPlayer")
+path_audioHitted = NodePath("AudioHitted")
+path_zombiSoundTimer = NodePath("Timers/ZombiSoundTimer")
+path_position2d = NodePath("Position2D")
+path_playerDetectionZone = NodePath("PlayerDetectionZone")
+path_hitbox = NodePath("Hitbox")
+path_softCollision = NodePath("SoftCollision")
+path_rayCast = NodePath("RayCast2D")
+path_Timer = NodePath("Timers/PathFindTimer")
+path_animationPlayer = NodePath("AnimationPlayer")
+path_sprite = NodePath("Sprite")
+path_pivotSprites = NodePath("PivotSprites")
+path_bleedTimer = NodePath("Timers/BleedTimer")
+path_staggerTimer = NodePath("Timers/StaggerTimer")
+path_collision = NodePath("Collision")
+path_visibilityEnabler = NodePath("VisibilityEnabler2D")
+path_navAgent = NodePath("NavigationAgent2D")
 MAX_SPEED = 800
 type = "zombiFat"
 
@@ -454,6 +472,8 @@ scale = Vector2( 0.0760488, 0.123189 )
 rect = Rect2( 0, 0, 12, 12 )
 process_parent = true
 physics_process_parent = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="15"]
 
 [connection signal="tree_entered" from="." to="." method="_on_zombi_tree_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

@@ -20,6 +20,8 @@ onready var position2d : Position2D = get_node(path_position2d)
 export var path_position2d : NodePath
 onready var playerDetectionZone = get_node(path_playerDetectionZone)
 export var path_playerDetectionZone : NodePath
+export var path_hitbox : NodePath
+onready var hitbox = get_node(path_hitbox)
 onready var softCollision = get_node(path_softCollision)
 export var path_softCollision : NodePath
 onready var navigation = get_tree().get_root().find_node("Navigation2D", true, false)
@@ -39,6 +41,8 @@ onready var staggerTimer = get_node(path_staggerTimer)
 export var path_staggerTimer : NodePath
 onready var collision = get_node(path_collision)
 export var path_collision : NodePath 
+onready var visibilityEnabler : VisibilityEnabler2D = get_node(path_visibilityEnabler)
+export var path_visibilityEnabler : NodePath
 export var path_navAgent : NodePath
 var navAgent : NavigationAgent2D
 
@@ -109,12 +113,20 @@ func _on_zombi_tree_entered():
 
 func _ready():
 	timeToPathfind += randf()
-	sprite.rotation_degrees = rand_range(-180, 180)
-	if sprite.vframes > 1 or sprite.hframes > 1:
-		sprite.frame = rand_range(0, 8)
-	zombiSoundTimer.start(rand_range(4,40))
+	if sprite != null:
+		sprite.rotation_degrees = rand_range(-180, 180)
+		if sprite.vframes > 1 or sprite.hframes > 1:
+			sprite.frame = rand_range(0, 8)
+	else: push_error("There is not sprite reference")
+	
+	if zombiSoundTimer != null:
+		zombiSoundTimer.start(rand_range(4,40))
+	else: push_error("There is not zombiSoundTimer reference")
+	
 	if customDamage:
-		$Hitbox.damage = damage
+		if hitbox != null:
+			hitbox.damage = damage
+		else: push_error("There is not hitbox reference")
 
 func _physics_process(delta):
 
@@ -122,26 +134,36 @@ func _physics_process(delta):
 		IDLE:
 			seek_player()
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			if wanderController.get_time_left() == 0:
-				update_wander()
+			if wanderController!= null:
+				if wanderController.get_time_left() == 0:
+					update_wander()
+			else: push_error("There is not wander controller reference")
 #			idle_state(delta)
-#			if type != "zombiBig":
-			animationPlayer.play("Idle")
+			if animationPlayer != null:
+				animationPlayer.play("Idle")
+			else: push_error("There is not animation player reference")
 			
 		WANDER:
 			seek_player()
 			wander_state()
-			sprite.rotation_degrees = rad2deg(direction)
-			pivotSprites.rotation = sprite.rotation
-#			if type != "zombiBig":
-			animationPlayer.play("Move")
+			if sprite != null:
+				sprite.rotation_degrees = rad2deg(direction)
+			else: push_error("There is not sprite")
+			if pivotSprites != null:
+				pivotSprites.rotation = sprite.rotation
+			else: push_error("There is not pivotSprites")
+			if animationPlayer != null:
+				animationPlayer.play("Move")
+			else: push_error("There is not animationPlayer")
 
 		STAGGERED:
 			stagger()
 			velocity = move_and_slide(velocity)
 	if player != null:
 #		var angle = get_angle_to(player.global_position)
-		rayCast.set_cast_to( global_position.distance_to(player.global_position) * global_position.direction_to(player.global_position) )
+		if rayCast != null:
+			rayCast.set_cast_to( global_position.distance_to(player.global_position) * global_position.direction_to(player.global_position) )
+		else: push_error("There is not raycas")
 	
 func _process(delta):
 	if frenzy:
@@ -149,20 +171,30 @@ func _process(delta):
 	match state:
 		CHASE:
 			chase_state(delta)
-			sprite.rotation = lerp_angle(sprite.rotation, direction, rotationSmooth)
-			pivotSprites.rotation = sprite.rotation
+			if sprite != null:
+				sprite.rotation = lerp_angle(sprite.rotation, direction, rotationSmooth)
+			if pivotSprites != null:
+				pivotSprites.rotation = sprite.rotation
 			if attacking == false:
-				animationPlayer.play("Move")
+				if animationPlayer != null:
+					animationPlayer.play("Move")
+				else : push_error("There is not animation player")
 	
 #STATE MACHINE
 func idle_state(delta):
 	wallCollide(true)
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	if wanderController == null:
+		push_error("There is not wander controlller")
+		return
 	if wanderController.get_time_left() == 0:
 		update_wander()
 
 func wander_state():
 	wallCollide(true)
+	if wanderController == null:
+		push_error("There is not wander controller")
+		return
 	if wanderController.get_time_left() == 0:
 		wanderController.start_position = global_position
 		update_wander()
@@ -175,10 +207,15 @@ func wander_state():
 	
 
 func update_wander():
+	if wanderController == null:
+		return
 	state = pick_random_state([IDLE, WANDER]) # si se ponen los [ ] se convierte en array
 	wanderController.start_wander_timer(rand_range(1, 3))
 
 func seek_player():
+	if playerDetectionZone == null:
+		push_error("There is not player detection zone")
+		return
 	player = playerDetectionZone.player
 	if playerDetectionZone.can_see_player():
 		if not rayCast.is_colliding():
@@ -187,6 +224,9 @@ func seek_player():
 
 var transitionToPath = false # If goes from going in a line to using a pathfinding
 func chase_state(delta):
+	if playerDetectionZone == null:
+		push_error("There is not player detection zone")
+		return
 	player = playerDetectionZone.player
 	wallCollide(false)
 #	collision.disabled = true # used so that the zombies dont get stuck in the walls
@@ -194,8 +234,10 @@ func chase_state(delta):
 		state = IDLE
 		wallCollide(false) 
 	else:
+		if rayCast == null:
+			push_error("There is not raycast")
+			return
 		if rayCast.is_colliding():
-
 #		if usePathfinding:
 			if pathTimer.is_stopped():
 				get_path()
@@ -210,10 +252,16 @@ func pick_random_state(state_list):
 	return state_list.pop_front()
 
 func unfreeze(): # If they spawn outside the screen they will not freeze
-	$VisibilityEnabler2D.process_parent = false
-	$VisibilityEnabler2D.physics_process_parent = false
+	if visibilityEnabler == null:
+		push_error("There is not visibility enabler")
+		return
+	visibilityEnabler.process_parent = false
+	visibilityEnabler.physics_process_parent = false
 
 func _on_ZombiSound_timeout():
+	if audioStreamPlayer == null:
+		push_error("There is not audioStreamPlayer")
+		return
 	audioStreamPlayer.playing = true
 
 func _on_HurtBox_area_entered(area):
@@ -234,6 +282,9 @@ func _on_HurtBox_area_entered(area):
 			death(area)
 
 func bleed(area):
+	if bleedTimer == null:
+		push_error("There is not bleed timer")
+		return
 	if bleeding == false:
 		bleeding = true
 		bleedTimer.start()
@@ -249,6 +300,9 @@ func bleed(area):
 
 
 func stagger():
+	if staggerTimer == null:
+		push_error("There is not stagger timer")
+		return
 	var staggerTime = 0.1
 	velocity = lerp(velocity, velocity / 2 , staggerTime)
 	if staggered:
@@ -297,6 +351,9 @@ func death(area):
 		corpse.push()
 
 func soundHitted():
+	if audioHitted == null:
+		push_error("There is not audio hitted")
+		return
 #	audioHitted.stream = load( "res://Characters/zombi/Audio/%s.wav" %str(soundsHitted[randi() % soundsHitted.size()]) ) 
 	audioHitted.stream = soundsHitted[randi() % soundsHitted.size()]
 	audioHitted.play()
@@ -336,6 +393,13 @@ func set_path(value : PoolVector2Array) -> void :
 	set_process(true)
 
 func get_path():
+	if rayCast == null:
+		push_error("There is not raycast")
+		return
+	if pathTimer == null:
+		push_error("There is not path timer")
+		return
+	
 	var playerPos = getPlayer()
 	if rayCast.is_colliding():
 		usePathfinding = true
@@ -390,11 +454,17 @@ func wallCollide(value : bool):
 	pass
 
 func _on_Hitbox_body_entered(_body):
+	if animationPlayer == null:
+		push_error("There is not animation player")
+		return
 	attacking = true
 	if type != "zombiBig":
 		animationPlayer.play("Attack")
 
 func notAttacking():
+	if animationPlayer == null:
+		push_error("There is not animation player")
+		return
 	attacking = false
 	if type != "zombiBig":
 		animationPlayer.play("Move")
@@ -408,13 +478,14 @@ func getPlayer(): # Only returns the player position if it is in the detection z
 
 var unstucking = false
 func unStuck():
+	return # desactivated
 	if !unstucking:
 		unstucking = true
-		$Collision.disabled = true
+		collision.disabled = true
 #		softCollision.set_collision_mask_bit(5, false)
 #		yield(get_tree().create_timer(1.0), "timeout") #changed because it could crash
 		$Timers/UnstuckTimer.start()
-		$Collision.disabled = false
+		collision.disabled = false
 #		softCollision.set_collision_mask_bit(5, true)
 		unstucking = false
 
