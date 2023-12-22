@@ -105,14 +105,17 @@ position = Vector2( 161.266, -6867.9 )
 position = Vector2( -1663.6, -4120.45 )
 collision_layer = 2147483650
 MAX_SPEED = 1200
+ACCELERATION = 600
 
 [node name="zombiFast3" parent="Zombies" index="18" instance=ExtResource( 7 )]
 position = Vector2( -557.785, -3886.31 )
 collision_layer = 2147483650
+ACCELERATION = 600
 
 [node name="zombiFast2" parent="Zombies" index="19" instance=ExtResource( 7 )]
 position = Vector2( -2752.17, -5012.71 )
 collision_layer = 2147483650
+ACCELERATION = 600
 
 [node name="PickeableWeapon" parent="Props" index="0" instance=ExtResource( 2 )]
 position = Vector2( -22.7335, -917.842 )

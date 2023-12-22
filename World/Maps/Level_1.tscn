@@ -44,6 +44,8 @@ tile_data = PoolIntArray( -2359281, 2, 0, -2359280, 2, 0, -2293745, 2, 0, -22937
 
 [node name="zombiCrippled" parent="Zombies" index="0" instance=ExtResource( 3 )]
 position = Vector2( 5984.64, -3358.54 )
+collision_layer = 6
+ACCELERATION = 600
 FRICTION = 1200
 
 [node name="zombi" parent="Zombies" index="1" instance=ExtResource( 2 )]
@@ -219,7 +221,7 @@ scale = Vector2( 2.57, 1 )
 text = "T_MELEE_BONUS"
 
 [node name="TriggerTutorial5" parent="Control/Tutorial" index="5" instance=ExtResource( 4 )]
-position = Vector2( 5992, -6640 )
+position = Vector2( 4543.84, -6628.69 )
 scale = Vector2( 3.11953, -3.2468 )
 text = "T_DOOR"
 

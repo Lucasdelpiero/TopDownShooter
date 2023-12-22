@@ -1,8 +1,79 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://World/LevelControl/Tutorial.gd" type="Script" id=2]
 [ext_resource path="res://World/LevelControl/TutoText.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CanvasLayer/PanelContainer/TutoText:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CanvasLayer/PanelContainer:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CanvasLayer/PanelContainer/TutoText:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.2, -0.0639977, 0, -0.2, 0.00158305, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CanvasLayer/PanelContainer:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.2, 0.002, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CanvasLayer/PanelContainer/TutoText:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.1, 0.00158273, 1, -0.3, 0, 0.1, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CanvasLayer/PanelContainer:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.3, 0, 0.1, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
 
 [node name="Tutorial" type="Control" groups=["hasText"]]
 anchor_right = 1.0
@@ -11,24 +82,57 @@ margin_right = -1024.0
 margin_bottom = -600.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 defaultColor = Color( 0.898039, 0.901961, 0.184314, 1 )
+tutoPath = NodePath("CanvasLayer/PanelContainer/TutoText")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="TutoText" parent="CanvasLayer" instance=ExtResource( 3 )]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 1.0
-margin_left = 28.0
-margin_top = -58.0
-margin_right = -22.0
-margin_bottom = -19.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 203.0
+margin_top = -91.0
+margin_right = -205.0
+margin_bottom = -25.0
+grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TutoText" parent="CanvasLayer/PanelContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 609.0
+margin_bottom = 46.0
+grow_vertical = 0
+rect_min_size = Vector2( 60, 37 )
 size_flags_horizontal = 1
+size_flags_vertical = 0
+bbcode_text = "[center][/center]"
+text = ""
+fit_content_height = true
+scroll_active = false
+
+[node name="TutoText2" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+margin_left = 321.0
+margin_top = 117.0
+margin_right = -421.0
+margin_bottom = -132.0
+grow_vertical = 0
+rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 1
 bbcode_text = "[center][/center]"
 text = ""
 fit_content_height = true
 scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/hide = SubResource( 1 )
+anims/show = SubResource( 2 )

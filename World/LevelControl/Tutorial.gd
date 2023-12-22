@@ -2,8 +2,15 @@ extends Control
 
 export(Color, RGBA) var defaultColor = Color(0.0, 0.0, 1.0, 1.0)
 
-onready var tutoText = $CanvasLayer/TutoText
+export var tutoPath : NodePath 
+onready var tutoText = get_node(tutoPath)
+
 var textKey = ""
+var last_text_entered = ""
+onready var animation_player = $AnimationPlayer
+
+export(float, 0.0, 5.0, 0.1) var time_to_dissapear = 1.0
+export(float, 0.0, 5.0, 0.1) var time_to_appear = 1.0
 
 signal sendObjective(aCondition, aConditionAmount)
 signal tutorialStart()
@@ -34,8 +41,27 @@ func sendObjective(aCondition, aContionAmount):
 	emit_signal("sendObjective", aCondition, aContionAmount)
 	pass
 
-func updateText():
+func updateText(): # generally used to update when the language is changed 
 	useTextKey(textKey)
 	pass
 
+func new_text_recieved(aText):
+	var newText = tr(aText)
+	if newText == last_text_entered: # so it only does the animation when recieves new text
+		return
+	
+	if animation_player.get_assigned_animation() != "hide" and aText.length() <= 1:
+		last_text_entered = ""
+		animation_player.play("hide")
+		return
+	if aText.length() <= 1:  # An empty string is used to hide the text
+		return
+	
+	if last_text_entered != "": # so it doesnt is played the first time
+		animation_player.play("hide")
+		yield(animation_player,"animation_finished")
+	last_text_entered = newText
+	write(newText)
+	yield(get_tree().create_timer(0.2),"timeout")
+	animation_player.play("show")
 

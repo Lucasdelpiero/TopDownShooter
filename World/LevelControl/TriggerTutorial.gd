@@ -11,12 +11,19 @@ export var damageTrigger = false
 
 export(String, "none","kill", "melee","explosion") var condition = "none"
 export(int, 1, 10) var conditionAmount = 1
+var parent 
 
 onready var hitbox = $CollisionShape2D
+
+signal send_text(text)
+signal send_objective(condition, conditionAmount)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yield(get_tree().create_timer(0.1), "timeout")
+	parent = get_parent()
+	connect("send_text", parent, "new_text_recieved")
+	connect("send_objective", parent, "sendObjective")
 	set_collision_mask_bit(0, playerTrigger)
 	set_collision_mask_bit(1,zombiTrigger)
 	if damageTrigger:
@@ -25,8 +32,8 @@ func _ready():
 
 func sendInfo():
 #	var newText = tr(text) #To get the translation
-	get_parent().useTextKey(text)
-	get_parent().sendObjective(condition, conditionAmount)
+	emit_signal("send_text", text)
+	emit_signal("send_objective", condition, conditionAmount)
 
 func _on_body_entered(_body):
 	sendInfo()

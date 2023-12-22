@@ -44,7 +44,7 @@ export var path_collision : NodePath
 onready var visibilityEnabler : VisibilityEnabler2D = get_node(path_visibilityEnabler)
 export var path_visibilityEnabler : NodePath
 export var path_navAgent : NodePath
-var navAgent : NavigationAgent2D
+onready var navAgent : NavigationAgent2D = get_node(path_navAgent)
 
 signal killed(type, byMelee, byExplosion, pos)
 signal fillPlayerAmmo()
@@ -165,8 +165,7 @@ func _physics_process(delta):
 			rayCast.set_cast_to( global_position.distance_to(player.global_position) * global_position.direction_to(player.global_position) )
 		else: push_error("There is not raycas")
 	
-func _process(delta):
-	if frenzy:
+	if frenzy: # Test
 		state = CHASE
 	match state:
 		CHASE:
@@ -179,6 +178,21 @@ func _process(delta):
 				if animationPlayer != null:
 					animationPlayer.play("Move")
 				else : push_error("There is not animation player")
+	
+#func _process(delta):
+#	if frenzy:
+#		state = CHASE
+#	match state:
+#		CHASE:
+#			chase_state(delta)
+#			if sprite != null:
+#				sprite.rotation = lerp_angle(sprite.rotation, direction, rotationSmooth)
+#			if pivotSprites != null:
+#				pivotSprites.rotation = sprite.rotation
+#			if attacking == false:
+#				if animationPlayer != null:
+#					animationPlayer.play("Move")
+#				else : push_error("There is not animation player")
 	
 #STATE MACHINE
 func idle_state(delta):
@@ -243,6 +257,13 @@ func chase_state(delta):
 				get_path()
 			var moveDistance = MAX_SPEED * delta
 			move_along_path(moveDistance)
+			
+			if navAgent == null:
+				push_error("There is not navAgent")
+				return
+			
+
+		
 		else:
 			moveDirect()
 #			transitionToPath = false
@@ -413,11 +434,12 @@ func get_path():
 	else:
 		usePathfinding = false
 
-func nav_agent_get_path():
+func nav_agent_get_path(player_pos):
 	if navAgent == null:
 		return []
-	if navAgent is NavigationAgent2D:
-		return []
+#	if navAgent is NavigationAgent2D:
+#		return []
+	navAgent.set_target_location(player_pos)
 	pass
 
 func moveDirect():
@@ -432,8 +454,16 @@ func moveDirect():
 	velocity = move_and_slide(velocity)
 
 func _on_PathFindTimer_timeout():
-	if recalculatePath():
-		get_path()
+#	if recalculatePath():
+#		get_path()
+
+	if playerDetectionZone == null: return
+	var player = playerDetectionZone.player
+	if player == null: 
+		state = IDLE
+		return
+	
+	navAgent.set_target_location(player.global_position)
 
 func recalculatePath():
 	if path.empty():
