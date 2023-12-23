@@ -303,8 +303,8 @@ radius = 146.048
 [sub_resource type="CircleShape2D" id=4]
 radius = 3300.0
 
-[sub_resource type="CircleShape2D" id=5]
-radius = 133.943
+[sub_resource type="CircleShape2D" id=10]
+radius = 64.0744
 
 [sub_resource type="OccluderPolygon2D" id=6]
 cull_mode = 1
@@ -428,7 +428,7 @@ shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="." index="7"]
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 
 [node name="WanderController" parent="." index="8" instance=ExtResource( 4 )]
 

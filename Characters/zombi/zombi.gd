@@ -41,7 +41,7 @@ onready var staggerTimer = get_node(path_staggerTimer)
 export var path_staggerTimer : NodePath
 onready var collision = get_node(path_collision)
 export var path_collision : NodePath 
-onready var visibilityEnabler : VisibilityEnabler2D = get_node(path_visibilityEnabler)
+onready var visibilityEnabler  = get_node(path_visibilityEnabler)
 export var path_visibilityEnabler : NodePath
 export var path_navAgent : NodePath
 onready var navAgent : NavigationAgent2D = get_node(path_navAgent)
@@ -273,6 +273,7 @@ func pick_random_state(state_list):
 	return state_list.pop_front()
 
 func unfreeze(): # If they spawn outside the screen they will not freeze
+	visibilityEnabler = get_node(path_visibilityEnabler)
 	if visibilityEnabler == null:
 		push_error("There is not visibility enabler")
 		return
