@@ -228,9 +228,6 @@ anchor_bottom = 0.743
 margin_left = 0.156097
 margin_right = -0.355896
 margin_bottom = 0.199982
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LevelButton" parent="DiamondParent" instance=ExtResource( 9 )]
 

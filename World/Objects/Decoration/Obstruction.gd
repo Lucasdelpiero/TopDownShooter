@@ -21,11 +21,15 @@ func initialize():
 	if navToggle.empty():
 		pos = getPos(self)
 		nav = get_tree().get_root().find_node("NavigationTile", true, false) #Get tiles inside navigation2D
+		if nav == null: 
+			return
 		nav.set_cellv(pos, -1)
 	else:
 		for el in navToggle:
 			pos = getPos(el)
 			nav = get_tree().get_root().find_node("NavigationTile", true, false) #Get tiles inside navigation2D
+			if nav == null:
+				return
 			nav.set_cellv(pos, -1)
 
 # Re-add navigation tiles in the tiles selected poionts or by default on the object with this script

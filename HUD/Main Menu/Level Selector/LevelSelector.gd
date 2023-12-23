@@ -80,6 +80,7 @@ func updateInfo():
 
 # Unlocks levels once the past one had been cleared
 func updateLevelLocking(): 
+	return # all buttons now are selectable
 	# Diamonds locks
 	for i in levels.size():
 		if i > 0:

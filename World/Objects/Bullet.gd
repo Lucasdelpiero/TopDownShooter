@@ -12,6 +12,7 @@ onready var hitbox = $Hitbox
 var collided = false
 var bulletRange = 0
 var ready = false
+var sound_played = false
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -37,13 +38,14 @@ func move(_delta):
 	motion.y = speed * sin(direction)
 # warning-ignore:return_value_discarded
 	move_and_collide(motion)
-	if rayCast.is_colliding() and not collided:
+	if rayCast.is_colliding() and not collided and not sound_played:
 		audio.stream = load ("res://World/Objects/%s.wav" % str(bulletHitWall[ randi() % bulletHitWall.size() ] ) )
 		audio.play()
 		speed = 0
 		timer.start(0.5)
 		sprite.visible = false
 		collided = true
+		sound_played
 #		queue_free()
 
 func _on_Timer_timeout():
