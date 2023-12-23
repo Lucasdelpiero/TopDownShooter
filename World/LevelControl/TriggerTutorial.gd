@@ -20,6 +20,7 @@ signal send_objective(condition, conditionAmount)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	yield(get_tree().create_timer(0.1), "timeout")
 	parent = get_parent()
 	connect("send_text", parent, "new_text_recieved")

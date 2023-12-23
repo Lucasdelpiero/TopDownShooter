@@ -144,66 +144,72 @@ position = Vector2( -4958.24, 664 )
 position = Vector2( -4639.15, 2195.25 )
 
 [node name="ExplosiveBarrel19" parent="Props" index="21" instance=ExtResource( 4 )]
-position = Vector2( -5893.24, 1256 )
+position = Vector2( -5829.24, 1575.89 )
 
-[node name="ExplosiveBarrel23" parent="Props" index="22" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel38" parent="Props" index="22" instance=ExtResource( 4 )]
+position = Vector2( -6135.71, 1511.89 )
+
+[node name="ExplosiveBarrel39" parent="Props" index="23" instance=ExtResource( 4 )]
+position = Vector2( -6135.71, 1511.89 )
+
+[node name="ExplosiveBarrel23" parent="Props" index="24" instance=ExtResource( 4 )]
 position = Vector2( -7490.17, 2195.25 )
 
-[node name="ExplosiveBarrel33" parent="Props" index="23" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel33" parent="Props" index="25" instance=ExtResource( 4 )]
 position = Vector2( -5442.14, 2537.04 )
 
-[node name="ExplosiveBarrel34" parent="Props" index="24" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel34" parent="Props" index="26" instance=ExtResource( 4 )]
 position = Vector2( -5298.67, 2409.04 )
 
-[node name="ExplosiveBarrel24" parent="Props" index="25" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel24" parent="Props" index="27" instance=ExtResource( 4 )]
 position = Vector2( -6527.64, 2537.04 )
 
-[node name="ExplosiveBarrel25" parent="Props" index="26" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel25" parent="Props" index="28" instance=ExtResource( 4 )]
 position = Vector2( -6857.55, 2473.04 )
 
-[node name="ExplosiveBarrel26" parent="Props" index="27" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel26" parent="Props" index="29" instance=ExtResource( 4 )]
 position = Vector2( -7199.27, 1447.89 )
 
-[node name="ExplosiveBarrel27" parent="Props" index="28" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel27" parent="Props" index="30" instance=ExtResource( 4 )]
 position = Vector2( -6921.55, 988.7 )
 
-[node name="ExplosiveBarrel28" parent="Props" index="29" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel28" parent="Props" index="31" instance=ExtResource( 4 )]
 position = Vector2( -6857.55, 1256 )
 
-[node name="ExplosiveBarrel29" parent="Props" index="30" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel29" parent="Props" index="32" instance=ExtResource( 4 )]
 position = Vector2( -4025.09, 2751.02 )
 
-[node name="ExplosiveBarrel30" parent="Props" index="31" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel30" parent="Props" index="33" instance=ExtResource( 4 )]
 position = Vector2( -4302.66, 1383.89 )
 
-[node name="ExplosiveBarrel31" parent="Props" index="32" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel31" parent="Props" index="34" instance=ExtResource( 4 )]
 position = Vector2( -4089.09, 1575.89 )
 
-[node name="ExplosiveBarrel32" parent="Props" index="33" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel32" parent="Props" index="35" instance=ExtResource( 4 )]
 position = Vector2( -4025.09, 1319.89 )
 
-[node name="ExplosiveBarrel20" parent="Props" index="34" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel20" parent="Props" index="36" instance=ExtResource( 4 )]
 position = Vector2( -6316.55, 728 )
 
-[node name="ExplosiveBarrel21" parent="Props" index="35" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel21" parent="Props" index="37" instance=ExtResource( 4 )]
 position = Vector2( -6591.64, 600 )
 
-[node name="ExplosiveBarrel22" parent="Props" index="36" instance=ExtResource( 4 )]
+[node name="ExplosiveBarrel22" parent="Props" index="38" instance=ExtResource( 4 )]
 position = Vector2( -6793.55, 536 )
 
-[node name="ZombiDead" parent="Props" index="37" instance=ExtResource( 3 )]
+[node name="ZombiDead" parent="Props" index="39" instance=ExtResource( 3 )]
 position = Vector2( -657.031, 128 )
 rotation = -3.09773
 
-[node name="ZombiDead2" parent="Props" index="38" instance=ExtResource( 3 )]
+[node name="ZombiDead2" parent="Props" index="40" instance=ExtResource( 3 )]
 position = Vector2( -736.401, -53.9716 )
 rotation = -5.14551
 
-[node name="ZombiDead3" parent="Props" index="39" instance=ExtResource( 3 )]
+[node name="ZombiDead3" parent="Props" index="41" instance=ExtResource( 3 )]
 position = Vector2( -1488.83, -44.4473 )
 rotation = -2.09959
 
-[node name="PickeableWeapon" parent="Props" index="40" instance=ExtResource( 7 )]
+[node name="PickeableWeapon" parent="Props" index="42" instance=ExtResource( 7 )]
 position = Vector2( -3103.63, -415.31 )
 
 [node name="Tutorial" parent="Control" index="0" instance=ExtResource( 12 )]
@@ -217,13 +223,16 @@ position = Vector2( -1905.89, -581.08 )
 text = "T_BARREL_SHOOT"
 
 [node name="TriggerTutorial3" parent="Control/Tutorial" index="3" instance=ExtResource( 11 )]
-position = Vector2( -3388.35, -1914.87 )
+visible = true
+position = Vector2( -2545.04, -1914.87 )
 text = "T_BARREL_COLLISION"
 
 [node name="TriggerTutorial4" parent="Control/Tutorial" index="4" instance=ExtResource( 11 )]
+visible = true
 position = Vector2( -4575.15, 128 )
 
 [node name="TriggerFinishLevel" parent="Control" index="1" instance=ExtResource( 13 )]
+visible = true
 position = Vector2( -7296.37, 193 )
 
 [node name="Objectives" parent="." index="4"]
