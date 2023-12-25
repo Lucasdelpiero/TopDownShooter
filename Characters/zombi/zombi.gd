@@ -288,7 +288,7 @@ func _on_ZombiSound_timeout():
 
 func _on_HurtBox_area_entered(area):
 	bleed(area)
-	print("damaged")
+#	print("damaged")
 	staggered = true
 	state = STAGGERED
 	

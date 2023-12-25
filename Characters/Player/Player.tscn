@@ -1287,6 +1287,7 @@ z_as_relative = false
 collision_layer = 65
 collision_mask = 260
 script = ExtResource( 1 )
+health = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 __meta__ = {

@@ -8,7 +8,7 @@
 [ext_resource path="res://Characters/zombi/zombi.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/zombi/zombiFast.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Characters/zombi/zombiBig.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Characters/zombi/zombiFat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/LevelControl/TriggerTutorial.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/LevelControl/Tutorial.tscn" type="PackedScene" id=12]
@@ -36,16 +36,14 @@ z_index = 6
 [node name="Door" parent="TileMaps/Doors" index="0" instance=ExtResource( 10 )]
 position = Vector2( -7297.12, 239 )
 
-[node name="Label" type="Label" parent="TileMaps" index="7"]
+[node name="Reemplazar paredes con rejas" type="Label" parent="TileMaps" index="7"]
+visible = false
 margin_left = -1198.46
 margin_top = -1109.24
 margin_right = 732.536
 margin_bottom = -958.236
 theme = ExtResource( 2 )
 text = "Reemplazar las paredes con rejas"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="zombiCrippled" parent="Zombies" index="0" instance=ExtResource( 5 )]
 position = Vector2( -1835.89, -342.31 )
@@ -77,8 +75,8 @@ position = Vector2( -5619.14, -383.81 )
 [node name="zombiFast3" parent="Zombies" index="9" instance=ExtResource( 8 )]
 position = Vector2( -5569.14, -709.08 )
 
-[node name="zombiBig" parent="Zombies" index="10" instance=ExtResource( 9 )]
-position = Vector2( -6592.55, 1989.75 )
+[node name="ZombiFat" parent="Zombies" index="10" instance=ExtResource( 9 )]
+position = Vector2( -6020.24, 2001.41 )
 
 [node name="ExplosiveBarrel" parent="Props" index="0" instance=ExtResource( 4 )]
 position = Vector2( -957.755, -351.31 )

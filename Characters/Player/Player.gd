@@ -211,6 +211,7 @@ func _on_HurtBox_area_entered(area):
 		soundPain()
 
 func bonusHeal(time):
+	print("healed")
 	if not bonusHealing:
 		bonusHealing = true
 		healingTimer.start(time)
@@ -237,8 +238,8 @@ func soundDeath():
 func getHealth():
 	return health
 
-func updateHealth(change):
-	health += change
+func updateHealth(value):
+	health = value
 	emit_signal("updateHealthHUD", health)
 
 

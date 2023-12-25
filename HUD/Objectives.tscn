@@ -13,10 +13,19 @@ margin_top = 300.0
 margin_bottom = -300.0
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 killAll = true
+path_base = NodePath("CanvasLayer/Base")
+path_label = NodePath("CanvasLayer/Base/Label")
+path_lKillAll = NodePath("CanvasLayer/Base/VBC/OC2/MarginContainer/LKillAll")
+path_lSurvive = NodePath("CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive")
+path_lObjectives = NodePath("CanvasLayer/Base/VBC/OC/MarginContainer/LObjectives")
+path_lOptional = NodePath("CanvasLayer/Base/VBC/OC4/MarginContainer/LOptional")
+path_lMelee = NodePath("CanvasLayer/Base/VBC/OC5/MarginContainer/LMelee")
+path_lExplosion = NodePath("CanvasLayer/Base/VBC/OC6/MarginContainer/LExplosion")
+path_lReachFinish = NodePath("CanvasLayer/Base/VBC/OC7/MarginContainer/LReachFinish")
+path_VBC = NodePath("CanvasLayer/Base/VBC")
+path_tween = NodePath("CanvasLayer/Base/Tween")
+path_autoHideTimer = NodePath("AutoHide")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -53,7 +62,6 @@ grow_vertical = 0
 size_flags_horizontal = 9
 size_flags_vertical = 9
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 

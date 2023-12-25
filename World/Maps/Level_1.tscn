@@ -237,6 +237,7 @@ margin_bottom = 243.0
 __meta__ = {
 "_edit_lock_": true
 }
+isShown = false
 finishAtCompletion = false
 hasToReachFinish = true
 

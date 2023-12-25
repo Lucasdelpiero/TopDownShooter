@@ -352,7 +352,7 @@ position = Vector2( 6648.91, 3304 )
 position = Vector2( 6800, 3296 )
 
 [node name="ExplosiveBarrel2" parent="Props/Barrels" index="7" instance=ExtResource( 6 )]
-position = Vector2( 3567.66, 2639.26 )
+position = Vector2( 3503.66, 3144 )
 
 [node name="Boxes" type="Node" parent="Props" index="5"]
 

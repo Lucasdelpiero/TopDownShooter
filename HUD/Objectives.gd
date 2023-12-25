@@ -3,6 +3,7 @@ extends Control
 # Fix bug with time
 # Required objectives
 var allCompleted = false
+export(bool) var isShown = true
 export var finishAtCompletion = true #finish level when objectives are completed
 export var killAll = false
 export var survive = false
@@ -79,18 +80,31 @@ var totalKilled = 0
 #Animation
 var showing = true
 
+export var path_base : NodePath 
 onready var base = $CanvasLayer/Base
+export var path_label : NodePath
 onready var label = $CanvasLayer/Base/Label
+export var path_lKillAll : NodePath
 onready var lKillAll = $CanvasLayer/Base/VBC/OC2/MarginContainer/LKillAll
+export var path_lSurvive : NodePath
 onready var lSurvive = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+export var path_lObjectives : NodePath
 onready var lObjectives = $CanvasLayer/Base/VBC/OC/MarginContainer/LObjectives
+export var path_Objectives_key : NodePath
 onready var lObjectives_key = $CanvasLayer/Base/VBC/OC/MarginContainer/LObjectives.text
+export var path_lOptional : NodePath
 onready var lOptional = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+export var path_lMelee : NodePath
 onready var lMelee = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+export var path_lExplosion : NodePath
 onready var lExplosion = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+export var path_lReachFinish : NodePath
 onready var lReachFinish = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+export var path_VBC : NodePath
 onready var vBoxObjectives = $CanvasLayer/Base/VBC
+export var path_tween : NodePath
 onready var tween = $CanvasLayer/Base/Tween
+export var path_autoHideTimer : NodePath
 onready var autoHideTimer = $AutoHide
 
 var posShown = Vector2(0.0, 0.0)
@@ -101,6 +115,7 @@ signal completedLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	base.visible = isShown
 	$TimerSurvive.start(timeSurvive)
 	zombiesLeft = get_tree().get_nodes_in_group("zombi").size()
 	updateDict()
@@ -279,7 +294,8 @@ func updateLabels():
 		lExplosion.text = tr("KILL_WITH_EXPLOSION") % [ str(explosionAmount), str(killedByExplosion), explosionAmount ]
 
 func activateTutorial(): #Set optional label to tutorial related
-	$CanvasLayer/Base/VBC/OC4/MarginContainer/LOptional.text = "Tutorial:"
+	$CanvasLayer/Base/VBC/OC4/MarginContainer/LOptional.visible = false
+#	$CanvasLayer/Base/VBC/OC4/MarginContainer/LOptional.text = "Tutorial:"
 
 func updateText():
 	updateLabels()

@@ -228,40 +228,47 @@ anchor_bottom = 0.743
 margin_left = 0.156097
 margin_right = -0.355896
 margin_bottom = 0.199982
+alignment = 1
 
 [node name="LevelButton" parent="DiamondParent" instance=ExtResource( 9 )]
-
-[node name="LevelButton2" parent="DiamondParent" instance=ExtResource( 9 )]
-margin_left = 36.0
-margin_right = 68.0
-
-[node name="LevelButton3" parent="DiamondParent" instance=ExtResource( 9 )]
 margin_left = 72.0
 margin_right = 104.0
 
-[node name="LevelButton4" parent="DiamondParent" instance=ExtResource( 9 )]
+[node name="LevelButton2" parent="DiamondParent" instance=ExtResource( 9 )]
 margin_left = 108.0
 margin_right = 140.0
 
-[node name="LevelButton5" parent="DiamondParent" instance=ExtResource( 9 )]
+[node name="LevelButton3" parent="DiamondParent" instance=ExtResource( 9 )]
 margin_left = 144.0
 margin_right = 176.0
 
+[node name="LevelButton4" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 180.0
+margin_right = 212.0
+
+[node name="LevelButton5" parent="DiamondParent" instance=ExtResource( 9 )]
+margin_left = 216.0
+margin_right = 248.0
+
 [node name="LevelButton6" parent="DiamondParent" instance=ExtResource( 9 )]
+visible = false
 margin_left = 180.0
 margin_right = 212.0
 
 [node name="LevelButton7" parent="DiamondParent" instance=ExtResource( 9 )]
-margin_left = 216.0
-margin_right = 248.0
+visible = false
+margin_left = 180.0
+margin_right = 212.0
 
 [node name="LevelButton8" parent="DiamondParent" instance=ExtResource( 9 )]
-margin_left = 252.0
-margin_right = 284.0
+visible = false
+margin_left = 180.0
+margin_right = 212.0
 
 [node name="LevelButton9" parent="DiamondParent" instance=ExtResource( 9 )]
-margin_left = 288.0
-margin_right = 320.0
+visible = false
+margin_left = 180.0
+margin_right = 212.0
 
 [node name="SaveButton" parent="." instance=ExtResource( 11 )]
 anchor_left = 0.0

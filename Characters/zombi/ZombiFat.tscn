@@ -311,6 +311,8 @@ cull_mode = 1
 polygon = PoolVector2Array( -9.77168, 0.588644, -7.48979, 6.24376, -1.51632, 8.06127, 1.23976, 4.439, 2.97215, 0.816723, 0.452305, -2.80555, -4.11491, -5.56163 )
 
 [node name="ZombiFat" groups=["zombi", "zombiBig"] instance=ExtResource( 1 )]
+z_index = 40
+z_as_relative = false
 collision_layer = 2
 collision_mask = 5
 path_wanderController = NodePath("WanderController")
@@ -332,6 +334,7 @@ path_collision = NodePath("Collision")
 path_visibilityEnabler = NodePath("VisibilityEnabler2D")
 path_navAgent = NodePath("NavigationAgent2D")
 MAX_SPEED = 800
+health = 1000
 type = "zombiFat"
 
 [node name="PivotSprites" type="Position2D" parent="." index="0"]

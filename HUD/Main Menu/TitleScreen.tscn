@@ -205,9 +205,6 @@ anim_time = 0.25
 [node name="Options" parent="OptionsLayer" index="0"]
 visible = false
 
-[node name="ScreenResolution" parent="OptionsLayer/Options/VBoxContainer/HBoxScreen" index="3"]
-items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
-
 [node name="LanguageSelector" parent="." instance=ExtResource( 9 )]
 margin_left = -32.0
 margin_top = -8.0

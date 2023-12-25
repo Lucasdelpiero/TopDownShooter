@@ -9,6 +9,7 @@ onready var label = $Control/VBoxContainer/HBoxContainer/Label
 onready var gridContainer = $GridContainer
 onready var weaponsSlots = $WeaponsSlots
 onready var crosshair = $Crosshair
+onready var death = $Death
 
 var iconImages = {
 	"Rifle" : "res://HUD/Weapons/rifle_icon.png" ,
@@ -32,7 +33,8 @@ func _process(_delta):
 #	crosshair.rect_position = get_viewport().get_mouse_position() 
 	if Input.is_action_just_pressed("restart"):
 # warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
+		restart_level()
+#		get_tree().reload_current_scene()
 
 func updateWeaponSelected( selected : int):
 	var weaponList = weaponsSlots.get_children()
@@ -50,6 +52,10 @@ func _on_Update_Ammo(aAmmo, aCapacity, aReserve):
 
 func _on_Player_updateHealth(aHealth):
 	healthBar.value = aHealth
+	print("health changed: %s" % [aHealth])
+	if aHealth <= 0:
+		death.visible = true
+		GlobalControl.showMouse(true)
 
 func updateHUDWeapons( weaponList : Array ):
 	deleteIcons()
@@ -67,3 +73,18 @@ func createIcons( weaponList : Array ):
 		var typeWeapon = weaponList[i].type
 		icon.texture = load(iconImages[typeWeapon])
 		icon.get_child(0).text = "[%s]" %str(i + 1)
+
+func restart_level():
+	get_tree().reload_current_scene()
+
+
+func _on_Restart_pressed():
+	restart_level()
+	pass # Replace with function body.
+
+func go_to_menu():
+	get_tree().change_scene("res://HUD/Main Menu/TitleScreen.tscn")
+
+
+func _on_ToMenu_pressed():
+	go_to_menu()
