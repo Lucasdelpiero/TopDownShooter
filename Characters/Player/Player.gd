@@ -20,6 +20,7 @@ var maxBulletSpdBonus = 1000
 
 signal updateHealthHUD(health)
 signal grabAmmoSignal(amount)
+signal player_death()
 
 onready var animationPlayer = $Position2D/AnimationPlayer
 onready var position2D = $Position2D
@@ -42,6 +43,7 @@ enum {
 	RELOADING,
 	MELEE,
 	BLOCKED,
+	DEAD
 }
 
 var state = IDLE
@@ -71,6 +73,7 @@ func _on_Player_tree_entered():
 # warning-ignore:return_value_discarded
 	if HUD != null:
 		connect("updateHealthHUD", HUD, "_on_Player_updateHealth")
+		connect("player_death", HUD, "on_player_death")
 	randomize()
 	get_tree().call_group("zombies", "set_player", self)
 	knifeCollision.disabled = true
@@ -86,6 +89,9 @@ var dir = 14
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if state == DEAD:
+		return
+	
 	$Position2D.look_at(get_global_mouse_position())
 	move(delta)
 	
@@ -201,17 +207,20 @@ func changeAnimation(value : String):
 
 
 func _on_HurtBox_area_entered(area):
-	self.health = -area.damage
+	self.health -= area.damage
 	health = clamp(health,0, 500)
 	hurtbox.start_invincibility(0.3)
 	modulate = Color(1.0, 0.0, 0.0, 1.0)
-	if health <= 0:
-		death()
-	else:
+	if health <= 0 and state != DEAD:
+		animationPlayer.play("Death")
+		state = DEAD
+#		death()
+	elif state != DEAD:
+		print(health)
 		soundPain()
 
 func bonusHeal(time):
-	print("healed")
+#	print("healed")
 	if not bonusHealing:
 		bonusHealing = true
 		healingTimer.start(time)
@@ -223,6 +232,7 @@ func _on_HealingTimer_timeout():
 
 func death():
 	soundDeath()
+	emit_signal("player_death")
 #	queue_free() # da un bug con los zombies
 
 func soundPain():

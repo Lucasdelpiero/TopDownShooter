@@ -31,11 +31,13 @@ path_autoHideTimer = NodePath("AutoHide")
 layer = 2
 
 [node name="Base" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Base"]
+unique_name_in_owner = true
 visible = false
 margin_left = 256.0
 margin_top = 128.0
@@ -74,6 +76,7 @@ margin_right = 261.0
 margin_bottom = 29.0
 
 [node name="LObjectives" type="Label" parent="CanvasLayer/Base/VBC/OC/MarginContainer"]
+unique_name_in_owner = true
 margin_left = 30.0
 margin_right = 231.0
 margin_bottom = 29.0
@@ -95,6 +98,7 @@ margin_right = 261.0
 margin_bottom = 19.0
 
 [node name="LKillAll" type="Label" parent="CanvasLayer/Base/VBC/OC2/MarginContainer"]
+unique_name_in_owner = true
 margin_left = 30.0
 margin_right = 231.0
 margin_bottom = 19.0

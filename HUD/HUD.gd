@@ -52,8 +52,7 @@ func _on_Update_Ammo(aAmmo, aCapacity, aReserve):
 
 func _on_Player_updateHealth(aHealth):
 	healthBar.value = aHealth
-	print("health changed: %s" % [aHealth])
-	if aHealth <= 0:
+	if aHealth <= -1000: # used this value to signal the death of the player 
 		death.visible = true
 		GlobalControl.showMouse(true)
 
@@ -73,6 +72,10 @@ func createIcons( weaponList : Array ):
 		var typeWeapon = weaponList[i].type
 		icon.texture = load(iconImages[typeWeapon])
 		icon.get_child(0).text = "[%s]" %str(i + 1)
+
+func on_player_death():
+	death.visible = true
+	GlobalControl.showMouse(true)
 
 func restart_level():
 	get_tree().reload_current_scene()

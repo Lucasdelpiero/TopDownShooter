@@ -221,16 +221,13 @@ position = Vector2( -1905.89, -581.08 )
 text = "T_BARREL_SHOOT"
 
 [node name="TriggerTutorial3" parent="Control/Tutorial" index="3" instance=ExtResource( 11 )]
-visible = true
 position = Vector2( -2545.04, -1914.87 )
 text = "T_BARREL_COLLISION"
 
 [node name="TriggerTutorial4" parent="Control/Tutorial" index="4" instance=ExtResource( 11 )]
-visible = true
 position = Vector2( -4575.15, 128 )
 
 [node name="TriggerFinishLevel" parent="Control" index="1" instance=ExtResource( 13 )]
-visible = true
 position = Vector2( -7296.37, 193 )
 
 [node name="Objectives" parent="." index="4"]

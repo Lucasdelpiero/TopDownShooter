@@ -81,31 +81,30 @@ var totalKilled = 0
 var showing = true
 
 export var path_base : NodePath 
-onready var base = $CanvasLayer/Base
+onready var base = get_node(path_base)
 export var path_label : NodePath
-onready var label = $CanvasLayer/Base/Label
+onready var label = get_node(path_label)
 export var path_lKillAll : NodePath
-onready var lKillAll = $CanvasLayer/Base/VBC/OC2/MarginContainer/LKillAll
+onready var lKillAll = get_node(path_lKillAll)
 export var path_lSurvive : NodePath
-onready var lSurvive = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lSurvive = get_node(path_lSurvive)
 export var path_lObjectives : NodePath
-onready var lObjectives = $CanvasLayer/Base/VBC/OC/MarginContainer/LObjectives
-export var path_Objectives_key : NodePath
-onready var lObjectives_key = $CanvasLayer/Base/VBC/OC/MarginContainer/LObjectives.text
+onready var lObjectives = get_node(path_lObjectives)
+onready var lObjectives_key = lObjectives.text
 export var path_lOptional : NodePath
-onready var lOptional = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lOptional = get_node(path_lOptional)
 export var path_lMelee : NodePath
-onready var lMelee = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lMelee = get_node(path_lMelee)
 export var path_lExplosion : NodePath
-onready var lExplosion = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lExplosion = get_node(path_lExplosion)
 export var path_lReachFinish : NodePath
-onready var lReachFinish = $CanvasLayer/Base/VBC/OC3/MarginContainer/LSurvive
+onready var lReachFinish = get_node(path_lReachFinish)
 export var path_VBC : NodePath
-onready var vBoxObjectives = $CanvasLayer/Base/VBC
+onready var vBoxObjectives = get_node(path_VBC)
 export var path_tween : NodePath
-onready var tween = $CanvasLayer/Base/Tween
+onready var tween = get_node(path_tween)
 export var path_autoHideTimer : NodePath
-onready var autoHideTimer = $AutoHide
+onready var autoHideTimer = get_node(path_autoHideTimer)
 
 var posShown = Vector2(0.0, 0.0)
 var posHidden = Vector2(400.0, 0.0) ## Check if works in different resolutions
