@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/LevelControl/Trigger.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://World/Objects/Decoration/Bed.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Objects/Decoration/Door.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Objects/Decoration/Toilet.tscn" type="PackedScene" id=18]
+[ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=19]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -28,6 +29,7 @@ resource_local_to_scene = true
 radius = 3200.0
 
 [node name="Level_5" instance=ExtResource( 1 )]
+next_level = ExtResource( 19 )
 
 [node name="DarkBackground" parent="TileMaps" index="1"]
 margin_left = -7278.0
@@ -333,25 +335,13 @@ rotation = -3.14159
 [node name="ExplosiveBarrel" parent="Props/Barrels" index="0" instance=ExtResource( 6 )]
 position = Vector2( 3503.66, 2352.32 )
 
-[node name="ExplosiveBarrel3" parent="Props/Barrels" index="1" instance=ExtResource( 6 )]
-position = Vector2( 5970, 3208 )
-
-[node name="ExplosiveBarrel4" parent="Props/Barrels" index="2" instance=ExtResource( 6 )]
+[node name="ExplosiveBarrel4" parent="Props/Barrels" index="1" instance=ExtResource( 6 )]
 position = Vector2( 6104.91, 3264 )
 
-[node name="ExplosiveBarrel5" parent="Props/Barrels" index="3" instance=ExtResource( 6 )]
-position = Vector2( 6216, 3336 )
-
-[node name="ExplosiveBarrel6" parent="Props/Barrels" index="4" instance=ExtResource( 6 )]
-position = Vector2( 6528, 3328 )
-
-[node name="ExplosiveBarrel7" parent="Props/Barrels" index="5" instance=ExtResource( 6 )]
+[node name="ExplosiveBarrel7" parent="Props/Barrels" index="2" instance=ExtResource( 6 )]
 position = Vector2( 6648.91, 3304 )
 
-[node name="ExplosiveBarrel8" parent="Props/Barrels" index="6" instance=ExtResource( 6 )]
-position = Vector2( 6800, 3296 )
-
-[node name="ExplosiveBarrel2" parent="Props/Barrels" index="7" instance=ExtResource( 6 )]
+[node name="ExplosiveBarrel2" parent="Props/Barrels" index="3" instance=ExtResource( 6 )]
 position = Vector2( 3503.66, 3144 )
 
 [node name="Boxes" type="Node" parent="Props" index="5"]
@@ -645,10 +635,6 @@ position = Vector2( 3392, 1504 )
 
 [node name="PickeableWeapon2" parent="Control" index="1" instance=ExtResource( 5 )]
 position = Vector2( 6136, -3128 )
-weapon = "Shotgun"
-
-[node name="PickeableWeapon3" parent="Control" index="2" instance=ExtResource( 5 )]
-position = Vector2( 1376, 32 )
 weapon = "Shotgun"
 
 [node name="Objectives" parent="." index="4"]

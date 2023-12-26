@@ -34,6 +34,7 @@ func _on_Area2D_body_entered(body):
 	connect("pickWeapon", body, "grabWeapon")
 	emit_signal("pickWeapon", weaponPath)
 	disconnect("pickWeapon", body, "grabWeapon")
+	queue_free()
 	
 func idleAnimation():
 	tween.interpolate_property(self,"global_position", startingPos , endPos, timeAnim, transition,easing)

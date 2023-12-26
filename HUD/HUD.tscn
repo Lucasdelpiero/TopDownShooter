@@ -158,6 +158,10 @@ margin_top = 5.0
 margin_right = 11.0
 margin_bottom = 4.79999
 
+[node name="TotalScoreLabel" parent="Scoring" index="0"]
+text = "0
+"
+
 [node name="TimeLabel" parent="Scoring" index="1"]
 visible = false
 
@@ -191,6 +195,12 @@ margin_left = 0.715181
 margin_top = -39.9901
 margin_right = 40.7152
 margin_bottom = 0.00985718
+
+[node name="LMessage" parent="Scoring/Multiplicator/VBC" index="0"]
+text = ""
+
+[node name="Label" parent="Scoring/Multiplicator/VBC/WC/HBC/MarginContainer" index="0"]
+text = "0"
 
 [node name="HBCCombo" parent="Scoring/Multiplicator/VBC" index="2"]
 margin_bottom = 87.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://HUD/theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD/Main Menu/Options.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://HUD/Main Menu/PanelBox.tres" type="StyleBox" id=4]
 [ext_resource path="res://HUD/Main Menu/MenuButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Music/MusicList.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD/theme_rounded.tres" type="Theme" id=7]
 
 [node name="OptionsLayer" type="CanvasLayer"]
 pause_mode = 2
@@ -42,9 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 12.0001
 margin_bottom = -0.000396729
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( 7 )
 
 [node name="HBoxScreen" type="HBoxContainer" parent="Options/VBoxContainer"]
 margin_right = 711.0
@@ -280,6 +279,7 @@ margin_left = 236.0
 margin_right = 636.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 400, 0 )
+custom_constants/arrow_margin = 9
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -301,27 +301,8 @@ text = "BACK"
 wait_time = 4.0
 autostart = true
 
-[node name="English" type="Button" parent="Options"]
-margin_left = 34.9229
-margin_top = 303.194
-margin_right = 177.923
-margin_bottom = 347.194
-text = "ENGLISH"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Spanish" type="Button" parent="Options"]
-margin_left = 222.236
-margin_top = 298.431
-margin_right = 374.236
-margin_bottom = 342.431
-text = "ESPAÑOL"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Change Scene" type="Button" parent="Options"]
+visible = false
 margin_left = 418.607
 margin_top = 301.227
 margin_right = 635.607
@@ -332,6 +313,7 @@ __meta__ = {
 }
 
 [node name="Cheats" type="Button" parent="Options"]
+visible = false
 margin_left = 453.08
 margin_top = 366.284
 margin_right = 594.08
@@ -340,6 +322,29 @@ text = "Cheats"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LabelLanguage" type="Label" parent="Options"]
+margin_left = 38.703
+margin_top = 290.0
+margin_right = 203.703
+margin_bottom = 328.0
+text = "LANGUAGE"
+
+[node name="English" type="Button" parent="Options"]
+margin_left = 278.0
+margin_top = 290.0
+margin_right = 409.0
+margin_bottom = 330.0
+theme = ExtResource( 7 )
+text = " English"
+
+[node name="Spanish" type="Button" parent="Options"]
+margin_left = 486.433
+margin_top = 290.0
+margin_right = 626.433
+margin_bottom = 330.0
+theme = ExtResource( 7 )
+text = " Español"
 
 [connection signal="toggled" from="Options/VBoxContainer/HBoxScreen/CheckBox" to="Options" method="_on_CheckBox_toggled"]
 [connection signal="item_selected" from="Options/VBoxContainer/HBoxScreen/ScreenResolution" to="Options" method="_on_ScreenResolution_item_selected"]
@@ -353,9 +358,9 @@ __meta__ = {
 [connection signal="toggled" from="Options/VBoxContainer/BoxMusic/MuteMusic" to="Options" method="_on_MuteMusic_toggled"]
 [connection signal="item_selected" from="Options/VBoxContainer/BoxMusic2/OptionMusic" to="Options" method="_on_OptionMusic_item_selected"]
 [connection signal="pressed" from="Options/BackButton" to="Options" method="_on_BackButton_pressed"]
-[connection signal="pressed" from="Options/English" to="Options" method="_on_English_pressed"]
-[connection signal="pressed" from="Options/Spanish" to="Options" method="_on_Spanish_pressed"]
 [connection signal="pressed" from="Options/Change Scene" to="Options" method="_on_Change_Scene_pressed"]
 [connection signal="pressed" from="Options/Cheats" to="Options" method="_on_Cheats_pressed"]
+[connection signal="pressed" from="Options/English" to="Options" method="_on_English_pressed"]
+[connection signal="pressed" from="Options/Spanish" to="Options" method="_on_Spanish_pressed"]
 
 [editable path="Options/BackButton"]

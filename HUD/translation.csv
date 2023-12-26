@@ -2,7 +2,7 @@ keys,en,es
 FULLSCREEN,Fullscreen:,Pantalla Completa:
 WINDOW_RESOLUTION,Resolution:,Resolución:
 MUSIC,Music:,Música:
-SONG_PLAYING,Song Playing:,Reproduciendo tema:
+SONG_PLAYING,Song Playing:,Reproduciendo:
 MUTE,Mute:,Silenciar:
 BACK,Back, Volver 
 PREVIOUS, Previous , Anterior 
@@ -50,3 +50,8 @@ TOTAL_MELEE,Total melee,Muertos a melee
 TOTAL_EXPLOSION,Total explosion,Muertos con explosiones
 NEXT_LEVEL, Next Level , Siguiente Nivel 
 LEVEL_SELECTOR, Level Selector , Selector de Nivel 
+,,
+RESTART,Restart,Reiniciar
+TO_MENU,To main menu,Ir a menú principal
+,,
+LANGUAGE,Language:,Idioma:

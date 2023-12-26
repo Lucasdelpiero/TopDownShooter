@@ -100,9 +100,6 @@ margin_top = 285.646
 margin_right = -44.1116
 margin_bottom = -68.3536
 text = "NEXT_LEVEL"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.08

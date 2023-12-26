@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/Maps/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player/Top_Down_Survivor/PickeableWeapon.tscn" type="PackedScene" id=2]
@@ -11,8 +11,10 @@
 [ext_resource path="res://World/LevelControl/Tutorial.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/LevelControl/TriggerTutorial.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Decoration/Locker.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Maps/Level_3.tscn" type="PackedScene" id=12]
 
 [node name="Level_2" instance=ExtResource( 1 )]
+next_level = ExtResource( 12 )
 
 [node name="TextureRect" parent="TileMaps" index="0"]
 visible = false

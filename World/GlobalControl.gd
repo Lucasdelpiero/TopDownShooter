@@ -6,6 +6,7 @@ var world = null
 var offset = 16
 var levels = []
 var levelSelected = 0
+var next_level : PackedScene
 
 var Z_INDEX = {
 	"GROUND": 0,
@@ -83,6 +84,8 @@ func giveScore(key):
 #	var crosshair = CrossHair.instance
 #	add_child(crosshair)
 func goto_next_level():
+	get_tree().change_scene_to(next_level)
+	return
 	var _levels = GlobalControl.levels
 	var currentWorld = get_tree().get_nodes_in_group("world")[0]
 	var worldName = currentWorld.name

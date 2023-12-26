@@ -13,6 +13,7 @@ onready var muteMaster = $VBoxContainer/BoxMaster/MuteMaster
 onready var muteSFX = $VBoxContainer/BoxSFX/MuteSFX
 onready var muteMusic = $VBoxContainer/BoxMusic/MuteMusic
 
+
 export var dynamicMusic = true
 var dynamicActive = false
 var dynamicVolume = 0.0
@@ -35,6 +36,7 @@ func _ready():
 		optionMusic.add_item(musicList.tracks[i])
 #		optionMusic.text = "Choose Song"
 		pass
+	optionMusic.text = "  %s" %musicList.tracks[0] 
 
 func _process(_delta):
 	if dynamicMusic:
@@ -130,13 +132,14 @@ func _on_MuteMusic_toggled(button_pressed):
 func chooseRandomSong():
 	var newSong = randi() % musicList.tracks.size()
 	musicPlayer.stream = load ("res://Music/%s.ogg"  %musicList.tracks[newSong])
-	optionMusic.text = musicList.tracks[newSong]
+	optionMusic.text = "  %s" % [musicList.tracks[newSong]]
 	optionMusic.selected = newSong
 	musicPlayer.play()
 
 func _on_OptionMusic_item_selected(index):
 	musicPlayer.stream = load ("res://Music/%s.ogg"  %musicList.tracks[index] )
 	musicPlayer.play()
+	optionMusic.text = "  %s" %musicList.tracks[index] 
 #	optionMusic.text = "Choose Song"
 
 ## Dynamic  Music

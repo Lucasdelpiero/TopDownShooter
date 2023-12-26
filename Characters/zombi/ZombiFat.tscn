@@ -340,8 +340,6 @@ type = "zombiFat"
 [node name="PivotSprites" type="Position2D" parent="." index="0"]
 
 [node name="Body" type="Sprite" parent="PivotSprites" index="0"]
-z_index = 10
-z_as_relative = false
 texture = ExtResource( 8 )
 
 [node name="RightArmPivot" type="Position2D" parent="PivotSprites/Body" index="0"]
@@ -413,6 +411,7 @@ collision_mask = 1
 damage = 20
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+visible = false
 position = Vector2( 8.98195, 0.0360141 )
 shape = SubResource( 2 )
 

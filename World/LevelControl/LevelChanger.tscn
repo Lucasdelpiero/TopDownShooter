@@ -9,8 +9,8 @@ extents = Vector2( 128, 129 )
 [node name="LevelChanger" type="Area2D"]
 z_index = 500
 z_as_relative = false
-monitorable = false
 collision_layer = 0
+monitorable = false
 script = ExtResource( 1 )
 
 [node name="icon" type="Sprite" parent="."]
