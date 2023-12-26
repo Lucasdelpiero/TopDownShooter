@@ -12,6 +12,8 @@ var normal_scale := Vector2(1.0, 1.0)
 var large_scale := Vector2(1.1, 1.1)
 export(float, 0.05, 0.5, 0.02) var anim_time = 0.25
 
+
+
 func _ready():
 	var labelText = tr(key)
 	text = "  %s   " %labelText
@@ -47,4 +49,4 @@ func anim_set_normal():
 		tween.start()
 
 func updateText():
-	text = tr(key)
+	text = "  %s  " % [tr(key)]

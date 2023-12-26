@@ -14,11 +14,13 @@ func _ready():
 func _on_BtnEnglish_pressed():
 	TranslationServer.set_locale("en")
 	emit_signal("updateLanguage")
+	GlobalControl.language_was_selected = true
 	play_transition()
 	
 func _on_BtnSpanish_pressed():
 	TranslationServer.set_locale("es")
 	emit_signal("updateLanguage")
+	GlobalControl.language_was_selected = true
 	play_transition()
 
 func play_transition():

@@ -61,6 +61,7 @@ margin_left = 196.0
 margin_right = 212.0
 margin_bottom = 38.0
 focus_mode = 0
+pressed = true
 enabled_focus_mode = 0
 expand_icon = true
 
@@ -346,6 +347,14 @@ margin_bottom = 330.0
 theme = ExtResource( 7 )
 text = " Español"
 
+[node name="ToMenu" parent="Options" instance=ExtResource( 5 )]
+margin_left = 165.0
+margin_top = 393.0
+margin_right = 325.0
+margin_bottom = 433.0
+grow_horizontal = 0
+text = "TO_MENU"
+
 [connection signal="toggled" from="Options/VBoxContainer/HBoxScreen/CheckBox" to="Options" method="_on_CheckBox_toggled"]
 [connection signal="item_selected" from="Options/VBoxContainer/HBoxScreen/ScreenResolution" to="Options" method="_on_ScreenResolution_item_selected"]
 [connection signal="value_changed" from="Options/VBoxContainer/BoxMaster/SliderMaster" to="Options" method="_on_SliderMaster_value_changed"]
@@ -362,5 +371,6 @@ text = " Español"
 [connection signal="pressed" from="Options/Cheats" to="Options" method="_on_Cheats_pressed"]
 [connection signal="pressed" from="Options/English" to="Options" method="_on_English_pressed"]
 [connection signal="pressed" from="Options/Spanish" to="Options" method="_on_Spanish_pressed"]
+[connection signal="pressed" from="Options/ToMenu" to="Options" method="_on_ToMenu_pressed"]
 
 [editable path="Options/BackButton"]

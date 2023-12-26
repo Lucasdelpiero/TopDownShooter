@@ -239,11 +239,13 @@ func soundPain():
 	# load : get a filesystem and creates an object 
 	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(painSounds[randi() % painSounds.size()]) )
 	audioPain.play()
+	pass
 
 	
 func soundDeath():
-	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(deathSounds[randi() % deathSounds.size()]) )
-	audioPain.play()
+#	audioPain.stream = load( "res://Characters/Player/Audio/%s.wav" %str(deathSounds[randi() % deathSounds.size()]) )
+#	audioPain.play()
+	pass
 
 func getHealth():
 	return health

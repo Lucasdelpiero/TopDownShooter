@@ -224,12 +224,13 @@ margin_bottom = -4.0
 theme = ExtResource( 12 )
 
 [node name="PanelContainer" type="Panel" parent="Death"]
-anchor_right = 1.032
-anchor_bottom = 1.0
 margin_left = 289.0
 margin_top = 133.204
-margin_right = -351.576
-margin_bottom = -165.796
+margin_right = 699.0
+margin_bottom = 426.204
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Label" type="Label" parent="Death/PanelContainer"]
 anchor_left = -0.757
@@ -244,25 +245,25 @@ text = "You died"
 align = 1
 
 [node name="Restart" type="Button" parent="Death/PanelContainer"]
-anchor_left = -0.763
-anchor_top = -0.362
-anchor_right = 1.724
-anchor_bottom = 1.653
-margin_left = 348.83
-margin_top = 277.066
-margin_right = -520.84
-margin_bottom = -246.329
+anchor_left = -0.71
+anchor_top = -0.451
+anchor_right = -0.71
+anchor_bottom = -0.451
+margin_left = 327.1
+margin_top = 303.143
+margin_right = 477.1
+margin_bottom = 370.143
 text = "Restart"
 
 [node name="ToMenu" type="Button" parent="Death/PanelContainer"]
-anchor_left = -0.763
-anchor_top = -0.362
-anchor_right = 1.724
-anchor_bottom = 1.653
-margin_left = 538.33
-margin_top = 277.066
-margin_right = -331.34
-margin_bottom = -246.329
+anchor_left = -0.71
+anchor_top = -0.451
+anchor_right = -0.71
+anchor_bottom = -0.451
+margin_left = 516.6
+margin_top = 303.143
+margin_right = 666.6
+margin_bottom = 370.143
 text = "To Menu"
 
 [connection signal="pressed" from="Death/PanelContainer/Restart" to="." method="_on_Restart_pressed"]

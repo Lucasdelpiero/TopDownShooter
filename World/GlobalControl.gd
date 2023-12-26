@@ -7,6 +7,7 @@ var offset = 16
 var levels = []
 var levelSelected = 0
 var next_level : PackedScene
+var language_was_selected = false
 
 var Z_INDEX = {
 	"GROUND": 0,
@@ -27,6 +28,7 @@ var max_score = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	OS.set_window_fullscreen(true)
 #	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 #	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(offset + 5, offset))
 #	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_CROSS, Vector2(offset + 5, offset))

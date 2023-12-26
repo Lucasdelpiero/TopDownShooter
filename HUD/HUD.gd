@@ -25,6 +25,7 @@ onready var iconBase = preload("res://HUD/Weapons/IconBase.tscn")
 var optionsControl
 
 func _ready():
+	death.visible = false
 	yield(get_tree().create_timer(0.05), "timeout")
 	optionsControl = get_tree().get_root().find_node("Options", true, false)
 #	connect("updateMusic", optionsControl, "activateMusic")

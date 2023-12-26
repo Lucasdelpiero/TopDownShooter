@@ -182,3 +182,7 @@ func _on_Cheats_pressed():
 		el.reserveAmmo = el.capacity * 100
 		el.ammo = el.capacity
 	pass # Replace with function body.
+
+
+func _on_ToMenu_pressed():
+	get_tree().change_scene("res://HUD/Main Menu/TitleScreen.tscn")
