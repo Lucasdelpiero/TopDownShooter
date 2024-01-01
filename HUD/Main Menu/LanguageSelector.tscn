@@ -7,8 +7,14 @@
 [ext_resource path="res://HUD/theme_rounded.tres" type="Theme" id=6]
 
 [node name="LanguageSelector" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -510.0
+margin_top = -360.0
+margin_right = 514.0
+margin_bottom = 360.0
 theme = ExtResource( 6 )
 script = ExtResource( 4 )
 
@@ -27,50 +33,45 @@ __meta__ = {
 [node name="FlagSpanish" type="TextureRect" parent="."]
 anchor_right = 0.465
 anchor_bottom = 1.0
-margin_left = 306.419
-margin_top = 124.623
-margin_right = -41.741
-margin_bottom = -347.377
+margin_left = 308.664
+margin_top = 189.726
+margin_right = -39.4961
+margin_bottom = -282.274
 rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 2 )
 expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_lock_": true
-}
+stretch_mode = 5
 
 [node name="BtnSpanish" parent="." instance=ExtResource( 1 )]
-anchor_left = 0.465
+anchor_left = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -0.160034
-margin_top = 160.568
-margin_right = -331.0
-margin_bottom = -375.432
+margin_left = 478.245
+margin_top = 213.375
+margin_right = -346.755
+margin_bottom = -414.625
 text = "Español"
 
 [node name="FlagEnglish" type="TextureRect" parent="."]
 anchor_right = 0.465
 anchor_bottom = 1.0
-margin_left = 306.419
-margin_top = 277.459
-margin_right = -41.741
-margin_bottom = -194.541
+margin_left = 308.664
+margin_top = 321.586
+margin_right = -39.4961
+margin_bottom = -150.414
 rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 3 )
 expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+stretch_mode = 6
 
 [node name="BtnEnglish" parent="." instance=ExtResource( 1 )]
-anchor_left = 0.465
+anchor_left = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -0.160034
-margin_top = 310.189
-margin_right = -331.0
-margin_bottom = -225.811
+margin_left = 478.245
+margin_top = 397.303
+margin_right = -355.755
+margin_bottom = -224.697
 text = " English "
 
 [connection signal="pressed" from="BtnSpanish" to="." method="_on_BtnSpanish_pressed"]

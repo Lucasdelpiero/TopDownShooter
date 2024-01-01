@@ -1,5 +1,7 @@
 extends Control
 
+onready var screenResolution = $VBoxContainer/HBoxScreen/ScreenResolution
+
 onready var optionMusic = $VBoxContainer/BoxMusic2/OptionMusic
 onready var musicList = $VBoxContainer/BoxMusic2/MusicList
 onready var musicPlayer = $"/root/MusicPlayer"
@@ -36,7 +38,10 @@ func _ready():
 		optionMusic.add_item(musicList.tracks[i])
 #		optionMusic.text = "Choose Song"
 		pass
+	
+	# Just padding
 	optionMusic.text = "  %s" %musicList.tracks[0] 
+	screenResolution.text = " %s " % [screenResolution.text] 
 
 func _process(_delta):
 	if dynamicMusic:
@@ -73,16 +78,26 @@ func _on_BackButton_pressed():
 func _on_CheckBox_toggled(_button_pressed):
 	OS.set_window_fullscreen(not OS.is_window_fullscreen())
 
+
 func _on_ScreenResolution_item_selected(index):
-	match index:
-		0:
-			OS.set_window_size(Vector2(1024, 600))
-		1:
-			OS.set_window_size(Vector2(1280, 1024))
-		2:
-			OS.set_window_size(Vector2(800, 600))
-		3:
-			OS.set_window_size(Vector2(1280, 720))
+	var text : String = screenResolution.get_item_text(index) as String
+	screenResolution.text = " %s " % [text] # Just padding inside of the button
+	var parts = text.split("x") 
+	
+	if parts.size() <= 1: # Safeguard so it only accept text formatted like "1800x720"
+		push_error("There is no 'x' so split screensize numbers")
+		return
+	
+	var widht_string : String = parts[0]  
+	var height_string : String = parts[1]
+	var width  = float(widht_string)
+	var height  = float(height_string)
+	
+	if width == 0 or height == 0: # In case at the left or right of the "x" is not a number
+		push_error("width or hight size doesnt exists")
+		return  
+	
+	OS.set_window_size(Vector2(width, height))
 	OS.center_window()
 
 ## SOUND OPTIONS

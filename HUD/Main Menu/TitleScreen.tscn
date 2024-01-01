@@ -53,7 +53,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../LanguageSelector:visible")
+tracks/2/path = NodePath("../LanguageSelector:titleSceenP")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -62,7 +62,19 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ NodePath("..") ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../LanguageSelector:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -108,20 +120,16 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false ]
 }
 
 [node name="TitleScreen" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 8.0
-margin_right = 16.0001
-margin_bottom = 8.0
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
 
@@ -131,10 +139,10 @@ self_modulate = Color( 0.835294, 0.380392, 0.380392, 1 )
 material = SubResource( 1 )
 anchor_right = 0.992
 anchor_bottom = 0.973
-margin_left = -32.0
-margin_top = -8.0
-margin_right = 0.191833
-margin_bottom = 8.19995
+margin_left = -66.0
+margin_top = -23.0
+margin_right = 22.1919
+margin_bottom = 31.44
 stretch_mode = 1
 offset_speed = 35.0
 offset_angle = 110.0
@@ -157,6 +165,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.378
 anchor_top = 0.307
 anchor_right = 0.621
@@ -222,25 +231,20 @@ anim_time = 0.25
 
 [node name="OptionsLayer" parent="." instance=ExtResource( 2 )]
 
-[node name="Options" parent="OptionsLayer" index="0"]
-visible = false
-
 [node name="LanguageSelector" parent="." instance=ExtResource( 9 )]
-visible = false
-margin_left = -32.0
-margin_top = -8.0
-margin_right = -8.00012
-margin_bottom = -8.0
+__meta__ = {
+"_edit_lock_": true
+}
 titleSceenP = NodePath("..")
 
 [node name="Transition" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-anchor_right = 0.991
-anchor_bottom = 1.02
-margin_left = -40.0
-margin_top = -64.0
-margin_right = 139.216
-margin_bottom = 20.9999
+anchor_right = 0.994
+anchor_bottom = 0.99
+margin_left = -20.0
+margin_top = -2.0
+margin_right = 0.14386
+margin_bottom = 0.199951
 mouse_filter = 2
 color = Color( 0.0705882, 0.0588235, 0.0588235, 1 )
 
@@ -253,9 +257,6 @@ anims/RESET = SubResource( 5 )
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/LevelButton" to="." method="_on_LevelButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
-
-[editable path="OptionsLayer"]
-[editable path="OptionsLayer/Options/BackButton"]

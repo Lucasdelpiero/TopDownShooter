@@ -132,8 +132,9 @@ __meta__ = {
 }
 
 [node name="LevelPicture" type="TextureRect" parent="CenterContainer"]
+margin_top = 20.0
 margin_right = 260.0
-margin_bottom = 200.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 260, 200 )
 size_flags_horizontal = 5
 size_flags_vertical = 3
@@ -164,22 +165,23 @@ __meta__ = {
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 387.0
-margin_bottom = 40.0
+margin_bottom = 43.68
 
 [node name="VSO" parent="PanelContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_bottom = 38.0
+margin_bottom = 41.0
 
 [node name="LevelLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 margin_left = 34.0
+margin_top = 1.0
 margin_right = 117.0
-margin_bottom = 38.0
+margin_bottom = 39.0
 text = "Level:"
 align = 1
 
 [node name="VSO2" parent="PanelContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_left = 121.0
 margin_right = 151.0
-margin_bottom = 38.0
+margin_bottom = 41.0
 
 [node name="PreviousButton" parent="." instance=ExtResource( 5 )]
 anchor_left = 0.075
@@ -271,6 +273,7 @@ margin_left = 180.0
 margin_right = 212.0
 
 [node name="SaveButton" parent="." instance=ExtResource( 11 )]
+visible = false
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 341.508
@@ -281,6 +284,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 anim_time = 0.12
 
 [node name="LoadButton" parent="." instance=ExtResource( 10 )]
+visible = false
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 524.048
@@ -291,6 +295,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 anim_time = 0.12
 
 [node name="TestButton" parent="." instance=ExtResource( 12 )]
+visible = false
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 667.941

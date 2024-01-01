@@ -30,3 +30,4 @@ func connectToText():
 	var hasText = get_tree().get_nodes_in_group("hasText")
 	for el in hasText:
 		connect("updateLanguage", el, "updateText")
+

@@ -34,9 +34,6 @@ margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
 custom_styles/panel = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 anchor_right = 1.0
@@ -78,9 +75,9 @@ margin_right = 711.0
 margin_bottom = 38.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "1024x600"
-items = [ "1024x600", null, false, 0, null, "1280x1024", null, false, 1, null, "800x600", null, false, 2, null ]
-selected = 0
+text = "1024x768"
+items = [ "1920x1080", null, false, 0, null, "1366x768", null, false, 1, null, "1366x720", null, false, 2, null, "1280x1080", null, false, 3, null, "1280x720", null, false, 4, null, "1080x720", null, false, 5, null, "1024x768", null, false, 6, null, "960x720", null, false, 7, null, "800x600", null, false, 8, null, "720x480", null, false, 9, null, "600x480", null, false, 10, null ]
+selected = 6
 
 [node name="BoxMaster" type="HBoxContainer" parent="Options/VBoxContainer"]
 margin_top = 42.0
@@ -348,10 +345,14 @@ theme = ExtResource( 7 )
 text = " Español"
 
 [node name="ToMenu" parent="Options" instance=ExtResource( 5 )]
-margin_left = 165.0
-margin_top = 393.0
-margin_right = 325.0
-margin_bottom = 433.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -40.0
+margin_right = 0.0
+margin_bottom = 0.0
 grow_horizontal = 0
 text = "TO_MENU"
 
